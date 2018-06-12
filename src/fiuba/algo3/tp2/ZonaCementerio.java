@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ZonaCementerio extends Zona {
 
     // Esta bien hacer que casilleros
-    ArrayList<Carta> cartas;
+    private ArrayList<Carta> cartas;
 
     public ZonaCementerio(){
 

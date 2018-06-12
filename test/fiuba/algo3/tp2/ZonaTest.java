@@ -15,12 +15,14 @@ public class ZonaTest {
     }
 
     @Test
-    public void testCrearCementerioNoEstaVacioSiSeEnviaUnaCarta() {
+    public void testCementerioNoEstaVacioSiSeDestruyeUnaCarta() {
 
         Carta carta = new CartaMonstruo();
         ZonaCementerio cementerio = new ZonaCementerio();
 
         cementerio.enviarCarta(carta);
+        // carta.destruir;  ¿?
+
         assertFalse(cementerio.estaVacio());
 
     }
