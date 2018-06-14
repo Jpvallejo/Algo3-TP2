@@ -37,7 +37,7 @@ public class Tablero {
         return this.zonaMagica.tirarCarta();
     }
 
-    public void matarMounstro(Mounstro mounstro) {
+    public void matarMounstro(Monstruo monstruo) {
     /** ACA SE TIENE QUE HACER QUE ELIMINE EL MOUNSTRO DE LA ZONA DE CAMPO Y LO AGREGUE AL CEMENTERIO **/
     }
 }

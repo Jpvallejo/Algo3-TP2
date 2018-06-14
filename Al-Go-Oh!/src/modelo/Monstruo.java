@@ -1,6 +1,6 @@
 package modelo;
 
-public class Mounstro extends Carta {
+public class Monstruo extends Carta {
 
     private int puntosAtaque;
 
@@ -12,7 +12,7 @@ public class Mounstro extends Carta {
 
     private Posicion posicion;
 
-    public Mounstro(int puntosAtaque, int puntosDefensa){
+    public Monstruo(int puntosAtaque, int puntosDefensa){
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
     }
@@ -21,7 +21,7 @@ public class Mounstro extends Carta {
         return this.posicion;
     }
 
-    public void atacarMounstro(Mounstro objetivo, Jugador atacante, Jugador defensor)
+    public void atacarMounstro(Monstruo objetivo, Jugador atacante, Jugador defensor)
     {
         int puntosAtacante = this.getPuntosAtaque();
         int puntosObjetivo;
