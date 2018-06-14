@@ -12,7 +12,7 @@ public class CartaMagicaTest {
 
     @Test
     public void colocarCartaTrampaColocaLaCartaBocaAbajo(){
-        CartaTrampa carta = new CartaTrampa();
+        CartaTrampa carta = new CilindroMagico();
         Jugador jugador = new Jugador();
         jugador.colocarCarta(carta);
 

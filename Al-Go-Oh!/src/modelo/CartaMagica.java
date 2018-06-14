@@ -11,6 +11,6 @@ public abstract class CartaMagica extends Carta{
         return colocacion;
     };
 
-    public abstract void activarEfecto();
+
 
 }

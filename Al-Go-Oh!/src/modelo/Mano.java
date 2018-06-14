@@ -19,16 +19,8 @@ public class Mano {
         return cartas.size();
     }
 
-    public void iniciarMano(Mazo mazo) {
-        cartas.add(new Monstruo(0,0));
-        cartas.add(new Monstruo(0,0));
-        cartas.add(new Monstruo(0,0));
-        cartas.add(new Monstruo(0,0));
-        cartas.add(new Monstruo(0,0));
 
-    }
-
-    public void extraerCarta(Mazo mazo) {
-        cartas.add(new Monstruo(0,0));
+    public void agregarCarta(Carta carta) {
+        cartas.add(carta);
     }
 }

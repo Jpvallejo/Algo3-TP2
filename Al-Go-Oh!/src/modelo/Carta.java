@@ -8,6 +8,8 @@ public abstract class Carta{
         estado = Colocacion.BOCAARRIBA;
     }
 
+    public abstract void activarEfecto();
+
     public boolean estaBocaAbajo(){
         return estado == Colocacion.BOCAABAJO;
     }

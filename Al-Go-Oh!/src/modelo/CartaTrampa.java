@@ -1,7 +1,6 @@
 package modelo;
 
-public class CartaTrampa extends Carta {
-    Efecto efecto;
+public abstract class CartaTrampa extends Carta {
 
     public CartaTrampa(){
         super();

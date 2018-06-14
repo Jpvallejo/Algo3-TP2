@@ -1,4 +1,5 @@
 import modelo.*;
+import modelo.CartasMagicas.CilindroMagico;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class CartaTrampaTest {
 
     @Test
     public void colocarCartaTrampaColocaLaCartaBocaAbajo(){
-        CartaTrampa carta = new CartaTrampa();
+        CartaTrampa carta = new CilindroMagico();
         Jugador jugador = new Jugador();
         jugador.colocarCarta(carta);
 

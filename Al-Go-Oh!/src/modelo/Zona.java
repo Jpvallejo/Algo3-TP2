@@ -6,14 +6,19 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /**
  *
  * @author mramundo
  */
 public abstract class Zona {
-    ArrayList<Casillero> casilleros; 
-
+    ArrayList<Casillero> casilleros;
+   /* private final Hashtable<Casillero, Carta> casilleros;
+    //Crear enum casillero
+    protected Zona() {
+        casilleros = new Hashtable<>();
+    }*/
 
     protected void crearCasilleros(){  
         for (int i= 0; i< 5; i++){

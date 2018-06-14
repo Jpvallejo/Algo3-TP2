@@ -10,8 +10,6 @@ public class Monstruo extends Carta {
 
     private int nivel;
 
-    private Efecto efecto;
-
     private Posicion posicion;
 
     public Posicion getPosicion(){
@@ -110,5 +108,9 @@ public class Monstruo extends Carta {
 
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
+    }
+
+    @Override
+    public void activarEfecto() {
     }
 }
