@@ -6,9 +6,7 @@
 
 import static org.junit.Assert.assertEquals;
 
-import modelo.Casillero;
-import modelo.Tablero;
-import modelo.ZonaMonstruo;
+import modelo.*;
 import org.junit.Test;
 
 /**
@@ -38,12 +36,12 @@ public class TableroTest {
     @Test
     public void test03CasilleroDisponibleEnZonaMagicaEnTablero(){
         Tablero tablero = new Tablero();
-        Monstruo carta = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo carta = new Monstruo(500,2000, Posicion.ATAQUE,4);
         
         assertEquals(true, tablero.tirarCarta(carta));
         
         
-        Monstruo carta2 = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo carta2 = new Monstruo(500,2000, Posicion.ATAQUE,4);
         
         
          assertEquals(true, tablero.tirarCarta(carta));
@@ -54,13 +52,13 @@ public class TableroTest {
     public void test04TirarCartaEnZonaMonstruoYAtacar(){
         
         Tablero tableroAtacante = new Tablero();
-        Monstruo cartaAtaque = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo cartaAtaque = new Monstruo(500,2000, Posicion.ATAQUE,4);
         
         tableroAtacante.tirarCarta(cartaAtaque);
         
         
         Tablero tableroDefensor = new Tablero();
-        Monstruo cartaDefensor = new Monstruo(1000,100, Posicion.ATAQUE);
+        Monstruo cartaDefensor = new Monstruo(1000,100, Posicion.ATAQUE,4);
         
         tableroDefensor.tirarCarta(cartaDefensor);
         
