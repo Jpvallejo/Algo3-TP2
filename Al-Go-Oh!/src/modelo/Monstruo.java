@@ -32,8 +32,9 @@ public class Monstruo extends Carta {
     {
         int puntosAtacante = this.getPuntosAtaque();
         int puntosObjetivo;
-        if(this.getPosicion() == Posicion.ATAQUE) {
+        if(objetivo.getPosicion() == Posicion.ATAQUE) {
             puntosObjetivo = objetivo.getPuntosAtaque();
+
             if (puntosAtacante > puntosObjetivo) {
                 defensor.obtenerCampo().matarMounstro(objetivo);
                 defensor.setPuntosDeVida(defensor.getPuntosDeVida() - (puntosAtacante- puntosObjetivo));
@@ -47,6 +48,7 @@ public class Monstruo extends Carta {
                 atacante.obtenerCampo().matarMounstro(this);
                 atacante.setPuntosDeVida(atacante.getPuntosDeVida() - (puntosObjetivo - puntosAtacante));
             }
+
         }
         else{
             puntosObjetivo = objetivo.getPuntosDefensa();

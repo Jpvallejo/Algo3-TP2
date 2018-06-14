@@ -19,8 +19,8 @@ public class MonstruoTest {
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
         //assertTrue(atacante.cantidadCartasCementerio() == 1 && defensor.cantidadCartasCementerio() == 1);
-        assertEquals(atacante.cantidadCartasCementerio(),1);
-        assertEquals(defensor.cantidadCartasCementerio(),1);
+        assertEquals(1,atacante.cantidadCartasCementerio());
+        assertEquals(1,defensor.cantidadCartasCementerio());
     }
 
     @Test
@@ -32,7 +32,9 @@ public class MonstruoTest {
 
         monstruoAtacante.atacarMounstro(monstruoDefensor, atacante, defensor);
 
-        assertTrue(atacante.cantidadCartasCementerio() == 0 && defensor.cantidadCartasCementerio() == 1);
+        //assertTrue(atacante.cantidadCartasCementerio() == 0 && defensor.cantidadCartasCementerio() == 1);
+        assertEquals(0,atacante.cantidadCartasCementerio());
+        assertEquals(1,defensor.cantidadCartasCementerio());
         assertEquals(atacante.getPuntosDeVida(), 8000);
         assertEquals(defensor.getPuntosDeVida(), 7500);
     }
@@ -47,7 +49,9 @@ public class MonstruoTest {
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
-        assertTrue(atacante.cantidadCartasCementerio() == 0 && defensor.cantidadCartasCementerio() == 1);
+        //assertTrue(atacante.cantidadCartasCementerio() == 0 && defensor.cantidadCartasCementerio() == 1);
+        assertEquals(1,atacante.cantidadCartasCementerio());
+        assertEquals(0,defensor.cantidadCartasCementerio());
         assertEquals(atacante.getPuntosDeVida(), 7500);
         assertEquals(defensor.getPuntosDeVida(), 8000);
     }
@@ -62,7 +66,7 @@ public class MonstruoTest {
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
-        assertTrue(defensor.cantidadCartasCementerio() == 1);
+        assertEquals(1,defensor.cantidadCartasCementerio());
     }
 
     @Test
@@ -71,16 +75,19 @@ public class MonstruoTest {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA);
+        Monstruo monstruoDefensor = new Monstruo(1000,500, Posicion.DEFENSA);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
-        assertTrue(defensor.cantidadCartasCementerio() == 0 && atacante.cantidadCartasCementerio() == 0);
+        //assertTrue(defensor.cantidadCartasCementerio() == 0 && atacante.cantidadCartasCementerio() == 0);
+        assertEquals(0,defensor.cantidadCartasCementerio());
+        assertEquals(0,atacante.cantidadCartasCementerio());
     }
 
     @Test
     public void testAtacarMounstroEnPocisionDefensaConMayoresPuntosDestruyeMounstroAtacante()
     {
+        // Ojo! al atacar un monstruo en posicion de defensa, no se deberia destruir el ata
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);

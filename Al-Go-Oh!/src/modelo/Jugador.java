@@ -6,6 +6,7 @@ public class Jugador {
 
     public Jugador(){
         tablero = new Tablero();
+        puntosDeVida = 8000;
     }
 
     public Tablero obtenerCampo(){
