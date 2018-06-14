@@ -1,5 +1,6 @@
 import modelo.Jugador;
 import modelo.Monstruo;
+import modelo.Posicion;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,8 +13,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000);
-        Monstruo monstruoDefensor = new Monstruo(500,100);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -26,8 +27,8 @@ public class MonstruoTest {
     public void testAtacarMounstroEnPocisionAtaqueConPuntosAtacanteMayorDestruyeDefensorYRestaDiferenciaEnPuntosJugadorQueDefiende() {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(1000, 2000);
-        Monstruo monstruoDefensor = new Monstruo(500, 100);
+        Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE);
+        Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor, atacante, defensor);
 
@@ -41,8 +42,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000);
-        Monstruo monstruoDefensor = new Monstruo(1000,100);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -56,8 +57,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000);
-        Monstruo monstruoDefensor = new Monstruo(1000,100);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -69,8 +70,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000);
-        Monstruo monstruoDefensor = new Monstruo(1000,100);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -82,8 +83,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000);
-        Monstruo monstruoDefensor = new Monstruo(1000,100);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
+        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
