@@ -15,7 +15,8 @@ public class ZonaMonstruo extends Zona{
     
     public ZonaMonstruo(){
     
-       this.casilleros = new ArrayList<Casillero>(); 
+       this.casilleros = new ArrayList<Casillero>();
+        this.crearCasilleros();
     }
     
     

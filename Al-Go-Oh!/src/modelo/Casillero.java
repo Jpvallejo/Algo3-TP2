@@ -12,7 +12,7 @@ package modelo;
 public class Casillero {
 
     boolean disponible;
-    //Carta carta;
+    Carta carta;
 
     public Casillero (){
         disponible = true;
@@ -22,9 +22,9 @@ public class Casillero {
        return this.disponible;
     }
 
-    boolean agregarCarta() { 
-        //tiene que recibir una carta y colocarse en el atributo carta
-        //poner disponible en false
-        return this.disponible;
+    boolean agregarCarta(Carta carta) {
+        this.carta = carta;
+        this.disponible = false;
+        return true;
     }
 }

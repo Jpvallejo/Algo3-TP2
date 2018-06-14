@@ -24,11 +24,11 @@ public class Tablero {
     
     
     public boolean tirarCarta(Monstruo carta) {
-        return this.zonaMagica.tirarCarta(carta);
+        return this.zonaMonstruo.tirarCarta(carta);
     }
     
     public boolean tirarCarta(Magica carta) {
-        return this.zonaMonstruo.tirarCarta(carta);
+        return this.zonaMagica.tirarCarta(carta);
     }
     
 
