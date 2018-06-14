@@ -12,17 +12,13 @@ import java.util.ArrayList;
  *
  * @author mramundo
  */
-public class ZonaMagica extends Zona {
+public class ZonaMonstruo extends Zona{
     
-     public ZonaMagica (){
+    public ZonaMonstruo(){
     
        this.casilleros = new ArrayList<Casillero>(); 
        this.crearCasilleros();
     }
-
-   
     
-
-
-
+    
 }
