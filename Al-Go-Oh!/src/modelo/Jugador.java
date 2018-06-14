@@ -26,13 +26,32 @@ public class Jugador {
         return tablero.cantidadCartasCementerio();
     }
 
-    public void colocarCarta(Monstruo carta) {
-
-
+    public void colocarEnAtaque(Monstruo monstruo){
+        Tablero  campo = this.obtenerCampo();
+        if(monstruo.requiereSacrificio())
+        {
+            this.sacrificarMonstruos(monstruo.cantidadASacrificar());
+        }
+        monstruo.setPosicion(Posicion.ATAQUE);
+        campo.tirarCarta(monstruo);
     }
 
-    public void colocarCarta(CartaMagica carta) {
-
-
+    private void sacrificarMonstruos(int cantidad) {
+        for (int i = 0; i < cantidad; i++){
+            this.tablero.getZonaMonstruo().sacrificarMonstruo();
+        }
     }
+
+    public void colocarEnDefensa(Monstruo monstruo){
+        Tablero  campo = this.obtenerCampo();
+        monstruo.setPosicion(Posicion.DEFENSA);
+        campo.tirarCarta(monstruo);
+    }
+
+    public boolean declararAtaque(Monstruo monstruo)
+    {
+        return this.tablero.getZonaMonstruo().declararAtaque(monstruo,null);
+    }
+
+
 }

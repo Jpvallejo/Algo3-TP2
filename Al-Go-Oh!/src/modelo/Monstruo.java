@@ -31,8 +31,10 @@ public class Monstruo extends Carta {
         this.estrellas = estrellas;
     }
 
-    public void atacarMounstro(Monstruo objetivo, Jugador atacante, Jugador defensor)
+    public void atacarMounstro(Monstruo objetivo)
     {
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         int puntosAtacante = this.getPuntosAtaque();
         int puntosObjetivo;
         if(objetivo.getPosicion() == Posicion.ATAQUE) {
@@ -66,7 +68,8 @@ public class Monstruo extends Carta {
 
     }
 
-    public void atacarPuntosDeVida(Jugador oponente){
+    public void atacarPuntosDeVida(){
+        Jugador oponente = Juego.getJuego().getJugadorOponente();
         int puntosDeVida = oponente.getPuntosDeVida();
         oponente.setPuntosDeVida(puntosDeVida - this.puntosAtaque);
     }
@@ -103,4 +106,7 @@ public class Monstruo extends Carta {
         return 0;
     }
 
+    public void setPosicion(Posicion posicion) {
+        this.posicion = posicion;
+    }
 }

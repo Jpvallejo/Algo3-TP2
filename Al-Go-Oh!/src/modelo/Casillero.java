@@ -27,4 +27,12 @@ public class Casillero {
         this.disponible = false;
         return true;
     }
+
+    public boolean contiene(Carta carta) {
+        return this.carta == carta;
+    }
+
+    public Carta obtenerCarta() {
+        return this.carta;
+    }
 }

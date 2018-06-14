@@ -38,6 +38,24 @@ public abstract class Zona {
         }  
         return false;   
      }
-    
-    
+
+
+    protected int size(){
+        int count = 0;
+        for (Casillero casillero: casilleros) {
+            if (!casillero.estaVacio()){
+                count++;
+            }
+
+        }
+        return count;
+    }
+
+    protected boolean contains(Carta carta) {
+        for (Casillero casillero:casilleros) {
+            if(casillero.contiene(carta))
+                return true;
+        }
+        return false;
+    }
 }
