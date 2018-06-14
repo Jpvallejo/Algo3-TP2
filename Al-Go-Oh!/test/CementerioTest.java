@@ -5,13 +5,21 @@ import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ZonaTest {
+public class CementerioTest {
 
     @Test
     public void testCrearCementerioGeneraCementerioVacio() {
 
-        ZonaCementerio cementerio = new ZonaCementerio();
+        Cementerio cementerio = new Cementerio();
         assertTrue(cementerio.estaVacio());
+
+    }
+
+    @Test
+    public void testCrearCementerioGeneraCementerioConCantidadDeCartas0() {
+
+        Cementerio cementerio = new Cementerio();
+        assertEquals(cementerio.cantidadCartas(),0);
 
     }
 
@@ -19,7 +27,7 @@ public class ZonaTest {
     public void testCementerioNoEstaVacioSiSeDestruyeUnaCarta() {
 
         Carta carta = new Monstruo(0,0);
-        ZonaCementerio cementerio = new ZonaCementerio();
+        Cementerio cementerio = new Cementerio();
 
         cementerio.enviarCarta(carta);
         // carta.destruir;  ¿?
@@ -34,7 +42,7 @@ public class ZonaTest {
         // A correjir: ¿Se debe buscar la carta monstruo por nombre?
         Carta carta = new Monstruo(0,0);
 
-        ZonaCementerio cementerio = new ZonaCementerio();
+        Cementerio cementerio = new Cementerio();
 
         cementerio.enviarCarta(carta);
 

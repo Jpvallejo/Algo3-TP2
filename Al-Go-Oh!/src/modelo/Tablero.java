@@ -11,14 +11,17 @@ package modelo;
  */
 public class Tablero {
     
-    boolean noHayZona;
-    ZonaMagica zonaMagica;
+    private boolean noHayZona;
+    private ZonaMagica zonaMagica;
+    private Cementerio cementerio;
+
     
     
     public Tablero (){
     
         this.noHayZona = true;
         this.zonaMagica = new ZonaMagica ();
+        this.cementerio = new Cementerio();
         this.agregarCasilleros(zonaMagica);
     }
     
@@ -39,5 +42,10 @@ public class Tablero {
 
     public void matarMounstro(Monstruo monstruo) {
     /** ACA SE TIENE QUE HACER QUE ELIMINE EL MOUNSTRO DE LA ZONA DE CAMPO Y LO AGREGUE AL CEMENTERIO **/
+        cementerio.enviarCarta(monstruo);
+    }
+
+    public int cantidadCartasCementerio() {
+        return cementerio.cantidadCartas();
     }
 }

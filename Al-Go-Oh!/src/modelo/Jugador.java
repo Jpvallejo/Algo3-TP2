@@ -4,6 +4,10 @@ public class Jugador {
     private Tablero tablero;
     private int puntosDeVida;
 
+    public Jugador(){
+        tablero = new Tablero();
+    }
+
     public Tablero obtenerCampo(){
         return this.tablero;
     }
@@ -17,6 +21,7 @@ public class Jugador {
     }
 
     public int cantidadCartasCementerio() {
-        return 0; /** CORREGIR AL AGREGAR ZONA CEMENTERIO EN TABLERO */
+
+        return tablero.cantidadCartasCementerio();
     }
 }

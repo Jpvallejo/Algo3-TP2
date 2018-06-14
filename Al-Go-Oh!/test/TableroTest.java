@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 import modelo.Casillero;
 import modelo.Tablero;
-import modelo.ZonaMounstruo;
+import modelo.ZonaMonstruo;
 import org.junit.Test;
 
 /**
@@ -40,7 +40,7 @@ public class TableroTest {
     
         Casillero casillero = new Casillero();
         
-        ZonaMounstruo zonaMounstruo = new ZonaMounstruo();
+        ZonaMonstruo zonaMounstruo = new ZonaMonstruo();
         
         zonaMounstruo.agregarCasillero(casillero);
  

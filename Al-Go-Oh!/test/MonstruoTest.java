@@ -17,7 +17,9 @@ public class MonstruoTest {
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
-        assertTrue(atacante.cantidadCartasCementerio() == 1 && defensor.cantidadCartasCementerio() == 1);
+        //assertTrue(atacante.cantidadCartasCementerio() == 1 && defensor.cantidadCartasCementerio() == 1);
+        assertEquals(atacante.cantidadCartasCementerio(),1);
+        assertEquals(defensor.cantidadCartasCementerio(),1);
     }
 
     @Test

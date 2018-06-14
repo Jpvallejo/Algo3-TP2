@@ -2,12 +2,11 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class ZonaCementerio extends Zona {
+public class Cementerio {
 
-    // Esta bien hacer que casilleros
     private ArrayList<Carta> cartas;
 
-    public ZonaCementerio(){
+    public Cementerio(){
 
         this.cartas = new ArrayList<Carta>();
     }
@@ -25,4 +24,8 @@ public class ZonaCementerio extends Zona {
     public boolean estaVacio(){
         return cartas.isEmpty();
     };
+
+    public int cantidadCartas() {
+        return cartas.size();
+    }
 }
