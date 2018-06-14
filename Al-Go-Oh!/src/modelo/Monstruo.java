@@ -19,12 +19,14 @@ public class Monstruo extends Carta {
     }
 
     public Monstruo(int puntosAtaque, int puntosDefensa){
+        super();
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
         this.posicion = Posicion.DEFENSA;
     }
 
     public Monstruo(int puntosAtaque, int puntosDefensa, Posicion posicion, int estrellas){
+        super();
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
         this.posicion = posicion;

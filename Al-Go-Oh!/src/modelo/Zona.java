@@ -57,4 +57,14 @@ public abstract class Zona {
         }
         return count;
     };
+
+    public ArrayList<Carta> cartasBocaAbajo(){
+        ArrayList<Carta> cartas = new ArrayList<Carta>();
+        for (Casillero casillero: casilleros){
+            Carta carta = casillero.obtenerCarta();
+            if(carta != null && carta.estaBocaAbajo())
+                cartas.add(carta);
+        }
+        return cartas;
+    }
 }

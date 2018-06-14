@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mramundo
@@ -22,7 +24,10 @@ public class Tablero {
         this.cementerio = new Cementerio();
     }
     
-    
+    public boolean tirarCarta(CartaTrampa carta){
+        return this.zonaMagica.tirarCarta(carta);
+    }
+
     public boolean tirarCarta(Monstruo carta) {
         return this.zonaMonstruo.tirarCarta(carta);
     }
@@ -54,5 +59,9 @@ public class Tablero {
 
     public ZonaMagica getZonaMagica() {
         return this.zonaMagica;
+    }
+
+    public ArrayList<Carta> obtenerHechizosEnCampo(){
+        return this.zonaMagica.cartasBocaAbajo();
     }
 }
