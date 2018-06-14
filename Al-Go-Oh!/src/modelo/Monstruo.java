@@ -2,6 +2,8 @@ package modelo;
 
 public class Monstruo extends Carta {
 
+    private int estrellas;
+
     private int puntosAtaque;
 
     private int puntosDefensa;
@@ -22,10 +24,11 @@ public class Monstruo extends Carta {
         this.posicion = Posicion.DEFENSA;
     }
 
-    public Monstruo(int puntosAtaque, int puntosDefensa, Posicion posicion){
+    public Monstruo(int puntosAtaque, int puntosDefensa, Posicion posicion, int estrellas){
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
         this.posicion = posicion;
+        this.estrellas = estrellas;
     }
 
     public void atacarMounstro(Monstruo objetivo, Jugador atacante, Jugador defensor)
@@ -81,5 +84,23 @@ public class Monstruo extends Carta {
         this.puntosDefensa = _puntosDefensa;
     }
 
+    private int getEstrellas(){
+        return this.estrellas;
+    }
+
+    public boolean requiereSacrificio(){
+        return this.getEstrellas() > 4;
+    }
+
+    public int cantidadASacrificar(){
+        if(this.getEstrellas() > 6){
+            return 2;
+        }
+        else if(this.getEstrellas() > 4){
+            return 1;
+        }
+
+        return 0;
+    }
 
 }

@@ -4,6 +4,7 @@ import modelo.Posicion;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MonstruoTest {
@@ -13,8 +14,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE,1);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -27,8 +28,8 @@ public class MonstruoTest {
     public void testAtacarMounstroEnPocisionAtaqueConPuntosAtacanteMayorDestruyeDefensorYRestaDiferenciaEnPuntosJugadorQueDefiende() {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE);
+        Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE,1);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor, atacante, defensor);
 
@@ -44,8 +45,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE,1);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -61,8 +62,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA,1);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -74,8 +75,8 @@ public class MonstruoTest {
     {
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,500, Posicion.DEFENSA);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo(1000,500, Posicion.DEFENSA,1);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -90,8 +91,8 @@ public class MonstruoTest {
 
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA);
+        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,1);
 
         monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
 
@@ -101,4 +102,30 @@ public class MonstruoTest {
         assertEquals(defensor.getPuntosDeVida(), 8000);
 
     }
+
+    @Test
+    public void testMonstruoConMenosDeCuatroEstrellasNoRequiereSacrificio(){
+        Monstruo monstruo = new Monstruo(0,0,Posicion.ATAQUE,3);
+        assertFalse(monstruo.requiereSacrificio());
+    }
+
+    @Test
+    public void testMonstruoConMasDeCuatroEstrellasRequiereSacrificio(){
+        Monstruo monstruo = new Monstruo(0,0,Posicion.ATAQUE,6);
+        assertTrue(monstruo.requiereSacrificio());
+    }
+
+    @Test
+    public void testMonstruoConMasDeCuatroEstrellasRequiereSacrificarUnMonstruo(){
+        Monstruo monstruo = new Monstruo(0,0,Posicion.ATAQUE,5);
+        assertEquals(monstruo.cantidadASacrificar(),1);
+    }
+
+    @Test
+    public void testMonstruoConMasDeSeisEstrellasRequiereSacrificarDosMonstruos(){
+        Monstruo monstruo = new Monstruo(0,0,Posicion.ATAQUE,7);
+        assertEquals(monstruo.cantidadASacrificar(),2);
+    }
+
+
 }
