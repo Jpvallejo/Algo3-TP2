@@ -37,7 +37,7 @@ public class CementerioTest {
     }
 
     @Test
-    public void testBuscarCartaEnCementerioObtieneLaMismaCartaSiEstaSeEncuentraAhi() {
+    public void testEnviarUnaCartaAlCementerioAumentaCantidadDeCartasDelCementerioEn1() {
 
         // A correjir: ¿Se debe buscar la carta monstruo por nombre?
         Carta carta = new Monstruo(0,0);
@@ -46,7 +46,7 @@ public class CementerioTest {
 
         cementerio.enviarCarta(carta);
 
-        assertEquals(cementerio.buscarCarta(carta), carta);
+        assertEquals(1, cementerio.cantidadCartas());
 
     }
 

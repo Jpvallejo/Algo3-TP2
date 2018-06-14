@@ -25,4 +25,14 @@ public class Jugador {
 
         return tablero.cantidadCartasCementerio();
     }
+
+    public void colocarCarta(Monstruo carta) {
+
+
+    }
+
+    public void colocarCarta(CartaMagica carta) {
+
+
+    }
 }

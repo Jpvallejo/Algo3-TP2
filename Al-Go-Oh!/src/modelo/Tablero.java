@@ -27,7 +27,7 @@ public class Tablero {
         return this.zonaMonstruo.tirarCarta(carta);
     }
     
-    public boolean tirarCarta(Magica carta) {
+    public boolean tirarCarta(CartaMagica carta) {
         return this.zonaMagica.tirarCarta(carta);
     }
     
@@ -39,5 +39,13 @@ public class Tablero {
 
     public int cantidadCartasCementerio() {
         return cementerio.cantidadCartas();
+    }
+
+    public int cantidadCartasZonaMonstruos() {
+        return 0;
+    }
+
+    public int cantidadCartasZonaMagicas() {
+        return 0;
     }
 }
