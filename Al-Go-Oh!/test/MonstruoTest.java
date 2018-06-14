@@ -134,5 +134,25 @@ public class MonstruoTest {
         assertEquals(monstruo.cantidadASacrificar(),2);
     }
 
+    @Test
+    public void testColocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
+        Monstruo aSacrificar= new Monstruo(0,0,Posicion.ATAQUE,3);
+        Monstruo sacrificador = new Monstruo(0,0,Posicion.ATAQUE,5);
+        Juego.getJuego().getJugadorActivo().colocarEnAtaque(aSacrificar);
+        Juego.getJuego().getJugadorActivo().colocarEnAtaque(sacrificador);
+        assertEquals(1,Juego.getJuego().getJugadorActivo().cantidadCartasCementerio());
+    }
+
+    @Test
+    public void testColocarMonstruoCon7EstrellasSacrificaDosMonstruos(){
+        Monstruo aSacrificar1= new Monstruo(0,0,Posicion.ATAQUE,3);
+        Monstruo aSacrificar2= new Monstruo(0,0,Posicion.ATAQUE,3);
+        Monstruo sacrificador = new Monstruo(0,0,Posicion.ATAQUE,7);
+        Juego.getJuego().getJugadorActivo().colocarEnAtaque(aSacrificar1);
+        Juego.getJuego().getJugadorActivo().colocarEnAtaque(aSacrificar2);
+        Juego.getJuego().getJugadorActivo().colocarEnAtaque(sacrificador);
+        assertEquals(2,Juego.getJuego().getJugadorActivo().cantidadCartasCementerio());
+    }
+
 
 }
