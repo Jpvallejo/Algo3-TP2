@@ -34,8 +34,7 @@ public class Tablero {
 
     public void matarMounstro(Monstruo monstruo) {
         this.zonaMonstruo.eliminar(monstruo);
-    /** ACA SE TIENE QUE HACER QUE ELIMINE EL MOUNSTRO DE LA ZONA DE CAMPO Y LO AGREGUE AL CEMENTERIO **/
-        cementerio.enviarCarta(monstruo);
+        this.cementerio.enviarCarta(monstruo);
     }
 
     public int cantidadCartasCementerio() {
@@ -43,11 +42,11 @@ public class Tablero {
     }
 
     public int cantidadCartasZonaMonstruos() {
-        return 0;
+        return this.zonaMonstruo.cantidadCartas();
     }
 
     public int cantidadCartasZonaMagicas() {
-        return 0;
+        return this.zonaMagica.cantidadCartas();
     }
     public ZonaMonstruo getZonaMonstruo(){
         return this.zonaMonstruo;

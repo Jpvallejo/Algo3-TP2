@@ -22,7 +22,7 @@ public class ZonaMonstruo extends Zona{
 
     public boolean declararAtaque(Monstruo atacante, Monstruo defensor) {
         ZonaMonstruo zonaOponente = Juego.getJuego().getJugadorOponente().obtenerCampo().getZonaMonstruo();
-        if (defensor == null && zonaOponente.size() == 0)
+        if (defensor == null && zonaOponente.cantidadCartas() == 0)
             atacante.atacarPuntosDeVida();
         else if (defensor != null && zonaOponente.contains(defensor))
             atacante.atacarMounstro(defensor);

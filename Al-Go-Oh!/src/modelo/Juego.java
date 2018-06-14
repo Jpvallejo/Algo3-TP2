@@ -16,6 +16,10 @@ public class Juego {
 
     private Jugador jugadorOponente;
 
+    public static void reiniciarJuego() {
+        instancia = new Juego();
+    }
+
     private void cambiarTurno(){
         Jugador temp = this.jugadorActivo;
         this.jugadorActivo = this.jugadorOponente;

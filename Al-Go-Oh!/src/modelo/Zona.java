@@ -39,8 +39,15 @@ public abstract class Zona {
         return false;   
      }
 
+    protected boolean contains(Carta carta) {
+        for (Casillero casillero:casilleros) {
+            if(casillero.contiene(carta))
+                return true;
+        }
+        return false;
+    }
 
-    protected int size(){
+    public int cantidadCartas(){
         int count = 0;
         for (Casillero casillero: casilleros) {
             if (!casillero.estaVacio()){
@@ -49,13 +56,5 @@ public abstract class Zona {
 
         }
         return count;
-    }
-
-    protected boolean contains(Carta carta) {
-        for (Casillero casillero:casilleros) {
-            if(casillero.contiene(carta))
-                return true;
-        }
-        return false;
-    }
+    };
 }

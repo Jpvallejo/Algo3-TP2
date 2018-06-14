@@ -1,3 +1,4 @@
+import modelo.Juego;
 import modelo.Jugador;
 import modelo.Monstruo;
 import modelo.Posicion;
@@ -12,8 +13,8 @@ public class MonstruoTest {
     @Test
     public void testAtacarMounstroEnPocisionAtaqueConIgualesPuntosDestruyeAmbosMounstros()
     {
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE,1);
 
@@ -26,8 +27,9 @@ public class MonstruoTest {
 
     @Test
     public void testAtacarMounstroEnPocisionAtaqueConPuntosAtacanteMayorDestruyeDefensorYRestaDiferenciaEnPuntosJugadorQueDefiende() {
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Juego.reiniciarJuego();
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE,1);
 
@@ -43,8 +45,9 @@ public class MonstruoTest {
     @Test
     public void testAtacarMounstroEnPocisionAtaqueConPuntosAtacanteMenorDestruyeAtacanteYRestaDiferenciaEnPuntosJugadorQueAtaca()
     {
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Juego.reiniciarJuego();
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE,1);
 
@@ -60,11 +63,13 @@ public class MonstruoTest {
     @Test
     public void testAtacarMounstroEnPocisionDefensaConMenoresPuntosDestruyeMounstroDefensor()
     {
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Juego.reiniciarJuego();
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA,1);
-
+        atacante.colocarEnAtaque(monstruoAtacante);
+        defensor.colocarEnDefensa(monstruoDefensor);
         monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         assertEquals(1,defensor.cantidadCartasCementerio());
@@ -73,11 +78,13 @@ public class MonstruoTest {
     @Test
     public void testAtacarMounstroEnPocisionDefensaConIgualesPuntosNoProduceCambios()
     {
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Juego.reiniciarJuego();
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,500, Posicion.DEFENSA,1);
-
+        atacante.colocarEnAtaque(monstruoAtacante);
+        defensor.colocarEnDefensa(monstruoDefensor);
         monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         //assertTrue(defensor.cantidadCartasCementerio() == 0 && atacante.cantidadCartasCementerio() == 0);
@@ -88,9 +95,9 @@ public class MonstruoTest {
     @Test
     public void testAtacarMounstroEnPocisionDefensaConMayoresPuntosNoDestruyeMounstroAtacanteYRestaDiferenciaEnPuntosAlJugadorQueAtaca()
     {
-
-        Jugador atacante = new Jugador();
-        Jugador defensor = new Jugador();
+        Juego.reiniciarJuego();
+        Jugador atacante = Juego.getJuego().getJugadorActivo();
+        Jugador defensor = Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,1);
 

@@ -13,7 +13,7 @@ public class Cementerio {
 
 
     public void enviarCarta(Carta carta) {
-        cartas.add(carta);
+        this.cartas.add(carta);
     }
 
     public Carta buscarCarta(Carta carta) {
@@ -26,6 +26,6 @@ public class Cementerio {
     };
 
     public int cantidadCartas() {
-        return cartas.size();
+        return this.cartas.size();
     }
 }
