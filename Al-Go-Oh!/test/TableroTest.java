@@ -17,18 +17,9 @@ import org.junit.Test;
  */
 public class TableroTest {
 
-
-    @Test
-    public void test01CrearTableroVacio(){
-        Tablero tablero = new Tablero();
-        
-        assertEquals(true, tablero.estaVacio());
-    
-    }
-    
     
     @Test
-    public void test02CrearCasillero(){
+    public void test01CrearCasillero(){
         Casillero casillero = new Casillero();
         
         assertEquals(true, casillero.estaVacio());
@@ -36,25 +27,50 @@ public class TableroTest {
     }
 
     @Test
-    public void test03CrearZonayAgregarleCasillero(){
-    
-        Casillero casillero = new Casillero();
-        
+    public void test02CrearZona(){
+          
         ZonaMonstruo zonaMounstruo = new ZonaMonstruo();
         
-        zonaMounstruo.agregarCasillero(casillero);
- 
         assertEquals(true, zonaMounstruo.casilleroDisponible());
         
     }
     
     @Test
-    public void test04CasilleroDisponibleEnZonaMagicaEnTablero(){
+    public void test03CasilleroDisponibleEnZonaMagicaEnTablero(){
         Tablero tablero = new Tablero();
+        Monstruo carta = new Monstruo(500,2000, Posicion.ATAQUE);
         
-        assertEquals(true, tablero.tirarCartaEnZonaMagica());
+        assertEquals(true, tablero.tirarCarta(carta));
+        
+        
+        Monstruo carta2 = new Monstruo(500,2000, Posicion.ATAQUE);
+        
+        
+         assertEquals(true, tablero.tirarCarta(carta));
+    
+    }
+    
+       @Test
+    public void test04TirarCartaEnZonaMonstruoYAtacar(){
+        
+        Tablero tableroAtacante = new Tablero();
+        Monstruo cartaAtaque = new Monstruo(500,2000, Posicion.ATAQUE);
+        
+        tableroAtacante.tirarCarta(cartaAtaque);
+        
+        
+        Tablero tableroDefensor = new Tablero();
+        Monstruo cartaDefensor = new Monstruo(1000,100, Posicion.ATAQUE);
+        
+        tableroDefensor.tirarCarta(cartaDefensor);
+        
+        //tableroAtacante.atacarPosicion(posicionMia,posicionDelOtro);
+        
         
     }
+    
+    
+    
 
     
 }

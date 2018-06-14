@@ -14,11 +14,15 @@ import java.util.ArrayList;
 public abstract class Zona {
     ArrayList<Casillero> casilleros; 
 
-    public void agregarCasillero(Casillero casillero) {
-        casilleros.add(casillero);
-        
-    }
 
+    protected void crearCasilleros(){  
+        for (int i= 0; i< 5; i++){
+            Casillero casillero = new Casillero (); 
+            casilleros.add(casillero);
+        }
+    }
+    
+    
     public boolean casilleroDisponible() {
          for(Casillero casillero : this.casilleros){
             if(casillero.estaVacio())return true; 
@@ -26,16 +30,13 @@ public abstract class Zona {
         return false;
     }   
     
-    public boolean tirarCarta() {
+    public boolean tirarCarta(Carta carta) {
         for(Casillero casillero : this.casilleros){
             if(casillero.estaVacio()){
-                return casillero.agregarCarta();
-                
+                return casillero.agregarCarta(carta);     
             }
         }  
         return false;   
-        
-     
      }
     
     

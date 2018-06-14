@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package fiuba.algo3.tp2;
+
 
 import java.util.ArrayList;
 
@@ -11,17 +12,13 @@ import java.util.ArrayList;
  *
  * @author mramundo
  */
-public class ZonaMagica extends Zona {
+public class ZonaMonstruo extends Zona{
     
-     public ZonaMagica (){
+    public ZonaMonstruo(){
     
        this.casilleros = new ArrayList<Casillero>(); 
        this.crearCasilleros();
     }
-
-   
     
-
-
-
+    
 }
