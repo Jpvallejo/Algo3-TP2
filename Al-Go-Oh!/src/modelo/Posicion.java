@@ -1,5 +1,5 @@
 package modelo;
 
-public interface Posicion {
-
+public enum Posicion {
+    ATAQUE,DEFENSA
 }

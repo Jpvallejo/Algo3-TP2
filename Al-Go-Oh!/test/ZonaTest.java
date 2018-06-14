@@ -1,8 +1,9 @@
-package fiuba.algo3.tp2;
-
+import modelo.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ZonaTest {
 
@@ -31,7 +32,7 @@ public class ZonaTest {
     public void testBuscarCartaEnCementerioObtieneLaMismaCartaSiEstaSeEncuentraAhi() {
 
         // A correjir: ¿Se debe buscar la carta monstruo por nombre?
-        Carta carta = new CartaMonstruo();
+        Carta carta = new Monstruo();
 
         ZonaCementerio cementerio = new ZonaCementerio();
 

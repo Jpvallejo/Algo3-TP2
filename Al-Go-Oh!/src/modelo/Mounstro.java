@@ -10,18 +10,22 @@ public class Mounstro extends Carta {
 
     private Efecto efecto;
 
-    private Posicion estado;
+    private Posicion posicion;
 
     public Mounstro(int puntosAtaque, int puntosDefensa){
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
     }
 
+    private Posicion getPosicion(){
+        return this.posicion;
+    }
+
     public void atacarMounstro(Mounstro objetivo, Jugador atacante, Jugador defensor)
     {
         int puntosAtacante = this.getPuntosAtaque();
         int puntosObjetivo;
-        if(estado.EsAtaque()) {
+        if(this.getPosicion() == Posicion.ATAQUE) {
             puntosObjetivo = objetivo.getPuntosAtaque();
             if (puntosAtacante > puntosObjetivo) {
                 defensor.obtenerCampo().matarMounstro(objetivo);
