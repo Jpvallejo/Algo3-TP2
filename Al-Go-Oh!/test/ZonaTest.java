@@ -18,7 +18,7 @@ public class ZonaTest {
     @Test
     public void testCementerioNoEstaVacioSiSeDestruyeUnaCarta() {
 
-        Carta carta = new CartaMonstruo();
+        Carta carta = new Monstruo(0,0);
         ZonaCementerio cementerio = new ZonaCementerio();
 
         cementerio.enviarCarta(carta);
@@ -32,7 +32,7 @@ public class ZonaTest {
     public void testBuscarCartaEnCementerioObtieneLaMismaCartaSiEstaSeEncuentraAhi() {
 
         // A correjir: ¿Se debe buscar la carta monstruo por nombre?
-        Carta carta = new Monstruo();
+        Carta carta = new Monstruo(0,0);
 
         ZonaCementerio cementerio = new ZonaCementerio();
 

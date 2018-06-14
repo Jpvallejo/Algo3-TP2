@@ -28,7 +28,7 @@ public class Tablero {
     }
     
     
-    boolean estaVacio() {
+    public boolean estaVacio() {
         return noHayZona;
     }
 
