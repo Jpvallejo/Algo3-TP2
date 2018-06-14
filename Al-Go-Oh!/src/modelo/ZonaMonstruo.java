@@ -35,10 +35,19 @@ public class ZonaMonstruo extends Zona{
         Juego.getJuego().getJugadorActivo().obtenerCampo().matarMounstro((Monstruo)this.casilleros.get(0).obtenerCarta());
     }
 
+    public void destruirZona(Cementerio cementerio){
+        for (Casillero casillero: casilleros) {
+            cementerio.enviarCarta(casillero.getCarta());
+            casillero.vaciar();
+            //casilleros.remove(casillero);
+        }
+    }
+
     public void eliminar(Monstruo monstruo) {
         for (Casillero casillero: casilleros) {
             if(casillero.contiene(monstruo)) {
                 casilleros.remove(casillero);
+                //casillero.vaciar();
                 return;
             }
 

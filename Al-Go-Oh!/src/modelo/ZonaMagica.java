@@ -19,9 +19,15 @@ public class ZonaMagica extends Zona {
        this.crearCasilleros();
     }
 
-   
-    
 
+    public void eliminar(Carta carta) {
+        for (Casillero casillero: casilleros) {
+            if(casillero.contiene(carta)) {
+                //casilleros.remove(casillero);
+                casillero.vaciar();
+                return;
+            }
 
-
+        }
+    }
 }
