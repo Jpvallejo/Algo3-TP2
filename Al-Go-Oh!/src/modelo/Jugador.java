@@ -53,6 +53,10 @@ public class Jugador {
         return this.tablero.getZonaMonstruo().declararAtaque(monstruo,null);
     }
 
+   /* public void colocarCarta(CartaMagica carta){
+        this.obtenerCampo().getZonaMagica().tirarCarta(carta);
+    }*/
+
     public void colocarCarta(CartaMagica carta){
         this.obtenerCampo().tirarCarta(carta);
     }

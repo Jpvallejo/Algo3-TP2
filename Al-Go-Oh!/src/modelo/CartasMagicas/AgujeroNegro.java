@@ -1,11 +1,22 @@
 package modelo.CartasMagicas;
 
-import modelo.CartaMagica;
-import modelo.Colocacion;
+import modelo.*;
 
 public class AgujeroNegro extends CartaMagica  {
 
-    public AgujeroNegro(Colocacion bocaarriba) {
-        super();
+    public AgujeroNegro(Colocacion colocacion) {
+
+        this.colocacion =  colocacion;
+    }
+
+    public void activarEfecto(){
+        Juego juego = Juego.getJuego();
+        Jugador jugadorOponente = juego.getJugadorOponente();
+        Jugador jugadorActivo = juego.getJugadorActivo();
+
+        jugadorActivo.obtenerCampo().destruirZonaMonstruos();
+        jugadorOponente.obtenerCampo().destruirZonaMonstruos();
+
+        jugadorActivo.obtenerCampo().destruirCarta(this);
     }
 }

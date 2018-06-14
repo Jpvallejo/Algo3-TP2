@@ -7,6 +7,8 @@ package modelo;
 
 import java.util.ArrayList;
 
+import modelo.CartasMagicas.AgujeroNegro;
+
 /**
  *
  * @author mramundo
@@ -33,7 +35,14 @@ public class Tablero {
     }
     
     public boolean tirarCarta(CartaMagica carta) {
-        return this.zonaMagica.tirarCarta(carta);
+        if ( this.zonaMagica.tirarCarta(carta) ){
+            if (carta.getColocacion() == Colocacion.BOCAARRIBA ){
+                carta.activarEfecto();
+            }
+            return true;
+        }
+        return false;
+
     }
     
 
@@ -63,5 +72,14 @@ public class Tablero {
 
     public ArrayList<Carta> obtenerHechizosEnCampo(){
         return this.zonaMagica.cartasBocaAbajo();
+    }
+
+    public void destruirZonaMonstruos(){
+        zonaMonstruo.destruirZona(cementerio);
+    }
+
+    public void destruirCarta(Carta carta) {
+        this.zonaMagica.eliminar(carta);
+        this.cementerio.enviarCarta(carta);
     }
 }

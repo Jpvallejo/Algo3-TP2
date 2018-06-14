@@ -12,7 +12,7 @@ public class CartaMagicaTest {
 
         AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAARRIBA);
 
-        Jugador jugador = new Jugador();
+        Jugador jugador = Juego.getJuego().getJugadorActivo();
 
         Monstruo monstruo = new Monstruo(0,0,Posicion.DEFENSA,4);
 

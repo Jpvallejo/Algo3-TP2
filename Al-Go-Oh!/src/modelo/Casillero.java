@@ -11,8 +11,8 @@ package modelo;
  */
 public class Casillero {
 
-    boolean disponible;
-    Carta carta;
+    private boolean disponible;
+    private Carta carta;
 
     public Casillero (){
         disponible = true;
@@ -34,5 +34,14 @@ public class Casillero {
 
     public Carta obtenerCarta() {
         return this.carta;
+    }
+
+    public void vaciar() {
+        this.disponible = true;
+        this.carta = null;
+    }
+
+    public Carta getCarta() {
+        return carta;
     }
 }
