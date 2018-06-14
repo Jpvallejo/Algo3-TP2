@@ -14,7 +14,7 @@ public class Monstruo extends Carta {
 
     private Posicion posicion;
 
-    private Posicion getPosicion(){
+    public Posicion getPosicion(){
         return this.posicion;
     }
 

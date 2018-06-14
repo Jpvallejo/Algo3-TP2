@@ -11,6 +11,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MonstruoTest {
 
     @Test
+    public void testColocarMonstruoEnPosicionDeAtaqueGeneraMonstruoEnPosicionDeAtaque(){
+        Monstruo monstruo = new Monstruo(100,100,Posicion.ATAQUE,4);
+
+        assertEquals(Posicion.ATAQUE,monstruo.getPosicion());
+    }
+
+    @Test
+    public void testColocarMonstruoEnPosicionDeDefensaGeneraMonstruoEnPosicionDeDefensa(){
+        Monstruo monstruo = new Monstruo(100,100,Posicion.DEFENSA,4);
+
+        assertEquals(Posicion.DEFENSA,monstruo.getPosicion());
+    }
+
+    @Test
     public void testAtacarMounstroEnPocisionAtaqueConIgualesPuntosDestruyeAmbosMounstros()
     {
         Jugador atacante = Juego.getJuego().getJugadorActivo();
@@ -136,6 +150,7 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
+        Juego.reiniciarJuego();
         Monstruo aSacrificar= new Monstruo(0,0,Posicion.ATAQUE,3);
         Monstruo sacrificador = new Monstruo(0,0,Posicion.ATAQUE,5);
         Juego.getJuego().getJugadorActivo().colocarEnAtaque(aSacrificar);

@@ -43,14 +43,4 @@ public class ZonaMonstruo extends Zona{
         }
     }
 
-    public void eliminar(Monstruo monstruo) {
-        for (Casillero casillero: casilleros) {
-            if(casillero.contiene(monstruo)) {
-                casilleros.remove(casillero);
-                //casillero.vaciar();
-                return;
-            }
-
-        }
-    }
 }

@@ -1,20 +1,19 @@
-import modelo.Carta;
-import modelo.CartaTrampa;
-import modelo.Juego;
+import modelo.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 public class CartaTrampaTest {
 
     @Test
     public void colocarCartaTrampaColocaLaCartaBocaAbajo(){
         CartaTrampa carta = new CartaTrampa();
-        Juego.getJuego().getJugadorActivo().colocarCarta(carta);
-        ArrayList<Carta> cartas = Juego.getJuego().getJugadorActivo().obtenerCampo().obtenerHechizosEnCampo();
+        Jugador jugador = new Jugador();
+        jugador.colocarCarta(carta);
+
+        ArrayList<Carta> cartas = jugador.obtenerCampo().obtenerHechizosEnCampo();
         assertTrue(cartas.contains(carta));
         for (Carta cartaActual:cartas) {
             if (cartaActual == carta) {
@@ -22,6 +21,8 @@ public class CartaTrampaTest {
                 return;
             }
         }
-        assertEquals(200,0);
+
+        // Si llega aca, significa que no encontro la carta
+        assertFalse(true);
     }
 }

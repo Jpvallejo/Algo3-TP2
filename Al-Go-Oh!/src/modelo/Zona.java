@@ -67,4 +67,16 @@ public abstract class Zona {
         }
         return cartas;
     }
+
+
+    public void eliminar(Carta carta) {
+        for (Casillero casillero: casilleros) {
+            if(casillero.contiene(carta)) {
+                //casilleros.remove(casillero);
+                casillero.vaciar();
+                return;
+            }
+
+        }
+    }
 }
