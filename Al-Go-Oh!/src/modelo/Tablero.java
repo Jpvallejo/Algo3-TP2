@@ -48,7 +48,12 @@ public class Tablero {
 
     public int cantidadCartasZonaMagicas() {
         return 0;
-    public ZonaMonstruo getZonaMonstruo() {
+    }
+    public ZonaMonstruo getZonaMonstruo(){
         return this.zonaMonstruo;
+    }
+
+    public ZonaMagica getZonaMagica() {
+        return this.zonaMagica;
     }
 }

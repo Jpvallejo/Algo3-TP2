@@ -17,7 +17,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE,1);
 
-        monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
+        monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         //assertTrue(atacante.cantidadCartasCementerio() == 1 && defensor.cantidadCartasCementerio() == 1);
         assertEquals(1,atacante.cantidadCartasCementerio());
@@ -31,7 +31,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE,1);
 
-        monstruoAtacante.atacarMounstro(monstruoDefensor, atacante, defensor);
+        monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         //assertTrue(atacante.cantidadCartasCementerio() == 0 && defensor.cantidadCartasCementerio() == 1);
         assertEquals(0,atacante.cantidadCartasCementerio());
@@ -48,7 +48,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE,1);
 
-        monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
+        monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         //assertTrue(atacante.cantidadCartasCementerio() == 0 && defensor.cantidadCartasCementerio() == 1);
         assertEquals(1,atacante.cantidadCartasCementerio());
@@ -65,7 +65,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA,1);
 
-        monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
+        monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         assertEquals(1,defensor.cantidadCartasCementerio());
     }
@@ -78,7 +78,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,500, Posicion.DEFENSA,1);
 
-        monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
+        monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         //assertTrue(defensor.cantidadCartasCementerio() == 0 && atacante.cantidadCartasCementerio() == 0);
         assertEquals(0,defensor.cantidadCartasCementerio());
@@ -94,7 +94,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,1);
 
-        monstruoAtacante.atacarMounstro(monstruoDefensor,atacante,defensor);
+        monstruoAtacante.atacarMounstro(monstruoDefensor);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
         assertEquals(0, defensor.cantidadCartasCementerio());

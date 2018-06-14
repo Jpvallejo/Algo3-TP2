@@ -16,7 +16,7 @@ public class CartaMagicaTest {
 
         Monstruo monstruo = new Monstruo(0,0,Posicion.DEFENSA,4);
 
-        jugador.colocarCarta(monstruo);
+        jugador.colocarEnAtaque(monstruo);
         jugador.colocarCarta(agujeroNegro);
 
         assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMonstruos());

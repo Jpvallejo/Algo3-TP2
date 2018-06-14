@@ -8,7 +8,8 @@ public class Juego {
         }
 
         private Juego(){
-
+            jugadorActivo = new Jugador();
+            jugadorOponente = new Jugador();
         }
 
     private Jugador jugadorActivo;
