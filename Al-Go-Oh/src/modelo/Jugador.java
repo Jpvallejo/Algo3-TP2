@@ -54,7 +54,7 @@ public class Jugador {
     }
 
    /* public void colocarCarta(CartaMagica carta){
-        this.obtenerCampo().getZonaMagica().tirarCarta(carta);
+        this.obtenerCampo().getZonaHechizos().tirarCarta(carta);
     }*/
 
     public void colocarCarta(CartaMagica carta){

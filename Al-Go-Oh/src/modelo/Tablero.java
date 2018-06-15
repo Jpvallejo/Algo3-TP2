@@ -13,19 +13,19 @@ import java.util.ArrayList;
  */
 public class Tablero {
   
-    private ZonaMagica zonaMagica;
+    private ZonaHechizos zonaHechizos;
     private ZonaMonstruo zonaMonstruo;
     private Cementerio cementerio;
       
     public Tablero (){
     
-        this.zonaMagica = new ZonaMagica ();
+        this.zonaHechizos = new ZonaHechizos();
         this.zonaMonstruo = new ZonaMonstruo();
         this.cementerio = new Cementerio();
     }
     
     public boolean tirarCarta(CartaTrampa carta){
-        return this.zonaMagica.tirarCarta(carta);
+        return this.zonaHechizos.tirarCarta(carta);
     }
 
     public boolean tirarCarta(Monstruo carta) {
@@ -33,7 +33,7 @@ public class Tablero {
     }
     
     public boolean tirarCarta(CartaMagica carta) {
-        if ( this.zonaMagica.tirarCarta(carta) ){
+        if ( this.zonaHechizos.tirarCarta(carta) ){
             if (carta.getEstado() == Colocacion.BOCAARRIBA ){
                 carta.activarEfecto();
             }
@@ -58,18 +58,18 @@ public class Tablero {
     }
 
     public int cantidadCartasZonaMagicas() {
-        return this.zonaMagica.cantidadCartas();
+        return this.zonaHechizos.cantidadCartas();
     }
     public ZonaMonstruo getZonaMonstruo(){
         return this.zonaMonstruo;
     }
 
-    public ZonaMagica getZonaMagica() {
-        return this.zonaMagica;
+    public ZonaHechizos getZonaHechizos() {
+        return this.zonaHechizos;
     }
 
     public ArrayList<Carta> obtenerHechizosEnCampo(){
-        return this.zonaMagica.cartasBocaAbajo();
+        return this.zonaHechizos.cartasBocaAbajo();
     }
 
     public void destruirZonaMonstruos(){
@@ -77,7 +77,7 @@ public class Tablero {
     }
 
     public void destruirCarta(Carta carta) {
-        this.zonaMagica.eliminar(carta);
+        this.zonaHechizos.eliminar(carta);
         this.cementerio.enviarCarta(carta);
     }
 }

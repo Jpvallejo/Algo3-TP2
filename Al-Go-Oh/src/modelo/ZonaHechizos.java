@@ -11,9 +11,9 @@ import java.util.ArrayList;
  *
  * @author mramundo
  */
-public class ZonaMagica extends Zona {
+public class ZonaHechizos extends Zona {
     
-     public ZonaMagica (){
+     public ZonaHechizos(){
     
        this.casilleros = new ArrayList<Casillero>(); 
        this.crearCasilleros();
