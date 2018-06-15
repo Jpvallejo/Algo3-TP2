@@ -7,8 +7,6 @@ package modelo;
 
 import java.util.ArrayList;
 
-import modelo.CartasMagicas.AgujeroNegro;
-
 /**
  *
  * @author mramundo
@@ -36,7 +34,7 @@ public class Tablero {
     
     public boolean tirarCarta(CartaMagica carta) {
         if ( this.zonaMagica.tirarCarta(carta) ){
-            if (carta.getColocacion() == Colocacion.BOCAARRIBA ){
+            if (carta.getEstado() == Colocacion.BOCAARRIBA ){
                 carta.activarEfecto();
             }
             return true;

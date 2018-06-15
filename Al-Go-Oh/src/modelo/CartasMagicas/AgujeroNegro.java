@@ -6,9 +6,10 @@ public class AgujeroNegro extends CartaMagica  {
 
     public AgujeroNegro(Colocacion colocacion) {
 
-        this.colocacion =  colocacion;
+        this.estado =  colocacion;
     }
 
+    @Override
     public void activarEfecto(){
         Juego juego = Juego.getJuego();
         Jugador jugadorOponente = juego.getJugadorOponente();

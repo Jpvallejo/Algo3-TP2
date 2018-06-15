@@ -4,11 +4,11 @@ public abstract class CartaMagica extends Carta{
 
     public CartaMagica(){
         super();
+        this.estado = Colocacion.BOCAABAJO;
     }
-    protected Colocacion colocacion;
 
-    public Colocacion getColocacion(){
-        return colocacion;
+    public Colocacion getEstado(){
+        return estado;
     };
 
 
