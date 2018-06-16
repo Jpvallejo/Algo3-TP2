@@ -5,7 +5,6 @@
  */
 package modelo;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +14,7 @@ public class ZonaMonstruo extends Zona{
     
     public ZonaMonstruo(){
     
-       this.casilleros = new ArrayList<Casillero>();
-        this.crearCasilleros();
+        super();
     }
 
 
@@ -32,14 +30,13 @@ public class ZonaMonstruo extends Zona{
     }
 
     public void sacrificarMonstruo() {
-        Juego.getJuego().getJugadorActivo().obtenerCampo().matarMounstro((Monstruo)this.casilleros.get(0).obtenerCarta());
+        Juego.getJuego().getJugadorActivo().obtenerCampo().matarMounstro((Monstruo)this.casilleros.get(Casillero.UNO));
     }
 
     public void destruirZona(Cementerio cementerio){
-        for (Casillero casillero: casilleros) {
-            cementerio.enviarCarta(casillero.getCarta());
-            casillero.vaciar();
-            //casilleros.remove(casillero);
+        for (Casillero key :casilleros.keySet()){
+            cementerio.enviarCarta(casilleros.get(key));
+            casilleros.remove(key);
         }
     }
 

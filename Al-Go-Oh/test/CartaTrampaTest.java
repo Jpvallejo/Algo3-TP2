@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static junit.framework.TestCase.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CartaTrampaTest {
 
@@ -14,16 +15,7 @@ public class CartaTrampaTest {
         Jugador jugador = new Jugador();
         jugador.colocarCarta(carta);
 
-        ArrayList<Carta> cartas = jugador.obtenerCampo().obtenerHechizosEnCampo();
-        assertTrue(cartas.contains(carta));
-        for (Carta cartaActual:cartas) {
-            if (cartaActual == carta) {
-                assertTrue(cartaActual.estaBocaAbajo());
-                return;
-            }
-        }
+        assertTrue(jugador.obtenerCampo().getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
 
-        // Si llega aca, significa que no encontro la carta
-        assertFalse(true);
     }
 }

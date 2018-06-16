@@ -5,8 +5,6 @@
  */
 package modelo;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author mramundo
@@ -15,8 +13,7 @@ public class ZonaHechizos extends Zona {
     
      public ZonaHechizos(){
     
-       this.casilleros = new ArrayList<Casillero>(); 
-       this.crearCasilleros();
+       super();
     }
 
 }

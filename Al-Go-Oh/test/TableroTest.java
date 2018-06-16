@@ -5,6 +5,7 @@
  */
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import modelo.*;
 import org.junit.Test;
@@ -15,21 +16,12 @@ import org.junit.Test;
  */
 public class TableroTest {
 
-    
-    @Test
-    public void test01CrearCasillero(){
-        Casillero casillero = new Casillero();
-        
-        assertEquals(true, casillero.estaVacio());
-        
-    }
-
     @Test
     public void test02CrearZona(){
           
         ZonaMonstruo zonaMounstruo = new ZonaMonstruo();
-        
-        assertEquals(true, zonaMounstruo.casilleroDisponible());
+
+        assertTrue(zonaMounstruo.casilleroDisponible());
         
     }
     
@@ -37,14 +29,14 @@ public class TableroTest {
     public void test03CasilleroDisponibleEnZonaMagicaEnTablero(){
         Tablero tablero = new Tablero();
         Monstruo carta = new Monstruo(500,2000, Posicion.ATAQUE,4);
-        
-        assertEquals(true, tablero.tirarCarta(carta));
+
+        assertTrue(tablero.tirarCarta(carta));
         
         
         Monstruo carta2 = new Monstruo(500,2000, Posicion.ATAQUE,4);
-        
-        
-         assertEquals(true, tablero.tirarCarta(carta));
+
+
+        assertTrue(tablero.tirarCarta(carta));
     
     }
     

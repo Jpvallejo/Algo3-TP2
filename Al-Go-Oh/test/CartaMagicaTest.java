@@ -3,6 +3,8 @@ import modelo.CartasMagicas.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,25 +13,15 @@ public class CartaMagicaTest {
 
 
     @Test
-    public void colocarCartaTrampaColocaLaCartaBocaAbajo(){
-        CartaTrampa carta = new CilindroMagico();
+    public void colocarCartaMagicaColocaLaCartaBocaAbajo(){
+        AgujeroNegro agujeroNegro = new AgujeroNegro();
         Jugador jugador = new Jugador();
-        jugador.colocarCarta(carta);
+        jugador.colocarCarta(agujeroNegro);
 
-        ArrayList<Carta> cartas = jugador.obtenerCampo().obtenerHechizosEnCampo();
-        assertTrue(cartas.contains(carta));
-        for (Carta cartaActual:cartas) {
-            if (cartaActual == carta) {
-                assertTrue(cartaActual.estaBocaAbajo());
-                return;
-            }
-        }
+        assertTrue(jugador.obtenerCampo().getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
 
-        // Si llega aca, significa que no encontro la carta
-        assertFalse(true);
     }
-
-
+    
 
     @Test
     public void testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocador() {
@@ -47,5 +39,6 @@ public class CartaMagicaTest {
         assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMagicas());
 
     }
+
 
 }

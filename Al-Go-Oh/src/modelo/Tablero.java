@@ -5,8 +5,6 @@
  */
 package modelo;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author mramundo
@@ -25,15 +23,15 @@ public class Tablero {
     }
     
     public boolean tirarCarta(CartaTrampa carta){
-        return this.zonaHechizos.tirarCarta(carta);
+        return this.zonaHechizos.colocarCarta(carta);
     }
 
     public boolean tirarCarta(Monstruo carta) {
-        return this.zonaMonstruo.tirarCarta(carta);
+        return this.zonaMonstruo.colocarCarta(carta);
     }
     
     public boolean tirarCarta(CartaMagica carta) {
-        if ( this.zonaHechizos.tirarCarta(carta) ){
+        if ( this.zonaHechizos.colocarCarta(carta) ){
             if (carta.getEstado() == Colocacion.BOCAARRIBA ){
                 carta.activarEfecto();
             }
@@ -66,10 +64,6 @@ public class Tablero {
 
     public ZonaHechizos getZonaHechizos() {
         return this.zonaHechizos;
-    }
-
-    public ArrayList<Carta> obtenerHechizosEnCampo(){
-        return this.zonaHechizos.cartasBocaAbajo();
     }
 
     public void destruirZonaMonstruos(){

@@ -13,57 +13,59 @@ import java.util.Hashtable;
  * @author mramundo
  */
 public abstract class Zona {
-    ArrayList<Casillero> casilleros;
-   /* private final Hashtable<Casillero, Carta> casilleros;
-    //Crear enum casillero
+    //ArrayList<Casillero> casilleros;
+    protected final Hashtable<Casillero, Carta> casilleros;
+
     protected Zona() {
         casilleros = new Hashtable<>();
-    }*/
-
+    }
+/*
     protected void crearCasilleros(){  
         for (int i= 0; i< 5; i++){
             Casillero casillero = new Casillero (); 
             casilleros.add(casillero);
         }
     }
-    
+  */
     
     public boolean casilleroDisponible() {
-         for(Casillero casillero : this.casilleros){
-            if(casillero.estaVacio())return true; 
-        }  
-        return false;
+       return casilleros.isEmpty();
     }   
     
-    public boolean tirarCarta(Carta carta) {
-        for(Casillero casillero : this.casilleros){
-            if(casillero.estaVacio()){
-                return casillero.agregarCarta(carta);     
+    public boolean colocarCarta(Carta carta) {
+        for (Casillero pos : Casillero.values()) {
+            if (!casilleros.containsKey(pos)) {
+                casilleros.putIfAbsent(pos,carta);
+                return true;
             }
-        }  
+        }
+
+        /*for(Casillero casillero : this.casilleros){
+            if(casillero.estaVacio()){
+                return casillero.agregarCarta(carta);
+            }
+        }  */
         return false;   
      }
 
     protected boolean contains(Carta carta) {
-        for (Casillero casillero:casilleros) {
-            if(casillero.contiene(carta))
-                return true;
-        }
-        return false;
+       return casilleros.contains(carta);
     }
 
     public int cantidadCartas(){
-        int count = 0;
+       /* int count = 0;
         for (Casillero casillero: casilleros) {
             if (!casillero.estaVacio()){
                 count++;
             }
 
         }
-        return count;
+        return count;*/
+       return casilleros.size();
     };
 
-    public ArrayList<Carta> cartasBocaAbajo(){
+    /*
+    public int cartasBocaAbajo(){
         ArrayList<Carta> cartas = new ArrayList<Carta>();
         for (Casillero casillero: casilleros){
             Carta carta = casillero.obtenerCarta();
@@ -71,17 +73,18 @@ public abstract class Zona {
                 cartas.add(carta);
         }
         return cartas;
-    }
+    }*/
 
 
     public void eliminar(Carta carta) {
-        for (Casillero casillero: casilleros) {
-            if(casillero.contiene(carta)) {
-                //casilleros.remove(casillero);
-                casillero.vaciar();
-                return;
+        for (Casillero key :casilleros.keySet()){
+            if (casilleros.get(key).equals(carta)) {
+                casilleros.remove(key);
             }
-
         }
+    }
+
+    public Carta obtenerCartaPosicion(Casillero casillero){
+        return casilleros.get(casillero);
     }
 }

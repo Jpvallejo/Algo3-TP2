@@ -5,43 +5,6 @@
  */
 package modelo;
 
-/**
- *
- * @author mramundo
- */
-public class Casillero {
-
-    private boolean disponible;
-    private Carta carta;
-
-    public Casillero (){
-        disponible = true;
-    }
-    
-    public boolean estaVacio() {
-       return this.disponible;
-    }
-
-    boolean agregarCarta(Carta carta) {
-        this.carta = carta;
-        this.disponible = false;
-        return true;
-    }
-
-    public boolean contiene(Carta carta) {
-        return this.carta == carta;
-    }
-
-    public Carta obtenerCarta() {
-        return this.carta;
-    }
-
-    public void vaciar() {
-        this.disponible = true;
-        this.carta = null;
-    }
-
-    public Carta getCarta() {
-        return carta;
-    }
+public enum Casillero {
+    UNO,DOS,TRES,CUATRO,CINCO
 }
