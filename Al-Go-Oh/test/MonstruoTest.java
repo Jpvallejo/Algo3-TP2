@@ -275,8 +275,8 @@ public class MonstruoTest {
         atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.PUNTOSVIDA);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
-        assertEquals(7500, atacante.getPuntosDeVida());
-        assertEquals(8000, defensor.getPuntosDeVida());
+        assertEquals(7500, defensor.getPuntosDeVida());
+        assertEquals(8000, atacante.getPuntosDeVida());
 
     }
 
