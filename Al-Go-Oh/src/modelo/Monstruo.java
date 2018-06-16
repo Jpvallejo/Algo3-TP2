@@ -30,8 +30,8 @@ public class Monstruo extends Carta {
         this.posicion = posicion;
         this.estrellas = estrellas;
     }
-
-    public void atacarMounstro(Monstruo objetivo)
+/*
+    public void atacarMonstruo(Monstruo objetivo)
     {
         Jugador atacante = Juego.getJuego().getJugadorActivo();
         Jugador defensor = Juego.getJuego().getJugadorOponente();
@@ -67,6 +67,37 @@ public class Monstruo extends Carta {
         }
 
     }
+    */
+
+    public void atacarMonstruo(Jugador atacante,Jugador defensor, Monstruo objetivo)
+    {
+        atacante.restarPuntosDeVida(this.danioAlAtacante(objetivo));
+        defensor.restarPuntosDeVida(this.danioAlDefensor(objetivo));
+
+        int puntosAtacante = this.getPuntosAtaque();
+        int puntosObjetivo;
+        if(objetivo.getPosicion() == Posicion.ATAQUE) {
+            puntosObjetivo = objetivo.getPuntosAtaque();
+            if (puntosAtacante > puntosObjetivo) {
+                defensor.obtenerCampo().matarMounstro(objetivo);
+            }
+            else if(puntosAtacante == puntosObjetivo) {
+                atacante.obtenerCampo().matarMounstro(this);
+                defensor.obtenerCampo().matarMounstro(objetivo);
+            }
+            else{
+                atacante.obtenerCampo().matarMounstro(this);
+            }
+        }
+        else{
+            puntosObjetivo = objetivo.getPuntosDefensa();
+            if (puntosAtacante > puntosObjetivo) {
+                defensor.obtenerCampo().matarMounstro(objetivo);
+            }
+        }
+
+    }
+
 
     public void atacarPuntosDeVida(){
         Jugador oponente = Juego.getJuego().getJugadorOponente();
@@ -112,5 +143,38 @@ public class Monstruo extends Carta {
 
     @Override
     public void activarEfecto() {
+    }
+
+    public int danioAlAtacante(Monstruo objetivo) {
+        int puntosAtacante = this.getPuntosAtaque();
+        int puntosObjetivo;
+
+        if(objetivo.getPosicion() == Posicion.ATAQUE) {
+            puntosObjetivo = objetivo.getPuntosAtaque();
+        }
+        else {
+            puntosObjetivo = objetivo.getPuntosDefensa();
+        }
+
+        // Si los puntos del defensor son mayores que los del atacante, devuelve la resta como danio al atacante, caso contrario devuelve 0
+        return (puntosObjetivo > puntosAtacante) ? (puntosObjetivo - puntosAtacante) : 0;
+
+    }
+
+    public int danioAlDefensor(Monstruo objetivo) {
+        int puntosAtacante = this.getPuntosAtaque();
+        int puntosObjetivo;
+
+        if(objetivo.getPosicion() == Posicion.ATAQUE) {
+            puntosObjetivo = objetivo.getPuntosAtaque();
+
+            // Si los puntos del atacante son mayores que los del defensor, devuelve la resta como daño al defensor, caso contrario devuelve 0
+            return (puntosAtacante > puntosObjetivo) ? (puntosAtacante - puntosObjetivo) : 0;
+        }
+        else {
+            // Si el objetivo esta en posicion de defensa no hay danio
+            return 0;
+        }
+
     }
 }

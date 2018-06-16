@@ -58,6 +58,7 @@ public class Tablero {
     public int cantidadCartasZonaMagicas() {
         return this.zonaHechizos.cantidadCartas();
     }
+
     public ZonaMonstruo getZonaMonstruo(){
         return this.zonaMonstruo;
     }
@@ -73,5 +74,13 @@ public class Tablero {
     public void destruirCarta(Carta carta) {
         this.zonaHechizos.eliminar(carta);
         this.cementerio.enviarCarta(carta);
+    }
+
+    public void sacrificarMonstruos(int cantidad) {
+        this.zonaMonstruo.sacrificarMonstruos(cementerio,cantidad);
+    }
+
+    public Monstruo obtenerMonstruoEnCasillero(Casillero casillero) {
+        return (Monstruo) zonaMonstruo.obtenerCartaPosicion(casillero);
     }
 }

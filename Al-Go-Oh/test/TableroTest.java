@@ -17,7 +17,7 @@ import org.junit.Test;
 public class TableroTest {
 
     @Test
-    public void test02CrearZona(){
+    public void testCrearZonaGeneraZonaConCasilleroDisponible(){
           
         ZonaMonstruo zonaMounstruo = new ZonaMonstruo();
 
@@ -26,7 +26,7 @@ public class TableroTest {
     }
     
     @Test
-    public void test03CasilleroDisponibleEnZonaMagicaEnTablero(){
+    public void testCasilleroDisponibleEnZonaMagicaEnTablero(){
         Tablero tablero = new Tablero();
         Monstruo carta = new Monstruo(500,2000, Posicion.ATAQUE,4);
 
@@ -40,8 +40,8 @@ public class TableroTest {
     
     }
     
-       @Test
-    public void test04TirarCartaEnZonaMonstruoYAtacar(){
+    @Test
+    public void testTirarCartaEnZonaMonstruoYAtacar(){
         
         Tablero tableroAtacante = new Tablero();
         Monstruo cartaAtaque = new Monstruo(500,2000, Posicion.ATAQUE,4);

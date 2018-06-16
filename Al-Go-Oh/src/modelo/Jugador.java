@@ -21,6 +21,10 @@ public class Jugador {
         this.puntosDeVida = puntosDeVida;
     }
 
+    public void restarPuntosDeVida(int puntosDeVidaMenos){
+        puntosDeVida -= puntosDeVidaMenos;
+    }
+
     public int cantidadCartasCementerio() {
 
         return tablero.cantidadCartasCementerio();
@@ -37,9 +41,7 @@ public class Jugador {
     }
 
     private void sacrificarMonstruos(int cantidad) {
-        for (int i = 0; i < cantidad; i++){
-            this.tablero.getZonaMonstruo().sacrificarMonstruo();
-        }
+        this.tablero.sacrificarMonstruos(cantidad);
     }
 
     public void colocarEnDefensa(Monstruo monstruo){
@@ -47,12 +49,12 @@ public class Jugador {
         monstruo.setPosicion(Posicion.DEFENSA);
         campo.tirarCarta(monstruo);
     }
-
+/*
     public boolean declararAtaque(Monstruo monstruo)
     {
         return this.tablero.getZonaMonstruo().declararAtaque(monstruo,null);
     }
-
+*/
 
     public void colocarCarta(CartaMagica carta){
         this.obtenerCampo().tirarCarta(carta);
@@ -61,5 +63,14 @@ public class Jugador {
 
     public void colocarCarta(CartaTrampa carta) {
         this.obtenerCampo().tirarCarta(carta);
+    }
+
+    public void declararAtaqueDePosicionAPosicion(Jugador defensor, Casillero casilleroAtacante, Casillero casilleroDefensor) {
+        Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
+        Monstruo monstruoAtacante = tablero.obtenerMonstruoEnCasillero(casilleroAtacante);
+
+        monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
+
+
     }
 }
