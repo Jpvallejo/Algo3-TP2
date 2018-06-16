@@ -6,5 +6,5 @@
 package modelo;
 
 public enum Casillero {
-    UNO,DOS,TRES,CUATRO,CINCO
+    UNO,DOS,TRES,CUATRO,CINCO,PUNTOSVIDA
 }

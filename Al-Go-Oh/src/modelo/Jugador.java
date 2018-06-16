@@ -49,12 +49,6 @@ public class Jugador {
         monstruo.setPosicion(Posicion.DEFENSA);
         campo.tirarCarta(monstruo);
     }
-/*
-    public boolean declararAtaque(Monstruo monstruo)
-    {
-        return this.tablero.getZonaMonstruo().declararAtaque(monstruo,null);
-    }
-*/
 
     public void colocarCarta(CartaMagica carta){
         this.obtenerCampo().tirarCarta(carta);
@@ -66,10 +60,17 @@ public class Jugador {
     }
 
     public void declararAtaqueDePosicionAPosicion(Jugador defensor, Casillero casilleroAtacante, Casillero casilleroDefensor) {
-        Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
         Monstruo monstruoAtacante = tablero.obtenerMonstruoEnCasillero(casilleroAtacante);
+        if (casilleroDefensor != Casillero.PUNTOSVIDA) {
+            Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
+            monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
+        }
+        else{
+            monstruoAtacante.atacarPuntosDeVida(defensor);
+        }
 
-        monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
+
+
 
 
     }

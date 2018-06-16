@@ -99,10 +99,8 @@ public class Monstruo extends Carta {
     }
 
 
-    public void atacarPuntosDeVida(){
-        Jugador oponente = Juego.getJuego().getJugadorOponente();
-        int puntosDeVida = oponente.getPuntosDeVida();
-        oponente.setPuntosDeVida(puntosDeVida - this.puntosAtaque);
+    public void atacarPuntosDeVida(Jugador oponente){
+        oponente.restarPuntosDeVida(this.puntosAtaque);
     }
 
     private int getPuntosAtaque() {

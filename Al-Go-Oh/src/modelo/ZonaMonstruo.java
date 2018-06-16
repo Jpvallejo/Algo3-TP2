@@ -7,6 +7,7 @@ package modelo;
 
 
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -32,13 +33,16 @@ public class ZonaMonstruo extends Zona{
     }
 */
     public void sacrificarMonstruos(Cementerio cementerio, int cantidad) {
-        //Juego.getJuego().getJugadorActivo().obtenerCampo().matarMounstro((Monstruo)this.casilleros.get(Casillero.UNO));
-        Iterator<Casillero> itr = casilleros.keySet().iterator();
-        Casillero key;
-        for (int i=0; i<cantidad; i++){
-            key = itr.next();
-            cementerio.enviarCarta(casilleros.get(key));
-            casilleros.remove(key);
+
+        int i = 0;
+        // Esto se debe mejorar para permitir la seleccion de monstruos para sacrificar
+        // Ademas, en este caso. Si no se cumple el sacrificio, el monstruo se invoca igual.
+        for (Casillero key : Casillero.values()) {
+            if (i < cantidad && casilleros.containsKey(key)){
+                cementerio.enviarCarta(casilleros.get(key));
+                casilleros.remove(key);
+                i++;
+            }
         }
     }
 
