@@ -7,6 +7,8 @@ public class Monstruo extends Carta {
     private int puntosAtaque;
 
     private int puntosDefensa;
+    private int adicionalesDeAtaque ;
+    private int adicionalesDeDefensa;
 
     private int nivel;
 
@@ -27,6 +29,8 @@ public class Monstruo extends Carta {
         super();
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
+        this.adicionalesDeAtaque = 0;
+        this.adicionalesDeDefensa = 0;
         this.posicion = posicion;
         this.estrellas = estrellas;
     }
@@ -104,13 +108,13 @@ public class Monstruo extends Carta {
     }
 
     private int getPuntosAtaque() {
-        return this.puntosAtaque;
+        return this.puntosAtaque + this.adicionalesDeAtaque;
     }
     private void setPuntosAtaque(int _puntosAtaque){
         this.puntosAtaque = _puntosAtaque;
     }
     private int getPuntosDefensa(){
-        return this.puntosDefensa;
+        return this.puntosDefensa + this.adicionalesDeDefensa;
     }
     private void setPuntosDefensa(int _puntosDefensa){
         this.puntosDefensa = _puntosDefensa;
@@ -175,4 +179,18 @@ public class Monstruo extends Carta {
         }
 
     }
+
+    void sumarAdicionalAlataque(int adicional) {
+        this.adicionalesDeAtaque += adicional;
+        
+    }
+
+    void sumarAdicionalAlaDefensa(int adicional) {
+        this.adicionalesDeDefensa += adicional;   
+    }
+     
+    void ponerAdicionalesEnCero(){
+        this.adicionalesDeAtaque = 0;
+        this.adicionalesDeDefensa = 0;
+    }   
 }

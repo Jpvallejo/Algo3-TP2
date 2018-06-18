@@ -14,6 +14,7 @@ public class Tablero {
     private ZonaHechizos zonaHechizos;
     private ZonaMonstruo zonaMonstruo;
     private Cementerio cementerio;
+    private CartaCampo cartaCampo;
       
     public Tablero (){
     
@@ -28,6 +29,10 @@ public class Tablero {
 
     public boolean tirarCarta(Monstruo carta) {
         return this.zonaMonstruo.colocarCarta(carta);
+    }
+    
+    public void tirarCarta(CartaCampo carta) {
+        this.cartaCampo = carta;
     }
     
     public boolean tirarCarta(CartaMagica carta) {
@@ -79,8 +84,19 @@ public class Tablero {
     public void sacrificarMonstruos(int cantidad) {
         this.zonaMonstruo.sacrificarMonstruos(cementerio,cantidad);
     }
-
+    
     public Monstruo obtenerMonstruoEnCasillero(Casillero casillero) {
         return (Monstruo) zonaMonstruo.obtenerCartaPosicion(casillero);
     }
+    
+    
+    public void aplicarCartaCampo(int adicional){
+        this.zonaMonstruo.aplicarCartaCampo(adicional);    
+    }
+    
+       
+    public void aplicarCartaCampoAlContrario(int adicional){
+        this.zonaMonstruo.aplicarCartaCampoAlContrario(adicional);    
+    }
+    
 }

@@ -3,10 +3,14 @@ package modelo;
 public class Jugador {
     private Tablero tablero;
     private int puntosDeVida;
+    private Mano mano;
+    private Mazo mazo;
 
     public Jugador(){
         tablero = new Tablero();
         puntosDeVida = 8000;
+        this.mazo  = new Mazo();
+        this.mano = new Mano();
     }
 
     public Tablero obtenerCampo(){
@@ -58,20 +62,36 @@ public class Jugador {
     public void colocarCarta(CartaTrampa carta) {
         this.obtenerCampo().tirarCarta(carta);
     }
-
+    
+    public void colocarCarta(CartaCampo carta) {
+        this.obtenerCampo().tirarCarta(carta);
+    }
+        
+    
     public void declararAtaqueDePosicionAPosicion(Jugador defensor, Casillero casilleroAtacante, Casillero casilleroDefensor) {
+        
         Monstruo monstruoAtacante = tablero.obtenerMonstruoEnCasillero(casilleroAtacante);
+        
         if (casilleroDefensor != Casillero.PUNTOSVIDA) {
             Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
+           
             monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
         }
         else{
             monstruoAtacante.atacarPuntosDeVida(defensor);
         }
 
-
-
-
-
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

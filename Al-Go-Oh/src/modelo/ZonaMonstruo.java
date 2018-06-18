@@ -52,5 +52,24 @@ public class ZonaMonstruo extends Zona{
             casilleros.remove(key);
         }
     }
+ 
+    
+    public void aplicarCartaCampo(int adicional){
+        for (Casillero casillero : Casillero.values()) {
+            if (casilleros.containsKey(casillero)) {
+                Monstruo monstruo = (Monstruo) casilleros.get(casillero); //Obtengo la carta 
+                monstruo.sumarAdicionalAlataque(adicional);       //Le sumo los adicionales que viene de la cartaCampo
+            }
+        }
+    }
+
+    public void aplicarCartaCampoAlContrario(int adicional) {
+        for (Casillero casillero : Casillero.values()) {
+            if (casilleros.containsKey(casillero)) {
+                Monstruo monstruo = (Monstruo) casilleros.get(casillero);
+                monstruo.sumarAdicionalAlaDefensa(adicional);     
+            }
+        }
+    }
 
 }

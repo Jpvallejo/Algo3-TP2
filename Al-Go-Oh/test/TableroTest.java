@@ -36,7 +36,7 @@ public class TableroTest {
         Monstruo carta2 = new Monstruo(500,2000, Posicion.ATAQUE,4);
 
 
-        assertTrue(tablero.tirarCarta(carta));
+        assertTrue(tablero.tirarCarta(carta2));
     
     }
     

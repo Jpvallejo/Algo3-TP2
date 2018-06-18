@@ -1,9 +1,9 @@
 import modelo.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MonstruoTest {
 
@@ -273,7 +273,7 @@ public class MonstruoTest {
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         atacante.colocarEnAtaque(monstruoAtacante);
         atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.PUNTOSVIDA);
-
+        
         assertEquals(0, atacante.cantidadCartasCementerio());
         assertEquals(7500, defensor.getPuntosDeVida());
         assertEquals(8000, atacante.getPuntosDeVida());
