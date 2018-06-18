@@ -15,22 +15,12 @@ public class ManoTest {
     }
 
     @Test
-    public void testIniciarManoGeneraManoCon5Cartas(){
-        Mano mano = new Mano();
-        Mazo mazo = new Mazo();
-
-        mano.iniciarMano(mazo);
-
-        assertEquals(mano.cantidadCartas(),5);
-
-    }
-
-    @Test
     public void testManoExtrae1CartaDelMazoYAumentaSuCantidadEn1(){
         Mano mano = new Mano();
         Mazo mazo = new Mazo();
 
-        mano.extraerCarta(mazo);
+        Carta carta = mazo.extaerCarta();
+        mano.agregarCarta(carta);
 
         assertEquals(mano.cantidadCartas(),1);
 

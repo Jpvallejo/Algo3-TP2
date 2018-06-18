@@ -1,0 +1,83 @@
+import modelo.*;
+import modelo.CartasMagicas.*;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.Set;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+
+
+public class CartaMagicaTest {
+
+
+    @Test
+    public void colocarCartaMagicaColocaLaCartaBocaAbajo(){
+        AgujeroNegro agujeroNegro = new AgujeroNegro();
+        Jugador jugador = new Jugador();
+        jugador.colocarCarta(agujeroNegro);
+
+        assertTrue(jugador.obtenerCampo().getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
+
+    }
+    
+
+    @Test
+    public void testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocador() {
+
+        AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAARRIBA);
+
+        Jugador jugador = Juego.getJuego().getJugadorActivo();
+
+        Monstruo monstruo = new Monstruo(0,0,Posicion.DEFENSA,4);
+        
+        jugador.colocarEnAtaque(monstruo);
+        jugador.colocarCarta(agujeroNegro);
+
+        assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMonstruos());
+        assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMagicas());
+
+    }
+
+     @Test
+    public void testAplicarCartaWastelandEnMonstruosYAtacar() {
+            
+        Jugador atacante = new Jugador();
+        Monstruo monstruoAtaque = new Monstruo(100,0,Posicion.ATAQUE,4);
+             
+        atacante.colocarEnAtaque(monstruoAtaque);
+        
+        
+        Jugador defensor = new Jugador();
+
+        Monstruo monstruoDefensa = new Monstruo(100,200,Posicion.ATAQUE,4);
+        
+        defensor.colocarEnAtaque(monstruoDefensa);
+        
+        atacante.obtenerCampo().aplicarCartaCampo(200);
+        atacante.obtenerCampo().aplicarCartaCampoAlContrario(300);
+        
+        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+        
+        //Le resta 200 puntos de vida al jugador defensor
+        assertEquals(1, defensor.cantidadCartasCementerio());
+        assertEquals(7800, defensor.getPuntosDeVida());
+        
+        
+        //Creo monstruo en modo de defensa con 0 de defensa
+        Monstruo monstruoDefensa01 = new Monstruo(100,0,Posicion.DEFENSA,4);
+        
+        defensor.colocarEnDefensa(monstruoDefensa01);
+        
+        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+        
+        //Queda la misma cantidad de vida
+         assertEquals(7800, defensor.getPuntosDeVida());
+         
+    }
+    
+    
+    
+}
