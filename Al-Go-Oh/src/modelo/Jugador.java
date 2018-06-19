@@ -82,16 +82,8 @@ public class Jugador {
         }
 
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public Mano getMano() {
+        return mano;
+    }
 }

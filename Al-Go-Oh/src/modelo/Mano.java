@@ -8,7 +8,7 @@ public class Mano {
 
 
     public Mano(){
-        cartas = new ArrayList<>();
+        cartas = new ArrayList<Carta>();
     }
 
     public boolean estaVacia() {
@@ -22,5 +22,9 @@ public class Mano {
 
     public void agregarCarta(Carta carta) {
         cartas.add(carta);
+    }
+
+    public ArrayList<Carta> getCartas() {
+        return cartas;
     }
 }
