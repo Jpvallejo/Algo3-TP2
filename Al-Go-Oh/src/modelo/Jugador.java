@@ -86,4 +86,9 @@ public class Jugador {
     public Mano getMano() {
         return mano;
     }
+
+    public void extraerCartaDelMazo() {
+        Carta carta = mazo.extaerCarta();
+        mano.agregarCarta(carta);
+    }
 }

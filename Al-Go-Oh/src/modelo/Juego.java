@@ -10,20 +10,28 @@ public class Juego {
         private Juego(){
             jugadorActivo = new Jugador();
             jugadorOponente = new Jugador();
+            faseActual = new FaseInicial();
+           /* for (int i = 0; i < 5; i++){
+                jugadorActivo.extraerCartaDelMazo();
+                jugadorOponente.extraerCartaDelMazo();
+            }*/
         }
 
     private Jugador jugadorActivo;
 
     private Jugador jugadorOponente;
 
+    private Fase faseActual;
+
     public static void reiniciarJuego() {
         instancia = new Juego();
     }
 
-    private void cambiarTurno(){
+    public void cambiarTurno(){
         Jugador temp = this.jugadorActivo;
         this.jugadorActivo = this.jugadorOponente;
         this.jugadorOponente = temp;
+        faseActual = new FaseInicial();
     }
 
     public Jugador getJugadorOponente()
@@ -33,5 +41,17 @@ public class Juego {
 
     public Jugador getJugadorActivo() {
         return jugadorActivo;
+    }
+
+    public Fase obtenerFase() {
+        return faseActual;
+    }
+
+    public void avanzarFase() {
+        faseActual = faseActual.siguienteFase();
+    }
+
+    public void iniciarFase() {
+        faseActual.iniciarFase();
     }
 }
