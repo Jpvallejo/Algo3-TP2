@@ -90,13 +90,8 @@ public class Tablero {
     }
     
     
-    public void aplicarCartaCampo(int adicional){
-        this.zonaMonstruo.aplicarCartaCampo(adicional);    
-    }
-    
-       
-    public void aplicarCartaCampoAlContrario(int adicional){
-        this.zonaMonstruo.aplicarCartaCampoAlContrario(adicional);    
+    public void aplicarCartaCampo(int adicional, boolean ataque){
+        this.zonaMonstruo.aplicarCartaCampo(adicional, ataque);    
     }
     
 }

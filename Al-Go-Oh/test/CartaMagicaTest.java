@@ -55,7 +55,7 @@ public class CartaMagicaTest {
 
         jugadorActivo.colocarEnAtaque(monstruoJugadorActivo);
         jugadorOponente.colocarEnAtaque(monstruoJugadorOponente);
-
+        
         jugadorActivo.colocarCarta(agujeroNegro);
 
         assertEquals(0,jugadorActivo.obtenerCampo().cantidadCartasZonaMonstruos());
@@ -79,8 +79,8 @@ public class CartaMagicaTest {
         
         defensor.colocarEnAtaque(monstruoDefensa);
         
-        atacante.obtenerCampo().aplicarCartaCampo(200);
-        atacante.obtenerCampo().aplicarCartaCampoAlContrario(300);
+        atacante.obtenerCampo().aplicarCartaCampo(200,true);//Aca aplicaria la carta de campo
+        defensor.obtenerCampo().aplicarCartaCampo(300,false);
         
         atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
         
@@ -89,18 +89,20 @@ public class CartaMagicaTest {
         assertEquals(7800, defensor.getPuntosDeVida());
         
         
-        //Creo monstruo en modo de defensa con 0 de defensa
-        Monstruo monstruoDefensa01 = new Monstruo(100,0,Posicion.DEFENSA,4);
+        //Creo monstruo en modo de defensa con 100 de defensa
+        Monstruo monstruoDefensa01 = new Monstruo(100,100,Posicion.DEFENSA,4);
         
         defensor.colocarEnDefensa(monstruoDefensa01);
         
+        defensor.obtenerCampo().aplicarCartaCampo(300,false);
+        
         atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
         
-        //Queda la misma cantidad de vida
-         assertEquals(7800, defensor.getPuntosDeVida());
+        //Le resta 100 puntos de vida al que ataca porque tengo el defensor con un monstruo con 400 de defensa y el mio tiene 300
+         assertEquals(7900, atacante.getPuntosDeVida());
          
     }
-    
+     
     
     
 }
