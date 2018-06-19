@@ -29,7 +29,6 @@ public class CementerioTest {
         Cementerio cementerio = new Cementerio();
 
         cementerio.enviarCarta(carta);
-        // carta.destruir;  ¿?
 
         assertFalse(cementerio.estaVacio());
 
@@ -38,7 +37,6 @@ public class CementerioTest {
     @Test
     public void testEnviarUnaCartaAlCementerioAumentaCantidadDeCartasDelCementerioEn1() {
 
-        // A correjir: ¿Se debe buscar la carta monstruo por nombre?
         Carta carta = new Monstruo(0,0);
 
         Cementerio cementerio = new Cementerio();

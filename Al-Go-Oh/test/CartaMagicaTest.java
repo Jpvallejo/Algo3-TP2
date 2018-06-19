@@ -26,7 +26,7 @@ public class CartaMagicaTest {
 
     @Test
     public void testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocador() {
-
+        Juego.reiniciarJuego();
         AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAARRIBA);
 
         Jugador jugador = Juego.getJuego().getJugadorActivo();
@@ -38,6 +38,29 @@ public class CartaMagicaTest {
 
         assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMonstruos());
         assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMagicas());
+
+    }
+
+
+    @Test
+    public void testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocadorYDelOponente() {
+        Juego.reiniciarJuego();
+        AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAARRIBA);
+
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
+
+        Monstruo monstruoJugadorActivo = new Monstruo(0,0,Posicion.DEFENSA,4);
+        Monstruo monstruoJugadorOponente = new Monstruo(0,0,Posicion.DEFENSA,4);
+
+        jugadorActivo.colocarEnAtaque(monstruoJugadorActivo);
+        jugadorOponente.colocarEnAtaque(monstruoJugadorOponente);
+
+        jugadorActivo.colocarCarta(agujeroNegro);
+
+        assertEquals(0,jugadorActivo.obtenerCampo().cantidadCartasZonaMonstruos());
+        assertEquals(0,jugadorOponente.obtenerCampo().cantidadCartasZonaMonstruos());
+        assertEquals(0,jugadorActivo.obtenerCampo().cantidadCartasZonaMagicas());
 
     }
 
