@@ -20,7 +20,6 @@ public class BotonMonstruo extends BotonCarta {
     public BotonMonstruo(Monstruo monstruo){
         this.setMonstruo(monstruo);
         this.setVisible(true);
-        this.setName(monstruo.getNombre());
 
     }
     public BotonMonstruo(String nombre){

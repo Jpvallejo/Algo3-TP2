@@ -1,18 +1,17 @@
 package vista;
 
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import modelo.*;
 import vista.Botones.*;
-
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
-public class PanelMano  extends JPanel {
+public class PanelMano  extends GridPane {
         private ArrayList<BotonCarta> botonesMano;
         public PanelMano(Jugador jugador) {
             actualizarMano(jugador);
-
-
 
         }
         public ArrayList<BotonCarta> getBotonesMano(){
@@ -23,14 +22,18 @@ public class PanelMano  extends JPanel {
         }
 
         public void actualizarMano(Jugador jugador){
-            this.removeAll();
-            this.revalidate();
+            this.getChildren().clear();
+            this.setHgap(10);
+            this.setVgap(12);
+
+            HBox hbButtons = new HBox();
+            hbButtons.setSpacing(10.0);
             botonesMano = new ArrayList<BotonCarta>();
             Mano mano = jugador.getMano();
             for (Carta carta: mano.getCartas()) {
                 if(carta instanceof Monstruo){
                     BotonMonstruo botonMonstruo = new BotonMonstruo((Monstruo)carta);
-                    this.add(botonMonstruo);
+                    hbButtons.getChildren().add(botonMonstruo);
                     botonesMano.add(botonMonstruo);
                     /**
                     ImageIcon img = new ImageIcon("Cards Images Database/Monsters/"+carta.getName()+".png");
@@ -38,38 +41,30 @@ public class PanelMano  extends JPanel {
                     Image newimg = img2.getScaledInstance(100, 146,  java.awt.Image.SCALE_SMOOTH);
                     ImageIcon newIcon = new ImageIcon(newimg);
                      */
-                    botonMonstruo.setIcon(new ImageIcon());
-                    botonMonstruo.setPreferredSize(new Dimension(100,146));
-                    botonMonstruo.revalidate();
-                    botonMonstruo.setOpaque(false);
-                    botonMonstruo.repaint();
+                    botonMonstruo.setGraphic(new ImageView());
+                    botonMonstruo.setPrefSize(100,146);
                 }
                 else if(carta instanceof CartaMagica){
                     BotonCartaMagica botonCartaMagica = new BotonCartaMagica((CartaMagica)carta);
-                    this.add(botonCartaMagica);
+                    hbButtons.getChildren().add(botonCartaMagica);
                     botonesMano.add(botonCartaMagica);
                     /**FOTO*/
-                    botonCartaMagica.setIcon(new ImageIcon());
-                    botonCartaMagica.setPreferredSize(new Dimension(100,146));
-                    botonCartaMagica.revalidate();
-                    botonCartaMagica.setOpaque(false);
-                    botonCartaMagica.repaint();
+                    botonCartaMagica.setGraphic(new ImageView());
+                    botonCartaMagica.setPrefSize(100,146);
                 }
                 else {
                     BotonCartaTrampa botonCartaTrampa = new BotonCartaTrampa((CartaTrampa)carta);
                     botonCartaTrampa.setVisible(true);
-                    this.add(botonCartaTrampa);
+                    hbButtons.getChildren().add(botonCartaTrampa);
                     botonesMano.add(botonCartaTrampa);
                     /**FOTO*/
-                    botonCartaTrampa.setIcon(new ImageIcon());
-                    botonCartaTrampa.setPreferredSize(new Dimension(100,146));
-                    botonCartaTrampa.revalidate();
-                    botonCartaTrampa.setOpaque(false);
-                    botonCartaTrampa.repaint();
+                    botonCartaTrampa.setGraphic(new ImageView());
+                    botonCartaTrampa.setPrefSize(100,146);
 
                 }
 
             }
+            this.add(hbButtons,0,2,2,1);
         }
 
 }

@@ -1,8 +1,7 @@
 package vista.Botones;
+import javafx.scene.control.Button;
 
-import javax.swing.*;
-
-public abstract class BotonCarta extends JButton {
+public abstract class BotonCarta extends Button {
 
     public BotonCarta(String nombre){
         super(nombre);

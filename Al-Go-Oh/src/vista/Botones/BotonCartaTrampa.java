@@ -23,7 +23,5 @@ public class BotonCartaTrampa extends BotonCarta{
     public BotonCartaTrampa(CartaTrampa hechizo){
         this.setVisible(true);
         this.setHechizo(hechizo);
-        this.setName(hechizo.getNombre());
-        this.setOpaque(false);
     }
 }
