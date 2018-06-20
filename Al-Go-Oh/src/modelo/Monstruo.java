@@ -2,20 +2,24 @@ package modelo;
 
 public class Monstruo extends Carta {
 
-    private int estrellas;
+    protected int estrellas;
 
-    private int puntosAtaque;
+    protected int puntosAtaque;
 
-    private int puntosDefensa;
-    private int adicionalesDeAtaque ;
-    private int adicionalesDeDefensa;
+    protected int puntosDefensa;
+    protected int adicionalesDeAtaque ;
+    protected int adicionalesDeDefensa;
 
-    private int nivel;
+    protected int nivel;
 
-    private Posicion posicion;
+    protected Posicion posicion;
 
     public Posicion getPosicion(){
         return this.posicion;
+    }
+
+    public Monstruo(){
+        super();
     }
 
     public Monstruo(int puntosAtaque, int puntosDefensa){
@@ -107,16 +111,16 @@ public class Monstruo extends Carta {
         oponente.restarPuntosDeVida(this.puntosAtaque);
     }
 
-    private int getPuntosAtaque() {
+    protected int getPuntosAtaque() {
         return this.puntosAtaque + this.adicionalesDeAtaque;
     }
-    private void setPuntosAtaque(int _puntosAtaque){
+    protected void setPuntosAtaque(int _puntosAtaque){
         this.puntosAtaque = _puntosAtaque;
     }
-    private int getPuntosDefensa(){
+    protected int getPuntosDefensa(){
         return this.puntosDefensa + this.adicionalesDeDefensa;
     }
-    private void setPuntosDefensa(int _puntosDefensa){
+    protected void setPuntosDefensa(int _puntosDefensa){
         this.puntosDefensa = _puntosDefensa;
     }
 
