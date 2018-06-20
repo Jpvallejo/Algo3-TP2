@@ -32,9 +32,6 @@ public class Tablero {
     }
     
     public void tirarCarta(CartaCampo carta) {
-        if (carta.getEstado() == Colocacion.BOCAARRIBA ){
-            carta.activarEfecto();
-        }
         this.cartaCampo = carta;
     }
     

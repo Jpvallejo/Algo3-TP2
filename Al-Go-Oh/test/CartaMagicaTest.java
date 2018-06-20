@@ -102,58 +102,7 @@ public class CartaMagicaTest {
          assertEquals(7900, atacante.getPuntosDeVida());
          
     }
-
-    @Test
-    public void testAplicarCartaWastelandAumentaElAtaqueDelAtacanteEn200YLaDefensaDelDefensorEn300() {
-        Juego.reiniciarJuego();
-
-        Jugador atacante = Juego.getJuego().getJugadorActivo();
-        Jugador defensor = Juego.getJuego().getJugadorOponente();
-
-        Monstruo monstruoAtaque = new Monstruo(200,0,Posicion.ATAQUE,4);
-        atacante.colocarEnAtaque(monstruoAtaque);
-
-        Monstruo monstruoDefensa = new Monstruo(0,100,Posicion.DEFENSA,4);
-        defensor.colocarEnDefensa(monstruoDefensa);
-
-        CartaCampo wasteland = new Wasteland(Colocacion.BOCAARRIBA);
-
-        atacante.colocarCarta(wasteland);
-
-        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
-
-        //Al ser la defensa igual al ataque, el monstruo no se destruye y no hay danios de puntos de vida
-        assertEquals(0, defensor.cantidadCartasCementerio());
-        assertEquals(8000, defensor.getPuntosDeVida());
-        assertEquals(8000, atacante.getPuntosDeVida());
-
-    }
-
-    @Test
-    public void testAplicarCartaSogenAumentaLaDefensaDelJugadorActivoEn500YElAtaqueDelOponenteEn200() {
-        Juego.reiniciarJuego();
-
-        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
-        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
-
-        Monstruo monstruoJugadorActivo = new Monstruo(0,100,Posicion.ATAQUE,4);
-        jugadorActivo.colocarEnDefensa(monstruoJugadorActivo);
-
-        Monstruo monstruoOponente = new Monstruo(400,0,Posicion.ATAQUE,4);
-        jugadorOponente.colocarEnAtaque(monstruoOponente);
-
-        CartaCampo wasteland = new Wasteland(Colocacion.BOCAARRIBA);
-
-        jugadorActivo.colocarCarta(wasteland);
-
-        jugadorOponente.declararAtaqueDePosicionAPosicion(jugadorActivo,Casillero.UNO,Casillero.UNO);
-
-        //Al ser la defensa igual al ataque, el monstruo no se destruye y no hay danios de puntos de vida
-        assertEquals(0, jugadorOponente.cantidadCartasCementerio());
-        assertEquals(8000, jugadorOponente.getPuntosDeVida());
-        assertEquals(8000, jugadorActivo.getPuntosDeVida());
-
-    }
-
-
+     
+    
+    
 }
