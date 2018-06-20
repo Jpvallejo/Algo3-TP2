@@ -1,5 +1,6 @@
 package modelo;
 
+import java.awt.*;
 import java.util.ArrayList;
 import static java.util.Collections.shuffle;
 
@@ -26,5 +27,9 @@ public class Mazo {
 
     public int getTamanio() {
         return this.getCartas().size();
+    }
+
+    private ArrayList<Carta> getCartas() {
+        return this.cartas;
     }
 }
