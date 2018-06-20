@@ -24,4 +24,7 @@ public class Mazo {
         shuffle(this.cartas);       
     } 
 
+    public int getTamanio() {
+        return this.getCartas().size();
+    }
 }

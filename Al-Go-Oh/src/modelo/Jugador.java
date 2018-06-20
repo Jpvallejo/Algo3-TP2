@@ -1,5 +1,7 @@
 package modelo;
 
+import java.awt.*;
+
 public class Jugador {
     private Tablero tablero;
     private int puntosDeVida;
@@ -93,5 +95,13 @@ public class Jugador {
     public void extraerCartaDelMazo() {
         Carta carta = mazo.extaerCarta();
         mano.agregarCarta(carta);
+    }
+
+    public int obtenerTamanioMazo() {
+        return this.getMazo().getTamanio();
+    }
+
+    private Mazo getMazo() {
+        return this.mazo;
     }
 }

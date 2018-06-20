@@ -3,7 +3,6 @@ package vista;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import modelo.*;
 import vista.Botones.*;
 import java.util.ArrayList;
@@ -42,15 +41,15 @@ public class PanelMano  extends GridPane {
                     ImageIcon newIcon = new ImageIcon(newimg);
                      */
                     botonMonstruo.setGraphic(new ImageView());
-                    botonMonstruo.setPrefSize(100,146);
+                    botonMonstruo.setPrefSize(100,110);
                 }
                 else if(carta instanceof CartaMagica){
-                    BotonCartaMagica botonCartaMagica = new BotonCartaMagica((CartaMagica)carta);
-                    hbButtons.getChildren().add(botonCartaMagica);
-                    botonesMano.add(botonCartaMagica);
+                    BotonCartaHechizo botonCartaHechizo = new BotonCartaHechizo((CartaMagica)carta);
+                    hbButtons.getChildren().add(botonCartaHechizo);
+                    botonesMano.add(botonCartaHechizo);
                     /**FOTO*/
-                    botonCartaMagica.setGraphic(new ImageView());
-                    botonCartaMagica.setPrefSize(100,146);
+                    botonCartaHechizo.setGraphic(new ImageView());
+                    botonCartaHechizo.setPrefSize(100,110);
                 }
                 else {
                     BotonCartaTrampa botonCartaTrampa = new BotonCartaTrampa((CartaTrampa)carta);

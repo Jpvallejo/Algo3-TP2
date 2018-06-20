@@ -10,7 +10,7 @@ public class BotonMonstruo extends BotonCarta {
         return monstruo;
     }
 
-    private void setMonstruo(Monstruo monstruo) {
+    public void setMonstruo(Monstruo monstruo) {
         this.monstruo = monstruo;
     }
 
