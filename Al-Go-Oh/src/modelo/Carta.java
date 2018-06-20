@@ -18,4 +18,8 @@ public abstract class Carta{
     public String getNombre(){
         return this.nombre;
     };
+
+    public Colocacion getEstado(){
+        return estado;
+    };
 }
