@@ -21,6 +21,7 @@ public class MonstruoTest {
         assertEquals(Posicion.DEFENSA,monstruo.getPosicion());
     }
 
+
     // Ataques entre Monstruos sin invocar
     @Test
     public void testAtacarMounstroEnPocisionAtaqueConIgualesPuntosDestruyeAmbosMounstros()
@@ -29,8 +30,10 @@ public class MonstruoTest {
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE,1);
+        monstruoAtacante.asociarJugador(atacante);
+        monstruoDefensor.asociarJugador(defensor);
 
-        monstruoAtacante.atacarMonstruo(atacante,defensor,monstruoDefensor);
+        monstruoAtacante.atacarMonstruo(atacante, defensor, monstruoDefensor);
 
         assertEquals(1,atacante.cantidadCartasCementerio());
         assertEquals(1,defensor.cantidadCartasCementerio());
@@ -43,6 +46,8 @@ public class MonstruoTest {
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE,1);
+        monstruoAtacante.asociarJugador(atacante);
+        monstruoDefensor.asociarJugador(defensor);
 
         monstruoAtacante.atacarMonstruo(atacante, defensor, monstruoDefensor);
 
@@ -59,6 +64,8 @@ public class MonstruoTest {
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE,1);
+        monstruoAtacante.asociarJugador(atacante);
+        monstruoDefensor.asociarJugador(defensor);
 
         monstruoAtacante.atacarMonstruo(atacante, defensor, monstruoDefensor);
 
@@ -75,6 +82,8 @@ public class MonstruoTest {
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA,1);
+        monstruoAtacante.asociarJugador(atacante);
+        monstruoDefensor.asociarJugador(defensor);
 
         monstruoAtacante.atacarMonstruo(atacante, defensor, monstruoDefensor);
 
@@ -88,6 +97,8 @@ public class MonstruoTest {
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,500, Posicion.DEFENSA,1);
+        monstruoAtacante.asociarJugador(atacante);
+        monstruoDefensor.asociarJugador(defensor);
 
         monstruoAtacante.atacarMonstruo(atacante, defensor, monstruoDefensor);
 
@@ -102,6 +113,8 @@ public class MonstruoTest {
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
         Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,1);
+        monstruoAtacante.asociarJugador(atacante);
+        monstruoDefensor.asociarJugador(defensor);
 
         monstruoAtacante.atacarMonstruo(atacante, defensor, monstruoDefensor);
 
@@ -111,6 +124,8 @@ public class MonstruoTest {
         assertEquals(8000, defensor.getPuntosDeVida());
 
     }
+
+
 
     //Ataques invocando monstruos
     @Test

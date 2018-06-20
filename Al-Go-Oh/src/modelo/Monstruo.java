@@ -38,80 +38,72 @@ public class Monstruo extends Carta {
         this.posicion = posicion;
         this.estrellas = estrellas;
     }
-/*
-    public void atacarMonstruo(Monstruo objetivo)
-    {
-        Jugador atacante = Juego.getJuego().getJugadorActivo();
-        Jugador defensor = Juego.getJuego().getJugadorOponente();
-        int puntosAtacante = this.getPuntosAtaque();
-        int puntosObjetivo;
-        if(objetivo.getPosicion() == Posicion.ATAQUE) {
-            puntosObjetivo = objetivo.getPuntosAtaque();
 
-            if (puntosAtacante > puntosObjetivo) {
-                defensor.obtenerCampo().matarMounstro(objetivo);
-                defensor.setPuntosDeVida(defensor.getPuntosDeVida() - (puntosAtacante- puntosObjetivo));
-
-            }
-            else if(puntosAtacante == puntosObjetivo) {
-                atacante.obtenerCampo().matarMounstro(this);
-                defensor.obtenerCampo().matarMounstro(objetivo);
-            }
-            else{
-                atacante.obtenerCampo().matarMounstro(this);
-                atacante.setPuntosDeVida(atacante.getPuntosDeVida() - (puntosObjetivo - puntosAtacante));
-            }
-
-        }
-        else{
-            puntosObjetivo = objetivo.getPuntosDefensa();
-            if (puntosAtacante > puntosObjetivo) {
-                defensor.obtenerCampo().matarMounstro(objetivo);
-            } else if (puntosAtacante == puntosObjetivo) {
-
-            } else {
-                atacante.setPuntosDeVida(atacante.getPuntosDeVida()- (puntosObjetivo - puntosAtacante));
-            }
-        }
-
+    @Override
+    public void destruir(){
+        tableroCarta.matarMonstruo(this);
     }
-    */
+
 
     public void atacarMonstruo(Jugador atacante,Jugador defensor, Monstruo objetivo)
     {
-        atacante.restarPuntosDeVida(this.danioAlAtacante(objetivo));
-        defensor.restarPuntosDeVida(this.danioAlDefensor(objetivo));
-
-        int puntosAtacante = this.getPuntosAtaque();
-        int puntosObjetivo;
         if(objetivo.getPosicion() == Posicion.ATAQUE) {
-            puntosObjetivo = objetivo.getPuntosAtaque();
-            if (puntosAtacante > puntosObjetivo) {
-                defensor.obtenerCampo().matarMounstro(objetivo);
+            if( objetivo.noDefiendeEnAtaque(this) ){
+                //defensor.obtenerCampo().matarMonstruo(objetivo);
+                objetivo.destruir();
+                defensor.restarPuntosDeVida(this.getPuntosAtaque() - objetivo.getPuntosAtaque());
             }
-            else if(puntosAtacante == puntosObjetivo) {
-                atacante.obtenerCampo().matarMounstro(this);
-                defensor.obtenerCampo().matarMounstro(objetivo);
-            }
-            else{
-                atacante.obtenerCampo().matarMounstro(this);
+            if( this.noDefiendeEnAtaque(objetivo) ){
+                //atacante.obtenerCampo().matarMonstruo(this);
+                this.destruir();
+                atacante.restarPuntosDeVida(objetivo.getPuntosAtaque() - this.getPuntosAtaque());
             }
         }
         else{
-            puntosObjetivo = objetivo.getPuntosDefensa();
-            if (puntosAtacante > puntosObjetivo) {
-                defensor.obtenerCampo().matarMounstro(objetivo);
+            if( objetivo.noDefiendeEnDefensa(this) ){
+                //defensor.obtenerCampo().matarMonstruo(objetivo);
+                objetivo.destruir();
             }
+            if( objetivo.daniaEnDefensa(this) ){
+                atacante.restarPuntosDeVida(objetivo.getPuntosDefensa() - this.getPuntosAtaque());
+            }
+
+            if (objetivo.getEstado() == Colocacion.BOCAABAJO) {
+                objetivo.setEstado(Colocacion.BOCAARRIBA);
+                objetivo.activarEfecto(this);
+            }
+
         }
 
     }
+
+
+    public boolean noDefiendeEnAtaque(Monstruo MonstruoAtacante) {
+        int puntosAtaqueDefensor = this.getPuntosAtaque();
+        int puntosAtaqueAtacante = MonstruoAtacante.getPuntosAtaque();
+        return (puntosAtaqueAtacante >= puntosAtaqueDefensor);
+    }
+
+
+    public boolean noDefiendeEnDefensa(Monstruo monstruoAtacante){
+        int puntosDefensaDefensor = this.getPuntosDefensa();
+        int puntosAtaqueAtacante = monstruoAtacante.getPuntosAtaque();
+        return (puntosAtaqueAtacante > puntosDefensaDefensor);
+    }
+
+    public boolean daniaEnDefensa(Monstruo monstruoAtacante){
+        int puntosDefensaDefensor = this.getPuntosDefensa();
+        int puntosAtaqueAtacante = monstruoAtacante.getPuntosAtaque();
+        return (puntosAtaqueAtacante < puntosDefensaDefensor);
+    }
+
 
 
     public void atacarPuntosDeVida(Jugador oponente){
         oponente.restarPuntosDeVida(this.puntosAtaque);
     }
 
-    protected int getPuntosAtaque() {
+    public int getPuntosAtaque() {
         return this.puntosAtaque + this.adicionalesDeAtaque;
     }
     protected void setPuntosAtaque(int _puntosAtaque){
@@ -147,42 +139,7 @@ public class Monstruo extends Carta {
         this.posicion = posicion;
     }
 
-    @Override
-    public void activarEfecto() {
-    }
 
-    public int danioAlAtacante(Monstruo objetivo) {
-        int puntosAtacante = this.getPuntosAtaque();
-        int puntosObjetivo;
-
-        if(objetivo.getPosicion() == Posicion.ATAQUE) {
-            puntosObjetivo = objetivo.getPuntosAtaque();
-        }
-        else {
-            puntosObjetivo = objetivo.getPuntosDefensa();
-        }
-
-        // Si los puntos del defensor son mayores que los del atacante, devuelve la resta como danio al atacante, caso contrario devuelve 0
-        return (puntosObjetivo > puntosAtacante) ? (puntosObjetivo - puntosAtacante) : 0;
-
-    }
-
-    public int danioAlDefensor(Monstruo objetivo) {
-        int puntosAtacante = this.getPuntosAtaque();
-        int puntosObjetivo;
-
-        if(objetivo.getPosicion() == Posicion.ATAQUE) {
-            puntosObjetivo = objetivo.getPuntosAtaque();
-
-            // Si los puntos del atacante son mayores que los del defensor, devuelve la resta como daño al defensor, caso contrario devuelve 0
-            return (puntosAtacante > puntosObjetivo) ? (puntosAtacante - puntosObjetivo) : 0;
-        }
-        else {
-            // Si el objetivo esta en posicion de defensa no hay danio
-            return 0;
-        }
-
-    }
 
     void sumarAdicionalAlataque(int adicional) {
         this.adicionalesDeAtaque += adicional;

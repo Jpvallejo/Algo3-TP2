@@ -39,6 +39,7 @@ public class ZonaMonstruo extends Zona{
         // Ademas, en este caso. Si no se cumple el sacrificio, el monstruo se invoca igual.
         for (Casillero key : Casillero.values()) {
             if (i < cantidad && casilleros.containsKey(key)){
+                //casilleros.get(key).destruir();  //Arroja error ConcurrentModificationException - Reparar
                 cementerio.enviarCarta(casilleros.get(key));
                 casilleros.remove(key);
                 i++;
@@ -46,13 +47,12 @@ public class ZonaMonstruo extends Zona{
         }
     }
 
-    public void destruirZona(Cementerio cementerio){
+    public void destruirZona(){
         for (Casillero key :casilleros.keySet()){
-            cementerio.enviarCarta(casilleros.get(key));
-            casilleros.remove(key);
+            casilleros.get(key).destruir();
+            //casilleros.remove(key);
         }
     }
- 
     
     public void aplicarCartaCampo(int adicional, boolean ataque){
         for (Casillero casillero: Casillero.values()) {

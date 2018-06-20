@@ -28,14 +28,17 @@ public class Tablero {
     }
 
     public boolean tirarCarta(Monstruo carta) {
+        carta.asociarTablero(this);
         return this.zonaMonstruo.colocarCarta(carta);
     }
     
     public void tirarCarta(CartaCampo carta) {
+        carta.asociarTablero(this);
         this.cartaCampo = carta;
     }
     
     public boolean tirarCarta(CartaMagica carta) {
+        carta.asociarTablero(this);
         if ( this.zonaHechizos.colocarCarta(carta) ){
             if (carta.getEstado() == Colocacion.BOCAARRIBA ){
                 carta.activarEfecto();
@@ -44,12 +47,6 @@ public class Tablero {
         }
         return false;
 
-    }
-    
-
-    public void matarMounstro(Monstruo monstruo) {
-        this.zonaMonstruo.eliminar(monstruo);
-        this.cementerio.enviarCarta(monstruo);
     }
 
     public int cantidadCartasCementerio() {
@@ -73,7 +70,8 @@ public class Tablero {
     }
 
     public void destruirZonaMonstruos(){
-        zonaMonstruo.destruirZona(cementerio);
+        //zonaMonstruo.destruirZona(cementerio);
+        zonaMonstruo.destruirZona();
     }
 
     public void destruirCarta(Carta carta) {
@@ -81,8 +79,16 @@ public class Tablero {
         this.cementerio.enviarCarta(carta);
     }
 
+
+    public void matarMonstruo(Monstruo monstruo) {
+        this.zonaMonstruo.eliminar(monstruo);
+        this.cementerio.enviarCarta(monstruo);
+    }
+
+
+
     public void sacrificarMonstruos(int cantidad) {
-        this.zonaMonstruo.sacrificarMonstruos(cementerio,cantidad);
+        this.zonaMonstruo.sacrificarMonstruos(cementerio, cantidad);
     }
     
     public Monstruo obtenerMonstruoEnCasillero(Casillero casillero) {

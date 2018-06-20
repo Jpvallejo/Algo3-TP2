@@ -10,7 +10,7 @@ public class JugadorTest {
     @Test
     public void testInvocarCartaMagicaAumentaEn1LaCantidadDeCartasEnZonaMagicas() {
 
-        AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAARRIBA);
+        AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAABAJO);
 
         Jugador jugador = new Jugador();
 

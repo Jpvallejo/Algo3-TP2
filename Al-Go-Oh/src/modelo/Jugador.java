@@ -36,11 +36,13 @@ public class Jugador {
 
     public void colocarEnAtaque(Monstruo monstruo){
         Tablero  campo = this.obtenerCampo();
+        monstruo.asociarTablero(campo);
         if(monstruo.requiereSacrificio())
         {
             this.sacrificarMonstruos(monstruo.cantidadASacrificar());
         }
         monstruo.setPosicion(Posicion.ATAQUE);
+        monstruo.setEstado(Colocacion.BOCAARRIBA);
         campo.tirarCarta(monstruo);
     }
 
@@ -51,6 +53,7 @@ public class Jugador {
     public void colocarEnDefensa(Monstruo monstruo){
         Tablero  campo = this.obtenerCampo();
         monstruo.setPosicion(Posicion.DEFENSA);
+        monstruo.setEstado(Colocacion.BOCAABAJO);
         campo.tirarCarta(monstruo);
     }
 
