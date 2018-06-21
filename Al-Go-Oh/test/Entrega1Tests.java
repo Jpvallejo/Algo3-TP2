@@ -15,7 +15,7 @@ public class Entrega1Tests {
     public void test01PrimerEntrega(){
         /*Colocar una carta de monstruo en posición de ataque.*/
 
-        Monstruo monstruo = new Monstruo(100,100,Posicion.ATAQUE,4);
+        Monstruo monstruo = new Monstruo("test",100,100,Posicion.ATAQUE,4);
 
         assertEquals(Posicion.ATAQUE,monstruo.getPosicion());
     }
@@ -24,7 +24,7 @@ public class Entrega1Tests {
     public void test02PrimerEntrega() {
         /*Colocar un monstruo en posición de defensa*/
 
-        Monstruo monstruo = new Monstruo(100,100,Posicion.DEFENSA,4);
+        Monstruo monstruo = new Monstruo("test",100,100,Posicion.DEFENSA,4);
 
         assertEquals(Posicion.DEFENSA,monstruo.getPosicion());
     }
@@ -72,8 +72,8 @@ public class Entrega1Tests {
 
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
-        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.ATAQUE,1);
+        Monstruo monstruoAtacante = new Monstruo("test",500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,100, Posicion.ATAQUE,1);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnAtaque(monstruoDefensor);
 
@@ -91,8 +91,8 @@ public class Entrega1Tests {
 
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(1000, 2000, Posicion.ATAQUE,1);
-        Monstruo monstruoDefensor = new Monstruo(500, 100, Posicion.ATAQUE,1);
+        Monstruo monstruoAtacante = new Monstruo("test",1000, 2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo("test",500, 100, Posicion.ATAQUE,1);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnAtaque(monstruoDefensor);
 
@@ -110,8 +110,8 @@ public class Entrega1Tests {
 
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
-        Monstruo monstruoDefensor = new Monstruo(500,100, Posicion.ATAQUE,1);
+        Monstruo monstruoAtacante = new Monstruo("test",500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo("test",500,100, Posicion.ATAQUE,1);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnAtaque(monstruoDefensor);
 
@@ -127,8 +127,8 @@ public class Entrega1Tests {
 
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
-        Monstruo monstruoDefensor = new Monstruo(1000,100, Posicion.DEFENSA,1);
+        Monstruo monstruoAtacante = new Monstruo("test",500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,100, Posicion.DEFENSA,1);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(monstruoDefensor);
 
@@ -145,8 +145,8 @@ public class Entrega1Tests {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo(500,2000, Posicion.ATAQUE,1);
-        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,1);
+        Monstruo monstruoAtacante = new Monstruo("test",500,2000, Posicion.ATAQUE,1);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,1000, Posicion.DEFENSA,1);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(monstruoDefensor);
 
@@ -169,8 +169,8 @@ public class Entrega1Tests {
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
         Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
 
-        Monstruo monstruoJugadorActivo = new Monstruo(0,0,Posicion.DEFENSA,4);
-        Monstruo monstruoJugadorOponente = new Monstruo(0,0,Posicion.DEFENSA,4);
+        Monstruo monstruoJugadorActivo = new Monstruo("test",0,0,Posicion.DEFENSA,4);
+        Monstruo monstruoJugadorOponente = new Monstruo("test",0,0,Posicion.DEFENSA,4);
 
         jugadorActivo.colocarEnAtaque(monstruoJugadorActivo);
         jugadorOponente.colocarEnAtaque(monstruoJugadorOponente);
@@ -186,8 +186,8 @@ public class Entrega1Tests {
     public void test12PrimerEntrega() {
         /*Se coloca un monstruo en el campo, se quiere colocar un monstruo de 5 o 6 estrellas que requiere sacrificio. se verifica que se convocó al monstruo y se destruyó el primero.*/
 
-        Monstruo aSacrificar= new Monstruo(0,0,Posicion.ATAQUE,3);
-        Monstruo sacrificador = new Monstruo(0,0,Posicion.ATAQUE,5);
+        Monstruo aSacrificar= new Monstruo("test",0,0,Posicion.ATAQUE,3);
+        Monstruo sacrificador = new Monstruo("test",0,0,Posicion.ATAQUE,5);
         Jugador jugador = new Jugador();
 
         jugador.colocarEnAtaque(aSacrificar);
@@ -200,9 +200,9 @@ public class Entrega1Tests {
         /*Se colocan 2 monstruos en el campo, se quiere colocar un monstruo de 7 o más estrellas que requiere 2 sacrificios. se verifica que se convocó al monstruo y se destruyeron los demás.*/
 
         Jugador jugador = new Jugador();
-        Monstruo aSacrificar1= new Monstruo(0,0,Posicion.ATAQUE,3);
-        Monstruo aSacrificar2= new Monstruo(0,0,Posicion.ATAQUE,3);
-        Monstruo sacrificador = new Monstruo(0,0,Posicion.ATAQUE,7);
+        Monstruo aSacrificar1= new Monstruo("test",0,0,Posicion.ATAQUE,3);
+        Monstruo aSacrificar2= new Monstruo("test",0,0,Posicion.ATAQUE,3);
+        Monstruo sacrificador = new Monstruo("test",0,0,Posicion.ATAQUE,7);
         jugador.colocarEnAtaque(aSacrificar1);
         jugador.colocarEnAtaque(aSacrificar2);
         jugador.colocarEnAtaque(sacrificador);

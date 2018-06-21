@@ -1,13 +1,12 @@
-import junit.framework.TestCase;
-import modelo.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import modelo.CartasMagicas.AgujeroNegro;
-import modelo.CartasMagicas.CilindroMagico;
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
 import modelo.CartasMonstruosEspeciales.JinzoNro7;
+import modelo.Casillero;
+import modelo.Jugador;
+import modelo.Monstruo;
+import modelo.Posicion;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class Entrega2Test {
 
@@ -42,7 +41,7 @@ public class Entrega2Test {
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo jinzoNro7 = new JinzoNro7(Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
         atacante.colocarEnAtaque(jinzoNro7);
         defensor.colocarEnDefensa(monstruoDefensor);
 
@@ -67,7 +66,7 @@ public class Entrega2Test {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoAtacante = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
         Monstruo insectoComeHombres = new InsectoComeHombres(Posicion.DEFENSA);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(insectoComeHombres);

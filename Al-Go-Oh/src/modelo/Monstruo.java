@@ -29,8 +29,9 @@ public class Monstruo extends Carta {
         this.posicion = Posicion.DEFENSA;
     }
 
-    public Monstruo(int puntosAtaque, int puntosDefensa, Posicion posicion, int estrellas){
+    public Monstruo(String nombre, int puntosAtaque, int puntosDefensa, Posicion posicion, int estrellas){
         super();
+        this.nombre = nombre;
         this.puntosAtaque = puntosAtaque;
         this.puntosDefensa = puntosDefensa;
         this.adicionalesDeAtaque = 0;
@@ -116,7 +117,7 @@ public class Monstruo extends Carta {
         this.puntosDefensa = _puntosDefensa;
     }
 
-    private int getEstrellas(){
+    protected int getEstrellas(){
         return this.estrellas;
     }
 

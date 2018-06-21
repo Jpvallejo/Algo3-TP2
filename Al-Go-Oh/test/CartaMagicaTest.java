@@ -1,10 +1,7 @@
+import modelo.CartasMagicas.AgujeroNegro;
 import modelo.*;
-import modelo.CartasMagicas.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -31,7 +28,7 @@ public class CartaMagicaTest {
 
         Jugador jugador = Juego.getJuego().getJugadorActivo();
 
-        Monstruo monstruo = new Monstruo(0,0,Posicion.DEFENSA,4);
+        Monstruo monstruo = new Monstruo("test",0,0,Posicion.DEFENSA,4);
         
         jugador.colocarEnAtaque(monstruo);
         jugador.colocarCarta(agujeroNegro);
@@ -50,8 +47,8 @@ public class CartaMagicaTest {
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
         Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
 
-        Monstruo monstruoJugadorActivo = new Monstruo(0,0,Posicion.DEFENSA,4);
-        Monstruo monstruoJugadorOponente = new Monstruo(0,0,Posicion.DEFENSA,4);
+        Monstruo monstruoJugadorActivo = new Monstruo("test1",0,0,Posicion.DEFENSA,4);
+        Monstruo monstruoJugadorOponente = new Monstruo("test2",0,0,Posicion.DEFENSA,4);
 
         jugadorActivo.colocarEnAtaque(monstruoJugadorActivo);
         jugadorOponente.colocarEnAtaque(monstruoJugadorOponente);
@@ -68,14 +65,14 @@ public class CartaMagicaTest {
     public void testAplicarCartaWastelandEnMonstruosYAtacar() {
             
         Jugador atacante = new Jugador();
-        Monstruo monstruoAtaque = new Monstruo(100,0,Posicion.ATAQUE,4);
+        Monstruo monstruoAtaque = new Monstruo("test1",100,0,Posicion.ATAQUE,4);
              
         atacante.colocarEnAtaque(monstruoAtaque);
         
         
         Jugador defensor = new Jugador();
 
-        Monstruo monstruoDefensa = new Monstruo(100,200,Posicion.ATAQUE,4);
+        Monstruo monstruoDefensa = new Monstruo("test2",100,200,Posicion.ATAQUE,4);
         
         defensor.colocarEnAtaque(monstruoDefensa);
         
@@ -90,7 +87,7 @@ public class CartaMagicaTest {
         
         
         //Creo monstruo en modo de defensa con 100 de defensa
-        Monstruo monstruoDefensa01 = new Monstruo(100,100,Posicion.DEFENSA,4);
+        Monstruo monstruoDefensa01 = new Monstruo("test",100,100,Posicion.DEFENSA,4);
         
         defensor.colocarEnDefensa(monstruoDefensa01);
         
