@@ -4,21 +4,22 @@ import modelo.Fases.FaseInicial;
 import modelo.Fases.Fase;
 
 public class Juego {
-        private static Juego instancia = new Juego();
 
-        public static Juego getJuego() {
-            return instancia;
-        }
+    private static Juego instancia = new Juego();
 
-        private Juego(){
-            jugadorActivo = new Jugador();
-            jugadorOponente = new Jugador();
-            faseActual = new FaseInicial();
+    public static Juego getJuego() {
+        return instancia;
+    }
+
+    private Juego(){
+        jugadorActivo = new Jugador();
+        jugadorOponente = new Jugador();
+        faseActual = new FaseInicial();
            /* for (int i = 0; i < 5; i++){
                 jugadorActivo.extraerCartaDelMazo();
                 jugadorOponente.extraerCartaDelMazo();
             }*/
-        }
+    }
 
     private Jugador jugadorActivo;
 
