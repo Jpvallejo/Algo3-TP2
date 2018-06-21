@@ -58,4 +58,21 @@ public class Juego {
     public void iniciarFase() {
         faseActual.iniciarFase();
     }
+
+    public boolean hayGanador() {
+        if(this.jugadorActivo.obtenerTamanioMazo() == 0 || this.jugadorActivo.getPuntosDeVida() <= 0 ||
+                this.jugadorOponente.getPuntosDeVida() <= 0 || this.jugadorOponente.obtenerTamanioMazo() == 0)
+            return true;
+
+        return false;
+
+    }
+
+    public Jugador obtenerGanador() {
+        if(this.jugadorActivo.obtenerTamanioMazo() == 0 || this.jugadorActivo.getPuntosDeVida() <= 0)
+            return this.jugadorOponente;
+        else if(this.jugadorOponente.getPuntosDeVida() <= 0 || this.jugadorOponente.obtenerTamanioMazo() == 0)
+            return this.jugadorActivo;
+        return null;
+    }
 }

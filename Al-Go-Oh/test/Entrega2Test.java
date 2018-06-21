@@ -190,6 +190,12 @@ public class Entrega2Test {
     @Test
     public void test10SegundaEntrega(){
         /*Extraer todas las cartas del mazo, y verificar que la partida terminó y el jugador perdió.*/
+        Juego juego = Juego.getJuego();
+        for (int i = 0; i<40; i++) {
+            juego.getJugadorActivo().extraerCartaDelMazo();
+        }
+        assertTrue(juego.hayGanador());
+        assertTrue(juego.obtenerGanador() == juego.getJugadorOponente());
 
     }
     
