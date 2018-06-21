@@ -1,6 +1,7 @@
 package modelo;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class Jugador {
     private Tablero tablero;
@@ -11,7 +12,11 @@ public class Jugador {
     public Jugador(){
         tablero = new Tablero();
         puntosDeVida = 8000;
-        this.mazo  = new Mazo();
+        try {
+            this.mazo  = new Mazo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         this.mano = new Mano();
     }
 

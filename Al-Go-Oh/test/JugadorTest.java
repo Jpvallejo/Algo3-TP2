@@ -25,7 +25,7 @@ public class JugadorTest {
 
         Jugador jugador = new Jugador();
 
-        Monstruo monstruo = new Monstruo(0,0,Posicion.DEFENSA,4);
+        Monstruo monstruo = new Monstruo("test",0,0,Posicion.DEFENSA,4);
         jugador.colocarEnAtaque(monstruo);
         assertEquals(1,jugador.obtenerCampo().cantidadCartasZonaMonstruos());
 

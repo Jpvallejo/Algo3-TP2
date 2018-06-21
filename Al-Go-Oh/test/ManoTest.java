@@ -3,6 +3,8 @@ import modelo.*;
 import modelo.CartasMagicas.AgujeroNegro;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class ManoTest {
@@ -18,7 +20,12 @@ public class ManoTest {
     @Test
     public void testManoExtrae1CartaDelMazoYAumentaSuCantidadEn1(){
         Mano mano = new Mano();
-        Mazo mazo = new Mazo();
+        Mazo mazo = null;
+        try {
+            mazo = new Mazo();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         mazo.agregarCarta(new AgujeroNegro());
 
         Carta carta = mazo.extaerCarta();

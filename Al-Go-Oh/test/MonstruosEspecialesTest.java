@@ -16,7 +16,7 @@ public class MonstruosEspecialesTest {
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo jinzoNro7 = new JinzoNro7(Posicion.ATAQUE);
-        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
         atacante.colocarEnAtaque(jinzoNro7);
         defensor.colocarEnDefensa(monstruoDefensor);
 
@@ -35,7 +35,7 @@ public class MonstruosEspecialesTest {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoAtacante = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
         Monstruo insectoComeHombres = new InsectoComeHombres(Posicion.DEFENSA);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(insectoComeHombres);
