@@ -12,11 +12,7 @@ public class Jugador {
     public Jugador(){
         tablero = new Tablero();
         puntosDeVida = 8000;
-        try {
-            this.mazo  = new Mazo();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.mazo  = new Mazo();
         this.mano = new Mano();
     }
 

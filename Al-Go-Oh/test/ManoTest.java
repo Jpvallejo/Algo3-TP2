@@ -21,13 +21,7 @@ public class ManoTest {
     public void testManoExtrae1CartaDelMazoYAumentaSuCantidadEn1(){
         Mano mano = new Mano();
         Mazo mazo = null;
-        try {
-            mazo = new Mazo();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        mazo.agregarCarta(new AgujeroNegro());
-
+        mazo = new Mazo();
         Carta carta = mazo.extaerCarta();
         mano.agregarCarta(carta);
 

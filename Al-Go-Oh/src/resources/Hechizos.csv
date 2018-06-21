@@ -1,4 +1,6 @@
-Agujero Negro
-Wasteland
-Cilindro Magico
-Sogen
+modelo.CartasMagicas.AgujeroNegro
+modelo.CartasMagicas.CilindroMagico
+modelo.CartasMagicas.Sogen
+modelo.CartasMagicas.Wasteland
+modelo.CartasMagicas.CartaCampoSinEfecto
+modelo.CartasMagicas.OllaDeLaCodicia

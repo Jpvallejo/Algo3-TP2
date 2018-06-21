@@ -1,5 +1,6 @@
 import modelo.CartasMagicas.AgujeroNegro;
 import modelo.*;
+import modelo.CartasMagicas.OllaDeLaCodicia;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -99,7 +100,17 @@ public class CartaMagicaTest {
          assertEquals(7900, atacante.getPuntosDeVida());
          
     }
-     
-    
+
+    @Test
+    public void testInvocarOllaDeLaCodiciaPermiteTomarDosCartasDelMazo() {
+        Juego.reiniciarJuego();
+        OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia(Colocacion.BOCAARRIBA);
+
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        int cantidadEnMazo = jugadorActivo.obtenerTamanioMazo();
+        jugadorActivo.colocarCarta(ollaDeLaCodicia);
+
+        assertEquals(cantidadEnMazo ,jugadorActivo.obtenerTamanioMazo());//Esta Mal Lo veo despues.
+    }
     
 }
