@@ -1,6 +1,6 @@
 package modelo;
 
-import resources.*;
+import modelo.creadorDeCartas.*;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -17,9 +17,9 @@ public class Cartas {
 
     public Cartas() {
         LeerArchivo leer = new LeerArchivo();
-        leer.unArchivoDesdeAYLanzarException("./src/resources/Hechizos.csv", cartasHechizos, new CartasMagicasAchivoNoSePudoAbrirException());
-        leer.unArchivoDesdeAYLanzarException("./src/resources/MonstruosEspeciales.csv", cartasMonstruosEspeciales, new CartasMonstruosEspecialesAchivoNoSePudoAbrirException());
-        leer.unArchivoDesdeAYLanzarException("./src/resources/Monstruos.csv", cartasMonstruosComunes, new CartasMonstruosComunesAchivoNoSePudoAbrirException());
+        leer.unArchivoDesdeAYLanzarException("Hechizos.csv", cartasHechizos, new CartasMagicasAchivoNoSePudoAbrirException());
+        leer.unArchivoDesdeAYLanzarException("MonstruosEspeciales.csv", cartasMonstruosEspeciales, new CartasMonstruosEspecialesAchivoNoSePudoAbrirException());
+        leer.unArchivoDesdeAYLanzarException("Monstruos.csv", cartasMonstruosComunes, new CartasMonstruosComunesAchivoNoSePudoAbrirException());
     }
 
     public Carta obtenerUnaCartaAleatoria() {

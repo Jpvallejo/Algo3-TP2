@@ -1,4 +1,4 @@
-package resources;
+package modelo.creadorDeCartas;
 
 public class FabricaDeCartasNoPudoFabricarMonstruoEspecial extends RuntimeException {
 }

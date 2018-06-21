@@ -1,4 +1,4 @@
-package resources;
+package modelo.creadorDeCartas;
 
 import modelo.*;
 import java.lang.reflect.Constructor;
