@@ -3,10 +3,7 @@ import modelo.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import modelo.CartasMagicas.Wasteland;
-import modelo.CartasMagicas.Sogen;
-import modelo.CartasMagicas.AgujeroNegro;
-import modelo.CartasMagicas.CilindroMagico;
+import modelo.CartasMagicas.*;
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
 import modelo.CartasMonstruosEspeciales.JinzoNro7;
 import modelo.Casillero;
@@ -166,6 +163,27 @@ public class Entrega2Test {
     @Test
     public void test09SegundaEntrega(){
         /*Coloco un monstruo en posición de ataque y la carta trampa Reinforcements de mi lado del campo, coloco un monstruo en el campo enemigo (con 400 puntos mas de ataque que el primero) y atacar al primer monstruo. Verificar que se activa la carta trampa, y el monstruo enemigo es destruido y se infligió 100 puntos de daño a la vida del otro jugador.*/
+
+
+        Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
+        Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
+        Monstruo monstruoAtacante = new Monstruo("test",1500,1000, Posicion.ATAQUE,4);
+        Monstruo monstruoDefensor = new Monstruo("test",1200,1000, Posicion.ATAQUE,4);
+        atacante.colocarEnAtaque(monstruoAtacante);
+        defensor.colocarEnAtaque(monstruoDefensor);
+
+
+        CartaTrampa carta = new Reinforcement();
+        defensor.colocarCarta(carta);
+
+        assertEquals(1200, defensor.obtenerCampo().obtenerMonstruoEnCasillero(Casillero.UNO).getPuntosAtaque());
+
+        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+
+        assertEquals(1, atacante.cantidadCartasCementerio());
+        assertEquals(1, defensor.cantidadCartasCementerio());
+        assertEquals(7800, atacante.getPuntosDeVida());
+        assertEquals(8000, defensor.getPuntosDeVida());
 
     }
     
