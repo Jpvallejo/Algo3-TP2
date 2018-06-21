@@ -121,7 +121,7 @@ public class Mazo {
 
         String linea;
 
-        BufferedReader br = new BufferedReader(new FileReader("Monstruos.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("Al-Go-Oh/archivos/Monstruos.csv"));
 
         int lineaNumero = 0;
 
@@ -150,7 +150,7 @@ public class Mazo {
 
         String linea;
 
-        BufferedReader br = new BufferedReader(new FileReader("Hechizos.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("Al-Go-Oh/archivos/Hechizos.csv"));
 
         int lineaNumero = 0;
 
