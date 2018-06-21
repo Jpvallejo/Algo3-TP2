@@ -26,8 +26,8 @@ public class CartaTrampaTest {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo(2000,1000, Posicion.ATAQUE,4);
-        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoAtacante = new Monstruo("test",2000,1000, Posicion.ATAQUE,4);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(monstruoDefensor);
 

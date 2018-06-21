@@ -54,7 +54,7 @@ public class MonstruosEspecialesTest {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo(100,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoAtacante = new Monstruo("test",100,1000, Posicion.DEFENSA,4);
         Monstruo insectoComeHombres = new InsectoComeHombres(Posicion.DEFENSA);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(insectoComeHombres);

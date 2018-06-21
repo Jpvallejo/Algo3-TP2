@@ -31,11 +31,11 @@ public class Entrega2Test {
        
         jugadorActivo.colocarCarta(wasteland);
         
-        Monstruo monstruoAtaque = new Monstruo(100,0,Posicion.ATAQUE,4);
+        Monstruo monstruoAtaque = new Monstruo("test",100,0,Posicion.ATAQUE,4);
         
         jugadorActivo.colocarEnAtaque(monstruoAtaque);
         
-        Monstruo monstruoDefensa = new Monstruo(100,200,Posicion.ATAQUE,4);
+        Monstruo monstruoDefensa = new Monstruo("test",100,200,Posicion.ATAQUE,4);
         
         jugadorOponente.colocarEnAtaque(monstruoDefensa);
 
@@ -71,11 +71,11 @@ public class Entrega2Test {
        
         jugadorActivo.colocarCarta(sogen);
         
-        Monstruo monstruoAtaque = new Monstruo(100,0,Posicion.ATAQUE,4);
+        Monstruo monstruoAtaque = new Monstruo("test",100,0,Posicion.ATAQUE,4);
         
         jugadorActivo.colocarEnAtaque(monstruoAtaque);
         
-        Monstruo monstruoDefensa = new Monstruo(100,200,Posicion.ATAQUE,4);
+        Monstruo monstruoDefensa = new Monstruo("test",100,200,Posicion.ATAQUE,4);
         
         jugadorOponente.colocarEnAtaque(monstruoDefensa);
 
@@ -148,8 +148,8 @@ public class Entrega2Test {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo(2000,1000, Posicion.ATAQUE,4);
-        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        Monstruo monstruoAtacante = new Monstruo("test",2000,1000, Posicion.ATAQUE,4);
+        Monstruo monstruoDefensor = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
         atacante.colocarEnAtaque(monstruoAtacante);
         defensor.colocarEnDefensa(monstruoDefensor);
 
