@@ -103,8 +103,10 @@ public class Monstruo extends Carta {
 
 
 
-    public void atacarPuntosDeVida(Jugador oponente){
-        oponente.restarPuntosDeVida(this.puntosAtaque);
+    public void atacarPuntosDeVida(Jugador atacante, Jugador defensor){
+        if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(atacante, defensor, this) ) {
+            defensor.restarPuntosDeVida(this.puntosAtaque);
+        }
     }
 
     public int getPuntosAtaque() {
@@ -145,16 +147,16 @@ public class Monstruo extends Carta {
 
 
 
-    void sumarAdicionalAlataque(int adicional) {
+    public void sumarAdicionalAlataque(int adicional) {
         this.adicionalesDeAtaque += adicional;
         
     }
 
-    void sumarAdicionalAlaDefensa(int adicional) {
+    public void sumarAdicionalAlaDefensa(int adicional) {
         this.adicionalesDeDefensa += adicional;   
     }
-     
-    void ponerAdicionalesEnCero(){
+
+    public void ponerAdicionalesEnCero(){
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
     }   

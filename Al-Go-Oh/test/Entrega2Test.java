@@ -46,7 +46,6 @@ public class Entrega2Test {
         assertEquals(1, jugadorOponente.cantidadCartasCementerio());
           //Le resta 200 puntos de vida al jugador defensor
         assertEquals(7800, jugadorOponente.getPuntosDeVida());
-    
 
     }
     
@@ -159,7 +158,7 @@ public class Entrega2Test {
         atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
-        assertEquals(0, defensor.cantidadCartasCementerio());
+        assertEquals(1, defensor.cantidadCartasCementerio());
         assertEquals(6000, atacante.getPuntosDeVida());
         assertEquals(8000, defensor.getPuntosDeVida());
     }

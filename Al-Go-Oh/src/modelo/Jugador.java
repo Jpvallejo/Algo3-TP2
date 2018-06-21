@@ -88,7 +88,7 @@ public class Jugador {
             monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
         }
         else{
-            monstruoAtacante.atacarPuntosDeVida(defensor);
+            monstruoAtacante.atacarPuntosDeVida(this,defensor);
         }
 
     }

@@ -7,10 +7,7 @@ import modelo.CartasMagicas.Wasteland;
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
 import modelo.CartasMonstruosEspeciales.JinzoNro7;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;

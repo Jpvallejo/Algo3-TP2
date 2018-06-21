@@ -27,6 +27,7 @@ public class Tablero {
     }
     
     public boolean tirarCarta(CartaTrampa carta){
+        carta.asociarTablero(this);
         return this.zonaHechizos.colocarCarta(carta);
     }
 
