@@ -12,7 +12,7 @@ public abstract class Carta{
 
     public void activarEfecto(){}
 
-    public boolean activarEfectoEnAtaque(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
+    public boolean activarEfectoEnAtaque(Ataque ataque) {
         return false;
     }
 

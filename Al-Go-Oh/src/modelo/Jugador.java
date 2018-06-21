@@ -85,10 +85,15 @@ public class Jugador {
         if (casilleroDefensor != Casillero.PUNTOSVIDA) {
             Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
            
-            monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
+            Ataque atacarMonstruo = new Ataque(this,defensor, monstruoAtacante, monstruoDefensor);
+            atacarMonstruo.realizarAtaque();
+
+            //monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
         }
         else{
-            monstruoAtacante.atacarPuntosDeVida(this,defensor);
+            Ataque atacarPuntosVida = new Ataque(this,defensor, monstruoAtacante);
+            atacarPuntosVida.atacarPuntosDeVida();
+            //monstruoAtacante.atacarPuntosDeVida(this,defensor);
         }
 
     }

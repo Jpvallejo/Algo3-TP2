@@ -10,8 +10,8 @@ public class CilindroMagico extends CartaTrampa {
     }
 
     @Override
-    public boolean activarEfectoEnAtaque(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
-        atacante.restarPuntosDeVida(monstruoAtacante.getPuntosAtaque());
+    public boolean activarEfectoEnAtaque(Ataque ataque) {
+        ataque.getJugadorAtacante().restarPuntosDeVida(ataque.getMonstruoAtacante().getPuntosAtaque());
         this.destruir();
         return true;
 

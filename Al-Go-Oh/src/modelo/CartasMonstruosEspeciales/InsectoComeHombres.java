@@ -28,8 +28,8 @@ public class InsectoComeHombres extends Monstruo{
     }
 
     @Override
-    public boolean activarEfectoEnAtaque(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
-        monstruoAtacante.destruir();
+    public boolean activarEfectoEnAtaque(Ataque ataque) {
+        ataque.getMonstruoAtacante().destruir();
         return false;
     }
 

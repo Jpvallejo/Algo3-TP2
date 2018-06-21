@@ -48,7 +48,9 @@ public class Monstruo extends Carta {
 
     public void atacarMonstruo(Jugador atacante,Jugador defensor, Monstruo objetivo)
     {
-
+        Ataque ataque = new Ataque(atacante,defensor,this,objetivo);
+        ataque.realizarAtaque();
+/*
         // Si no se activa el efecto de carta trampa o el efecto del objetivo
         if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(atacante, defensor, this) && !objetivo.activarEfectoEnAtaque(atacante, defensor, this) ) {
 
@@ -78,7 +80,7 @@ public class Monstruo extends Carta {
         }
 
         objetivo.setEstado(Colocacion.BOCAARRIBA);
-
+*/
     }
 
 
@@ -104,9 +106,10 @@ public class Monstruo extends Carta {
 
 
     public void atacarPuntosDeVida(Jugador atacante, Jugador defensor){
-        if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(atacante, defensor, this) ) {
+    /*    if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(ataque) ) {
             defensor.restarPuntosDeVida(this.puntosAtaque);
         }
+        */
     }
 
     public int getPuntosAtaque() {

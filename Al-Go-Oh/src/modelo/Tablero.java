@@ -116,8 +116,8 @@ public class Tablero {
     }
     
 
-    public boolean activarEfectoCartaTrampa(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
+    public boolean activarEfectoCartaTrampa(Ataque ataque) {
 
-        return zonaHechizos.activarEfectoPrimerCartaTrampa(atacante,defensor,monstruoAtacante);
+        return zonaHechizos.activarEfectoPrimerCartaTrampa(ataque);
     }
 }
