@@ -1,16 +1,4 @@
-import modelo.CartasMagicas.AgujeroNegro;
-import modelo.CartasMagicas.CilindroMagico;
-import modelo.CartasMagicas.Sogen;
-import modelo.CartasMagicas.Wasteland;
-import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
-import modelo.CartasMonstruosEspeciales.JinzoNro7;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Stack;
-
-import static java.util.Collections.shuffle;
+package modelo;
 
 public class Mazo {
 
