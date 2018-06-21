@@ -44,13 +44,13 @@ public abstract class Zona {
     }
 
     public void eliminar(Carta carta) {
-        for (Casillero key :casilleros.keySet()){
-            if (casilleros.get(key).equals(carta)) {
-                casilleros.remove(key);
+        for (Casillero casillero: Casillero.values()) {
+            if (casilleros.containsKey(casillero)) {
+                if(casilleros.get(casillero).equals(carta)) casilleros.remove(casillero);        
             }
         }
     }
-
+    
     public Carta obtenerCartaPosicion(Casillero casillero){
         return casilleros.get(casillero);
     }

@@ -74,5 +74,22 @@ public class ZonaMonstruo extends Zona{
     }
 
     
+    Monstruo destruirMonstruoConMenorAtaque() {
+        Monstruo monstruoConMenorAtaque = new Monstruo(8000,0);
+        for (Casillero casillero: Casillero.values()) {
+            if (casilleros.containsKey(casillero)) {
+                Monstruo monstruo = (Monstruo) casilleros.get(casillero); //Obtengo la carta monstruo
+                if(monstruoConMenorAtaque.esMenorElAtaque(monstruo)){ //Comparo los ataques de los dos Monstruos
+                    monstruoConMenorAtaque = monstruo;  
+                } 
+            }
+        }
+          
+       return monstruoConMenorAtaque;
+       
+    }
+
+    
+    
     
 }

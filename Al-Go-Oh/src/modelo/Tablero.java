@@ -120,4 +120,21 @@ public class Tablero {
 
         return zonaHechizos.activarEfectoPrimerCartaTrampa(ataque);
     }
+    
+    
+    
+    
+    public void destruirMonstruoConMenorAtaque() {
+        
+        Monstruo monstruo =  this.getZonaMonstruo().destruirMonstruoConMenorAtaque();
+        this.matarMonstruo(monstruo);
+    }
+    
+    
+    
+    public Carta buscarCartaEnCementerio (Carta carta){
+        return this.cementerio.buscarCarta(carta);
+    }
+    
+    
 }
