@@ -12,7 +12,9 @@ public abstract class Carta{
 
     public void activarEfecto(){}
 
-    public void activarEfecto(Monstruo objetivo) {}
+    public boolean activarEfectoEnAtaque(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
+        return false;
+    }
 
     public boolean estaBocaAbajo(){
         return estado == Colocacion.BOCAABAJO;

@@ -140,6 +140,22 @@ public class Entrega2Test {
     public void test08SegundaEntrega(){
         /*Colocar un monstruo del lado enemigo, luego coloco la carta trampa Cilindro mágico de mi lado del campo. Atacar con el monstruo y verificar que se activa la carta trampa, se niega el ataque y el oponente recibe el daño directamente en sus puntos de vida.*/
 
+        Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
+        Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
+        Monstruo monstruoAtacante = new Monstruo(2000,1000, Posicion.ATAQUE,4);
+        Monstruo monstruoDefensor = new Monstruo(1000,1000, Posicion.DEFENSA,4);
+        atacante.colocarEnAtaque(monstruoAtacante);
+        defensor.colocarEnDefensa(monstruoDefensor);
+
+        CartaTrampa carta = new CilindroMagico();
+        defensor.colocarCarta(carta);
+
+        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+
+        assertEquals(0, atacante.cantidadCartasCementerio());
+        assertEquals(0, defensor.cantidadCartasCementerio());
+        assertEquals(6000, atacante.getPuntosDeVida());
+        assertEquals(8000, defensor.getPuntosDeVida());
     }
     
     @Test

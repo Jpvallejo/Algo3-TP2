@@ -47,33 +47,36 @@ public class Monstruo extends Carta {
 
     public void atacarMonstruo(Jugador atacante,Jugador defensor, Monstruo objetivo)
     {
-        if(objetivo.getPosicion() == Posicion.ATAQUE) {
-            if( objetivo.noDefiendeEnAtaque(this) ){
-                //defensor.obtenerCampo().matarMonstruo(objetivo);
-                objetivo.destruir();
-                defensor.restarPuntosDeVida(this.getPuntosAtaque() - objetivo.getPuntosAtaque());
-            }
-            if( this.noDefiendeEnAtaque(objetivo) ){
-                //atacante.obtenerCampo().matarMonstruo(this);
-                this.destruir();
-                atacante.restarPuntosDeVida(objetivo.getPuntosAtaque() - this.getPuntosAtaque());
-            }
-        }
-        else{
-            if( objetivo.noDefiendeEnDefensa(this) ){
-                //defensor.obtenerCampo().matarMonstruo(objetivo);
-                objetivo.destruir();
-            }
-            if( objetivo.daniaEnDefensa(this) ){
-                atacante.restarPuntosDeVida(objetivo.getPuntosDefensa() - this.getPuntosAtaque());
+
+        // Si no se activa el efecto de carta trampa o el efecto del objetivo
+        if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(atacante, defensor, this) && !objetivo.activarEfectoEnAtaque(atacante, defensor, this) ) {
+
+            if (objetivo.getPosicion() == Posicion.ATAQUE) {
+                if (objetivo.noDefiendeEnAtaque(this)) {
+                    //defensor.obtenerCampo().matarMonstruo(objetivo);
+                    objetivo.destruir();
+                    defensor.restarPuntosDeVida(this.getPuntosAtaque() - objetivo.getPuntosAtaque());
+                }
+                if (this.noDefiendeEnAtaque(objetivo)) {
+                    //atacante.obtenerCampo().matarMonstruo(this);
+                    this.destruir();
+                    atacante.restarPuntosDeVida(objetivo.getPuntosAtaque() - this.getPuntosAtaque());
+                }
+            } else {
+                if (objetivo.noDefiendeEnDefensa(this)) {
+                    //defensor.obtenerCampo().matarMonstruo(objetivo);
+                    objetivo.destruir();
+                }
+                if (objetivo.daniaEnDefensa(this)) {
+                    atacante.restarPuntosDeVida(objetivo.getPuntosDefensa() - this.getPuntosAtaque());
+                }
+
+
             }
 
-            if (objetivo.getEstado() == Colocacion.BOCAABAJO) {
-                objetivo.setEstado(Colocacion.BOCAARRIBA);
-                objetivo.activarEfecto(this);
-            }
-
         }
+
+        objetivo.setEstado(Colocacion.BOCAARRIBA);
 
     }
 

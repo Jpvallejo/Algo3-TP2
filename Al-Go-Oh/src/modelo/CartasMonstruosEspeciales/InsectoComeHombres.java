@@ -27,22 +27,10 @@ public class InsectoComeHombres extends Monstruo{
         }
     }
 
-    public boolean daniaEnDefensa(Monstruo monstruoAtacante){
-        if ( estado == Colocacion.BOCAABAJO ) {
-            return false;
-        }
-        else {
-            int puntosDefensaDefensor = this.getPuntosDefensa();
-            int puntosAtaqueAtacante = monstruoAtacante.getPuntosAtaque();
-            return (puntosAtaqueAtacante < puntosDefensaDefensor);
-        }
-    }
-
-
-
     @Override
-    public void activarEfecto(Monstruo objetivo) {
-        objetivo.destruir();
+    public boolean activarEfectoEnAtaque(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
+        monstruoAtacante.destruir();
+        return false;
     }
 
 }

@@ -114,4 +114,9 @@ public class Tablero {
         this.getZonaMonstruo().revertirCartaCampo();
     }
     
+
+    public boolean activarEfectoCartaTrampa(Jugador atacante, Jugador defensor, Monstruo monstruoAtacante) {
+
+        return zonaHechizos.activarEfectoPrimerCartaTrampa(atacante,defensor,monstruoAtacante);
+    }
 }
