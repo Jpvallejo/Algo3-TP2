@@ -4,9 +4,6 @@ import controlador.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import modelo.Fase;
-import modelo.Juego;
-import modelo.Tablero;
 
 public class BotonPasarFase extends Button {
 

@@ -64,6 +64,15 @@ public class ZonaMonstruo extends Zona{
         }
     }
 
+    public void revertirCartaCampo(){
+        for (Casillero casillero: Casillero.values()) {
+            if (casilleros.containsKey(casillero)) {
+                Monstruo monstruo = (Monstruo) casilleros.get(casillero); //Obtengo la carta monstruo
+                monstruo.ponerAdicionalesEnCero();
+            }
+        }
+    }
+
     
     
 }

@@ -1,4 +1,5 @@
 import modelo.*;
+import modelo.Fases.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

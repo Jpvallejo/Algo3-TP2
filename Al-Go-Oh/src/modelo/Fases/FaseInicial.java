@@ -1,4 +1,6 @@
-package modelo;
+package modelo.Fases;
+
+import modelo.Juego;
 
 public class FaseInicial extends Fase {
 

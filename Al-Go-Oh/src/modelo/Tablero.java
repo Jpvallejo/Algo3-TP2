@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import modelo.CartasMagicas.CartaCampoSinEfecto;
+
 /**
  *
  * @author mramundo
@@ -21,6 +23,7 @@ public class Tablero {
         this.zonaHechizos = new ZonaHechizos();
         this.zonaMonstruo = new ZonaMonstruo();
         this.cementerio = new Cementerio();
+        this.cartaCampo = new CartaCampoSinEfecto();
     }
     
     public boolean tirarCarta(CartaTrampa carta){
@@ -98,6 +101,17 @@ public class Tablero {
     
     public void aplicarCartaCampo(int adicional, boolean ataque){
         this.zonaMonstruo.aplicarCartaCampo(adicional, ataque);    
+    }
+    
+    
+    
+    public void activarCartaCampo (){
+        this.cartaCampo.activarEfecto();
+    }
+    
+    
+     public void revertirCartaCampo (){
+        this.getZonaMonstruo().revertirCartaCampo();
     }
     
 }

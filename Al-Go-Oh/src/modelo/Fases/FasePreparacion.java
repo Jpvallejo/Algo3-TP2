@@ -1,4 +1,4 @@
-package modelo;
+package modelo.Fases;
 
 public class FasePreparacion extends Fase {
 

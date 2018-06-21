@@ -97,6 +97,12 @@ public class Jugador {
         mano.agregarCarta(carta);
     }
 
+    public void activarCartaCampo() {
+        this.obtenerCampo().activarCartaCampo();
+    }
+       
+
+
     public int obtenerTamanioMazo() {
         return this.getMazo().getTamanio();
     }

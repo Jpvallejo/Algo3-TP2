@@ -1,5 +1,8 @@
 package modelo;
 
+import modelo.Fases.FaseInicial;
+import modelo.Fases.Fase;
+
 public class Juego {
         private static Juego instancia = new Juego();
 

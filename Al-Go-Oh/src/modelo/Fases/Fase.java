@@ -1,4 +1,4 @@
-package modelo;
+package modelo.Fases;
 
 public abstract class Fase {
 

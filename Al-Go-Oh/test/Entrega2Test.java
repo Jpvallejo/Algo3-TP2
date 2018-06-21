@@ -3,6 +3,8 @@ import modelo.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import modelo.CartasMagicas.Wasteland;
+import modelo.CartasMagicas.Sogen;
 import modelo.CartasMagicas.AgujeroNegro;
 import modelo.CartasMagicas.CilindroMagico;
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
@@ -15,17 +17,70 @@ public class Entrega2Test {
     public void test01SegundaEntrega(){
         /*Colocar un monstruo de cada lado del campo. Activo la carta mágica Wasteland y verificar que de un lado del campo, el ataque del monstruo aumenta en 200 puntos y del otro lado del campo, se aumenta la defensa del monstruo en 300 puntos.*/
 
+  		Juego.reiniciarJuego();
+        Wasteland wasteland = new Wasteland();
+
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
+       
+        jugadorActivo.colocarCarta(wasteland);
+        
+        Monstruo monstruoAtaque = new Monstruo(100,0,Posicion.ATAQUE,4);
+        
+        jugadorActivo.colocarEnAtaque(monstruoAtaque);
+        
+        Monstruo monstruoDefensa = new Monstruo(100,200,Posicion.ATAQUE,4);
+        
+        jugadorOponente.colocarEnAtaque(monstruoDefensa);
+
+        jugadorActivo.activarCartaCampo(); //Suma 200 al ataque del monstruo del jugadorActivo osea tiene 300        
+        jugadorActivo.declararAtaqueDePosicionAPosicion(jugadorOponente,Casillero.UNO,Casillero.UNO);
+        
+      
+        assertEquals(1, jugadorOponente.cantidadCartasCementerio());
+          //Le resta 200 puntos de vida al jugador defensor
+        assertEquals(7800, jugadorOponente.getPuntosDeVida());
+    
+
     }
     
     @Test
     public void test02SegundaEntrega(){
         /*Activar la carta mágica Olla de la codicia, y verificar que tomo 2 cartas del mazo.*/
 
+
+        
+
     }
     
     @Test
     public void test03SegundaEntrega(){
         /*Colocar un monstruo de cada lado del campo. activo la carta mágica Sogen y verificar que de un lado del campo, la defensa del monstruo aumenta en 500 puntos y del otro lado del campo, se aumenta el ataque del monstruo en 200 puntos.*/
+
+        Juego.reiniciarJuego();
+        Sogen sogen = new Sogen();
+
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
+       
+        jugadorActivo.colocarCarta(sogen);
+        
+        Monstruo monstruoAtaque = new Monstruo(100,0,Posicion.ATAQUE,4);
+        
+        jugadorActivo.colocarEnAtaque(monstruoAtaque);
+        
+        Monstruo monstruoDefensa = new Monstruo(100,200,Posicion.ATAQUE,4);
+        
+        jugadorOponente.colocarEnAtaque(monstruoDefensa);
+
+        jugadorActivo.activarCartaCampo(); //Suma 200 al ataque del monstruo del jugadorOponente osea tiene 300    
+        
+        jugadorActivo.declararAtaqueDePosicionAPosicion(jugadorOponente,Casillero.UNO,Casillero.UNO);
+
+        assertEquals(1, jugadorActivo.cantidadCartasCementerio());
+          //Le resta 200 puntos de vida al jugadorActivo
+        assertEquals(7800, jugadorActivo.getPuntosDeVida());
+    
 
     }
     
