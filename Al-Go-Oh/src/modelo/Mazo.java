@@ -121,7 +121,8 @@ public class Mazo {
 
         String linea;
 
-        BufferedReader br = new BufferedReader(new FileReader("Al-Go-Oh/src/resources/Monstruos.csv"));
+        ClassLoader classLoader = getClass().getClassLoader();
+        BufferedReader br = new BufferedReader(new FileReader(classLoader.getResource("Monstruos.csv").getFile()));
 
         int lineaNumero = 0;
 
@@ -150,7 +151,8 @@ public class Mazo {
 
         String linea;
 
-        BufferedReader br = new BufferedReader(new FileReader("Al-Go-Oh/src/resources/Hechizos.csv"));
+        ClassLoader classLoader = getClass().getClassLoader();
+        BufferedReader br = new BufferedReader(new FileReader(classLoader.getResource("Hechizos.csv").getFile()));
 
         int lineaNumero = 0;
 
