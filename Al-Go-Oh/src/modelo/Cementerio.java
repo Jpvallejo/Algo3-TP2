@@ -16,8 +16,12 @@ public class Cementerio {
         this.cartas.add(carta);
     }
 
-    public Carta buscarCarta(Carta carta) {
-        return carta;
+    public Carta buscarCarta(Carta cartaBuscada) {
+        //Hay que modificarlo quizas
+        for(Carta carta: this.cartas){
+            if( carta.equals(cartaBuscada))return carta; 
+        }  
+        return null;
     }
 
 

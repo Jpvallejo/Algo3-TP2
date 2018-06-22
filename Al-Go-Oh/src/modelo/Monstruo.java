@@ -162,5 +162,12 @@ public class Monstruo extends Carta {
     public void ponerAdicionalesEnCero(){
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
-    }   
+    }
+    
+    
+    boolean esMenorElAtaque(Monstruo monstruo){
+        return this.getPuntosAtaque() > monstruo.getPuntosAtaque();
+    }          
+    
+    
 }

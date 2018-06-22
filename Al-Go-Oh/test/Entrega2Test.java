@@ -89,7 +89,28 @@ public class Entrega2Test {
     @Test
     public void test04SegundaEntrega(){
         /*Colocar 2 monstruos en el campo enemigo, con diferente ataque. Activo la carta mágica Fisura, y verificar que el de menor ataque es destruido.*/
+        Juego.reiniciarJuego();
 
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
+        
+        Monstruo monstruo1 = new Monstruo("test1",200,100,Posicion.ATAQUE,4);
+        Monstruo monstruo2 = new Monstruo("test2",300,200,Posicion.ATAQUE,4);
+        Monstruo monstruo3 = new Monstruo("test2",100,200,Posicion.ATAQUE,4);
+
+        jugadorOponente.colocarEnAtaque(monstruo1);        
+        jugadorOponente.colocarEnAtaque(monstruo2);
+        jugadorOponente.colocarEnAtaque(monstruo3); 
+
+       Fisura fisura = new Fisura (Colocacion.BOCAARRIBA);
+
+       jugadorActivo.colocarCarta(fisura);
+
+       assertEquals(1, jugadorOponente.cantidadCartasCementerio());
+       
+       //Busca el monstruo3 en el cementerio el cual deberia estar por ser el monstruo con menor Ataque
+        assertEquals(monstruo3, jugadorOponente.obtenerCampo().buscarCartaEnCementerio(monstruo3));
+        
     }
     
     @Test
