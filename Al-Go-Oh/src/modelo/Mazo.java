@@ -1,18 +1,29 @@
 package modelo;
 
+import modelo.CartasMagicas.AgujeroNegro;
+
+import java.util.Stack;
+
+import static java.util.Collections.shuffle;
+
 public class Mazo {
 
-    private static final Cartas cartas = new Cartas();
-    private int cantidadCartas = 40;
-    public Mazo(){ }
+    private Stack<Carta> cartas;
+
+    public Mazo(){
+
+        
+        cartas = FabricaDeCartas.fabricarMazo();
+
+        shuffle(this.cartas);
+
+    }
 
     public Carta extaerCarta() {
-        if(cantidadCartas <= 0) throw new MazoVacioException();
-        cantidadCartas--;
-        return cartas.obtenerUnaCartaAleatoria();
+        return cartas.pop();
     }
 
     public int getTamanio() {
-        return cantidadCartas;
+        return cartas.size();
     }
 }
