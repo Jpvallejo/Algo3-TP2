@@ -18,7 +18,7 @@ public class JugadorTest {
 
         jugador.colocarCarta(agujeroNegro);
 
-        assertEquals(1,jugador.obtenerCampo().cantidadCartasZonaMagicas());
+        assertEquals(1,jugador.cantidadCartasZonaMagicas());
 
     }
 
@@ -29,7 +29,7 @@ public class JugadorTest {
 
         Monstruo monstruo = new MonstruoGenerico("test",0,0,4);
         jugador.invocar(monstruo);
-        assertEquals(1,jugador.obtenerCampo().cantidadCartasZonaMonstruos());
+        assertEquals(1,jugador.cantidadCartasZonaMonstruos());
 
     }
 

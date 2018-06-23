@@ -27,7 +27,7 @@ public class PanelHechizos extends HBox {
             this.getChildren().add(botonHechizo);
 
         }
-        for (int i = 0; i < jugador.obtenerCampo().getZonaMonstruo().cantidadCartas(); i++) {
+        for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
             Casillero casillero = Casillero.UNO;
             switch (i) {
                 case 0:
@@ -45,7 +45,7 @@ public class PanelHechizos extends HBox {
                     casillero = Casillero.CINCO;
                     break;
             }
-            Carta cartaCasillero = jugador.obtenerCampo().getZonaHechizos().obtenerCartaPosicion(casillero);
+            Carta cartaCasillero = jugador.getZonaHechizos().obtenerCartaPosicion(casillero);
             if(cartaCasillero instanceof CartaTrampa) {
                 hechizos.get(i).setHechizo((CartaTrampa)cartaCasillero);
             }

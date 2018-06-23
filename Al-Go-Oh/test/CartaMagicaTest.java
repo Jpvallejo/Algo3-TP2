@@ -20,7 +20,7 @@ public class CartaMagicaTest {
         Jugador jugador = new Jugador();
         jugador.colocarCarta(agujeroNegro);
 
-        assertTrue(jugador.obtenerCampo().getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
+        assertTrue(jugador.getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
 
     }
     
@@ -37,8 +37,8 @@ public class CartaMagicaTest {
         jugador.invocar(monstruo);
         jugador.activarCarta(agujeroNegro);
 
-        assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMonstruos());
-        assertEquals(0,jugador.obtenerCampo().cantidadCartasZonaMagicas());
+        assertEquals(0,jugador.cantidadCartasZonaMonstruos());
+        assertEquals(0,jugador.cantidadCartasZonaMagicas());
 
     }
 
@@ -59,9 +59,9 @@ public class CartaMagicaTest {
         
         jugadorActivo.activarCarta(agujeroNegro);
 
-        assertEquals(0,jugadorActivo.obtenerCampo().cantidadCartasZonaMonstruos());
-        assertEquals(0,jugadorOponente.obtenerCampo().cantidadCartasZonaMonstruos());
-        assertEquals(0,jugadorActivo.obtenerCampo().cantidadCartasZonaMagicas());
+        assertEquals(0,jugadorActivo.cantidadCartasZonaMonstruos());
+        assertEquals(0,jugadorOponente.cantidadCartasZonaMonstruos());
+        assertEquals(0,jugadorActivo.cantidadCartasZonaMagicas());
 
     }
 
@@ -76,8 +76,8 @@ public class CartaMagicaTest {
         Monstruo monstruoDefensa = new MonstruoGenerico("test2",100,200,4);
         defensor.invocar(monstruoDefensa);
         
-        atacante.obtenerCampo().aplicarCartaCampo(200,true);//Aca aplicaria la carta de campo
-        defensor.obtenerCampo().aplicarCartaCampo(300,false);
+        atacante.aplicarCartaCampo(200,true);//Aca aplicaria la carta de campo
+        defensor.aplicarCartaCampo(300,false);
         
         //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
          monstruoAtaque.atacarMonstruo(monstruoDefensa);
@@ -91,7 +91,7 @@ public class CartaMagicaTest {
         Monstruo monstruoDefensa01 = new MonstruoGenerico("test",100,100,4);
         defensor.colocar(monstruoDefensa01);
 
-        defensor.obtenerCampo().aplicarCartaCampo(300,false);
+        defensor.aplicarCartaCampo(300,false);
         
         //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
          monstruoAtaque.atacarMonstruo(monstruoDefensa01);
@@ -170,7 +170,7 @@ public class CartaMagicaTest {
         assertEquals(1, jugadorOponente.cantidadCartasCementerio());
 
         //Busca el monstruo3 en el cementerio el cual deberia estar por ser el monstruo con menor Ataque
-        assertEquals(monstruo3, jugadorOponente.obtenerCampo().buscarCartaEnCementerio(monstruo3));
+        assertEquals(monstruo3, jugadorOponente.buscarCartaEnCementerio(monstruo3));
 
     }
     

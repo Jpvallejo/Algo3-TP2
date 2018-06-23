@@ -18,7 +18,7 @@ public class Fisura extends CartaMagica {
         Juego juego = Juego.getJuego();
         Jugador jugadorOponente = juego.getJugadorOponente();
         
-        jugadorOponente.obtenerCampo().destruirMonstruoConMenorAtaque();
+        jugadorOponente.destruirMonstruoConMenorAtaque();
        
         this.destruir();
     }

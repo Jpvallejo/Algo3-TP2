@@ -11,8 +11,8 @@ public class AgujeroNegro extends CartaMagica  {
         Jugador jugadorOponente = juego.getJugadorOponente();
         Jugador jugadorActivo = juego.getJugadorActivo();
 
-        jugadorActivo.obtenerCampo().destruirZonaMonstruos();
-        jugadorOponente.obtenerCampo().destruirZonaMonstruos();
+        jugadorActivo.destruirZonaMonstruos();
+        jugadorOponente.destruirZonaMonstruos();
         
         //jugadorActivo.obtenerCampo().destruirCarta(this);
         this.destruir();

@@ -35,7 +35,7 @@ public abstract class Carta{
     }
 
     public void destruir(){
-        jugador.obtenerCampo().destruirCarta(this);
+        jugador.destruirCarta(this);
     }
 
     @Override

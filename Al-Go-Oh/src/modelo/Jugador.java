@@ -1,23 +1,33 @@
 package modelo;
 
+import modelo.CartasMagicas.CartaCampoSinEfecto;
+
 public class Jugador {
-    private Tablero tablero;
+    //private Tablero tablero;
     private int puntosDeVida;
     private Mano mano;
     private Mazo mazo;
 
+    private ZonaHechizos zonaHechizos;
+    private ZonaMonstruo zonaMonstruo;
+    private Cementerio cementerio;
+    private CartaCampo cartaCampo;
 
 
     public Jugador(){
-        tablero = new Tablero();
         puntosDeVida = 8000;
         this.mazo  = new Mazo();
         this.mano = new Mano();
-    }
 
+        this.zonaHechizos = new ZonaHechizos();
+        this.zonaMonstruo = new ZonaMonstruo();
+        this.cementerio = new Cementerio();
+        this.cartaCampo = new CartaCampoSinEfecto();
+    }
+/*
     public Tablero obtenerCampo(){
         return this.tablero;
-    }
+    }*/
 
     public int getPuntosDeVida() {
         return puntosDeVida;
@@ -32,108 +42,116 @@ public class Jugador {
     }
 
     public int cantidadCartasCementerio() {
-
-        return tablero.cantidadCartasCementerio();
+        return cementerio.cantidadCartas();
     }
 
     public void invocar(Monstruo monstruo) {
         monstruo.requiereSacrificios();
 
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void invocar(Monstruo monstruo, Monstruo sacrificio1) {
         monstruo.requiereSacrificios(sacrificio1);
 
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2) {
         monstruo.requiereSacrificios(sacrificio1,sacrificio2);
 
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3) {
         monstruo.requiereSacrificios(sacrificio1,sacrificio2,sacrificio3);
 
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo){
         monstruo.requiereSacrificios();
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo, Monstruo sacrificio1){
         monstruo.requiereSacrificios(sacrificio1);
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2){
         monstruo.requiereSacrificios(sacrificio1,sacrificio2);
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3){
         monstruo.requiereSacrificios(sacrificio1,sacrificio2,sacrificio3);
-        Tablero campo = this.obtenerCampo();
+        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
-    }
-
-    public void colocarCarta(CartaMagica carta){
-        carta.setEstado(new EstadoBocaAbajo());
-        carta.asociarJugador(this);
-        this.obtenerCampo().tirarCarta(carta);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void activarCarta(CartaMagica carta){
         carta.setEstado(new EstadoBocaArriba());
         carta.asociarJugador(this);
-        this.obtenerCampo().activarCarta(carta);
+        this.zonaHechizos.colocarCarta(carta);
+        carta.activarEfecto();
     }
 
+    public void colocarCarta(CartaMagica carta){
+        carta.setEstado(new EstadoBocaAbajo());
+        carta.asociarJugador(this);
+        this.zonaHechizos.colocarCarta(carta);
+    }
 
     public void colocarCarta(CartaTrampa carta) {
         carta.setEstado(new EstadoBocaAbajo());
         carta.asociarJugador(this);
-        this.obtenerCampo().tirarCarta(carta);
+        //this.obtenerCampo().tirarCarta(carta);
+        this.zonaHechizos.colocarCarta(carta);
     }
     
     public void colocarCarta(CartaCampo carta) {
-        this.obtenerCampo().tirarCarta(carta);
+        this.cartaCampo = carta;
     }
         
     
     public void declararAtaqueDePosicionAPosicion(Jugador defensor, Casillero casilleroAtacante, Casillero casilleroDefensor) {
         
-        Monstruo monstruoAtacante = tablero.obtenerMonstruoEnCasillero(casilleroAtacante);
+        Monstruo monstruoAtacante = this.obtenerMonstruoEnCasillero(casilleroAtacante);
         
         if (casilleroDefensor != Casillero.PUNTOSVIDA) {
-            Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
+            Monstruo monstruoDefensor = defensor.obtenerMonstruoEnCasillero(casilleroDefensor);
 
             monstruoAtacante.atacarMonstruo(monstruoDefensor);
 
@@ -142,6 +160,10 @@ public class Jugador {
             monstruoAtacante.atacar(defensor);
         }
 
+    }
+
+    public Monstruo obtenerMonstruoEnCasillero(Casillero casillero) {
+        return (Monstruo) zonaMonstruo.obtenerCartaPosicion(casillero);
     }
 
     public Mano getMano() {
@@ -154,7 +176,8 @@ public class Jugador {
     }
 
     public void activarCartaCampo() {
-        this.obtenerCampo().activarCartaCampo();
+        //this.obtenerCampo().activarCartaCampo();
+        this.cartaCampo.activarEfecto();
     }
        
 
@@ -168,7 +191,52 @@ public class Jugador {
     }
 
     public void activarCartaTrampa(Monstruo atacante, Monstruo defensor) {
-        tablero.activarEfectoCartaTrampa(atacante,defensor);
+        //tablero.activarEfectoCartaTrampa(atacante,defensor);
+        zonaHechizos.activarEfectoPrimerCartaTrampa(atacante,defensor);
+    }
+
+    public void destruirCarta(Carta carta) {
+        this.zonaHechizos.eliminar(carta);
+        this.cementerio.enviarCarta(carta);
+    }
+
+    public void matarMonstruo(Monstruo monstruo) {
+        this.zonaMonstruo.eliminar(monstruo);
+        this.cementerio.enviarCarta(monstruo);
+    }
+
+    public void destruirZonaMonstruos() {
+        zonaMonstruo.destruirZona();
+    }
+
+    public ZonaMonstruo getZonaMonstruo(){
+        return this.zonaMonstruo;
+    }
+
+    public ZonaHechizos getZonaHechizos() {
+        return this.zonaHechizos;
+    }
+
+
+    public void destruirMonstruoConMenorAtaque() {
+        Monstruo monstruo =  this.getZonaMonstruo().destruirMonstruoConMenorAtaque();
+        this.matarMonstruo(monstruo);
+    }
+
+    public void aplicarCartaCampo(int adicional, boolean ataque) {
+        this.zonaMonstruo.aplicarCartaCampo(adicional, ataque);
+    }
+
+    public int cantidadCartasZonaMonstruos() {
+        return this.zonaMonstruo.cantidadCartas();
+    }
+
+    public int cantidadCartasZonaMagicas() {
+        return this.zonaHechizos.cantidadCartas();
+    }
+
+    public Carta buscarCartaEnCementerio(Carta carta) {
+        return this.cementerio.buscarCarta(carta);
     }
 
     public boolean contieneExodia(){

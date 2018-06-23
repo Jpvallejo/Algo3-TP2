@@ -27,7 +27,7 @@ public abstract class Monstruo extends Carta {
 
     @Override
     public void destruir(){
-        jugador.obtenerCampo().matarMonstruo(this);
+        jugador.matarMonstruo(this);
     }
 
 

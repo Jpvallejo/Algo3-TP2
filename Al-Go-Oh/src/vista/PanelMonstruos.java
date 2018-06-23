@@ -22,7 +22,7 @@ public class PanelMonstruos extends HBox {
             this.getChildren().add(monsterbutton);
 
         }
-        for (int i = 0; i < jugador.obtenerCampo().getZonaMonstruo().cantidadCartas(); i++) {
+        for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
             Casillero casillero = Casillero.UNO;
             switch (i) {
                 case 0:
@@ -40,7 +40,7 @@ public class PanelMonstruos extends HBox {
                     casillero = Casillero.CINCO;
                     break;
             }
-            monstruos.get(i).setMonstruo((Monstruo) jugador.obtenerCampo().getZonaMonstruo().obtenerCartaPosicion(casillero));
+            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(casillero));
             monstruos.get(i).setVisible(true);
             ImageView newImage;
             if(monstruos.get(i).getMonstruo().getEstado() instanceof EstadoAtaque){

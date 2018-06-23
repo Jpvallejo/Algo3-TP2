@@ -16,7 +16,7 @@ import org.junit.Test;
  * @author mramundo
  */
 public class TableroTest {
-
+/*
     @Test
     public void testCrearZonaGeneraZonaConCasilleroDisponible(){
           
@@ -61,7 +61,7 @@ public class TableroTest {
     }
     
     
-    
+*/
 
     
 }
