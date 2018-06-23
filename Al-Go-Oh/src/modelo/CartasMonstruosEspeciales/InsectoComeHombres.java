@@ -1,36 +1,26 @@
 package modelo.CartasMonstruosEspeciales;
 
 import modelo.*;
+import modelo.Excepciones.DetenerAtaqueException;
 
 public class InsectoComeHombres extends Monstruo{
 
 
-    public InsectoComeHombres(Posicion posicion){
+    public InsectoComeHombres(){
         super();
         this.puntosAtaque = 450;
         this.puntosDefensa = 600;
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
-        this.posicion = posicion;
         this.estrellas = 2;
     }
 
-
-    public boolean noDefiendeEnDefensa(Monstruo monstruoAtacante){
-        if ( estado == Colocacion.BOCAABAJO ) {
-            return false;
-        }
-        else {
-            int puntosDefensaDefensor = this.getPuntosDefensa();
-            int puntosAtaqueAtacante = monstruoAtacante.getPuntosAtaque();
-            return (puntosAtaqueAtacante > puntosDefensaDefensor);
-        }
-    }
-
     @Override
-    public boolean activarEfectoEnAtaque(Ataque ataque) {
-        ataque.getMonstruoAtacante().destruir();
-        return false;
+    public void activarEfectoDeVolteo(Monstruo atacante) {
+        atacante.comparararConDefensa(this);
+        atacante.destruir();
+        throw new DetenerAtaqueException();
     }
+
 
 }

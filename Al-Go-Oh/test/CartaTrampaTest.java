@@ -1,10 +1,8 @@
 import modelo.*;
 import modelo.CartasMagicas.CilindroMagico;
 import modelo.CartasMagicas.Reinforcement;
-import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
+import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static junit.framework.TestCase.*;
 import static org.junit.Assert.assertEquals;
@@ -12,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class CartaTrampaTest {
 
     @Test
-    public void colocarCartaTrampaColocaLaCartaBocaAbajo(){
+    public void testColocarCartaTrampaColocaLaCartaBocaAbajo(){
         CartaTrampa carta = new CilindroMagico();
         Jugador jugador = new Jugador();
         jugador.colocarCarta(carta);
@@ -27,15 +25,16 @@ public class CartaTrampaTest {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo("test",2000,1000, Posicion.ATAQUE,4);
-        Monstruo monstruoDefensor = new Monstruo("test",1000,1000, Posicion.DEFENSA,4);
-        atacante.colocarEnAtaque(monstruoAtacante);
-        defensor.colocarEnDefensa(monstruoDefensor);
+        Monstruo monstruoAtacante = new MonstruoGenerico("test",2000,1000, 4);
+        Monstruo monstruoDefensor = new MonstruoGenerico("test",1000,1000, 4);
+        atacante.invocar(monstruoAtacante);
+        defensor.colocar(monstruoDefensor);
 
         CartaTrampa carta = new CilindroMagico();
         defensor.colocarCarta(carta);
 
-        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+        //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+        monstruoAtacante.atacarMonstruo(monstruoDefensor);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
         assertEquals(1, defensor.cantidadCartasCementerio());
@@ -50,14 +49,15 @@ public class CartaTrampaTest {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo("test",2000,1000, Posicion.ATAQUE,4);
+        Monstruo monstruoAtacante = new MonstruoGenerico("test",2000,1000, 4);
 
-        atacante.colocarEnAtaque(monstruoAtacante);
+        atacante.invocar(monstruoAtacante);
 
         CartaTrampa carta = new CilindroMagico();
         defensor.colocarCarta(carta);
 
-        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.PUNTOSVIDA);
+        //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.PUNTOSVIDA);
+        monstruoAtacante.atacar(defensor);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
         assertEquals(1, defensor.cantidadCartasCementerio());
@@ -72,10 +72,10 @@ public class CartaTrampaTest {
 
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new Monstruo("test",1500,1000, Posicion.ATAQUE,4);
-        Monstruo monstruoDefensor = new Monstruo("test",1200,1000, Posicion.ATAQUE,4);
-        atacante.colocarEnAtaque(monstruoAtacante);
-        defensor.colocarEnAtaque(monstruoDefensor);
+        Monstruo monstruoAtacante = new MonstruoGenerico("test",1500,1000, 4);
+        Monstruo monstruoDefensor = new MonstruoGenerico("test",1200,1000, 4);
+        atacante.invocar(monstruoAtacante);
+        defensor.invocar(monstruoDefensor);
 
 
         CartaTrampa carta = new Reinforcement();

@@ -1,14 +1,8 @@
 package vista;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import modelo.Casillero;
-import modelo.Jugador;
-import modelo.Monstruo;
-import modelo.Posicion;
-import vista.Botones.BotonCarta;
+import modelo.*;
 import vista.Botones.BotonMonstruo;
 
 import java.util.ArrayList;
@@ -49,7 +43,7 @@ public class PanelMonstruos extends HBox {
             monstruos.get(i).setMonstruo((Monstruo) jugador.obtenerCampo().getZonaMonstruo().obtenerCartaPosicion(casillero));
             monstruos.get(i).setVisible(true);
             ImageView newImage;
-            if(monstruos.get(i).getMonstruo().getPosicion()== Posicion.ATAQUE){
+            if(monstruos.get(i).getMonstruo().getEstado() instanceof EstadoAtaque){
                 newImage = new ImageView();
             }else{
                 newImage = new ImageView();

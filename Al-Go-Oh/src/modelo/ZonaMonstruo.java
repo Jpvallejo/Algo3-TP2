@@ -6,6 +6,8 @@
 package modelo;
 
 
+import modelo.Monstruos.MonstruoGenerico;
+
 import java.util.Iterator;
 import java.util.Set;
 
@@ -74,13 +76,13 @@ public class ZonaMonstruo extends Zona{
     }
 
     
-    Monstruo destruirMonstruoConMenorAtaque() {
-        Monstruo monstruoConMenorAtaque = new Monstruo(8000,0);
+    public Monstruo destruirMonstruoConMenorAtaque() {
+        Monstruo monstruoConMenorAtaque = new MonstruoGenerico("mayorAtaque",8000,0,0);
         for (Casillero casillero: Casillero.values()) {
             if (casilleros.containsKey(casillero)) {
                 Monstruo monstruo = (Monstruo) casilleros.get(casillero); //Obtengo la carta monstruo
                 if(monstruoConMenorAtaque.esMenorElAtaque(monstruo)){ //Comparo los ataques de los dos Monstruos
-                    monstruoConMenorAtaque = monstruo;  
+                    monstruoConMenorAtaque = monstruo;
                 } 
             }
         }

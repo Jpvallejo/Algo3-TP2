@@ -1,133 +1,87 @@
 package modelo;
 
-public class Monstruo extends Carta {
+import modelo.Excepciones.DetenerAtaqueException;
+
+public abstract class Monstruo extends Carta {
 
     protected int estrellas;
 
     protected int puntosAtaque;
-
     protected int puntosDefensa;
     protected int adicionalesDeAtaque ;
     protected int adicionalesDeDefensa;
 
     protected int nivel;
 
-    protected Posicion posicion;
-
-    public Posicion getPosicion(){
-        return this.posicion;
-    }
 
     public Monstruo(){
         super();
-    }
-
-    public Monstruo(int puntosAtaque, int puntosDefensa){
-        super();
-        this.puntosAtaque = puntosAtaque;
-        this.puntosDefensa = puntosDefensa;
-        this.posicion = Posicion.DEFENSA;
-    }
-
-    public Monstruo(String nombre, int puntosAtaque, int puntosDefensa, Posicion posicion, int estrellas){
-        super();
-        this.nombre = nombre;
-        this.puntosAtaque = puntosAtaque;
-        this.puntosDefensa = puntosDefensa;
+        this.puntosAtaque = 0;
+        this.puntosDefensa = 0;
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
-        this.posicion = posicion;
-        this.estrellas = estrellas;
+        this.estado = new EstadoSinEstado();
+        this.estrellas = 0;
     }
 
     @Override
     public void destruir(){
-        tableroCarta.matarMonstruo(this);
+        jugador.obtenerCampo().matarMonstruo(this);
     }
 
 
-    public void atacarMonstruo(Jugador atacante,Jugador defensor, Monstruo objetivo)
-    {
-        Ataque ataque = new Ataque(atacante,defensor,this,objetivo);
-        ataque.realizarAtaque();
-/*
-        // Si no se activa el efecto de carta trampa o el efecto del objetivo
-        if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(atacante, defensor, this) && !objetivo.activarEfectoEnAtaque(atacante, defensor, this) ) {
-
-            if (objetivo.getPosicion() == Posicion.ATAQUE) {
-                if (objetivo.noDefiendeEnAtaque(this)) {
-                    //defensor.obtenerCampo().matarMonstruo(objetivo);
-                    objetivo.destruir();
-                    defensor.restarPuntosDeVida(this.getPuntosAtaque() - objetivo.getPuntosAtaque());
-                }
-                if (this.noDefiendeEnAtaque(objetivo)) {
-                    //atacante.obtenerCampo().matarMonstruo(this);
-                    this.destruir();
-                    atacante.restarPuntosDeVida(objetivo.getPuntosAtaque() - this.getPuntosAtaque());
-                }
-            } else {
-                if (objetivo.noDefiendeEnDefensa(this)) {
-                    //defensor.obtenerCampo().matarMonstruo(objetivo);
-                    objetivo.destruir();
-                }
-                if (objetivo.daniaEnDefensa(this)) {
-                    atacante.restarPuntosDeVida(objetivo.getPuntosDefensa() - this.getPuntosAtaque());
-                }
-
-
-            }
+    public void atacarMonstruo(Monstruo defensor){
+        try {
+            defensor.recibirDanio(this);
+        }
+        catch (DetenerAtaqueException e) {
 
         }
-
-        objetivo.setEstado(Colocacion.BOCAARRIBA);
-*/
     }
 
-
-    public boolean noDefiendeEnAtaque(Monstruo MonstruoAtacante) {
-        int puntosAtaqueDefensor = this.getPuntosAtaque();
-        int puntosAtaqueAtacante = MonstruoAtacante.getPuntosAtaque();
-        return (puntosAtaqueAtacante >= puntosAtaqueDefensor);
-    }
-
-
-    public boolean noDefiendeEnDefensa(Monstruo monstruoAtacante){
-        int puntosDefensaDefensor = this.getPuntosDefensa();
-        int puntosAtaqueAtacante = monstruoAtacante.getPuntosAtaque();
-        return (puntosAtaqueAtacante > puntosDefensaDefensor);
-    }
-
-    public boolean daniaEnDefensa(Monstruo monstruoAtacante){
-        int puntosDefensaDefensor = this.getPuntosDefensa();
-        int puntosAtaqueAtacante = monstruoAtacante.getPuntosAtaque();
-        return (puntosAtaqueAtacante < puntosDefensaDefensor);
-    }
-
-
-
-    public void atacarPuntosDeVida(Jugador atacante, Jugador defensor){
-    /*    if ( !defensor.obtenerCampo().activarEfectoCartaTrampa(ataque) ) {
-            defensor.restarPuntosDeVida(this.puntosAtaque);
+    // Metodos que utiliza el atacante el defensor
+    public void atacar(Jugador defensor) {
+        try {
+            defensor.activarCartaTrampa(this, null);
+            defensor.restarPuntosDeVida(this.getPuntosAtaque());
         }
-        */
+        catch(DetenerAtaqueException e){
+
+        }
     }
 
-    public int getPuntosAtaque() {
-        return this.puntosAtaque + this.adicionalesDeAtaque;
-    }
-    protected void setPuntosAtaque(int _puntosAtaque){
-        this.puntosAtaque = _puntosAtaque;
-    }
-    protected int getPuntosDefensa(){
-        return this.puntosDefensa + this.adicionalesDeDefensa;
-    }
-    protected void setPuntosDefensa(int _puntosDefensa){
-        this.puntosDefensa = _puntosDefensa;
+    public void comparararConDefensa(Monstruo defensor) {
+        if(this.getPuntosAtaque() > defensor.getPuntosDefensa()){
+            defensor.destruir();
+        }
+        else{
+            this.daniarJugador(defensor.getPuntosDefensa() - this.getPuntosAtaque());
+        }
     }
 
-    protected int getEstrellas(){
-        return this.estrellas;
+    public void comparararConAtaque(Monstruo defensor) {
+        if(this.getPuntosAtaque() >= defensor.getPuntosAtaque()){
+            defensor.destruir();
+            defensor.daniarJugador(this.getPuntosAtaque() - defensor.getPuntosAtaque());
+        }
+
+        if(this.getPuntosAtaque() <= defensor.getPuntosAtaque()){
+            this.destruir();
+            this.daniarJugador(defensor.getPuntosAtaque() - this.getPuntosAtaque());
+        }
     }
+
+    // Metodo que utiliza el defensor
+    private void recibirDanio(Monstruo atacante) {
+        jugador.activarCartaTrampa(atacante,this);
+        estado.recibirDanio(atacante, this);
+
+    }
+
+    public void daniarJugador(int puntos){
+        jugador.restarPuntosDeVida(puntos);
+    }
+
 
     public boolean requiereSacrificio(){
         return this.getEstrellas() > 4;
@@ -144,30 +98,48 @@ public class Monstruo extends Carta {
         return 0;
     }
 
-    public void setPosicion(Posicion posicion) {
-        this.posicion = posicion;
-    }
-
-
 
     public void sumarAdicionalAlataque(int adicional) {
         this.adicionalesDeAtaque += adicional;
-        
+
     }
 
     public void sumarAdicionalAlaDefensa(int adicional) {
-        this.adicionalesDeDefensa += adicional;   
+        this.adicionalesDeDefensa += adicional;
     }
 
     public void ponerAdicionalesEnCero(){
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
     }
-    
-    
+
+
     boolean esMenorElAtaque(Monstruo monstruo){
         return this.getPuntosAtaque() > monstruo.getPuntosAtaque();
-    }          
-    
-    
+    }
+
+    public void activarEfectoDeVolteo(Monstruo atacante) {}
+
+
+
+    /* ***** Getter y Setters ****** */
+    public int getPuntosAtaque() {
+        return this.puntosAtaque + this.adicionalesDeAtaque;
+    }
+    protected void setPuntosAtaque(int _puntosAtaque){
+        this.puntosAtaque = _puntosAtaque;
+    }
+
+    protected int getPuntosDefensa(){
+        return this.puntosDefensa + this.adicionalesDeDefensa;
+    }
+    protected void setPuntosDefensa(int _puntosDefensa){
+        this.puntosDefensa = _puntosDefensa;
+    }
+
+    protected int getEstrellas(){
+        return this.estrellas;
+    }
+
+
 }

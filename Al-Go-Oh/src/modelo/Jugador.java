@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Monstruos.AgujaAsesina;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -8,6 +10,8 @@ public class Jugador {
     private int puntosDeVida;
     private Mano mano;
     private Mazo mazo;
+
+
 
     public Jugador(){
         tablero = new Tablero();
@@ -36,7 +40,7 @@ public class Jugador {
 
         return tablero.cantidadCartasCementerio();
     }
-
+/*
     public void colocarEnAtaque(Monstruo monstruo){
         Tablero  campo = this.obtenerCampo();
         monstruo.asociarTablero(campo);
@@ -48,24 +52,41 @@ public class Jugador {
         monstruo.setEstado(Colocacion.BOCAARRIBA);
         campo.tirarCarta(monstruo);
     }
-
+*/
     private void sacrificarMonstruos(int cantidad) {
         this.tablero.sacrificarMonstruos(cantidad);
     }
 
-    public void colocarEnDefensa(Monstruo monstruo){
-        Tablero  campo = this.obtenerCampo();
-        monstruo.setPosicion(Posicion.DEFENSA);
-        monstruo.setEstado(Colocacion.BOCAABAJO);
+
+    public void colocar(Monstruo monstruo){
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        if(monstruo.requiereSacrificio())
+        {
+            this.sacrificarMonstruos(monstruo.cantidadASacrificar());
+        }
+        monstruo.setEstado(new EstadoDefensaBocaAbajo());
+        monstruo.asociarJugador(this);
+        //monstruo.asociarTablero(campo);
         campo.tirarCarta(monstruo);
     }
 
     public void colocarCarta(CartaMagica carta){
+        carta.setEstado(new EstadoBocaAbajo());
+        carta.asociarJugador(this);
         this.obtenerCampo().tirarCarta(carta);
+    }
+
+    public void activarCarta(CartaMagica carta){
+        carta.setEstado(new EstadoBocaArriba());
+        carta.asociarJugador(this);
+        this.obtenerCampo().activarCarta(carta);
     }
 
 
     public void colocarCarta(CartaTrampa carta) {
+        carta.setEstado(new EstadoBocaAbajo());
+        carta.asociarJugador(this);
         this.obtenerCampo().tirarCarta(carta);
     }
     
@@ -80,16 +101,12 @@ public class Jugador {
         
         if (casilleroDefensor != Casillero.PUNTOSVIDA) {
             Monstruo monstruoDefensor = defensor.obtenerCampo().obtenerMonstruoEnCasillero(casilleroDefensor);
-           
-            Ataque atacarMonstruo = new Ataque(this,defensor, monstruoAtacante, monstruoDefensor);
-            atacarMonstruo.realizarAtaque();
 
-            //monstruoAtacante.atacarMonstruo(this, defensor, monstruoDefensor);
+            monstruoAtacante.atacarMonstruo(monstruoDefensor);
+
         }
         else{
-            Ataque atacarPuntosVida = new Ataque(this,defensor, monstruoAtacante);
-            atacarPuntosVida.atacarPuntosDeVida();
-            //monstruoAtacante.atacarPuntosDeVida(this,defensor);
+            monstruoAtacante.atacar(defensor);
         }
 
     }
@@ -115,5 +132,20 @@ public class Jugador {
 
     private Mazo getMazo() {
         return this.mazo;
+    }
+
+    public void invocar(Monstruo monstruo) {
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        if(monstruo.requiereSacrificio())
+        {
+            this.sacrificarMonstruos(monstruo.cantidadASacrificar());
+        }
+        monstruo.asociarJugador(this);
+        campo.tirarCarta(monstruo);
+    }
+
+    public void activarCartaTrampa(Monstruo atacante, Monstruo defensor) {
+        tablero.activarEfectoCartaTrampa(atacante,defensor);
     }
 }

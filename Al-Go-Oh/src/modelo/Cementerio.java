@@ -32,4 +32,5 @@ public class Cementerio {
     public int cantidadCartas() {
         return this.cartas.size();
     }
+
 }

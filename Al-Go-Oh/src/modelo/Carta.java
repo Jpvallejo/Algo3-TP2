@@ -1,48 +1,42 @@
 package modelo;
 
 public abstract class Carta{
-    protected Colocacion estado;
+    protected Estado estado;
     protected String tipo;
     protected String nombre;
-    protected Tablero tableroCarta;
+    protected Jugador jugador;
 
     public Carta(){
-        estado = Colocacion.BOCAARRIBA;
+        estado = new EstadoSinEstado();
     }
 
     public void activarEfecto(){}
 
-    public boolean activarEfectoEnAtaque(Ataque ataque) {
-        return false;
-    }
+    public void activarEfectoEnAtaque(Monstruo atacante, Monstruo defensor) {}
 
     public boolean estaBocaAbajo(){
-        return estado == Colocacion.BOCAABAJO;
+        return estado instanceof EstadoBocaAbajo;
     }
 
     public String getNombre(){
         return this.nombre;
     };
 
-    public Colocacion getEstado(){
+    public Estado getEstado(){
         return estado;
     };
 
-    public void setEstado(Colocacion colocacion) {
-        estado = colocacion;
+    public void setEstado(Estado _estado) {
+        estado = _estado;
     }
 
-    public void asociarTablero(Tablero tablero) {
-        tableroCarta = tablero;
+    public void asociarJugador(Jugador _jugador) {
+        jugador = _jugador;
     }
-
-    public void asociarJugador(Jugador jugador) {
-        tableroCarta = jugador.obtenerCampo();
-    }
-
-
 
     public void destruir(){
-        tableroCarta.destruirCarta(this);
+        jugador.obtenerCampo().destruirCarta(this);
     }
+
+
 }

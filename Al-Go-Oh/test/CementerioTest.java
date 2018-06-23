@@ -1,4 +1,5 @@
 import modelo.*;
+import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -25,7 +26,7 @@ public class CementerioTest {
     @Test
     public void testCementerioNoEstaVacioSiSeDestruyeUnaCarta() {
 
-        Carta carta = new Monstruo(0,0);
+        Carta carta = new MonstruoGenerico("test",0,0,0);
         Cementerio cementerio = new Cementerio();
 
         cementerio.enviarCarta(carta);
@@ -37,7 +38,7 @@ public class CementerioTest {
     @Test
     public void testEnviarUnaCartaAlCementerioAumentaCantidadDeCartasDelCementerioEn1() {
 
-        Carta carta = new Monstruo(0,0);
+        Carta carta = new MonstruoGenerico("test",0,0,0);
 
         Cementerio cementerio = new Cementerio();
 

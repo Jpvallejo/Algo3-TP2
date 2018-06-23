@@ -1,19 +1,15 @@
 package modelo.CartasMagicas;
 
 import modelo.*;
+import modelo.Excepciones.DetenerAtaqueException;
 
 public class CilindroMagico extends CartaTrampa {
 
     @Override
-    public void activarEfecto() {
-
-    }
-
-    @Override
-    public boolean activarEfectoEnAtaque(Ataque ataque) {
-        ataque.getJugadorAtacante().restarPuntosDeVida(ataque.getMonstruoAtacante().getPuntosAtaque());
+    public void activarEfectoEnAtaque(Monstruo atacante, Monstruo defensor) {
+        atacante.daniarJugador(atacante.getPuntosAtaque());
         this.destruir();
-        return true;
+        throw new DetenerAtaqueException();
 
     }
 }

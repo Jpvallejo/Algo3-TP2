@@ -1,6 +1,8 @@
 import modelo.*;
 import modelo.CartasMagicas.*;
 import static org.junit.Assert.assertEquals;
+
+import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
 
 
@@ -10,7 +12,7 @@ public class JugadorTest {
     @Test
     public void testInvocarCartaMagicaAumentaEn1LaCantidadDeCartasEnZonaMagicas() {
 
-        AgujeroNegro agujeroNegro = new AgujeroNegro(Colocacion.BOCAABAJO);
+        AgujeroNegro agujeroNegro = new AgujeroNegro();
 
         Jugador jugador = new Jugador();
 
@@ -25,8 +27,8 @@ public class JugadorTest {
 
         Jugador jugador = new Jugador();
 
-        Monstruo monstruo = new Monstruo("test",0,0,Posicion.DEFENSA,4);
-        jugador.colocarEnAtaque(monstruo);
+        Monstruo monstruo = new MonstruoGenerico("test",0,0,4);
+        jugador.invocar(monstruo);
         assertEquals(1,jugador.obtenerCampo().cantidadCartasZonaMonstruos());
 
     }

@@ -27,31 +27,29 @@ public class Tablero {
     }
     
     public boolean tirarCarta(CartaTrampa carta){
-        carta.asociarTablero(this);
         return this.zonaHechizos.colocarCarta(carta);
     }
 
     public boolean tirarCarta(Monstruo carta) {
-        carta.asociarTablero(this);
         return this.zonaMonstruo.colocarCarta(carta);
     }
     
     public void tirarCarta(CartaCampo carta) {
-        carta.asociarTablero(this);
         this.cartaCampo = carta;
     }
-    
-    public boolean tirarCarta(CartaMagica carta) {
-        carta.asociarTablero(this);
-        if ( this.zonaHechizos.colocarCarta(carta) ){
-            if (carta.getEstado() == Colocacion.BOCAARRIBA ){
-                carta.activarEfecto();
-            }
-            return true;
-        }
-        return false;
 
+
+    public void tirarCarta(CartaMagica carta) {
+        this.zonaHechizos.colocarCarta(carta);
     }
+
+
+    public void activarCarta(CartaMagica carta) {
+        //carta.asociarTablero(this);
+        this.zonaHechizos.colocarCarta(carta);
+        carta.activarEfecto();
+    }
+
 
     public int cantidadCartasCementerio() {
         return cementerio.cantidadCartas();
@@ -116,9 +114,9 @@ public class Tablero {
     }
     
 
-    public boolean activarEfectoCartaTrampa(Ataque ataque) {
+    public void activarEfectoCartaTrampa(Monstruo atacante, Monstruo defensor) {
 
-        return zonaHechizos.activarEfectoPrimerCartaTrampa(ataque);
+        zonaHechizos.activarEfectoPrimerCartaTrampa(atacante,defensor);
     }
     
     
@@ -135,6 +133,6 @@ public class Tablero {
     public Carta buscarCartaEnCementerio (Carta carta){
         return this.cementerio.buscarCarta(carta);
     }
-    
-    
+
+
 }

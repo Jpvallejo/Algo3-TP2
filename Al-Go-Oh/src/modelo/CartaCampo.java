@@ -13,7 +13,6 @@ public abstract class CartaCampo extends Carta{
     
     public CartaCampo(){
         super();
-        this.estado = Colocacion.BOCAARRIBA;
     }
 
  

@@ -4,14 +4,6 @@ import modelo.*;
 
 public class AgujeroNegro extends CartaMagica  {
 
-    public AgujeroNegro() {
-        super();
-    }
-
-    public AgujeroNegro(Colocacion colocacion) {
-
-        this.estado =  colocacion;
-    }
 
     @Override
     public void activarEfecto(){

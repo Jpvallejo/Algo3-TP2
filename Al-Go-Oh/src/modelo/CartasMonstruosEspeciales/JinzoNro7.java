@@ -1,39 +1,39 @@
 package modelo.CartasMonstruosEspeciales;
 
-import modelo.Ataque;
+
+import modelo.Estado;
 import modelo.Jugador;
 import modelo.Monstruo;
-import modelo.Posicion;
 
 public class JinzoNro7 extends Monstruo {
 
-    public JinzoNro7(Posicion posicion){
+    public JinzoNro7(Estado estado){
         super();
         this.puntosAtaque = 500;
         this.puntosDefensa = 400;
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
-        this.posicion = posicion;
+        this.estado = estado;
         this.estrellas = 2;
     }
 
-/*
+
     @Override
-    public void atacarMonstruo(Jugador atacante, Jugador defensor, Monstruo objetivo)
+    public void atacarMonstruo(Monstruo defensor)
     {
         int puntosAtaque = this.getPuntosAtaque();
-        defensor.restarPuntosDeVida(puntosAtaque);
+        defensor.daniarJugador(puntosAtaque);
     }
 
-    */
+
 
     @Override
-    public boolean activarEfectoEnAtaque(Ataque ataque) {
-        if ( ataque.getMonstruoAtacante().equals(this) ){
+    public void activarEfectoEnAtaque(Monstruo atacante, Monstruo defensor) {
+      /*  if ( ataque.getMonstruoAtacante().equals(this) ){
             int puntosAtaque = this.getPuntosAtaque();
             ataque.getJugadorDefensor().restarPuntosDeVida(puntosAtaque);
-        }
-        return true;
+        }*/
+        //return true;
     }
 
 

@@ -16,12 +16,11 @@ public class ZonaHechizos extends Zona {
        super();
     }
 
-    public boolean activarEfectoPrimerCartaTrampa(Ataque ataque) {
+    public void activarEfectoPrimerCartaTrampa(Monstruo atacante, Monstruo defensor) {
         for (Casillero key :casilleros.keySet()){
             if (casilleros.get(key) instanceof CartaTrampa) {
-                return casilleros.get(key).activarEfectoEnAtaque(ataque);
+                casilleros.get(key).activarEfectoEnAtaque(atacante,defensor);
             }
         }
-         return false;
     }
 }

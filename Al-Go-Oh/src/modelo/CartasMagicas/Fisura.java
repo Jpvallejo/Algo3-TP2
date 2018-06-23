@@ -5,22 +5,14 @@
  */
 package modelo.CartasMagicas;
 
-import modelo.CartaMagica;
-import modelo.Colocacion;
-import modelo.Juego;
-import modelo.Jugador;
+import modelo.*;
 
 /**
  *
  * @author mramundo
  */
 public class Fisura extends CartaMagica {
-    
-    
-    public Fisura(Colocacion colocacion) {
-        this.estado =  colocacion;
-    }
-     
+
     @Override
     public void activarEfecto(){
         Juego juego = Juego.getJuego();
