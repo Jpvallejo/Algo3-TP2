@@ -4,8 +4,12 @@ import modelo.Juego;
 
 public class FaseFinal extends Fase {
 
-    public void iniciarFase() {
+    public Fase siguienteFase(){
         Juego.getJuego().cambiarTurno();
+        return new FaseInicial();
+    }
+
+    public void iniciarFase() {
     }
 
 
