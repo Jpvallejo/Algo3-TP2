@@ -3,6 +3,7 @@ package modelo;
 import modelo.Monstruos.*;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class Mano {
 
@@ -31,18 +32,7 @@ public class Mano {
     }
 
     public void quitarCarta(Carta cartaAQuitar){
-        /* Si no se quita el override, se debe usar esto
-        int i = 0;
-        for( Carta carta : cartas){
-            if ( carta == cartaAQuitar ){
-                cartas.remove(i);
-            }
-            i++;
-        }
-        */
-
-        // Si se quita el override, se puede usar esto
-        cartas.remove(cartaAQuitar);
+        cartas.removeIf(x -> x == cartaAQuitar);
     }
 
 
