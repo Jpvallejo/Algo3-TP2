@@ -2,16 +2,20 @@ package modelo;
 
 import modelo.Fases.FaseInicial;
 import modelo.Fases.Fase;
+import modelo.Monstruos.*;
+
+import java.util.ArrayList;
 
 public class Juego {
 
     private static Juego instancia = new Juego();
+    private ArrayList<Carta> exodia;
 
     public static Juego getJuego() {
         return instancia;
     }
 
-    private Juego(){
+    private Juego() {
         jugadorActivo = new Jugador();
         jugadorOponente = new Jugador();
         faseActual = new FaseInicial();
@@ -19,6 +23,12 @@ public class Juego {
                 jugadorActivo.extraerCartaDelMazo();
                 jugadorOponente.extraerCartaDelMazo();
             }*/
+        exodia = new ArrayList<Carta>();
+        exodia.add(new CabezaExodia());
+        exodia.add(new PiernaDerechaExodia());
+        exodia.add(new PiernaIzquierdaExodia());
+        exodia.add(new BrazoDerechoExodia());
+        exodia.add(new BrazoIzquierdoExodia());
     }
 
     private Jugador jugadorActivo;
@@ -31,15 +41,14 @@ public class Juego {
         instancia = new Juego();
     }
 
-    public void cambiarTurno(){
+    public void cambiarTurno() {
         Jugador temp = this.jugadorActivo;
         this.jugadorActivo = this.jugadorOponente;
         this.jugadorOponente = temp;
         faseActual = new FaseInicial();
     }
 
-    public Jugador getJugadorOponente()
-    {
+    public Jugador getJugadorOponente() {
         return jugadorOponente;
     }
 
@@ -60,8 +69,9 @@ public class Juego {
     }
 
     public boolean hayGanador() {
-        if(this.jugadorActivo.obtenerTamanioMazo() == 0 || this.jugadorActivo.getPuntosDeVida() <= 0 ||
-                this.jugadorOponente.getPuntosDeVida() <= 0 || this.jugadorOponente.obtenerTamanioMazo() == 0)
+        if (this.jugadorActivo.obtenerTamanioMazo() == 0 || this.jugadorActivo.getPuntosDeVida() <= 0 ||
+                this.jugadorOponente.getPuntosDeVida() <= 0 || this.jugadorOponente.obtenerTamanioMazo() == 0
+                || this.jugadorActivo.contieneExodia() || this.jugadorOponente.contieneExodia())
             return true;
 
         return false;
@@ -69,10 +79,14 @@ public class Juego {
     }
 
     public Jugador obtenerGanador() {
-        if(this.jugadorActivo.obtenerTamanioMazo() == 0 || this.jugadorActivo.getPuntosDeVida() <= 0)
+        if (this.jugadorActivo.obtenerTamanioMazo() == 0 || this.jugadorActivo.getPuntosDeVida() <= 0 || this.jugadorOponente.contieneExodia())
             return this.jugadorOponente;
-        else if(this.jugadorOponente.getPuntosDeVida() <= 0 || this.jugadorOponente.obtenerTamanioMazo() == 0)
+        else if (this.jugadorOponente.getPuntosDeVida() <= 0 || this.jugadorOponente.obtenerTamanioMazo() == 0 || this.jugadorActivo.contieneExodia())
             return this.jugadorActivo;
         return null;
+    }
+
+    public ArrayList<Carta> getExodia() {
+        return this.exodia;
     }
 }

@@ -1,6 +1,7 @@
 import modelo.*;
 
 import modelo.CartasMagicas.AgujeroNegro;
+import modelo.Monstruos.*;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -27,6 +28,20 @@ public class ManoTest {
 
         assertEquals(mano.cantidadCartas(),1);
 
+    }
+
+    @Test
+    public void testManoContener5PartesExodiaEnLaManoGanaLaPartida(){
+        Juego.reiniciarJuego();
+        Juego juego = Juego.getJuego();
+        Jugador aGanar = Juego.getJuego().getJugadorActivo();
+        aGanar.getMano().agregarCarta(new CabezaExodia());
+        aGanar.getMano().agregarCarta(new PiernaIzquierdaExodia());
+        aGanar.getMano().agregarCarta(new PiernaDerechaExodia());
+        aGanar.getMano().agregarCarta(new BrazoIzquierdoExodia());
+        aGanar.getMano().agregarCarta(new BrazoDerechoExodia());
+        assertTrue(juego.hayGanador());
+        assertTrue(juego.obtenerGanador() == aGanar);
     }
 
 

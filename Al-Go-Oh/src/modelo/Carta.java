@@ -38,5 +38,10 @@ public abstract class Carta{
         jugador.obtenerCampo().destruirCarta(this);
     }
 
+    @Override
+    public boolean equals(Object carta){
+        return this.nombre == ((Carta)carta).nombre;
+    }
+
 
 }

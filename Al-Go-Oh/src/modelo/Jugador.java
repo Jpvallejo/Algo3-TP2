@@ -148,4 +148,8 @@ public class Jugador {
     public void activarCartaTrampa(Monstruo atacante, Monstruo defensor) {
         tablero.activarEfectoCartaTrampa(atacante,defensor);
     }
+
+    public boolean contieneExodia(){
+        return this.mano.contieneExodia();
+    }
 }

@@ -27,4 +27,9 @@ public class Mano {
     public ArrayList<Carta> getCartas() {
         return cartas;
     }
+
+    public boolean contieneExodia() {
+        ArrayList<Carta> exodia = Juego.getJuego().getExodia();
+        return this.cartas.containsAll(exodia);
+    }
 }
