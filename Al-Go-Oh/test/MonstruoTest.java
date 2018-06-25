@@ -1,3 +1,5 @@
+import modelo.Estados.EstadoDefensaBocaAbajo;
+import modelo.Estados.EstadoAtaque;
 import modelo.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

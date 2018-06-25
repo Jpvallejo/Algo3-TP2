@@ -22,9 +22,8 @@ public class Sogen extends CartaCampo  {
         Jugador jugadorOponente = juego.getJugadorOponente();
         Jugador jugadorActivo = juego.getJugadorActivo();
         
-        jugadorActivo.aplicarCartaCampo(500, false);
-        jugadorOponente.aplicarCartaCampo(200,true);
-        
+        jugadorActivo.getZonaMonstruo().aplicarCartaCampo(500, false);
+        jugadorOponente.getZonaMonstruo().aplicarCartaCampo(200,true);
         
     }
         

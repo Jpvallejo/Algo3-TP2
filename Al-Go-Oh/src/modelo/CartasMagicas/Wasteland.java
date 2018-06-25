@@ -13,8 +13,8 @@ public class Wasteland extends CartaCampo{
         Jugador jugadorOponente = juego.getJugadorOponente();
         Jugador jugadorActivo = juego.getJugadorActivo();
         
-        jugadorActivo.aplicarCartaCampo(200, true);
-        jugadorOponente.aplicarCartaCampo(300,false);
+        jugadorActivo.getZonaMonstruo().aplicarCartaCampo(200, true);
+        jugadorOponente.getZonaMonstruo().aplicarCartaCampo(300,false);
     }
         
 }

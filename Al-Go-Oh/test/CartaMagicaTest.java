@@ -3,6 +3,7 @@ import modelo.*;
 import modelo.CartasMagicas.Fisura;
 import modelo.CartasMagicas.OllaDeLaCodicia;
 import modelo.CartasMagicas.Sogen;
+import modelo.CartasMagicas.Wasteland;
 import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
 
@@ -67,37 +68,46 @@ public class CartaMagicaTest {
 
      @Test
     public void testAplicarCartaWastelandEnMonstruosYAtacar() {
-            
-        Jugador atacante = new Jugador();
-        Monstruo monstruoAtaque = new MonstruoGenerico("test1",100,0,4);
-        atacante.invocar(monstruoAtaque);
-
-        Jugador defensor = new Jugador();
-        Monstruo monstruoDefensa = new MonstruoGenerico("test2",100,200,4);
-        defensor.invocar(monstruoDefensa);
+          
+        Juego.reiniciarJuego();
+        Wasteland wasteland = new Wasteland();
         
-        atacante.aplicarCartaCampo(200,true);//Aca aplicaria la carta de campo
-        defensor.aplicarCartaCampo(300,false);
+        
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        
+        jugadorActivo.colocarCarta(wasteland);
+        
+        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
+
+        Monstruo monstruoAtaque = new MonstruoGenerico("test1",100,0,4);
+        jugadorActivo.invocar(monstruoAtaque);
+
+        Monstruo monstruoDefensa = new MonstruoGenerico("test2",100,200,4);
+        jugadorOponente.invocar(monstruoDefensa);
+        
+        jugadorActivo.activarCartaCampo();
         
         //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
          monstruoAtaque.atacarMonstruo(monstruoDefensa);
         
         //Le resta 200 puntos de vida al jugador defensor
-        assertEquals(1, defensor.cantidadCartasCementerio());
-        assertEquals(7800, defensor.getPuntosDeVida());
+        assertEquals(1, jugadorOponente.cantidadCartasCementerio());
+        assertEquals(7800, jugadorOponente.getPuntosDeVida());
         
+        jugadorActivo.revertirCartaCampo();
         
         //Creo monstruo en modo de defensa con 100 de defensa
         Monstruo monstruoDefensa01 = new MonstruoGenerico("test",100,100,4);
-        defensor.colocar(monstruoDefensa01);
-
-        defensor.aplicarCartaCampo(300,false);
+        jugadorOponente.colocar(monstruoDefensa01);
+        
+        
+        jugadorActivo.activarCartaCampo();
         
         //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
          monstruoAtaque.atacarMonstruo(monstruoDefensa01);
 
         //Le resta 100 puntos de vida al que ataca porque tengo el defensor con un monstruo con 400 de defensa y el mio tiene 300
-         assertEquals(7900, atacante.getPuntosDeVida());
+         assertEquals(7900, jugadorActivo.getPuntosDeVida());
          
     }
 

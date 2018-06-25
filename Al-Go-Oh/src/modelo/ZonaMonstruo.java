@@ -63,8 +63,5 @@ public class ZonaMonstruo extends Zona{
        return monstruoConMenorAtaque;
        
     }
-
-    
-    
-    
+       
 }

@@ -182,10 +182,12 @@ public class Jugador {
     }
 
     public void activarCartaCampo() {
-        //this.obtenerCampo().activarCartaCampo();
         this.cartaCampo.activarEfecto();
     }
-       
+   
+    public void revertirCartaCampo() {
+        this.getZonaMonstruo().revertirCartaCampo();
+    }  
 
 
     public int obtenerTamanioMazo() {
@@ -230,10 +232,6 @@ public class Jugador {
         Monstruo monstruo =  this.getZonaMonstruo().destruirMonstruoConMenorAtaque();
         this.matarMonstruo(monstruo);
         }catch (ZonaVaciaException e){}
-    }
-
-    public void aplicarCartaCampo(int adicional, boolean ataque) {
-        this.zonaMonstruo.aplicarCartaCampo(adicional, ataque);
     }
 
     public int cantidadCartasZonaMonstruos() {
