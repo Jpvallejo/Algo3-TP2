@@ -27,7 +27,7 @@ public class PanelHechizos extends HBox {
             this.getChildren().add(botonHechizo);
 
         }
-        for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
+        for (int i = 0; i < jugador.getZonaHechizos().cantidadCartas(); i++) {
             Casillero casillero = Casillero.UNO;
             switch (i) {
                 case 0:
@@ -54,7 +54,7 @@ public class PanelHechizos extends HBox {
             }
             hechizos.get(i).setVisible(true);
             ImageView newImage;
-            Image img = new Image("/vista/cartaAtras.jpg",100,146,true,false);
+            Image img = new Image("/vista/imagenes/cartaAtras.jpg",100,146,true,false);
             hechizos.get(i).setGraphic(new ImageView(img));
             hechizos.get(i).setPrefSize(62,91);
         }

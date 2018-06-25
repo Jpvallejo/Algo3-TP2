@@ -1,10 +1,12 @@
 package vista;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import modelo.*;
 import vista.Botones.*;
+
 import java.util.ArrayList;
 
 public class PanelMano  extends GridPane {
@@ -30,17 +32,17 @@ public class PanelMano  extends GridPane {
             botonesMano = new ArrayList<BotonCarta>();
             Mano mano = jugador.getMano();
             for (Carta carta: mano.getCartas()) {
-                if(carta instanceof Monstruo){
+                if(carta instanceof Monstruo ){
                     BotonMonstruo botonMonstruo = new BotonMonstruo((Monstruo)carta);
                     hbButtons.getChildren().add(botonMonstruo);
                     botonesMano.add(botonMonstruo);
-                    /**
-                    ImageIcon img = new ImageIcon("Cards Images Database/Monsters/"+carta.getName()+".png");
-                    Image img2 = img.getImage();
-                    Image newimg = img2.getScaledInstance(100, 146,  java.awt.Image.SCALE_SMOOTH);
-                    ImageIcon newIcon = new ImageIcon(newimg);
-                     */
-                    botonMonstruo.setGraphic(new ImageView());
+
+                    //ImageIcon img = new ImageIcon("Cards Images Database/Monsters/"+carta.getName()+".png");
+                    Image img = new Image(carta.getUrlImagen(),100,110,true,false);
+                    //Image newimg = img2.getScaledInstance(100, 146,  java.awt.Image.SCALE_SMOOTH);
+                    ImageView newIcon = new ImageView(img);
+
+                    botonMonstruo.setGraphic(new ImageView(img));
                     botonMonstruo.setPrefSize(100,110);
                 }
                 else if(carta instanceof CartaMagica){

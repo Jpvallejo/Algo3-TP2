@@ -9,9 +9,11 @@ public abstract class Carta{
     protected String tipo;
     protected String nombre;
     protected Jugador jugador;
+    protected String UrlImagen;
 
     public Carta(){
         estado = new EstadoSinEstado();
+        UrlImagen = "vista/imagenes/"+this.getClass().getSimpleName()+".jpg";
     }
 
     public void activarEfecto(){}
@@ -41,11 +43,14 @@ public abstract class Carta{
     public void destruir(){
         jugador.destruirCarta(this);
     }
-
+    /* OPCION 1: Quitar el override */
+    /*
     @Override
     public boolean equals(Object carta){
         return this.nombre == ((Carta)carta).nombre;
+    }*/
+
+    public String getUrlImagen(){
+        return UrlImagen;
     }
-
-
 }

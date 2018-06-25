@@ -2,9 +2,13 @@ package controlador;
 
 import modelo.Juego;
 import modelo.Jugador;
+import modelo.Monstruo;
+import vista.PantallaBatalla;
 
 public class Controlador {
     private static Controlador instancia = new Controlador();
+
+    private PantallaBatalla pantallaBatalla;
 
     public static Controlador getControlador() {
         return instancia;
@@ -27,5 +31,21 @@ public class Controlador {
 
     public String obtenerFase() {
         return Juego.getJuego().obtenerFase().toString();
+    }
+
+    public void asociarPantalla(PantallaBatalla _pantallaBatalla){
+        pantallaBatalla = _pantallaBatalla;
+    }
+
+    public void invocarMonstruo(Monstruo monstruo) {
+        Juego.getJuego().getJugadorActivo().invocar(monstruo);
+        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
+        pantallaBatalla.actualizarTodo();
+    }
+
+    public void colocarMonstruo(Monstruo monstruo) {
+        Juego.getJuego().getJugadorActivo().colocar(monstruo);
+        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
+        pantallaBatalla.actualizarTodo();
     }
 }

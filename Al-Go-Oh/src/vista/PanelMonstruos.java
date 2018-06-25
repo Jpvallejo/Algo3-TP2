@@ -1,5 +1,6 @@
 package vista;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.*;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 public class PanelMonstruos extends HBox {
 
     private ArrayList<BotonMonstruo> monstruos;
+
     public PanelMonstruos(Jugador jugador) {
         monstruos = new ArrayList<BotonMonstruo>();
         this.setVisible(true);
@@ -37,6 +39,7 @@ public class PanelMonstruos extends HBox {
                     break;
                 case 3:
                     casillero = Casillero.CUATRO;
+                    break;
                 case 4:
                     casillero = Casillero.CINCO;
                     break;
@@ -44,13 +47,18 @@ public class PanelMonstruos extends HBox {
             monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(casillero));
             monstruos.get(i).setVisible(true);
             ImageView newImage;
+
             if(monstruos.get(i).getMonstruo().getEstado() instanceof EstadoAtaque){
-                newImage = new ImageView();
+                Image img = new Image(monstruos.get(i).getMonstruo().getUrlImagen(),100,110,true,false);
+                newImage = new ImageView(img);
             }else{
-                newImage = new ImageView();
+                Image img = new Image("vista/imagenes/cartaAtras.jpg",100,110,true,false);
+                newImage = new ImageView(img);
             }
             monstruos.get(i).setGraphic(newImage);
             monstruos.get(i).setPrefSize(62,91);
         }
     }
+
+
 }

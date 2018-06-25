@@ -51,16 +51,21 @@ public class PantallaBatalla {
     private ScrollPane panelCartasJugador2;
 
     public void cargarPantalla(Stage stage, Controlador controlador) {
-        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-
 
         this.stage = stage;
-        Pane panelPrincipal = new Pane();
-        panelPrincipal.setPrefSize(ancho - 10, alto - 70);
+
 
         jugador1 = controlador.getJugadorActivo();
         jugador2 = controlador.getJugadorOponente();
+        actualizarPantalla(stage,controlador);
+    }
+
+    public void actualizarPantalla(Stage stage, Controlador controlador){
+        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
+
+        Pane panelPrincipal = new Pane();
+        panelPrincipal.setPrefSize(ancho - 10, alto - 70);
 
         panelMonstruosJugador1 = new PanelMonstruos(jugador1);
         panelMonstruosJugador1.setPrefSize(1000, 116);
@@ -165,6 +170,7 @@ public class PantallaBatalla {
             }
         });
 
+
         panelCartasJugador1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -187,5 +193,10 @@ public class PantallaBatalla {
         panelCartas.setFitToHeight(true);
         panelCartas.setFitToWidth(true);
         return panelCartas;
+    }
+
+
+    public void actualizarTodo(){
+       actualizarPantalla(stage, Controlador.getControlador());
     }
 }

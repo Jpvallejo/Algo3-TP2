@@ -32,11 +32,15 @@ public class Vista extends Application {
         Scene s = new Scene(p);
 */
 
-        Controlador controlador = new Controlador();
+        Controlador controlador = Controlador.getControlador();//new Controlador();
         PantallaBatalla pantallaBatalla = new PantallaBatalla();
-        pantallaBatalla.cargarPantalla(Stage,controlador);
+        pantallaBatalla.cargarPantalla(Stage, controlador);
+        controlador.asociarPantalla(pantallaBatalla);
+
+
     }
     public static void main(String[] args) {
         launch(args);
+        int i = 0;
     }
 }

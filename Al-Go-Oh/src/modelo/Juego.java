@@ -30,8 +30,10 @@ public class Juego {
         exodia.add(new BrazoDerechoExodia());
         exodia.add(new BrazoIzquierdoExodia());
 
-        /******/
+        /*** Pruebas: Borrar luego ***/
         //jugadorActivo.getMano().quitarCarta(jugadorActivo.getMano().getCartas().get(1));
+        //jugadorActivo.invocar(new AsechadorDelCraneo());
+        //jugadorActivo.colocar(new AsechadorDelCraneo());
         //jugadorActivo.invocar(new AsechadorDelCraneo());
     }
 

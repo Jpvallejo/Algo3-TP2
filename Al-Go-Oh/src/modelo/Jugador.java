@@ -249,4 +249,8 @@ public class Jugador {
     public boolean contieneExodia(){
         return this.mano.contieneExodia();
     }
+
+    public void quitarCartaDeMano(Monstruo monstruo) {
+        mano.quitarCarta(monstruo);
+    }
 }
