@@ -40,34 +40,62 @@ public class Jugador {
 
         return tablero.cantidadCartasCementerio();
     }
-/*
-    public void colocarEnAtaque(Monstruo monstruo){
-        Tablero  campo = this.obtenerCampo();
-        monstruo.asociarTablero(campo);
-        if(monstruo.requiereSacrificio())
-        {
-            this.sacrificarMonstruos(monstruo.cantidadASacrificar());
-        }
-        monstruo.setPosicion(Posicion.ATAQUE);
-        monstruo.setEstado(Colocacion.BOCAARRIBA);
+
+    public void invocar(Monstruo monstruo) {
+        monstruo.requiereSacrificios(0);
+
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.asociarJugador(this);
         campo.tirarCarta(monstruo);
     }
-*/
-    private void sacrificarMonstruos(int cantidad) {
-        this.tablero.sacrificarMonstruos(cantidad);
+
+    public void invocar(Monstruo monstruo, Monstruo sacrificio1) {
+        monstruo.requiereSacrificios(1);
+        sacrificio1.destruir();
+
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.asociarJugador(this);
+        campo.tirarCarta(monstruo);
     }
 
+    public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2) {
+        monstruo.requiereSacrificios(2);
+        sacrificio1.destruir();
+        sacrificio2.destruir();
+
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.asociarJugador(this);
+        campo.tirarCarta(monstruo);
+    }
 
     public void colocar(Monstruo monstruo){
         Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
-        if(monstruo.requiereSacrificio())
-        {
-            this.sacrificarMonstruos(monstruo.cantidadASacrificar());
-        }
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        //monstruo.asociarTablero(campo);
+        campo.tirarCarta(monstruo);
+    }
+
+    public void colocar(Monstruo monstruo, Monstruo sacrificio1){
+        sacrificio1.destruir();
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.setEstado(new EstadoDefensaBocaAbajo());
+        monstruo.asociarJugador(this);
+        campo.tirarCarta(monstruo);
+    }
+
+    public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2){
+
+        sacrificio1.destruir();
+        sacrificio2.destruir();
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.setEstado(new EstadoDefensaBocaAbajo());
+        monstruo.asociarJugador(this);
         campo.tirarCarta(monstruo);
     }
 
@@ -132,17 +160,6 @@ public class Jugador {
 
     private Mazo getMazo() {
         return this.mazo;
-    }
-
-    public void invocar(Monstruo monstruo) {
-        Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
-        if(monstruo.requiereSacrificio())
-        {
-            this.sacrificarMonstruos(monstruo.cantidadASacrificar());
-        }
-        monstruo.asociarJugador(this);
-        campo.tirarCarta(monstruo);
     }
 
     public void activarCartaTrampa(Monstruo atacante, Monstruo defensor) {

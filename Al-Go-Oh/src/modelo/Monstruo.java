@@ -1,6 +1,7 @@
 package modelo;
 
 import modelo.Excepciones.DetenerAtaqueException;
+import modelo.Excepciones.RequiereSacrificioException;
 
 public abstract class Monstruo extends Carta {
 
@@ -82,6 +83,18 @@ public abstract class Monstruo extends Carta {
         jugador.restarPuntosDeVida(puntos);
     }
 
+
+    public void requiereSacrificios(int cantidad){
+
+        // Si la cantidad de estrellas es de 0 a 4 es 0
+        // Si la cantidad de estrellas es de 5 o 6 es 1
+        // Si la cantidad de estrellas es de 6 o mas es 2
+        int sacrificios = Math.min(Math.max((this.getEstrellas() - 3) / 2, 0 ) ,2);
+
+        if (sacrificios != cantidad ){
+            throw new RequiereSacrificioException();
+        }
+    }
 
     public boolean requiereSacrificio(){
         return this.getEstrellas() > 4;

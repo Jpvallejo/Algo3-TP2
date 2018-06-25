@@ -88,11 +88,6 @@ public class Tablero {
     }
 
 
-
-    public void sacrificarMonstruos(int cantidad) {
-        this.zonaMonstruo.sacrificarMonstruos(cementerio, cantidad);
-    }
-    
     public Monstruo obtenerMonstruoEnCasillero(Casillero casillero) {
         return (Monstruo) zonaMonstruo.obtenerCartaPosicion(casillero);
     }

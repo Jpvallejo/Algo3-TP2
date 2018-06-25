@@ -2,7 +2,9 @@ import modelo.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import modelo.Excepciones.RequiereSacrificioException;
 import modelo.Monstruos.AgresorOscuro;
 import modelo.Monstruos.AgujaAsesina;
 import modelo.Monstruos.AsechadorDelCraneo;
@@ -287,13 +289,37 @@ public class MonstruoTest {
 
 
     @Test
-    public void testColocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
+    public void testInvocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
         Monstruo aSacrificar= new MonstruoGenerico("test1",0,0,3);
         Monstruo sacrificador = new MonstruoGenerico("test2",0,0,5);
         Jugador jugador = new Jugador();
 
         jugador.invocar(aSacrificar);
-        jugador.invocar(sacrificador);
+        jugador.invocar(sacrificador, aSacrificar);
+        assertEquals(1,jugador.cantidadCartasCementerio());
+    }
+
+
+    @Test
+    public void testInvocarMonstruoCon7EstrellasSacrificaDosMonstruos(){
+        Jugador jugador = new Jugador();
+        Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
+        Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
+        Monstruo sacrificador = new MonstruoGenerico("test3",0,0,7);
+        jugador.invocar(aSacrificar1);
+        jugador.invocar(aSacrificar2);
+        jugador.invocar(sacrificador,aSacrificar1,aSacrificar2);
+        assertEquals(2,jugador.cantidadCartasCementerio());
+    }
+
+    @Test
+    public void testColocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
+        Monstruo aSacrificar= new MonstruoGenerico("test1",0,0,3);
+        Monstruo sacrificador = new MonstruoGenerico("test2",0,0,5);
+        Jugador jugador = new Jugador();
+
+        jugador.colocar(aSacrificar);
+        jugador.colocar(sacrificador, aSacrificar);
         assertEquals(1,jugador.cantidadCartasCementerio());
     }
 
@@ -304,10 +330,36 @@ public class MonstruoTest {
         Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
         Monstruo sacrificador = new MonstruoGenerico("test3",0,0,7);
-        jugador.invocar(aSacrificar1);
-        jugador.invocar(aSacrificar2);
-        jugador.invocar(sacrificador);
+        jugador.colocar(aSacrificar1);
+        jugador.colocar(aSacrificar2);
+        jugador.colocar(sacrificador,aSacrificar1,aSacrificar2);
         assertEquals(2,jugador.cantidadCartasCementerio());
+    }
+
+
+    @Test
+    public void testColocarMonstruoCon5o6EstrellasRetornaErrorSiNoSePasa1Sacrificio(){
+        Jugador jugador = new Jugador();
+        Monstruo sacrificador1 = new MonstruoGenerico("test1",0,0,5);
+        Monstruo sacrificador2 = new MonstruoGenerico("test2",0,0,6);
+
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador1); });
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador2); });
+    }
+
+
+    @Test
+    public void testColocarMonstruoCon7u8EstrellasRetornaErrorSiNoSePasan2Sacrificios(){
+        Jugador jugador = new Jugador();
+        Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
+        Monstruo sacrificador1 = new MonstruoGenerico("test1",0,0,7);
+        Monstruo sacrificador2 = new MonstruoGenerico("test2",0,0,8);
+        jugador.invocar(aSacrificar1);
+
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador1); });
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador2); });
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador1,aSacrificar1); });
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador2,aSacrificar1); });
     }
 
 

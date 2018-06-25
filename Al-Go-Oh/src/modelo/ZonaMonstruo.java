@@ -34,20 +34,6 @@ public class ZonaMonstruo extends Zona{
         return true;
     }
 */
-    public void sacrificarMonstruos(Cementerio cementerio, int cantidad) {
-
-        int i = 0;
-        // Esto se debe mejorar para permitir la seleccion de monstruos para sacrificar
-        // Ademas, en este caso. Si no se cumple el sacrificio, el monstruo se invoca igual.
-        for (Casillero key : Casillero.values()) {
-            if (i < cantidad && casilleros.containsKey(key)){
-                //casilleros.get(key).destruir();  //Arroja error ConcurrentModificationException - Reparar
-                cementerio.enviarCarta(casilleros.get(key));
-                casilleros.remove(key);
-                i++;
-            }
-        }
-    }
 
     public void destruirZona(){
         for (Casillero key :casilleros.keySet()){
