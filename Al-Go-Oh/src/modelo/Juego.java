@@ -66,6 +66,7 @@ public class Juego {
 
     public void avanzarFase() {
         faseActual = faseActual.siguienteFase();
+        faseActual.iniciarFase();
     }
 
     public void iniciarFase() {

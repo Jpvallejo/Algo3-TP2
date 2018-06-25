@@ -1,6 +1,8 @@
 import modelo.*;
 import modelo.Fases.*;
+import modelo.Monstruos.*;
 import org.junit.Test;
+import modelo.CartasMagicas.*;
 
 import static org.junit.Assert.*;
 
@@ -41,14 +43,14 @@ public class FaseTest {
     }
 
     @Test
-    public void testAvanzarFaseDesdeFaseAtaquePasaAFaseFinal() {
+    public void testAvanzarFaseDesdeFaseAtaquePasaAFaseFinalDondeCambiaDeTurno() {
         Juego.reiniciarJuego();
         Juego.getJuego().avanzarFase(); //Avanza a FasePreparacion
         Juego.getJuego().avanzarFase(); //Avanza a FaseAtaque
         Juego.getJuego().avanzarFase(); //Avanza a FaseFinal
 
         Fase faseActual = Juego.getJuego().obtenerFase();
-
+        
         assertTrue(faseActual instanceof FaseFinal);
 
     }
@@ -77,5 +79,47 @@ public class FaseTest {
         assertEquals(6, mano.cantidadCartas());
 
     } */
+    
+    
+     @Test
+    public void testIrHastaFaseAtaqueYAtacarAlOponente() {
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //Avanza a FasePreparacion
+        Jugador jugadorActivo =  Juego.getJuego().getJugadorActivo();
+        Jugador jugadorOponente =  Juego.getJuego().getJugadorOponente();
+        
+        Wasteland wasteland = new Wasteland();
+        AmateFeliz amateFeliz = new AmateFeliz();
+        
+        jugadorActivo.invocar(amateFeliz); //800 ataque 500 def
+        jugadorActivo.colocarCarta(wasteland);
+        
+        Juego.getJuego().avanzarFase(); //Avanza a FaseAtaque. Se activa la Carta Campo
+        
+        //800 + 200 de carta campo
+        amateFeliz.atacar(jugadorOponente);
+        
+        //Ataca directo a los puntos de vida le resta 1000 puntos
+        assertEquals(7000, jugadorOponente.getPuntosDeVida());
+        
+        
+        Juego.getJuego().cambiarTurno();
+        
+        jugadorActivo =  Juego.getJuego().getJugadorActivo();
+        jugadorOponente =  Juego.getJuego().getJugadorOponente();
+                
+        AligatorDeLaEspada aligator = new AligatorDeLaEspada();
+        
+        jugadorActivo.invocar(aligator); //1500 ataque 1200 def
+        
+        aligator.atacarMonstruo(amateFeliz);
+        
+        //1500 - 1000 
+        assertEquals(7500, jugadorOponente.getPuntosDeVida());
+        
+    }
+    
+    
+    
 
 }
