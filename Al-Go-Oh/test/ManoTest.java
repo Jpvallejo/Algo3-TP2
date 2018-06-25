@@ -1,6 +1,7 @@
 import modelo.*;
 
 import modelo.CartasMagicas.AgujeroNegro;
+import modelo.Mazo.Mazo;
 import modelo.Monstruos.*;
 import org.junit.Test;
 

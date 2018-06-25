@@ -19,16 +19,20 @@ public class Juego {
         jugadorActivo = new Jugador();
         jugadorOponente = new Jugador();
         faseActual = new FaseInicial();
-           /* for (int i = 0; i < 5; i++){
-                jugadorActivo.extraerCartaDelMazo();
-                jugadorOponente.extraerCartaDelMazo();
-            }*/
+        for (int i = 0; i < 5; i++){
+            jugadorActivo.extraerCartaDelMazo();
+            jugadorOponente.extraerCartaDelMazo();
+        }
         exodia = new ArrayList<Carta>();
         exodia.add(new CabezaExodia());
         exodia.add(new PiernaDerechaExodia());
         exodia.add(new PiernaIzquierdaExodia());
         exodia.add(new BrazoDerechoExodia());
         exodia.add(new BrazoIzquierdoExodia());
+
+        /******/
+        //jugadorActivo.getMano().quitarCarta(jugadorActivo.getMano().getCartas().get(1));
+        //jugadorActivo.invocar(new AsechadorDelCraneo());
     }
 
     private Jugador jugadorActivo;

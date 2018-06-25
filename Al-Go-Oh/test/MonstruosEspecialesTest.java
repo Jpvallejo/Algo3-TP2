@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
 import modelo.CartasMonstruosEspeciales.JinzoNro7;
 import modelo.DragonDeOjosAzulesDefinitivo;
+import modelo.Estados.EstadoAtaque;
 import modelo.Excepciones.MonstruoDeFusionException;
 import modelo.Excepciones.RequiereSacrificioException;
 import modelo.Monstruos.DragonBlancoDeOjosAzules;

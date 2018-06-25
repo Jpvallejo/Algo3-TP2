@@ -3,6 +3,7 @@ package vista;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.*;
+import modelo.Estados.EstadoAtaque;
 import vista.Botones.BotonMonstruo;
 
 import java.util.ArrayList;
