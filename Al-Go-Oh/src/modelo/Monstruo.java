@@ -84,31 +84,49 @@ public abstract class Monstruo extends Carta {
     }
 
 
-    public void requiereSacrificios(int cantidad){
+    public void requiereSacrificios(){
 
-        // Si la cantidad de estrellas es de 0 a 4 es 0
-        // Si la cantidad de estrellas es de 5 o 6 es 1
-        // Si la cantidad de estrellas es de 6 o mas es 2
-        int sacrificios = Math.min(Math.max((this.getEstrellas() - 3) / 2, 0 ) ,2);
-
-        if (sacrificios != cantidad ){
+        if (this.cantidadASacrificar() != 0) {
             throw new RequiereSacrificioException();
         }
     }
+
+    public void requiereSacrificios(Monstruo sacrificio1){
+
+        if (this.cantidadASacrificar() == 1) {
+            sacrificio1.destruir();
+        }
+        else{
+            throw new RequiereSacrificioException();
+        }
+    }
+
+
+    public void requiereSacrificios(Monstruo sacrificio1, Monstruo sacrificio2){
+
+        if (this.cantidadASacrificar() == 2) {
+            sacrificio1.destruir();
+            sacrificio2.destruir();
+        }
+        else{
+            throw new RequiereSacrificioException();
+        }
+    }
+
+    public void requiereSacrificios(Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3){
+        throw new RequiereSacrificioException();
+    }
+
 
     public boolean requiereSacrificio(){
         return this.getEstrellas() > 4;
     }
 
     public int cantidadASacrificar(){
-        if(this.getEstrellas() > 6){
-            return 2;
-        }
-        else if(this.getEstrellas() > 4){
-            return 1;
-        }
-
-        return 0;
+        // Si la cantidad de estrellas es de 0 a 4 es 0
+        // Si la cantidad de estrellas es de 5 o 6 es 1
+        // Si la cantidad de estrellas es de 6 o mas es 2
+        return Math.min(Math.max((this.getEstrellas() - 3) / 2, 0 ) ,2);
     }
 
 

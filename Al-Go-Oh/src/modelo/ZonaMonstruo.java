@@ -22,19 +22,6 @@ public class ZonaMonstruo extends Zona{
         super();
     }
 
-/*
-    public boolean declararAtaque(Monstruo atacante, Monstruo defensor) {
-        ZonaMonstruo zonaOponente = Juego.getJuego().getJugadorOponente().obtenerCampo().getZonaMonstruo();
-        if (defensor == null && zonaOponente.cantidadCartas() == 0)
-            atacante.atacarPuntosDeVida();
-        else if (defensor != null && zonaOponente.contains(defensor))
-            atacante.atacarMonstruo(defensor);
-        else
-            return false;
-        return true;
-    }
-*/
-
     public void destruirZona(){
         for (Casillero key :casilleros.keySet()){
             casilleros.get(key).destruir();

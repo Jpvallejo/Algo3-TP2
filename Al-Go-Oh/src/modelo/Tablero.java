@@ -72,7 +72,6 @@ public class Tablero {
     }
 
     public void destruirZonaMonstruos(){
-        //zonaMonstruo.destruirZona(cementerio);
         zonaMonstruo.destruirZona();
     }
 

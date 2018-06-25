@@ -49,6 +49,7 @@ public class Entrega2Test {
     public void test06SegundaEntrega(){
         /*Invocar 3 dragones blancos de ojos azules, al Dragón definitivo de ojos azules sacrificando los 3 dragones el lado del campo del jugador que los invocó.*/
 
+        new MonstruosEspecialesTest().testInvocarAlDragonDeOjosAzulesDefinitivoDestruye3DragonesBlancosDeOjosAzules();
     }
     
     @Test
@@ -84,6 +85,8 @@ public class Entrega2Test {
     @Test
     public void test11SegundaEntrega(){
         /*Colocar las 5 partes de exodia en la mano de un jugador, verificar que la partida termina y que ese jugador resultó ganador.*/
+
+        new ManoTest().testManoContener5PartesExodiaEnLaManoGanaLaPartida();
 
     }
 

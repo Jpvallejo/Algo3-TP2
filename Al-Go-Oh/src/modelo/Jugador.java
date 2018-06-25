@@ -1,10 +1,5 @@
 package modelo;
 
-import modelo.Monstruos.AgujaAsesina;
-
-import java.awt.*;
-import java.io.IOException;
-
 public class Jugador {
     private Tablero tablero;
     private int puntosDeVida;
@@ -42,7 +37,7 @@ public class Jugador {
     }
 
     public void invocar(Monstruo monstruo) {
-        monstruo.requiereSacrificios(0);
+        monstruo.requiereSacrificios();
 
         Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
@@ -51,8 +46,7 @@ public class Jugador {
     }
 
     public void invocar(Monstruo monstruo, Monstruo sacrificio1) {
-        monstruo.requiereSacrificios(1);
-        sacrificio1.destruir();
+        monstruo.requiereSacrificios(sacrificio1);
 
         Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
@@ -61,9 +55,16 @@ public class Jugador {
     }
 
     public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2) {
-        monstruo.requiereSacrificios(2);
-        sacrificio1.destruir();
-        sacrificio2.destruir();
+        monstruo.requiereSacrificios(sacrificio1,sacrificio2);
+
+        Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.asociarJugador(this);
+        campo.tirarCarta(monstruo);
+    }
+
+    public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3) {
+        monstruo.requiereSacrificios(sacrificio1,sacrificio2,sacrificio3);
 
         Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
@@ -72,28 +73,32 @@ public class Jugador {
     }
 
     public void colocar(Monstruo monstruo){
+        monstruo.requiereSacrificios();
         Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
         campo.tirarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo, Monstruo sacrificio1){
-        sacrificio1.destruir();
+        monstruo.requiereSacrificios(sacrificio1);
         Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
         campo.tirarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2){
-
-        sacrificio1.destruir();
-        sacrificio2.destruir();
+        monstruo.requiereSacrificios(sacrificio1,sacrificio2);
         Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
+        monstruo.setEstado(new EstadoDefensaBocaAbajo());
+        monstruo.asociarJugador(this);
+        campo.tirarCarta(monstruo);
+    }
+
+    public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3){
+        monstruo.requiereSacrificios(sacrificio1,sacrificio2,sacrificio3);
+        Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
         campo.tirarCarta(monstruo);
