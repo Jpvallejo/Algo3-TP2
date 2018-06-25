@@ -1,6 +1,12 @@
 package modelo;
 
+import modelo.Estados.EstadoBocaAbajo;
+import modelo.Estados.EstadoDefensaBocaAbajo;
+import modelo.Estados.EstadoBocaArriba;
+import modelo.Estados.EstadoAtaque;
+import modelo.Mazo.Mazo;
 import modelo.CartasMagicas.CartaCampoSinEfecto;
+import modelo.Excepciones.ZonaVaciaException;
 
 public class Jugador {
     //private Tablero tablero;
@@ -219,8 +225,11 @@ public class Jugador {
 
 
     public void destruirMonstruoConMenorAtaque() {
+        try{
+        if (this.getZonaMonstruo().zonaVacia())  throw new ZonaVaciaException();
         Monstruo monstruo =  this.getZonaMonstruo().destruirMonstruoConMenorAtaque();
         this.matarMonstruo(monstruo);
+        }catch (ZonaVaciaException e){}
     }
 
     public void aplicarCartaCampo(int adicional, boolean ataque) {

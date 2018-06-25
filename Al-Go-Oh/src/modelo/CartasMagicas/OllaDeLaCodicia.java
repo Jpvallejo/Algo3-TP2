@@ -1,7 +1,7 @@
 package modelo.CartasMagicas;
 
 import modelo.CartaMagica;
-import modelo.Estado;
+import modelo.Estados.Estado;
 import modelo.Juego;
 
 public class OllaDeLaCodicia extends CartaMagica {

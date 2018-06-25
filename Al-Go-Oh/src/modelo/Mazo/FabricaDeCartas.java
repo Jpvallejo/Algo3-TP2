@@ -1,8 +1,9 @@
-package modelo;
+package modelo.Mazo;
 
 import modelo.CartasMagicas.*;
 
 import java.util.Stack;
+import modelo.Carta;
 
 public class FabricaDeCartas {
 

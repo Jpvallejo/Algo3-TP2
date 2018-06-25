@@ -1,5 +1,9 @@
 package modelo;
 
+import modelo.Estados.Estado;
+import modelo.Estados.EstadoBocaAbajo;
+import modelo.Estados.EstadoSinEstado;
+
 public abstract class Carta{
     protected Estado estado;
     protected String tipo;

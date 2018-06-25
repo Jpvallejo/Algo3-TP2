@@ -1,4 +1,6 @@
-package modelo;
+package modelo.Estados;
+
+import modelo.Monstruo;
 
 public class EstadoDefensaBocaAbajo extends Estado {
 

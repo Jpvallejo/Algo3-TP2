@@ -1,5 +1,6 @@
 package modelo;
 
+import modelo.Estados.EstadoSinEstado;
 import modelo.Excepciones.DetenerAtaqueException;
 import modelo.Excepciones.RequiereSacrificioException;
 

@@ -54,4 +54,12 @@ public abstract class Zona {
     public Carta obtenerCartaPosicion(Casillero casillero){
         return casilleros.get(casillero);
     }
+    
+    
+    public boolean zonaVacia(){
+    
+        return casilleros.isEmpty();
+    
+    }
+    
 }

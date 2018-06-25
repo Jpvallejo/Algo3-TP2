@@ -1,8 +1,9 @@
-package modelo;
+package modelo.Mazo;
 
 import modelo.CartasMagicas.AgujeroNegro;
 
 import java.util.Stack;
+import modelo.Carta;
 
 import static java.util.Collections.shuffle;
 

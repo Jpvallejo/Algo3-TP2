@@ -1,7 +1,7 @@
 package modelo.CartasMonstruosEspeciales;
 
 
-import modelo.Estado;
+import modelo.Estados.Estado;
 import modelo.Jugador;
 import modelo.Monstruo;
 
