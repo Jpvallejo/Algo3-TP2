@@ -4,6 +4,10 @@ import modelo.*;
 
 public class AgujeroNegro extends CartaMagica  {
 
+    public AgujeroNegro(){
+        super();
+        nombre = "Agujero Negro";
+    }
 
     @Override
     public void activarEfecto(){

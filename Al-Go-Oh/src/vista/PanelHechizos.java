@@ -2,24 +2,22 @@ package vista;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import modelo.*;
-import vista.Botones.BotonCarta;
-import vista.Botones.BotonCartaHechizo;
+import vista.Botones.BotonCampoHechizos;
 
 import java.util.ArrayList;
 
 public class PanelHechizos extends HBox {
 
-    private ArrayList<BotonCartaHechizo> hechizos;
+    private ArrayList<BotonCampoHechizos> hechizos;
     public PanelHechizos(Jugador jugador) {
 
         setPrefSize(500,100);
-        hechizos = new ArrayList<BotonCartaHechizo>();
-        this.setVisible(true);
+        hechizos = new ArrayList<BotonCampoHechizos>();
+        //this.setVisible(true);
         for (int i = 0; i < 5; i++) {
-            BotonCartaHechizo botonHechizo = new BotonCartaHechizo();
+            BotonCampoHechizos botonHechizo = new BotonCampoHechizos();
             botonHechizo.setPrefSize(80, 110);
             setSpacing(20);
             hechizos.add(botonHechizo);
@@ -51,13 +49,15 @@ public class PanelHechizos extends HBox {
                     break;
             }
             Carta cartaCasillero = jugador.getZonaHechizos().obtenerCartaPosicion(casillero);
-            if(cartaCasillero instanceof CartaTrampa) {
-                hechizos.get(i).setHechizo((CartaTrampa)cartaCasillero);
+            if(cartaCasillero instanceof CartaMagica) {
+                hechizos.get(i).setHechizo((CartaMagica)cartaCasillero);
+
             }
             else{
-                hechizos.get(i).setHechizo((CartaMagica)cartaCasillero);
+                hechizos.get(i).setHechizo((CartaTrampa)cartaCasillero);
             }
-            hechizos.get(i).setVisible(true);
+            hechizos.get(i).activarBoton();
+            //hechizos.get(i).setVisible(true);
             ImageView newImage;
             Image img = new Image("/vista/imagenes/cartaAtras.jpg",100,110,true,false);
             hechizos.get(i).setGraphic(new ImageView(img));

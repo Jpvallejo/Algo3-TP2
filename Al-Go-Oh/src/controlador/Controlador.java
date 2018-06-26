@@ -71,4 +71,9 @@ public class Controlador {
         Juego.reiniciarJuego();
         pantallaBatalla.reiniciarPantalla();
     }
+
+    public void atacarMonstruo(Monstruo atacante, Monstruo defensor) {
+        atacante.atacarMonstruo(defensor);
+        pantallaBatalla.actualizarPantalla();
+    }
 }

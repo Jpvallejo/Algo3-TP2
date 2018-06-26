@@ -2,34 +2,35 @@ package vista;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import modelo.*;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import modelo.Casillero;
 import modelo.Estados.EstadoAtaque;
-import vista.Botones.BotonCampoMonstruo;
-import vista.Botones.BotonMonstruo;
+import modelo.Jugador;
+import modelo.Monstruo;
+import vista.Botones.BotonMonstruoObjetivo;
 
-import javax.swing.event.ChangeListener;
 import java.util.ArrayList;
 
-public class PanelMonstruos extends HBox {
+public class PanelMonstruosObjetivos extends HBox {
 
-    private ArrayList<BotonCampoMonstruo> monstruos;
+    private ArrayList<BotonMonstruoObjetivo> monstruos;
 
-    public PanelMonstruos(Jugador jugador) {
-        monstruos = new ArrayList<BotonCampoMonstruo>();
+    public PanelMonstruosObjetivos(Jugador jugador, Stage stage, Monstruo atacante) {
+        monstruos = new ArrayList<BotonMonstruoObjetivo>();
         this.setVisible(true);
         for (int i = 0; i < 5; i++) {
-            BotonCampoMonstruo monsterbutton = new BotonCampoMonstruo();
+            BotonMonstruoObjetivo monsterbutton = new BotonMonstruoObjetivo();
             monsterbutton.setPrefSize(80, 110);
             setSpacing(20);
             monstruos.add(monsterbutton);
             monsterbutton.setStyle("-fx-background-color: #808080");
             this.getChildren().add(monsterbutton);
         }
-        actualizarPanel(jugador);
+        actualizarPanel(jugador,stage, atacante);
     }
 
-    public void actualizarPanel(Jugador jugador){
+    public void actualizarPanel(Jugador jugador,Stage stage, Monstruo atacante){
         for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
             Casillero casillero = Casillero.UNO;
             switch (i) {
@@ -51,7 +52,7 @@ public class PanelMonstruos extends HBox {
             }
             monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(casillero));
             /**************/
-            monstruos.get(i).activarBoton();
+            monstruos.get(i).activarBoton(stage, atacante);
 
             /******************/
             monstruos.get(i).setVisible(true);

@@ -21,7 +21,7 @@ public class FabricaDeCartas {
         cartas.add(new AgresorOscuro());
         cartas.add(new AgujeroNegro());
         cartas.add(new Reinforcement());
-        cartas.add(new AgresorOscuro());
+        cartas.add(new AbismoReluciente());
         cartas.add(new OllaDeLaCodicia());
         //cartas.add(new AlasDeLaLlamaPerversa());
         //cartas.add(new AgujaAsesina());

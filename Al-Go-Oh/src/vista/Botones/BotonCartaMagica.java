@@ -9,31 +9,33 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import modelo.Juego;
-import modelo.Jugador;
-import modelo.Monstruo;
-import vista.PanelMano;
+import modelo.Carta;
+import modelo.CartaMagica;
 
 import java.util.Optional;
 
+public class BotonCartaMagica extends BotonCarta{
+    private CartaMagica cartaMagica;
 
-public class BotonMonstruo extends BotonCarta {
-    private Monstruo monstruo;
-
-    public Monstruo getMonstruo() {
-        return monstruo;
+    public Carta getCartaMagica() {
+        return cartaMagica;
     }
 
-    public void setMonstruo(Monstruo monstruo) {
-        this.monstruo = monstruo;
-    }
 
-    public BotonMonstruo() {
+    public BotonCartaMagica() {
+        super();
         this.setVisible(true);
+        this.activarBoton();
     }
-    public BotonMonstruo(Monstruo monstruo){
-        this.setMonstruo(monstruo);
+
+
+    public BotonCartaMagica(CartaMagica cartaMagica) {
         this.setVisible(true);
+        this.setCartaMagica(cartaMagica);
+        this.activarBoton();
+    }
+
+    public void activarBoton(){
         this.setOnAction(new EventHandler<ActionEvent>(){
 
             @Override
@@ -46,32 +48,29 @@ public class BotonMonstruo extends BotonCarta {
                 scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
                 Stage standarddialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
 
-                ButtonType invocarBoton = new ButtonType("Invocar");
+                ButtonType activarHechizo = new ButtonType("Activar");
                 ButtonType colocarBoton = new ButtonType("Colocar");
                 ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                alert.getButtonTypes().setAll(invocarBoton,colocarBoton, buttonTypeCancel);
+                alert.getButtonTypes().setAll(activarHechizo,colocarBoton, buttonTypeCancel);
 
                 // Add a custom icon.
-                //  standarddialogStage.getIcons().add(new Image("file:resources/images/calendar.png"));
+              //  standarddialogStage.getIcons().add(new Image("file:resources/images/calendar.png"));
 
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == invocarBoton){
-                    Controlador.getControlador().invocarMonstruo(monstruo);
-                    //panel.actualizarMano(Juego.getJuego().getJugadorActivo());
-
+                if (result.get() == activarHechizo){
+                    //BotonCartaMagica.this.getMonstruo().activarEfecto();
+                    Controlador.getControlador().activarCartaMagica(cartaMagica);
                 }
                 else if (result.get() == colocarBoton){
-                    Controlador.getControlador().colocarMonstruo(monstruo);
-
-                    // Juego.getJuego().getJugadorActivo().colocarCarta(BotonCartaMagica.this.getMonstruo());
+                    Controlador.getControlador().colocarCartaMagica(cartaMagica);
+                   // Juego.getJuego().getJugadorActivo().colocarCarta(BotonCartaMagica.this.getMonstruo());
                 }
             }
         });
-
     }
-    public BotonMonstruo(String nombre){
 
-        super(nombre);
+    public void setCartaMagica(CartaMagica cartaMagica){
+        this.cartaMagica = cartaMagica;
     }
 }

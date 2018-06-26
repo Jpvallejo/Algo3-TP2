@@ -42,7 +42,7 @@ public class PanelMano  extends GridPane {
                     botonesMano.add(botonCarta);
                 }
                 else if(carta instanceof CartaMagica){
-                    botonCarta = new BotonCartaHechizo((CartaMagica)carta);
+                    botonCarta = new BotonCartaMagica((CartaMagica)carta);
                     hbButtons.getChildren().add(botonCarta);
                     botonesMano.add(botonCarta);
                 }
