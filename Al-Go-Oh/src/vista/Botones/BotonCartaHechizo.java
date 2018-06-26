@@ -1,5 +1,6 @@
 package vista.Botones;
 
+import controlador.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
@@ -11,7 +12,6 @@ import javafx.stage.Stage;
 import modelo.Carta;
 import modelo.CartaMagica;
 import modelo.CartaTrampa;
-import modelo.Juego;
 
 import java.util.Optional;
 
@@ -55,9 +55,11 @@ public class BotonCartaHechizo extends BotonCarta{
 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == activarHechizo){
-                    BotonCartaHechizo.this.getHechizo().activarEfecto();
+                    //BotonCartaHechizo.this.getHechizo().activarEfecto();
+                    Controlador.getControlador().activarCartaMagica(hechizo);
                 }
                 else if (result.get() == colocarBoton){
+                    Controlador.getControlador().colocarCartaMagica(hechizo);
                    // Juego.getJuego().getJugadorActivo().colocarCarta(BotonCartaHechizo.this.getHechizo());
                 }
             }

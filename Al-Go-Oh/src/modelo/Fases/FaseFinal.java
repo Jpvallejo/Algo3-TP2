@@ -12,5 +12,8 @@ public class FaseFinal extends Fase {
     public void iniciarFase() {
     }
 
-
+    @Override
+    public String getNombre() {
+        return "Fase Final";
+    }
 }

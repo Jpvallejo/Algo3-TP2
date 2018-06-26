@@ -6,4 +6,8 @@ public class FasePreparacion extends Fase {
         return new FaseAtaque();
     }
 
+    @Override
+    public String getNombre() {
+        return "Fase Preparacion";
+    }
 }

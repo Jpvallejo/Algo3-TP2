@@ -8,6 +8,8 @@ package modelo;
 
 import modelo.Monstruos.MonstruoGenerico;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -23,10 +25,17 @@ public class ZonaMonstruo extends Zona{
     }
 
     public void destruirZona(){
+        ArrayList<Carta> cartas = new ArrayList<>();
+
         for (Casillero key :casilleros.keySet()){
-            casilleros.get(key).destruir();
-            //casilleros.remove(key);
+            cartas.add(casilleros.get(key));
         }
+
+        //Se agrega debido a error. A corregir
+        for (Carta carta : cartas){
+            carta.destruir();
+        }
+
     }
     
     public void aplicarCartaCampo(int adicional, boolean ataque){

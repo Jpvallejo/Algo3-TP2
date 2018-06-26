@@ -18,15 +18,19 @@ public class PanelHechizos extends HBox {
         setPrefSize(500,100);
         hechizos = new ArrayList<BotonCartaHechizo>();
         this.setVisible(true);
-        for(int i = 0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             BotonCartaHechizo botonHechizo = new BotonCartaHechizo();
-            botonHechizo.setPrefSize(80,110);
+            botonHechizo.setPrefSize(80, 110);
             setSpacing(20);
             hechizos.add(botonHechizo);
             botonHechizo.setStyle("-fx-background-color: #808080");
             this.getChildren().add(botonHechizo);
 
         }
+        actualizarPanel(jugador);
+    }
+
+    public void actualizarPanel(Jugador jugador){
         for (int i = 0; i < jugador.getZonaHechizos().cantidadCartas(); i++) {
             Casillero casillero = Casillero.UNO;
             switch (i) {
@@ -41,6 +45,7 @@ public class PanelHechizos extends HBox {
                     break;
                 case 3:
                     casillero = Casillero.CUATRO;
+                    break;
                 case 4:
                     casillero = Casillero.CINCO;
                     break;
@@ -54,7 +59,7 @@ public class PanelHechizos extends HBox {
             }
             hechizos.get(i).setVisible(true);
             ImageView newImage;
-            Image img = new Image("/vista/imagenes/cartaAtras.jpg",100,146,true,false);
+            Image img = new Image("/vista/imagenes/cartaAtras.jpg",100,110,true,false);
             hechizos.get(i).setGraphic(new ImageView(img));
             hechizos.get(i).setPrefSize(62,91);
         }

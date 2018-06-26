@@ -13,16 +13,16 @@ public class FabricaDeCartas {
 
         /****** COLOCAR 40 CARTAS AQUI *********/
 
-        for ( int i=0 ; i<35; i++){
+        for ( int i=0 ; i<33; i++){
             cartas.add(new AsechadorDelCraneo());
         }
+        cartas.add(new AlasDeLaLlamaPerversa());
+        cartas.add(new AgujaAsesina());
         cartas.add(new AgresorOscuro());
+        cartas.add(new AgujeroNegro());
+        cartas.add(new Reinforcement());
         cartas.add(new AgresorOscuro());
-        cartas.add(new AgresorOscuro());
-        cartas.add(new AgresorOscuro());
-        cartas.add(new AgresorOscuro());
-        //cartas.add(new AsechadorDelCraneo());
-        //cartas.add(new AsechadorDelCraneo());
+        cartas.add(new OllaDeLaCodicia());
         //cartas.add(new AlasDeLaLlamaPerversa());
         //cartas.add(new AgujaAsesina());
 

@@ -1,8 +1,6 @@
 package controlador;
 
-import modelo.Juego;
-import modelo.Jugador;
-import modelo.Monstruo;
+import modelo.*;
 import vista.PantallaBatalla;
 
 public class Controlador {
@@ -16,10 +14,12 @@ public class Controlador {
 
     public void terminarTurno() {
         Juego.getJuego().cambiarTurno();
+        Juego.getJuego().iniciarFase();
     }
 
     public void pasarFase() {
         Juego.getJuego().avanzarFase();
+        pantallaBatalla.actualizarPantalla();
     }
 
     public Jugador getJugadorActivo() {
@@ -30,7 +30,7 @@ public class Controlador {
     }
 
     public String obtenerFase() {
-        return Juego.getJuego().obtenerFase().toString();
+        return Juego.getJuego().getNombreFaseActual();
     }
 
     public void asociarPantalla(PantallaBatalla _pantallaBatalla){
@@ -40,12 +40,35 @@ public class Controlador {
     public void invocarMonstruo(Monstruo monstruo) {
         Juego.getJuego().getJugadorActivo().invocar(monstruo);
         Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
-        pantallaBatalla.actualizarTodo();
+        pantallaBatalla.actualizarPantalla();
     }
 
     public void colocarMonstruo(Monstruo monstruo) {
         Juego.getJuego().getJugadorActivo().colocar(monstruo);
         Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
-        pantallaBatalla.actualizarTodo();
+        pantallaBatalla.actualizarPantalla();
+    }
+
+    public void activarCartaMagica(CartaMagica carta) {
+        Juego.getJuego().getJugadorActivo().activarCarta(carta);
+        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(carta);
+        pantallaBatalla.actualizarPantalla();
+    }
+
+    public void colocarCartaMagica(CartaMagica carta) {
+        Juego.getJuego().getJugadorActivo().colocarCarta(carta);
+        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(carta);
+        pantallaBatalla.actualizarPantalla();
+    }
+
+    public void colocarCartaTrampa(CartaTrampa carta) {
+        Juego.getJuego().getJugadorActivo().colocarCarta(carta);
+        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(carta);
+        pantallaBatalla.actualizarPantalla();
+    }
+
+    public void reiniciarJuego() {
+        Juego.reiniciarJuego();
+        pantallaBatalla.reiniciarPantalla();
     }
 }

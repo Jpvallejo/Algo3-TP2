@@ -10,5 +10,6 @@ public class OllaDeLaCodicia extends CartaMagica {
     public void activarEfecto(){
         Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();
         Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();
+        this.destruir();
     }
 }

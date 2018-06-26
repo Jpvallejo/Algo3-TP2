@@ -32,37 +32,29 @@ public class PanelMano  extends GridPane {
             botonesMano = new ArrayList<BotonCarta>();
             Mano mano = jugador.getMano();
             for (Carta carta: mano.getCartas()) {
+                Image img = new Image(carta.getUrlImagen(),100,110,true,false);
+                ImageView icono = new ImageView(img);
+                BotonCarta botonCarta;
+
                 if(carta instanceof Monstruo ){
-                    BotonMonstruo botonMonstruo = new BotonMonstruo((Monstruo)carta);
-                    hbButtons.getChildren().add(botonMonstruo);
-                    botonesMano.add(botonMonstruo);
-
-                    //ImageIcon img = new ImageIcon("Cards Images Database/Monsters/"+carta.getName()+".png");
-                    Image img = new Image(carta.getUrlImagen(),100,110,true,false);
-                    //Image newimg = img2.getScaledInstance(100, 146,  java.awt.Image.SCALE_SMOOTH);
-                    ImageView newIcon = new ImageView(img);
-
-                    botonMonstruo.setGraphic(new ImageView(img));
-                    botonMonstruo.setPrefSize(100,110);
+                    botonCarta = new BotonMonstruo((Monstruo)carta);
+                    hbButtons.getChildren().add(botonCarta);
+                    botonesMano.add(botonCarta);
                 }
                 else if(carta instanceof CartaMagica){
-                    BotonCartaHechizo botonCartaHechizo = new BotonCartaHechizo((CartaMagica)carta);
-                    hbButtons.getChildren().add(botonCartaHechizo);
-                    botonesMano.add(botonCartaHechizo);
-                    /**FOTO*/
-                    botonCartaHechizo.setGraphic(new ImageView());
-                    botonCartaHechizo.setPrefSize(100,110);
+                    botonCarta = new BotonCartaHechizo((CartaMagica)carta);
+                    hbButtons.getChildren().add(botonCarta);
+                    botonesMano.add(botonCarta);
                 }
                 else {
-                    BotonCartaTrampa botonCartaTrampa = new BotonCartaTrampa((CartaTrampa)carta);
-                    botonCartaTrampa.setVisible(true);
-                    hbButtons.getChildren().add(botonCartaTrampa);
-                    botonesMano.add(botonCartaTrampa);
-                    /**FOTO*/
-                    botonCartaTrampa.setGraphic(new ImageView());
-                    botonCartaTrampa.setPrefSize(100,146);
-
+                    botonCarta = new BotonCartaTrampa((CartaTrampa)carta);
+                    //botonCarta.setVisible(true);
+                    hbButtons.getChildren().add(botonCarta);
+                    botonesMano.add(botonCarta);
                 }
+
+                botonCarta.setGraphic(new ImageView(img));
+                botonCarta.setPrefSize(100,110);
 
             }
             this.add(hbButtons,0,2,2,1);

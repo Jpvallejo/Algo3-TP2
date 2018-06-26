@@ -16,15 +16,18 @@ public class PanelMonstruos extends HBox {
     public PanelMonstruos(Jugador jugador) {
         monstruos = new ArrayList<BotonMonstruo>();
         this.setVisible(true);
-        for(int i = 0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             BotonMonstruo monsterbutton = new BotonMonstruo();
-            monsterbutton.setPrefSize(80,110);
+            monsterbutton.setPrefSize(80, 110);
             setSpacing(20);
             monstruos.add(monsterbutton);
             monsterbutton.setStyle("-fx-background-color: #808080");
             this.getChildren().add(monsterbutton);
-
         }
+        actualizarPanel(jugador);
+    }
+
+    public void actualizarPanel(Jugador jugador){
         for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
             Casillero casillero = Casillero.UNO;
             switch (i) {

@@ -5,14 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
-public class BotonPasarFase extends Button {
+import java.awt.*;
 
+public class BotonReiniciarJuego extends Button {
 
-    public BotonPasarFase(){
+    public BotonReiniciarJuego(){
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Controlador.getControlador().pasarFase();
+                Controlador.getControlador().reiniciarJuego();
             }
         });
     }

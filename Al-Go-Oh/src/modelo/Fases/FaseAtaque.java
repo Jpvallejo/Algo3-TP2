@@ -15,6 +15,9 @@ public class FaseAtaque extends Fase {
         Juego.getJuego().getJugadorActivo().activarCartaCampo();
         Juego.getJuego().getJugadorOponente().activarCartaCampo();
     }
-    
-    
+
+    @Override
+    public String getNombre() {
+        return "Fase Ataque";
+    }
 }

@@ -3,17 +3,16 @@ package vista;
 import controlador.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import modelo.Juego;
 import modelo.Jugador;
 import vista.Botones.BotonPasarFase;
+import vista.Botones.BotonReiniciarJuego;
 import vista.Botones.BotonTerminarTurno;
 
 
@@ -22,7 +21,6 @@ public class PantallaBatalla {
     private Stage stage;
 
 
-    private Pane panel2;
     private PanelHechizos panelHechizosJugador1;
     private PanelMonstruos panelMonstruosJugador1;
     private PanelMonstruos panelMonstruosJugador2;
@@ -38,7 +36,10 @@ public class PantallaBatalla {
     private Label nombreJugador2;
     public Label faseActual;
     private BotonTerminarTurno botonTerminarTurno;
-    private Pane panel1;
+    private BotonReiniciarJuego botonReiniciarJuego;
+    private Pane panelJugador1;
+    private Pane panelJugador2;
+    private Pane panelDePuntos;
     private PanelMano manoJugador1;
     private PanelMano manoJugador2;
     private ScrollPane pan;
@@ -54,19 +55,20 @@ public class PantallaBatalla {
 
         this.stage = stage;
 
-
         jugador1 = controlador.getJugadorActivo();
         jugador2 = controlador.getJugadorOponente();
         actualizarPantalla(stage,controlador);
     }
 
     public void actualizarPantalla(Stage stage, Controlador controlador){
+
         int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
 
         Pane panelPrincipal = new Pane();
         panelPrincipal.setPrefSize(ancho - 10, alto - 70);
 
+        // Paneles
         panelMonstruosJugador1 = new PanelMonstruos(jugador1);
         panelMonstruosJugador1.setPrefSize(1000, 116);
         panelMonstruosJugador1.setLayoutY(232);
@@ -82,19 +84,32 @@ public class PantallaBatalla {
         panelHechizosJugador2.setLayoutY(114);
         panelHechizosJugador2.setPrefSize(1000, 116);
 
+        manoOcultaJugador1 = new PanelManoEscondida(jugador1);
+        manoOcultaJugador2 = new PanelManoEscondida(jugador2);
+        manoJugador1 = new PanelMano(jugador1);
+        manoJugador2 = new PanelMano(jugador2);
+
+
+        // Botones
         botonPasarFase = new BotonPasarFase();
         botonPasarFase.setText("Pasar Fase");
         botonPasarFase.setLayoutY(340);
 
-        botonTerminarTurno = new BotonTerminarTurno();
+        botonTerminarTurno = new BotonTerminarTurno(this);
         botonTerminarTurno.setLayoutY(300);
         botonTerminarTurno.setText("Terminar Turno");
 
+        botonReiniciarJuego = new BotonReiniciarJuego();
+        botonReiniciarJuego.setLayoutY(380);
+        botonReiniciarJuego.setText("Reiniciar Juego");
+
+        cementerioJugador1 = new Button();
+        cementerioJugador2 = new Button();
+
+        // Labels
         nombreJugador1 = new Label("Jugador 1");
         nombreJugador2 = new Label("Jugador 2");
         nombreJugador2.setLayoutY(650);
-        cementerioJugador1 = new Button();
-        cementerioJugador2 = new Button();
 
         puntosVidaJugador1 = new Label("Life Points:" + jugador1.getPuntosDeVida());
         puntosVidaJugador1.setLayoutY(20);
@@ -103,46 +118,45 @@ public class PantallaBatalla {
 
         mazoJugador1 = new Label(jugador1.obtenerTamanioMazo() + "");
         mazoJugador2 = new Label("" + jugador2.obtenerTamanioMazo());
-        manoJugador1 = new PanelMano(jugador1);
-        manoJugador2 = new PanelMano(jugador2);
-        faseActual = new Label(controlador.obtenerFase());
 
-        manoOcultaJugador1 = new PanelManoEscondida(jugador1);
-        manoOcultaJugador2 = new PanelManoEscondida(jugador2);
+        faseActual = new Label("Fase: " + controlador.obtenerFase());
+        faseActual.setLayoutY(50);
 
-        panel1 = new Pane();
-        panel1.setPrefSize(1000, 394);
-        panel1.setLayoutX(151);
-        panel1.getChildren().add(panelMonstruosJugador1);
-        panel1.getChildren().add(panelHechizosJugador1);
+
+        panelJugador1 = new Pane();
+        panelJugador1.setPrefSize(1000, 394);
+        panelJugador1.setLayoutX(151);
+        panelJugador1.getChildren().add(panelMonstruosJugador1);
+        panelJugador1.getChildren().add(panelHechizosJugador1);
         panelCartasJugador1 = obtenerPanelCartasJugador(controlador, this.jugador1,manoJugador1,manoOcultaJugador1);
         panelCartasJugador1.setPrefSize(800, 116);
-        panel1.getChildren().add(panelCartasJugador1);
+        panelJugador1.getChildren().add(panelCartasJugador1);
+
+        panelJugador2 = new Pane();
+        panelJugador2.setPrefSize(800, 394);
+        panelJugador2.setLayoutX(151);
+        panelJugador2.setLayoutY(346);
+        panelJugador2.getChildren().add(panelMonstruosJugador2);
+        panelJugador2.getChildren().add(panelHechizosJugador2);
 
         panelCartasJugador2 = obtenerPanelCartasJugador(controlador, this.jugador2,manoJugador2,manoOcultaJugador2);
-
-        panel2 = new Pane();
-        panel2.setPrefSize(800, 394);
-        panel2.setLayoutX(151);
-        panel2.setLayoutY(346);
-        panel2.getChildren().add(panelMonstruosJugador2);
-        panel2.getChildren().add(panelHechizosJugador2);
-
-
         panelCartasJugador2.setPrefSize(1000, 116);
         panelCartasJugador2.setLayoutY(232);
-        panel2.getChildren().add(panelCartasJugador2);
+        panelJugador2.getChildren().add(panelCartasJugador2);
 
-        Pane panel3 = new Pane();
-        panel3.setStyle("-fx-background-color: #a2a2a2");
-        panel3.setPrefSize(148, 698);
-        panel3.getChildren().add(nombreJugador2);
-        panel3.getChildren().add(puntosVidaJugador2);
-        panel3.getChildren().add(botonTerminarTurno);
-        panel3.getChildren().add(botonPasarFase);
-        panel3.getChildren().add(puntosVidaJugador1);
-        panel3.getChildren().add(nombreJugador1);
-        panelPrincipal.getChildren().addAll(panel1, panel2, panel3);
+        Pane panelDePuntos = new Pane();
+        panelDePuntos.setStyle("-fx-background-color: #a2a2a2");
+        panelDePuntos.setPrefSize(148, 698);
+        panelDePuntos.getChildren().add(nombreJugador2);
+        panelDePuntos.getChildren().add(puntosVidaJugador2);
+        panelDePuntos.getChildren().add(faseActual);
+        panelDePuntos.getChildren().add(botonTerminarTurno);
+        panelDePuntos.getChildren().add(botonPasarFase);
+        panelDePuntos.getChildren().add(botonReiniciarJuego);
+        panelDePuntos.getChildren().add(puntosVidaJugador1);
+        panelDePuntos.getChildren().add(nombreJugador1);
+
+        panelPrincipal.getChildren().addAll(panelJugador1, panelJugador2, panelDePuntos);
         panelPrincipal.setBackground(new Background(new BackgroundImage(new Image("vista/imagenes/fondobatalla.jpg", 1500, 5000, true, true),
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT)));
@@ -154,6 +168,7 @@ public class PantallaBatalla {
         stage.show();
 
 
+        /*
         botonTerminarTurno.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -165,11 +180,12 @@ public class PantallaBatalla {
                 panelCartas2.setPrefSize(1000, 116);
                 panelCartas2.setLayoutY(232);
                 PantallaBatalla pantalla = PantallaBatalla.this;
-                pantalla.panel1.getChildren().set(2, panelCartas1);
-                pantalla.panel2.getChildren().set(2, panelCartas2);
+                pantalla.panelJugador1.getChildren().set(2, panelCartas1);
+                pantalla.panelJugador2.getChildren().set(2, panelCartas2);
+                actualizarPantalla();
             }
         });
-
+        */
 
         panelCartasJugador1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -195,8 +211,24 @@ public class PantallaBatalla {
         return panelCartas;
     }
 
-
-    public void actualizarTodo(){
-       actualizarPantalla(stage, Controlador.getControlador());
+    public void reiniciarPantalla() {
+        cargarPantalla(stage, Controlador.getControlador());
     }
+
+    public void actualizarPantalla(){
+       actualizarPantalla(stage, Controlador.getControlador());
+
+    /*    panelMonstruosJugador1.actualizarPanel(jugador1);
+        panelMonstruosJugador2.actualizarPanel(jugador2);
+        panelHechizosJugador1.actualizarPanel(jugador1);
+        panelHechizosJugador2.actualizarPanel(jugador2);
+        manoJugador1.actualizarMano(jugador1);
+        manoJugador2.actualizarMano(jugador2);
+        manoOcultaJugador1.actualizarMano(jugador1);
+        manoOcultaJugador2.actualizarMano(jugador2);
+        Pane panelPrincipal = new Pane();
+        panelPrincipal.setPrefSize(ancho - 10, alto - 70);*/
+
+    }
+
 }

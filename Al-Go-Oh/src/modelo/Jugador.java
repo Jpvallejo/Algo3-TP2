@@ -250,7 +250,7 @@ public class Jugador {
         return this.mano.contieneExodia();
     }
 
-    public void quitarCartaDeMano(Monstruo monstruo) {
-        mano.quitarCarta(monstruo);
+    public void quitarCartaDeMano(Carta carta) {
+        mano.quitarCarta(carta);
     }
 }

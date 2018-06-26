@@ -46,7 +46,7 @@ public abstract class Zona {
     public void eliminar(Carta carta) {
         for (Casillero casillero: Casillero.values()) {
             if (casilleros.containsKey(casillero)) {
-                if(casilleros.get(casillero).equals(carta)) casilleros.remove(casillero);        
+                if(casilleros.get(casillero) == carta) casilleros.remove(casillero);
             }
         }
     }

@@ -96,4 +96,8 @@ public class Juego {
     public ArrayList<Carta> getExodia() {
         return this.exodia;
     }
+
+    public String getNombreFaseActual() {
+        return faseActual.getNombre();
+    }
 }

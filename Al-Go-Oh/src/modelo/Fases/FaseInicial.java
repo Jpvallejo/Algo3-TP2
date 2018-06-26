@@ -12,5 +12,8 @@ public class FaseInicial extends Fase {
         Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();
     }
 
-
+    @Override
+    public String getNombre() {
+        return "Fase Inicial";
+    }
 }

@@ -8,4 +8,6 @@ public abstract class Fase {
 
     public void iniciarFase() {
     }
+
+    public abstract String getNombre();
 }
