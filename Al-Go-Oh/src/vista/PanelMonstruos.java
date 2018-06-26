@@ -31,25 +31,8 @@ public class PanelMonstruos extends HBox {
 
     public void actualizarPanel(Jugador jugador){
         for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
-            Casillero casillero = Casillero.UNO;
-            switch (i) {
-                case 0:
-                    casillero = Casillero.UNO;
-                    break;
-                case 1:
-                    casillero = Casillero.DOS;
-                    break;
-                case 2:
-                    casillero = Casillero.TRES;
-                    break;
-                case 3:
-                    casillero = Casillero.CUATRO;
-                    break;
-                case 4:
-                    casillero = Casillero.CINCO;
-                    break;
-            }
-            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(casillero));
+      
+            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
             /**************/
             monstruos.get(i).activarBoton();
 

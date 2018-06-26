@@ -21,7 +21,7 @@ public class CartaMagicaTest {
         Jugador jugador = new Jugador();
         jugador.colocarCarta(agujeroNegro);
 
-        assertTrue(jugador.getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
+        assertTrue(jugador.getZonaHechizos().contains(agujeroNegro));
 
     }
     
@@ -59,7 +59,7 @@ public class CartaMagicaTest {
         jugadorOponente.invocar(monstruoJugadorOponente);
         
         jugadorActivo.activarCarta(agujeroNegro);
-
+        
         assertEquals(0,jugadorActivo.cantidadCartasZonaMonstruos());
         assertEquals(0,jugadorOponente.cantidadCartasZonaMonstruos());
         assertEquals(0,jugadorActivo.cantidadCartasZonaMagicas());
@@ -133,7 +133,7 @@ public class CartaMagicaTest {
 
         jugadorActivo.activarCartaCampo(); //Suma 200 al ataque del monstruo del jugadorOponente osea tiene 300
 
-        jugadorActivo.declararAtaqueDePosicionAPosicion(jugadorOponente,Casillero.UNO,Casillero.UNO);
+        monstruoAtaque.atacarMonstruo(monstruoDefensa);
 
         assertEquals(1, jugadorActivo.cantidadCartasCementerio());
         //Le resta 200 puntos de vida al jugadorActivo

@@ -15,7 +15,7 @@ public class CartaTrampaTest {
         Jugador jugador = new Jugador();
         jugador.colocarCarta(carta);
 
-        assertTrue(jugador.getZonaHechizos().obtenerCartaPosicion(Casillero.UNO).estaBocaAbajo());
+        assertTrue(jugador.getZonaHechizos().contains(carta));
 
     }
 
@@ -80,10 +80,8 @@ public class CartaTrampaTest {
 
         CartaTrampa carta = new Reinforcement();
         defensor.colocarCarta(carta);
-
-        assertEquals(1200, defensor.obtenerMonstruoEnCasillero(Casillero.UNO).getPuntosAtaque());
-
-        atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
+        
+        monstruoAtacante.atacarMonstruo(monstruoDefensor);
 
         assertEquals(1, atacante.cantidadCartasCementerio());
         assertEquals(1, defensor.cantidadCartasCementerio());

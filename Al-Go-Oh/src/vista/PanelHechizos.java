@@ -30,25 +30,7 @@ public class PanelHechizos extends HBox {
 
     public void actualizarPanel(Jugador jugador){
         for (int i = 0; i < jugador.getZonaHechizos().cantidadCartas(); i++) {
-            Casillero casillero = Casillero.UNO;
-            switch (i) {
-                case 0:
-                    casillero = Casillero.UNO;
-                    break;
-                case 1:
-                    casillero = Casillero.DOS;
-                    break;
-                case 2:
-                    casillero = Casillero.TRES;
-                    break;
-                case 3:
-                    casillero = Casillero.CUATRO;
-                    break;
-                case 4:
-                    casillero = Casillero.CINCO;
-                    break;
-            }
-            Carta cartaCasillero = jugador.getZonaHechizos().obtenerCartaPosicion(casillero);
+            Carta cartaCasillero = jugador.getZonaHechizos().obtenerCartaPosicion(i);
             if(cartaCasillero instanceof CartaMagica) {
                 hechizos.get(i).setHechizo((CartaMagica)cartaCasillero);
 

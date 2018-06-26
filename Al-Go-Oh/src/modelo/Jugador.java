@@ -53,7 +53,7 @@ public class Jugador {
 
     public void invocar(Monstruo monstruo) {
         monstruo.requiereSacrificios();
-
+        
         //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
@@ -151,27 +151,6 @@ public class Jugador {
         this.cartaCampo = carta;
     }
         
-    
-    public void declararAtaqueDePosicionAPosicion(Jugador defensor, Casillero casilleroAtacante, Casillero casilleroDefensor) {
-        
-        Monstruo monstruoAtacante = this.obtenerMonstruoEnCasillero(casilleroAtacante);
-        
-        if (casilleroDefensor != Casillero.PUNTOSVIDA) {
-            Monstruo monstruoDefensor = defensor.obtenerMonstruoEnCasillero(casilleroDefensor);
-
-            monstruoAtacante.atacarMonstruo(monstruoDefensor);
-
-        }
-        else{
-            monstruoAtacante.atacar(defensor);
-        }
-
-    }
-
-    public Monstruo obtenerMonstruoEnCasillero(Casillero casillero) {
-        return (Monstruo) zonaMonstruo.obtenerCartaPosicion(casillero);
-    }
-
     public Mano getMano() {
         return mano;
     }
@@ -253,4 +232,5 @@ public class Jugador {
     public void quitarCartaDeMano(Carta carta) {
         mano.quitarCarta(carta);
     }
+
 }

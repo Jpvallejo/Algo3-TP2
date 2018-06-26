@@ -8,8 +8,7 @@ import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
 import modelo.CartasMonstruosEspeciales.JinzoNro7;
 import modelo.DragonDeOjosAzulesDefinitivo;
 import modelo.Estados.EstadoAtaque;
-import modelo.Excepciones.MonstruoDeFusionException;
-import modelo.Excepciones.RequiereSacrificioException;
+import modelo.Excepciones.*;
 import modelo.Monstruos.DragonBlancoDeOjosAzules;
 import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
@@ -94,7 +93,7 @@ public class MonstruosEspecialesTest {
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2,aSacrificar3); });
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo); });
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1); });
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
+        assertThrows(MonstruoDeFusionException.class, () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2,aSacrificar3); });
     }
 

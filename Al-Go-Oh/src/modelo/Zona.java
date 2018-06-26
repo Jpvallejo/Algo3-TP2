@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
@@ -13,53 +14,45 @@ import java.util.Hashtable;
  */
 public abstract class Zona {
 
-    protected final Hashtable<Casillero, Carta> casilleros;
+    protected final ArrayList<Carta> cartas;
 
     protected Zona() {
-        casilleros = new Hashtable<>();
+       cartas = new ArrayList<Carta>();
     }
     
-    public boolean casilleroDisponible() {
-       return casilleros.isEmpty();
-    }   
     
     public boolean colocarCarta(Carta carta) {
-        for (Casillero pos : Casillero.values()) {
-            if (!casilleros.containsKey(pos)) {
-                casilleros.putIfAbsent(pos,carta);
-                return true;
-            }
+        if (this.cartas.size() <= 5 ){
+            cartas.add(carta);
+            return true;
         }
-
         return false;   
      }
 
-    protected boolean contains(Carta carta) {
-       return casilleros.contains(carta);
+    public boolean contains(Carta carta) {
+       return cartas.contains(carta);
     }
 
     public int cantidadCartas(){
 
-       return casilleros.size();
+       return cartas.size();
     }
 
-    public void eliminar(Carta carta) {
-        for (Casillero casillero: Casillero.values()) {
-            if (casilleros.containsKey(casillero)) {
-                if(casilleros.get(casillero) == carta) casilleros.remove(casillero);
-            }
-        }
+    public void eliminar(Carta cartaEliminar) {
+        
+        cartas.remove(cartaEliminar);
+        
     }
-    
-    public Carta obtenerCartaPosicion(Casillero casillero){
-        return casilleros.get(casillero);
-    }
-    
-    
+   
     public boolean zonaVacia(){
     
-        return casilleros.isEmpty();
+        return cartas.isEmpty();
     
+    }
+    
+    
+    public Carta obtenerCartaPosicion(int indice) {
+        return this.cartas.get(indice);
     }
     
 }

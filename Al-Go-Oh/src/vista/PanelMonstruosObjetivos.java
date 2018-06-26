@@ -4,7 +4,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import modelo.Casillero;
 import modelo.Estados.EstadoAtaque;
 import modelo.Jugador;
 import modelo.Monstruo;
@@ -32,25 +31,8 @@ public class PanelMonstruosObjetivos extends HBox {
 
     public void actualizarPanel(Jugador jugador,Stage stage, Monstruo atacante){
         for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
-            Casillero casillero = Casillero.UNO;
-            switch (i) {
-                case 0:
-                    casillero = Casillero.UNO;
-                    break;
-                case 1:
-                    casillero = Casillero.DOS;
-                    break;
-                case 2:
-                    casillero = Casillero.TRES;
-                    break;
-                case 3:
-                    casillero = Casillero.CUATRO;
-                    break;
-                case 4:
-                    casillero = Casillero.CINCO;
-                    break;
-            }
-            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(casillero));
+
+            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
             /**************/
             monstruos.get(i).activarBoton(stage, atacante);
 
