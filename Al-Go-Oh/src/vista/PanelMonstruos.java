@@ -5,21 +5,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.*;
 import modelo.Estados.EstadoAtaque;
-import vista.Botones.BotonCampoMonstruo;
 import vista.Botones.BotonMonstruo;
 
-import javax.swing.event.ChangeListener;
 import java.util.ArrayList;
 
 public class PanelMonstruos extends HBox {
 
-    private ArrayList<BotonCampoMonstruo> monstruos;
+    private ArrayList<BotonMonstruo> monstruos;
 
     public PanelMonstruos(Jugador jugador) {
-        monstruos = new ArrayList<BotonCampoMonstruo>();
+        monstruos = new ArrayList<BotonMonstruo>();
         this.setVisible(true);
         for (int i = 0; i < 5; i++) {
-            BotonCampoMonstruo monsterbutton = new BotonCampoMonstruo();
+            BotonMonstruo monsterbutton = new BotonMonstruo();
             monsterbutton.setPrefSize(80, 110);
             setSpacing(20);
             monstruos.add(monsterbutton);
@@ -32,11 +30,7 @@ public class PanelMonstruos extends HBox {
     public void actualizarPanel(Jugador jugador){
         for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
       
-            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
-            /**************/
-            monstruos.get(i).activarBoton();
-
-            /******************/
+            monstruos.get(i).setCarta((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
             monstruos.get(i).setVisible(true);
             ImageView newImage;
 
@@ -52,5 +46,16 @@ public class PanelMonstruos extends HBox {
         }
     }
 
+    public void activarBotonesFaseAtaque(){
+        for (BotonMonstruo boton : monstruos) {
+            boton.activarHandleCampoFaseAtaque();
+        }
+    }
 
+
+    public void activarBotonesFasePreparacion() {
+        for (BotonMonstruo boton : monstruos) {
+            boton.activarHandleCampoFasePreparacion();
+        }
+    }
 }

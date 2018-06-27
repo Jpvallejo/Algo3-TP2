@@ -23,17 +23,27 @@ public class ZonaMonstruo extends Zona{
     
         super();
     }
-
+/*
     public void destruirZona(){
         
         if (!this.zonaVacia()){
-            for (int i = 0; i < this.cantidadCartas(); i++){
-                Monstruo monstruo = (Monstruo) this.cartas.remove(i);
-                monstruo.destruir();
+            for (Carta carta : this.cartas){
+                carta.destruir();
             }
         }
         
     }
+*/
+    public void destruirZona(){
+        Iterator<Carta> itr = cartas.iterator();
+
+        while(itr.hasNext()){
+            Carta carta = itr.next();
+            itr.remove();
+            carta.destruir();
+        }
+    }
+
     
     public void aplicarCartaCampo(int adicional, boolean ataque){
         for (Carta carta : this.cartas){

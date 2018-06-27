@@ -17,7 +17,7 @@ public abstract class Zona {
     protected final ArrayList<Carta> cartas;
 
     protected Zona() {
-       cartas = new ArrayList<Carta>();
+       cartas = new ArrayList<Carta>(5);
     }
     
     

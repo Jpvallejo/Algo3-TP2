@@ -19,7 +19,7 @@ public class Cementerio {
     public Carta buscarCarta(Carta cartaBuscada) {
         //Hay que modificarlo quizas
         for(Carta carta: this.cartas){
-            if( carta.equals(cartaBuscada))return carta; 
+            if( carta == cartaBuscada)return carta;
         }  
         return null;
     }

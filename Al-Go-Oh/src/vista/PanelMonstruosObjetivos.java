@@ -7,19 +7,19 @@ import javafx.stage.Stage;
 import modelo.Estados.EstadoAtaque;
 import modelo.Jugador;
 import modelo.Monstruo;
-import vista.Botones.BotonMonstruoObjetivo;
+import vista.Botones.BotonMonstruo;
 
 import java.util.ArrayList;
 
 public class PanelMonstruosObjetivos extends HBox {
 
-    private ArrayList<BotonMonstruoObjetivo> monstruos;
+    private ArrayList<BotonMonstruo> monstruos;
 
     public PanelMonstruosObjetivos(Jugador jugador, Stage stage, Monstruo atacante) {
-        monstruos = new ArrayList<BotonMonstruoObjetivo>();
+        monstruos = new ArrayList<BotonMonstruo>();
         this.setVisible(true);
         for (int i = 0; i < 5; i++) {
-            BotonMonstruoObjetivo monsterbutton = new BotonMonstruoObjetivo();
+            BotonMonstruo monsterbutton = new BotonMonstruo();
             monsterbutton.setPrefSize(80, 110);
             setSpacing(20);
             monstruos.add(monsterbutton);
@@ -32,9 +32,9 @@ public class PanelMonstruosObjetivos extends HBox {
     public void actualizarPanel(Jugador jugador,Stage stage, Monstruo atacante){
         for (int i = 0; i < jugador.getZonaMonstruo().cantidadCartas(); i++) {
 
-            monstruos.get(i).setMonstruo((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
+            monstruos.get(i).setCarta((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
             /**************/
-            monstruos.get(i).activarBoton(stage, atacante);
+            monstruos.get(i).activarHandleObjetivoFaseAtaque(stage, atacante);
 
             /******************/
             monstruos.get(i).setVisible(true);

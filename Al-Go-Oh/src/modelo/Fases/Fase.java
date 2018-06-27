@@ -1,5 +1,7 @@
 package modelo.Fases;
 
+import vista.PantallaBatalla;
+
 public abstract class Fase {
 
     public Fase siguienteFase(){
@@ -10,4 +12,8 @@ public abstract class Fase {
     }
 
     public abstract String getNombre();
+
+    //public abstract void activarHandles();
+
+    public void activarHandles(PantallaBatalla pantallaBatalla){};
 }

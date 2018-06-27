@@ -379,4 +379,33 @@ public class MonstruoTest {
 
     }
 
+
+    @Test
+    public void testAlInvocarUnMonstruoYDestruirloElMonstruoDesapareceDelCampo(){
+        Jugador jugador = new Jugador();
+        Monstruo monstruo = new MonstruoGenerico("test1",0,0,3);
+
+        jugador.invocar(monstruo);
+
+        monstruo.destruir();
+
+        assertFalse(jugador.getZonaMonstruo().contains(monstruo));
+    }
+
+    @Test
+    public void testAlInvocarUnMonstruoYDestruirloNoSeEncuentraEnElCampoAunqueHayaMonstruosDelMismoTipo(){
+        Jugador jugador = new Jugador();
+        Monstruo agresor1 = new AgresorOscuro();
+        Monstruo agresor2 = new AgresorOscuro();
+        Monstruo agresor3 = new AgresorOscuro();
+
+        jugador.invocar(agresor1);
+        jugador.invocar(agresor2);
+        jugador.invocar(agresor3);
+
+        agresor3.destruir();
+
+        assertFalse(jugador.getZonaMonstruo().contains(agresor3));
+    }
+
 }

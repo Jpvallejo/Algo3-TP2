@@ -1,12 +1,10 @@
 package vista;
 
 import controlador.Controlador;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -120,7 +118,7 @@ public class PantallaBatalla {
         mazoJugador1 = new Label(jugador1.obtenerTamanioMazo() + "");
         mazoJugador2 = new Label("" + jugador2.obtenerTamanioMazo());
 
-        faseActual = new Label("Fase: " + controlador.obtenerFase());
+        faseActual = new Label("Fase: " + controlador.obtenerNombreFase());
         faseActual.setLayoutY(50);
 
 
@@ -168,25 +166,7 @@ public class PantallaBatalla {
 
         stage.show();
 
-
-        /*
-        botonTerminarTurno.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                controlador.terminarTurno();
-                ScrollPane panelCartas1 = obtenerPanelCartasJugador(controlador, PantallaBatalla.this.jugador1,manoJugador1,manoOcultaJugador1);
-                ScrollPane panelCartas2 = obtenerPanelCartasJugador(controlador, PantallaBatalla.this.jugador2,manoJugador2,manoOcultaJugador2);
-                panelCartas1.setPrefSize(1000, 116);
-                panelCartas2.setPrefSize(1000, 116);
-                panelCartas2.setLayoutY(232);
-                PantallaBatalla pantalla = PantallaBatalla.this;
-                pantalla.panelJugador1.getChildren().set(2, panelCartas1);
-                pantalla.panelJugador2.getChildren().set(2, panelCartas2);
-                actualizarPantalla();
-            }
-        });
-        */
+        controlador.obtenerFase().activarHandles(this);
 
         panelCartasJugador1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -210,6 +190,28 @@ public class PantallaBatalla {
         panelCartas.setFitToWidth(true);
         return panelCartas;
     }
+
+
+    public void activarPanelesFasePreparacion(){
+        manoJugador1.activarBotonesFasePreparacion();
+        manoJugador2.activarBotonesFasePreparacion();
+        panelHechizosJugador1.activarBotonesFasePreparacion();
+        panelHechizosJugador2.activarBotonesFasePreparacion();
+        panelMonstruosJugador1.activarBotonesFasePreparacion();
+        panelMonstruosJugador2.activarBotonesFasePreparacion();
+    }
+
+    public void activarPanelesFaseAtque(){
+        panelMonstruosJugador1.activarBotonesFaseAtaque();
+        panelMonstruosJugador2.activarBotonesFaseAtaque();
+    }
+
+
+    public void activarPanelesFaseFinal() {
+        panelHechizosJugador1.activarBotonesFasePreparacion();
+        panelHechizosJugador2.activarBotonesFasePreparacion();
+    }
+
 
     public void reiniciarPantalla() {
         cargarPantalla(stage, Controlador.getControlador());

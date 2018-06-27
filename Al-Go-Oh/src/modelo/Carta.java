@@ -44,11 +44,18 @@ public abstract class Carta{
         jugador.destruirCarta(this);
     }
 
-
+/*
     @Override
     public boolean equals(Object carta){
         return this.nombre == ((Carta)carta).nombre;
     }
+*/
+/*
+    @Override
+    public boolean equals(Object carta){
+        return (this.hashCode() == ((Carta) carta).hashCode());
+    }
+*/
 
     public String getUrlImagen(){
         return UrlImagen;

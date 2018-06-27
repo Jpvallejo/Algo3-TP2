@@ -1,6 +1,9 @@
 package controlador;
 
 import modelo.*;
+import modelo.Estados.Estado;
+import modelo.Estados.EstadoAtaque;
+import modelo.Fases.Fase;
 import vista.PantallaBatalla;
 
 public class Controlador {
@@ -29,8 +32,12 @@ public class Controlador {
         return Juego.getJuego().getJugadorOponente();
     }
 
-    public String obtenerFase() {
+    public String obtenerNombreFase() {
         return Juego.getJuego().getNombreFaseActual();
+    }
+
+    public Fase obtenerFase() {
+        return Juego.getJuego().obtenerFase();
     }
 
     public void asociarPantalla(PantallaBatalla _pantallaBatalla){
@@ -49,9 +56,14 @@ public class Controlador {
         pantallaBatalla.actualizarPantalla();
     }
 
-    public void activarCartaMagica(CartaMagica carta) {
+    public void activarCartaMagicaDesdeMano(CartaMagica carta) {
         Juego.getJuego().getJugadorActivo().activarCarta(carta);
         Juego.getJuego().getJugadorActivo().quitarCartaDeMano(carta);
+        pantallaBatalla.actualizarPantalla();
+    }
+
+    public void activarCartaMagica(CartaMagica carta) {
+        carta.activarEfecto();
         pantallaBatalla.actualizarPantalla();
     }
 
@@ -76,4 +88,11 @@ public class Controlador {
         atacante.atacarMonstruo(defensor);
         pantallaBatalla.actualizarPantalla();
     }
+
+    public void cambiarEstado(Monstruo monstruo, Estado estado) {
+        monstruo.setEstado(estado);
+        pantallaBatalla.actualizarPantalla();
+    }
+
+
 }

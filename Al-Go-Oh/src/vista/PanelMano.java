@@ -10,54 +10,63 @@ import vista.Botones.*;
 import java.util.ArrayList;
 
 public class PanelMano  extends GridPane {
-        private ArrayList<BotonCarta> botonesMano;
-        public PanelMano(Jugador jugador) {
-            actualizarMano(jugador);
+    private ArrayList<BotonCarta> botonesMano;
 
-        }
-        public ArrayList<BotonCarta> getBotonesMano(){
-            return this.botonesMano;
-        }
-        public void setBotonesMano(ArrayList<BotonCarta> botones){
-            this.botonesMano = botones;
-        }
+    public ArrayList<BotonCarta> getBotonesMano(){
+        return this.botonesMano;
+    }
 
-        public void actualizarMano(Jugador jugador){
-            this.getChildren().clear();
-            this.setHgap(10);
-            this.setVgap(12);
+    public void setBotonesMano(ArrayList<BotonCarta> botones){
+        this.botonesMano = botones;
+    }
 
-            HBox hbButtons = new HBox();
-            hbButtons.setSpacing(10.0);
-            botonesMano = new ArrayList<BotonCarta>();
-            Mano mano = jugador.getMano();
-            for (Carta carta: mano.getCartas()) {
-                Image img = new Image(carta.getUrlImagen(),100,110,true,false);
-                ImageView icono = new ImageView(img);
-                BotonCarta botonCarta;
+    public PanelMano(Jugador jugador) {
+        actualizarMano(jugador);
+    }
 
-                if(carta instanceof Monstruo ){
-                    botonCarta = new BotonMonstruo((Monstruo)carta);
-                    hbButtons.getChildren().add(botonCarta);
-                    botonesMano.add(botonCarta);
-                }
-                else if(carta instanceof CartaMagica){
-                    botonCarta = new BotonCartaMagica((CartaMagica)carta);
-                    hbButtons.getChildren().add(botonCarta);
-                    botonesMano.add(botonCarta);
-                }
-                else {
-                    botonCarta = new BotonCartaTrampa((CartaTrampa)carta);
-                    //botonCarta.setVisible(true);
-                    hbButtons.getChildren().add(botonCarta);
-                    botonesMano.add(botonCarta);
-                }
+    public void actualizarMano(Jugador jugador){
+        this.getChildren().clear();
+        this.setHgap(10);
+        this.setVgap(12);
 
-                botonCarta.setGraphic(new ImageView(img));
-                botonCarta.setPrefSize(100,110);
+        HBox hbButtons = new HBox();
+        hbButtons.setSpacing(10.0);
+        botonesMano = new ArrayList<BotonCarta>();
+        Mano mano = jugador.getMano();
+        for (Carta carta: mano.getCartas()) {
+            Image img = new Image(carta.getUrlImagen(),100,110,true,false);
+            ImageView icono = new ImageView(img);
+            BotonCarta botonCarta;
 
+            if(carta instanceof Monstruo ){
+                botonCarta = new BotonMonstruo((Monstruo)carta);
+                hbButtons.getChildren().add(botonCarta);
+                botonesMano.add(botonCarta);
             }
-            this.add(hbButtons,0,2,2,1);
+            else if(carta instanceof CartaMagica){
+                botonCarta = new BotonCartaMagica((CartaMagica)carta);
+                hbButtons.getChildren().add(botonCarta);
+                botonesMano.add(botonCarta);
+            }
+            else {
+                botonCarta = new BotonCartaTrampa((CartaTrampa)carta);
+                hbButtons.getChildren().add(botonCarta);
+                botonesMano.add(botonCarta);
+            }
+
+            botonCarta.setGraphic(new ImageView(img));
+            botonCarta.setPrefSize(100,110);
+
         }
+        this.add(hbButtons,0,2,2,1);
+
+    }
+
+
+    public void activarBotonesFasePreparacion(){
+        for (BotonCarta boton : botonesMano){
+            boton.activarHandleManoFasePreparacion();
+        }
+    }
 
 }

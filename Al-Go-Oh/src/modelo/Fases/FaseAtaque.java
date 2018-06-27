@@ -1,6 +1,7 @@
 package modelo.Fases;
 
 import modelo.Juego;
+import vista.PantallaBatalla;
 
 public class FaseAtaque extends Fase {
 
@@ -19,5 +20,9 @@ public class FaseAtaque extends Fase {
     @Override
     public String getNombre() {
         return "Fase Ataque";
+    }
+
+    public void activarHandles(PantallaBatalla pantallaBatalla){
+        pantallaBatalla.activarPanelesFaseAtque();
     }
 }

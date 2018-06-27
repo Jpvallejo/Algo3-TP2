@@ -1,5 +1,6 @@
 package vista;
 
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -10,15 +11,19 @@ import vista.Botones.BotonCarta;
 import java.util.ArrayList;
 
 public class PanelManoEscondida extends GridPane {
-    private ArrayList<BotonCarta> botonesMano;
+
+    private ArrayList<Button> botonesMano;
+
     public PanelManoEscondida(Jugador jugador) {
         actualizarMano(jugador);
 
     }
-    public ArrayList<BotonCarta> getBotonesMano(){
+
+    public ArrayList<Button> getBotonesMano(){
         return this.botonesMano;
     }
-    public void setBotonesMano(ArrayList<BotonCarta> botones){
+
+    public void setBotonesMano(ArrayList<Button> botones){
         this.botonesMano = botones;
     }
 
@@ -29,10 +34,10 @@ public class PanelManoEscondida extends GridPane {
 
         HBox hbButtons = new HBox();
         hbButtons.setSpacing(10.0);
-        botonesMano = new ArrayList<BotonCarta>();
+        botonesMano = new ArrayList<Button>();
         Mano mano = jugador.getMano();
         for (Carta carta : mano.getCartas()) {
-            BotonCarta botonMonstruo = new BotonCarta();
+            Button botonMonstruo = new Button();
             hbButtons.getChildren().add(botonMonstruo);
             botonesMano.add(botonMonstruo);
             Image img = new Image("vista/imagenes/cartaAtras.jpg",100,110,true,false);

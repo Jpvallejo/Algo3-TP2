@@ -4,6 +4,7 @@ import modelo.CartasMagicas.Fisura;
 import modelo.CartasMagicas.OllaDeLaCodicia;
 import modelo.CartasMagicas.Sogen;
 import modelo.CartasMagicas.Wasteland;
+import modelo.Monstruos.AgresorOscuro;
 import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
 
@@ -33,9 +34,11 @@ public class CartaMagicaTest {
 
         Jugador jugador = Juego.getJuego().getJugadorActivo();
 
-        Monstruo monstruo = new MonstruoGenerico("test",0,0,4);
+        Monstruo monstruo1 = new MonstruoGenerico("test",0,0,4);
+        Monstruo monstruo2 = new MonstruoGenerico("test",0,0,4);
         
-        jugador.invocar(monstruo);
+        jugador.invocar(monstruo1);
+        jugador.invocar(monstruo2);
         jugador.activarCarta(agujeroNegro);
 
         assertEquals(0,jugador.cantidadCartasZonaMonstruos());
@@ -52,11 +55,15 @@ public class CartaMagicaTest {
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
         Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
 
-        Monstruo monstruoJugadorActivo = new MonstruoGenerico("test1",0,0,4);
-        Monstruo monstruoJugadorOponente = new MonstruoGenerico("test2",0,0,4);
+        Monstruo monstruoJugadorActivo1 = new MonstruoGenerico("test1",0,0,4);
+        Monstruo monstruoJugadorActivo2 = new MonstruoGenerico("test1",0,0,4);
+        Monstruo monstruoJugadorOponente1 = new MonstruoGenerico("test2",0,0,4);
+        Monstruo monstruoJugadorOponente2 = new MonstruoGenerico("test2",0,0,4);
 
-        jugadorActivo.invocar(monstruoJugadorActivo);
-        jugadorOponente.invocar(monstruoJugadorOponente);
+        jugadorActivo.invocar(monstruoJugadorActivo1);
+        jugadorActivo.invocar(monstruoJugadorActivo2);
+        jugadorOponente.invocar(monstruoJugadorOponente1);
+        jugadorOponente.invocar(monstruoJugadorOponente2);
         
         jugadorActivo.activarCarta(agujeroNegro);
         

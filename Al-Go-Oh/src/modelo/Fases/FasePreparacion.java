@@ -1,5 +1,7 @@
 package modelo.Fases;
 
+import vista.PantallaBatalla;
+
 public class FasePreparacion extends Fase {
 
     public Fase siguienteFase(){
@@ -9,5 +11,10 @@ public class FasePreparacion extends Fase {
     @Override
     public String getNombre() {
         return "Fase Preparacion";
+    }
+
+
+    public void activarHandles(PantallaBatalla pantallaBatalla){
+        pantallaBatalla.activarPanelesFasePreparacion();
     }
 }

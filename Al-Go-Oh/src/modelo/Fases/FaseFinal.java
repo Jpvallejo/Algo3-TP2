@@ -1,6 +1,7 @@
 package modelo.Fases;
 
 import modelo.Juego;
+import vista.PantallaBatalla;
 
 public class FaseFinal extends Fase {
 
@@ -15,5 +16,10 @@ public class FaseFinal extends Fase {
     @Override
     public String getNombre() {
         return "Fase Final";
+    }
+
+
+    public void activarHandles(PantallaBatalla pantallaBatalla){
+        pantallaBatalla.activarPanelesFaseFinal();
     }
 }
