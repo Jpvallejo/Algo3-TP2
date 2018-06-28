@@ -48,6 +48,7 @@ public class Juego {
     }
 
     public void cambiarTurno() {
+        this.jugadorActivo.resetearInvocacionesPosibles();
         Jugador temp = this.jugadorActivo;
         this.jugadorActivo = this.jugadorOponente;
         this.jugadorOponente = temp;

@@ -84,16 +84,26 @@ public class MonstruosEspecialesTest {
         Monstruo aSacrificar3= new MonstruoGenerico("test2",0,0,3);
         Monstruo dragonDeOjosAzulesDefinitivo = new DragonDeOjosAzulesDefinitivo();
         jugador.colocar(aSacrificar1);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar2);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar3);
+        jugador.resetearInvocacionesPosibles();
 
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2,aSacrificar3); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1); });
-        assertThrows(MonstruoDeFusionException.class, () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
+        jugador.resetearInvocacionesPosibles();
+        assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2,aSacrificar3); });
     }
 
@@ -115,16 +125,25 @@ public class MonstruosEspecialesTest {
         Monstruo dragonDeOjosAzulesDefinitivo = new DragonDeOjosAzulesDefinitivo();
 
         jugador.colocar(aSacrificar1);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar2);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(dragon1,aSacrificar1,aSacrificar2);
+        jugador.resetearInvocacionesPosibles();
 
         jugador.colocar(aSacrificar3);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar4);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(dragon2,aSacrificar3,aSacrificar4);
+        jugador.resetearInvocacionesPosibles();
 
         jugador.colocar(aSacrificar5);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar6);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(dragon3,aSacrificar5,aSacrificar6);
+        jugador.resetearInvocacionesPosibles();
 
         jugador.invocar(dragonDeOjosAzulesDefinitivo, dragon1, dragon2, dragon3);
 

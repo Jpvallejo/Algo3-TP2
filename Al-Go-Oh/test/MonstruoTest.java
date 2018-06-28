@@ -297,6 +297,7 @@ public class MonstruoTest {
         Jugador jugador = new Jugador();
 
         jugador.invocar(aSacrificar);
+        jugador.resetearInvocacionesPosibles();
         jugador.invocar(sacrificador, aSacrificar);
         assertEquals(1,jugador.cantidadCartasCementerio());
     }
@@ -309,7 +310,9 @@ public class MonstruoTest {
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
         Monstruo sacrificador = new MonstruoGenerico("test3",0,0,7);
         jugador.invocar(aSacrificar1);
+        jugador.resetearInvocacionesPosibles();
         jugador.invocar(aSacrificar2);
+        jugador.resetearInvocacionesPosibles();
         jugador.invocar(sacrificador,aSacrificar1,aSacrificar2);
         assertEquals(2,jugador.cantidadCartasCementerio());
     }
@@ -321,6 +324,7 @@ public class MonstruoTest {
         Jugador jugador = new Jugador();
 
         jugador.colocar(aSacrificar);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(sacrificador, aSacrificar);
         assertEquals(1,jugador.cantidadCartasCementerio());
     }
@@ -333,7 +337,9 @@ public class MonstruoTest {
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
         Monstruo sacrificador = new MonstruoGenerico("test3",0,0,7);
         jugador.colocar(aSacrificar1);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar2);
+        jugador.resetearInvocacionesPosibles();
         jugador.colocar(sacrificador,aSacrificar1,aSacrificar2);
         assertEquals(2,jugador.cantidadCartasCementerio());
     }
@@ -346,6 +352,7 @@ public class MonstruoTest {
         Monstruo sacrificador2 = new MonstruoGenerico("test2",0,0,6);
 
         assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador1); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador2); });
     }
 
@@ -357,10 +364,13 @@ public class MonstruoTest {
         Monstruo sacrificador1 = new MonstruoGenerico("test1",0,0,7);
         Monstruo sacrificador2 = new MonstruoGenerico("test2",0,0,8);
         jugador.invocar(aSacrificar1);
-
+        jugador.resetearInvocacionesPosibles();
         assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador1); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador2); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador1,aSacrificar1); });
+        jugador.resetearInvocacionesPosibles();
         assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(sacrificador2,aSacrificar1); });
     }
 
@@ -400,7 +410,9 @@ public class MonstruoTest {
         Monstruo agresor3 = new AgresorOscuro();
 
         jugador.invocar(agresor1);
+        jugador.resetearInvocacionesPosibles();
         jugador.invocar(agresor2);
+        jugador.resetearInvocacionesPosibles();
         jugador.invocar(agresor3);
 
         agresor3.destruir();

@@ -38,6 +38,7 @@ public class CartaMagicaTest {
         Monstruo monstruo2 = new MonstruoGenerico("test",0,0,4);
         
         jugador.invocar(monstruo1);
+        jugador.resetearInvocacionesPosibles();
         jugador.invocar(monstruo2);
         jugador.activarCarta(agujeroNegro);
 
@@ -61,8 +62,10 @@ public class CartaMagicaTest {
         Monstruo monstruoJugadorOponente2 = new MonstruoGenerico("test2",0,0,4);
 
         jugadorActivo.invocar(monstruoJugadorActivo1);
+        jugadorActivo.resetearInvocacionesPosibles();
         jugadorActivo.invocar(monstruoJugadorActivo2);
         jugadorOponente.invocar(monstruoJugadorOponente1);
+        jugadorOponente.resetearInvocacionesPosibles();
         jugadorOponente.invocar(monstruoJugadorOponente2);
         
         jugadorActivo.activarCarta(agujeroNegro);
@@ -83,15 +86,14 @@ public class CartaMagicaTest {
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
         
         jugadorActivo.colocarCarta(wasteland);
-        
         Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
 
         Monstruo monstruoAtaque = new MonstruoGenerico("test1",100,0,4);
         jugadorActivo.invocar(monstruoAtaque);
-
+        jugadorActivo.resetearInvocacionesPosibles();
         Monstruo monstruoDefensa = new MonstruoGenerico("test2",100,200,4);
         jugadorOponente.invocar(monstruoDefensa);
-        
+        jugadorOponente.resetearInvocacionesPosibles();
         jugadorActivo.activarCartaCampo();
         
         //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
@@ -106,7 +108,7 @@ public class CartaMagicaTest {
         //Creo monstruo en modo de defensa con 100 de defensa
         Monstruo monstruoDefensa01 = new MonstruoGenerico("test",100,100,4);
         jugadorOponente.colocar(monstruoDefensa01);
-        
+        jugadorOponente.resetearInvocacionesPosibles();
         
         jugadorActivo.activarCartaCampo();
         
@@ -177,7 +179,9 @@ public class CartaMagicaTest {
         Monstruo monstruo3 = new MonstruoGenerico("test2",100,200,4);
 
         jugadorOponente.invocar(monstruo1);
+        jugadorOponente.resetearInvocacionesPosibles();
         jugadorOponente.invocar(monstruo2);
+        jugadorOponente.resetearInvocacionesPosibles();
         jugadorOponente.invocar(monstruo3);
 
         Fisura fisura = new Fisura();

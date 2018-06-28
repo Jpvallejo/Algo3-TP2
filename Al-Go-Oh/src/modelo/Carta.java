@@ -45,6 +45,7 @@ public abstract class Carta{
     }
 
 /*
+
     @Override
     public boolean equals(Object carta){
         return this.nombre == ((Carta)carta).nombre;
