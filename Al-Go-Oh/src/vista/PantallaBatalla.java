@@ -202,8 +202,13 @@ public class PantallaBatalla {
     }
 
     public void activarPanelesFaseAtque(){
-        panelMonstruosJugador1.activarBotonesFaseAtaque();
-        panelMonstruosJugador2.activarBotonesFaseAtaque();
+        if(jugador1 == Controlador.getControlador().getJugadorActivo() ){
+            panelMonstruosJugador1.activarBotonesFaseAtaque();
+        }
+        else{
+            panelMonstruosJugador2.activarBotonesFaseAtaque();
+        }
+
     }
 
 
