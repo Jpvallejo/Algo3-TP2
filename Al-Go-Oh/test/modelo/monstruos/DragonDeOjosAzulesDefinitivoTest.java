@@ -15,6 +15,8 @@ public class DragonDeOjosAzulesDefinitivoTest {
 
     @Test
     public void testInvocarAlDragonDeOjosAzulesDefinitivoDevuleveErrorSiSeInvocaDeFormaNormal(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
@@ -46,6 +48,8 @@ public class DragonDeOjosAzulesDefinitivoTest {
 
     @Test
     public void testInvocarAlDragonDeOjosAzulesDefinitivoDestruye3DragonesBlancosDeOjosAzules(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);

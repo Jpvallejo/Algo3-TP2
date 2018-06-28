@@ -4,7 +4,12 @@ import modelo.Estados.EstadoBocaAbajo;
 import modelo.Estados.EstadoDefensaBocaAbajo;
 import modelo.Estados.EstadoBocaArriba;
 import modelo.Estados.EstadoAtaque;
+import modelo.Excepciones.FaseIncorrectaException;
 import modelo.Excepciones.InvocacionNoPosibleException;
+import modelo.Fases.Fase;
+import modelo.Fases.FaseAtaque;
+import modelo.Fases.FaseFinal;
+import modelo.Fases.FasePreparacion;
 import modelo.Mazo.Mazo;
 import modelo.CartasMagicas.CartaCampoSinEfecto;
 import modelo.Excepciones.ZonaVaciaException;
@@ -156,7 +161,11 @@ public class Jugador {
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 
-    private void verificarInvocacion() throws InvocacionNoPosibleException{
+    private void verificarInvocacion() throws InvocacionNoPosibleException, FaseIncorrectaException {
+        if(Juego.getJuego().getNombreFaseActual() != new FasePreparacion().getNombre())
+        {
+            throw new FaseIncorrectaException();
+        }
         if(this.getInvocacionesPosibles() <= 0){
             throw new InvocacionNoPosibleException();
         }
@@ -164,6 +173,8 @@ public class Jugador {
     }
 
     public void activarCarta(CartaMagica carta){
+        if(Juego.getJuego().getNombreFaseActual() != new FaseFinal().getNombre())
+            throw new FaseIncorrectaException();
         carta.setEstado(new EstadoBocaArriba());
         carta.asociarJugador(this);
         this.zonaHechizos.colocarCarta(carta);
@@ -214,6 +225,9 @@ public class Jugador {
     }
 
     public void activarCartaTrampa(Monstruo atacante, Monstruo defensor) {
+        /*if (Juego.getJuego().getNombreFaseActual() != new FaseTrampas.getNombre())
+                throw new FaseIncorrectaException();
+        */
         //tablero.activarEfectoCartaTrampa(atacante,defensor);
         zonaHechizos.activarEfectoPrimerCartaTrampa(atacante,defensor);
     }

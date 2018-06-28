@@ -13,7 +13,8 @@ public class CilindroMagicoTest {
 
     @Test
     public void testCilindroMagicoNiegaElAtaqueDeUnMonstruoYRestaLosPuntosDeAtaqueDelMonstruoAtacanteALosPuntosDeVidaDelJugadorAtacante(){
-
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new MonstruoGenerico("test",2000,1000, 4);
@@ -37,7 +38,8 @@ public class CilindroMagicoTest {
 
     @Test
     public void testCilindroMagicoNiegaElAtaqueDeUnMonstruoALosPuntosDeVidaYRestaLosPuntosDeAtaqueDelMonstruoAtacanteALosPuntosDeVidaDelJugadorAtacante(){
-
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new MonstruoGenerico("test",2000,1000, 4);
@@ -46,7 +48,7 @@ public class CilindroMagicoTest {
 
         CartaTrampa carta = new CilindroMagico();
         defensor.colocarCarta(carta);
-
+        Juego.getJuego().avanzarFase(); // fase de ataque
         //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.PUNTOSVIDA);
         monstruoAtacante.atacar(defensor);
 

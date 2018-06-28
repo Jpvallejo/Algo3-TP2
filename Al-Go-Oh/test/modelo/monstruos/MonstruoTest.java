@@ -21,6 +21,10 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoEnPosicionDeAtaqueGeneraMonstruoEnPosicionDeAtaque(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
+
+
         Monstruo monstruo = new MonstruoGenerico("test",100,100,4);
         Jugador jugador = new Jugador();
 
@@ -31,6 +35,8 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoEnPosicionDeDefensaGeneraMonstruoEnPosicionDeDefensa(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Monstruo monstruo = new MonstruoGenerico("test",100,100,4);
         Jugador jugador = new Jugador();
 
@@ -163,13 +169,15 @@ public class MonstruoTest {
     // Ataques entre Monstruos invocados
     @Test
     public void testInvocarYAtacarMounstroEnPocisionAtaqueConIgualesPuntosDestruyeAmbosMounstros() {
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
         AgujaAsesina monstruoAtacante = new AgujaAsesina(); //ATK = 1200 DEF = 1000
         AgujaAsesina monstruoDefensor = new AgujaAsesina(); //ATK = 1200 DEF = 1000
         atacante.invocar(monstruoAtacante);
         defensor.invocar(monstruoDefensor);
-
+        Juego.getJuego().avanzarFase(); //avanza a fase de Ataque
         monstruoAtacante.atacarMonstruo(monstruoDefensor);
 
         assertEquals(1, atacante.cantidadCartasCementerio());
@@ -178,13 +186,15 @@ public class MonstruoTest {
 
     @Test
     public void testInvocarYAtacarMounstroEnPocisionAtaqueConPuntosAtacanteMayorDestruyeDefensorYRestaDiferenciaEnPuntosJugadorQueDefiende() {
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
         AgujaAsesina monstruoAtacante = new AgujaAsesina(); //ATK = 1200 DEF = 1000
         AsechadorDelCraneo monstruoDefensor = new AsechadorDelCraneo(); //ATK = 900 DEF = 800
         atacante.invocar(monstruoAtacante);
         defensor.invocar(monstruoDefensor);
-
+        Juego.getJuego().avanzarFase(); //avanza a fase de Ataque
         monstruoAtacante.atacarMonstruo(monstruoDefensor);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
@@ -250,6 +260,8 @@ public class MonstruoTest {
     @Test
     public void testInvocarYAtacarMounstroEnPocisionDefensaConMayoresPuntosNoDestruyeMounstroAtacanteYRestaDiferenciaEnPuntosAlJugadorQueAtaca()
     {
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         AsechadorDelCraneo monstruoAtacante = new AsechadorDelCraneo(); //ATK = 900 DEF = 800
@@ -257,6 +269,7 @@ public class MonstruoTest {
         atacante.invocar(monstruoAtacante);
         defensor.colocar(monstruoDefensor);
 
+        Juego.getJuego().avanzarFase(); //avanza a fase de Ataque
         monstruoAtacante.atacarMonstruo(monstruoDefensor);
 
         assertEquals(0, atacante.cantidadCartasCementerio());
@@ -295,6 +308,8 @@ public class MonstruoTest {
 
     @Test
     public void testInvocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Monstruo aSacrificar= new MonstruoGenerico("test1",0,0,3);
         Monstruo sacrificador = new MonstruoGenerico("test2",0,0,5);
         Jugador jugador = new Jugador();
@@ -308,6 +323,8 @@ public class MonstruoTest {
 
     @Test
     public void testInvocarMonstruoCon7EstrellasSacrificaDosMonstruos(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
@@ -322,6 +339,8 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoCon5EstrellasSacrificaUnMonstruo(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Monstruo aSacrificar= new MonstruoGenerico("test1",0,0,3);
         Monstruo sacrificador = new MonstruoGenerico("test2",0,0,5);
         Jugador jugador = new Jugador();
@@ -335,6 +354,8 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoCon7EstrellasSacrificaDosMonstruos(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
         Monstruo aSacrificar2= new MonstruoGenerico("test2",0,0,3);
@@ -350,6 +371,8 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoCon5o6EstrellasRetornaErrorSiNoSePasa1Sacrificio(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo sacrificador1 = new MonstruoGenerico("test1",0,0,5);
         Monstruo sacrificador2 = new MonstruoGenerico("test2",0,0,6);
@@ -362,6 +385,8 @@ public class MonstruoTest {
 
     @Test
     public void testColocarMonstruoCon7u8EstrellasRetornaErrorSiNoSePasan2Sacrificios(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo aSacrificar1= new MonstruoGenerico("test1",0,0,3);
         Monstruo sacrificador1 = new MonstruoGenerico("test1",0,0,7);
@@ -380,6 +405,8 @@ public class MonstruoTest {
 
     @Test
     public void testInvocarMonstruoEnPosicionDeAtaqueYAtacaAlOponenteSinMonstruosRestaLosPuntosDeAtaqueALosPuntosDeVidaDelJugadorQueDefiende() {
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
         AgujaAsesina monstruoAtacante = new AgujaAsesina(); //ATK = 1200 DEF = 1000
@@ -395,6 +422,8 @@ public class MonstruoTest {
 
     @Test
     public void testAlInvocarUnMonstruoYDestruirloElMonstruoDesapareceDelCampo(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo monstruo = new MonstruoGenerico("test1",0,0,3);
 
@@ -407,6 +436,8 @@ public class MonstruoTest {
 
     @Test
     public void testAlInvocarUnMonstruoYDestruirloNoSeEncuentraEnElCampoAunqueHayaMonstruosDelMismoTipo(){
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
         Monstruo agresor1 = new AgresorOscuro();
         Monstruo agresor2 = new AgresorOscuro();
