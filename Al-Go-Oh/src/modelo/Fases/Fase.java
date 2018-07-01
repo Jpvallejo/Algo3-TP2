@@ -2,18 +2,13 @@ package modelo.Fases;
 
 import vista.PantallaBatalla;
 
-public abstract class Fase {
+public interface Fase {
 
-    public Fase siguienteFase(){
-        return null;
-    };
+    Fase siguienteFase();
 
-    public void iniciarFase() {
-    }
+    void iniciarFase();
 
-    public abstract String getNombre();
+    String getNombre();
 
-    //public abstract void activarHandles();
-
-    public void activarHandles(PantallaBatalla pantallaBatalla){};
+    void activarHandles(PantallaBatalla pantallaBatalla);
 }

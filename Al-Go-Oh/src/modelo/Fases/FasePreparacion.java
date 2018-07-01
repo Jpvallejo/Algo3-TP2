@@ -2,13 +2,16 @@ package modelo.Fases;
 
 import vista.PantallaBatalla;
 
-public class FasePreparacion extends Fase {
+public class FasePreparacion implements Fase {
 
     public Fase siguienteFase(){
         return new FaseAtaque();
     }
 
-    @Override
+    public void iniciarFase() {
+
+    }
+
     public String getNombre() {
         return "Fase Preparacion";
     }

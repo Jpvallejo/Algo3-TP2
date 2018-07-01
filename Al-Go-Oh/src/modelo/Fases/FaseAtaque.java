@@ -3,7 +3,7 @@ package modelo.Fases;
 import modelo.Juego;
 import vista.PantallaBatalla;
 
-public class FaseAtaque extends Fase {
+public class FaseAtaque implements Fase {
 
     @Override
     public Fase siguienteFase(){

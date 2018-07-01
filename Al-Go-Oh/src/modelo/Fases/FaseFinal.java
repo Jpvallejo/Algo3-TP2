@@ -3,7 +3,7 @@ package modelo.Fases;
 import modelo.Juego;
 import vista.PantallaBatalla;
 
-public class FaseFinal extends Fase {
+public class FaseFinal implements Fase {
 
     public Fase siguienteFase(){
         Juego.getJuego().cambiarTurno();

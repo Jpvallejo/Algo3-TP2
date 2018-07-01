@@ -1,8 +1,9 @@
 package modelo.Fases;
 
 import modelo.Juego;
+import vista.PantallaBatalla;
 
-public class FaseInicial extends Fase {
+public class FaseInicial implements Fase {
 
     public Fase siguienteFase(){
         return new FasePreparacion();
@@ -12,8 +13,11 @@ public class FaseInicial extends Fase {
         Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();
     }
 
-    @Override
     public String getNombre() {
         return "Fase Inicial";
+    }
+
+    public void activarHandles(PantallaBatalla pantallaBatalla) {
+
     }
 }

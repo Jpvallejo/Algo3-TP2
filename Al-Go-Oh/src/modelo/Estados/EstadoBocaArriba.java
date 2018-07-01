@@ -1,6 +1,6 @@
 package modelo.Estados;
 
-public class EstadoBocaArriba extends Estado {
+public class EstadoBocaArriba implements Estado {
 
 
 }

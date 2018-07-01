@@ -2,9 +2,8 @@ package modelo.Estados;
 
 import modelo.Monstruo;
 
-public class EstadoDefensaBocaArriba extends Estado {
+public class EstadoDefensaBocaArriba implements Estado,EstadoMonstruo{
 
-    @Override
     public void recibirDanio(Monstruo atacante, Monstruo defensor) {
         atacante.comparararConDefensa(defensor);
     }

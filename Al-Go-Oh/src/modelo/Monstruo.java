@@ -1,5 +1,6 @@
 package modelo;
 
+import modelo.Estados.EstadoMonstruo;
 import modelo.Estados.EstadoSinEstado;
 import modelo.Excepciones.DetenerAtaqueException;
 import modelo.Excepciones.RequiereSacrificioException;
@@ -12,7 +13,6 @@ public abstract class Monstruo extends Carta {
     protected int puntosDefensa;
     protected int adicionalesDeAtaque ;
     protected int adicionalesDeDefensa;
-
     protected int nivel;
 
 
@@ -76,7 +76,7 @@ public abstract class Monstruo extends Carta {
     // Metodo que utiliza el defensor
     private void recibirDanio(Monstruo atacante) {
         jugador.activarCartaTrampa(atacante,this);
-        estado.recibirDanio(atacante, this);
+        ((EstadoMonstruo)estado).recibirDanio(atacante, this);
 
     }
 
