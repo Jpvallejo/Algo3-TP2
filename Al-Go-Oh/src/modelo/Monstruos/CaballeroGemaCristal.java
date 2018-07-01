@@ -10,5 +10,7 @@ public class CaballeroGemaCristal extends Monstruo {
         puntosAtaque = 2400;
         puntosDefensa = 1950;
         estrellas = 7;
+        this.nombre = "Caballero Gema Cristal";
+        this.descripcion = "";
     }
 }

@@ -1,11 +1,8 @@
 import modelo.*;
 
-import modelo.CartasMagicas.AgujeroNegro;
+import modelo.CartasMonstruosEspeciales.*;
 import modelo.Mazo.Mazo;
-import modelo.Monstruos.*;
 import org.junit.Test;
-
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 

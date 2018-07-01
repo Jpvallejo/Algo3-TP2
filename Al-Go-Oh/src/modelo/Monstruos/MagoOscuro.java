@@ -10,5 +10,7 @@ public class MagoOscuro extends Monstruo {
         puntosAtaque = 2500;
         puntosDefensa = 2100;
         estrellas = 7;
+        this.nombre = "Mago Oscuro";
+        this.descripcion = "";
     }
 }

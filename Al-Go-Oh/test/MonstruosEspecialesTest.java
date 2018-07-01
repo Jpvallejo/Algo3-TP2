@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
 import modelo.CartasMonstruosEspeciales.JinzoNro7;
-import modelo.DragonDeOjosAzulesDefinitivo;
+import modelo.CartasMonstruosEspeciales.DragonDeOjosAzulesDefinitivo;
 import modelo.Estados.EstadoAtaque;
 import modelo.Excepciones.*;
-import modelo.Monstruos.DragonBlancoDeOjosAzules;
+import modelo.CartasMonstruosEspeciales.DragonBlancoDeOjosAzules;
 import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
 

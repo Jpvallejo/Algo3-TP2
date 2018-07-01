@@ -10,5 +10,7 @@ public class AmazonaDeLosMares extends Monstruo {
         puntosAtaque = 1300;
         puntosDefensa = 1400;
         estrellas = 4;
+        this.nombre = "Amazona De Los Mares";
+        this.descripcion = "";
     }
 }

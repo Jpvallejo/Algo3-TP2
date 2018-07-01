@@ -10,5 +10,7 @@ public class AmateFeliz extends Monstruo {
         puntosAtaque = 800;
         puntosDefensa = 500;
         estrellas = 2;
+        this.nombre = "Amate Feliz";
+        this.descripcion = "";
     }
 }

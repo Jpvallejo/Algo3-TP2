@@ -10,5 +10,7 @@ public class AraniaLanzadora extends Monstruo {
         puntosAtaque = 2200;
         puntosDefensa = 2500;
         estrellas = 7;
+        this.nombre = "Arania Lanzadora";
+        this.descripcion = "";
     }
 }

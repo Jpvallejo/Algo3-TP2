@@ -10,5 +10,7 @@ public class AligatorCibertech extends Monstruo {
         puntosAtaque = 2500;
         puntosDefensa = 1600;
         estrellas = 5;
+        this.nombre = "Aligator Cibertech";
+        this.descripcion = "";
     }
 }

@@ -5,7 +5,12 @@ import modelo.*;
 
 public class Wasteland extends CartaCampo{
 
-    //Aumenta el ataque en 200 del jugador que activa la carta y la defensa en 300 del oponente
+    public Wasteland(){
+        nombre = "Wasteland";
+        descripcion = "Efecto: aumenta en 200 puntos el ataque de tus monstruos, y 300 puntos la " +
+                "defensa de los monstruos de tu oponente";
+    }
+
     @Override
     public void activarEfecto() {
         

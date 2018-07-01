@@ -6,6 +6,11 @@ import modelo.Juego;
 
 public class OllaDeLaCodicia extends CartaMagica {
 
+    public OllaDeLaCodicia(){
+        nombre = "Olla de La Codicia";
+        descripcion = "Efecto: toma 2 cartas del mazo";
+    }
+
     @Override
     public void activarEfecto(){
         Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();

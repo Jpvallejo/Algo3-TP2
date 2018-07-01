@@ -10,5 +10,7 @@ public class Ansatsu extends Monstruo {
         puntosAtaque = 1700;
         puntosDefensa = 1200;
         estrellas = 5;
+        this.nombre = "Ansatsu";
+        this.descripcion = "";
     }
 }

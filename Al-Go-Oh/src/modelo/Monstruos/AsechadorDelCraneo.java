@@ -10,5 +10,7 @@ public class AsechadorDelCraneo extends Monstruo {
         puntosAtaque = 900;
         puntosDefensa = 800;
         estrellas = 3;
+        this.nombre = "Asechador Del Craneo";
+        this.descripcion = "";
     }
 }

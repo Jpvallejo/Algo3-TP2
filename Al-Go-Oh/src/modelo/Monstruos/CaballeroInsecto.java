@@ -10,5 +10,7 @@ public class CaballeroInsecto extends Monstruo {
         puntosAtaque = 1900;
         puntosDefensa = 1500;
         estrellas = 4;
+        this.nombre = "Caballero Insecto";
+        this.descripcion = "";
     }
 }

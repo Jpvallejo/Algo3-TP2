@@ -10,5 +10,7 @@ public class Anthrosaurio extends Monstruo {
         puntosAtaque = 1000;
         puntosDefensa = 850;
         estrellas = 3;
+        this.nombre = "Anthrosaurio";
+        this.descripcion = "";
     }
 }

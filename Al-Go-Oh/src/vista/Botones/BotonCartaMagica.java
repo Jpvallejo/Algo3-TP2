@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import modelo.Carta;
 import modelo.CartaMagica;
@@ -102,5 +103,12 @@ public class BotonCartaMagica extends BotonCarta{
 
     public void setCarta(Carta cartaMagica){
         this.cartaMagica = (CartaMagica) cartaMagica;
+
+        final Tooltip tooltip = new Tooltip();
+        tooltip.setText(
+                "Nombre :" + this.cartaMagica.getNombre() + "\n"
+                        + this.cartaMagica.getDescripcion()
+        );
+        this.setTooltip(tooltip);
     }
 }

@@ -10,5 +10,7 @@ public class Bitron extends Monstruo {
         puntosAtaque = 200;
         puntosDefensa = 2000;
         estrellas = 2;
+        this.nombre = "Bitron";
+        this.descripcion = "";
     }
 }

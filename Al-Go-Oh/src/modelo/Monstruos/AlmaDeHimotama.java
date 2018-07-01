@@ -10,5 +10,7 @@ public class AlmaDeHimotama extends Monstruo {
         puntosAtaque = 600;
         puntosDefensa = 500;
         estrellas = 2;
+        this.nombre = "Alma de Himotama";
+        this.descripcion = "";
     }
 }

@@ -9,5 +9,7 @@ public class AgujaAsesina extends Monstruo {
         puntosAtaque = 1200;
         puntosDefensa = 1000;
         estrellas = 4;
+        this.nombre = "Aguja Asesina";
+        this.descripcion = "";
     }
 }

@@ -10,5 +10,7 @@ public class AbismoReluciente extends Monstruo {
         puntosAtaque = 1600;
         puntosDefensa = 1800;
         estrellas = 4;
+        this.nombre = "Abismo Reluciente";
+        this.descripcion = "";
     }
 }

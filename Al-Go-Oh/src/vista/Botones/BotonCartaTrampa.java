@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 import modelo.Carta;
 import modelo.CartaTrampa;
@@ -23,6 +24,12 @@ public class BotonCartaTrampa extends BotonCarta{
 
     public void setCarta(Carta hechizo) {
         this.cartaTrampa = (CartaTrampa ) hechizo;
+        final Tooltip tooltip = new Tooltip();
+        tooltip.setText(
+                "Nombre :" + this.cartaTrampa.getNombre() + "\n"
+                        + this.cartaTrampa.getDescripcion()
+        );
+        this.setTooltip(tooltip);
     }
 
 

@@ -1,10 +1,14 @@
-package modelo;
+package modelo.CartasMonstruosEspeciales;
 
 import modelo.Excepciones.MonstruoDeFusionException;
-import modelo.Monstruos.DragonBlancoDeOjosAzules;
+import modelo.Monstruo;
 
 public class DragonDeOjosAzulesDefinitivo extends Monstruo {
 
+    public DragonDeOjosAzulesDefinitivo(){
+        this.nombre = "Dragon De Ojos Azules Definitivo";
+        this.descripcion = "Invocación: puede ser invocado sacrificando 3 dragones azules, del campo.";
+    }
 
     @Override
     public void requiereSacrificios(){

@@ -10,5 +10,7 @@ public class HechiceraDelNucleoDeDragon extends Monstruo {
         puntosAtaque = 2300;
         puntosDefensa = 3000;
         estrellas = 8;
+        this.nombre = "Hechicera Del Nucleo De Dragon";
+        this.descripcion = "";
     }
 }

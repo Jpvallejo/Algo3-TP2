@@ -15,6 +15,8 @@ public class JinzoNro7 extends Monstruo {
         this.adicionalesDeDefensa = 0;
         this.estado = estado;
         this.estrellas = 2;
+        this.nombre = "Jinzo Nro 7.";
+        this.descripcion = "ataca directamente a los puntos de vida del oponente";
     }
 
 

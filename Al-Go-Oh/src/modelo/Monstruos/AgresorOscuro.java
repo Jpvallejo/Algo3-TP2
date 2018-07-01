@@ -9,6 +9,7 @@ public class AgresorOscuro extends Monstruo {
         puntosDefensa = 1200;
         estrellas = 4;
         nombre = "Agresor Oscuro";
+        descripcion = "";
     }
 }
 

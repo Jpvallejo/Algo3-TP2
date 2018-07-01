@@ -10,5 +10,7 @@ public class AvaDeFe extends Monstruo {
         puntosAtaque = 1500;
         puntosDefensa = 1100;
         estrellas = 4;
+        this.nombre = "Ava de Fe";
+        this.descripcion = "";
     }
 }

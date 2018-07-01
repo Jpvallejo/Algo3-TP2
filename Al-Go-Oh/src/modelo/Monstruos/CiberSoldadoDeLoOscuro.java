@@ -10,5 +10,7 @@ public class CiberSoldadoDeLoOscuro extends Monstruo {
         puntosAtaque = 1400;
         puntosDefensa = 1200;
         estrellas = 4;
+        this.nombre = "Ciber Soldado De Lo Oscuro";
+        this.descripcion = "";
     }
 }

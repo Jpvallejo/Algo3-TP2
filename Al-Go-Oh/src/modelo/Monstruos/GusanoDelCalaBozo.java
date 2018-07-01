@@ -10,5 +10,7 @@ public class GusanoDelCalaBozo extends Monstruo {
         puntosAtaque = 1800;
         puntosDefensa = 1500;
         estrellas = 5;
+        this.nombre = "Gusano Del Calabozo";
+        this.descripcion = "";
     }
 }

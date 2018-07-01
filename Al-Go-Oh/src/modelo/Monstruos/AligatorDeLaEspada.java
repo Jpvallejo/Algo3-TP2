@@ -10,5 +10,7 @@ public class AligatorDeLaEspada extends Monstruo {
         puntosAtaque = 1500;
         puntosDefensa = 1200;
         estrellas = 4;
+        this.nombre = "Aligator de la Espada";
+        this.descripcion = "";
     }
 }

@@ -10,5 +10,7 @@ public class GogigaGagagigo extends Monstruo {
         puntosAtaque = 2950;
         puntosDefensa = 2800;
         estrellas = 8;
+        this.nombre = "Gogiga Gagagigo";
+        this.descripcion = "";
     }
 }

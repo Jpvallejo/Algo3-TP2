@@ -10,5 +10,7 @@ public class CraneoConvocado extends Monstruo {
         puntosAtaque = 2500;
         puntosDefensa = 1200;
         estrellas = 6;
+        this.nombre = "Craneo Convocado";
+        this.descripcion = "";
     }
 }

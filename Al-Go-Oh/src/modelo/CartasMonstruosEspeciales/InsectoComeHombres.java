@@ -13,6 +13,11 @@ public class InsectoComeHombres extends Monstruo{
         this.adicionalesDeAtaque = 0;
         this.adicionalesDeDefensa = 0;
         this.estrellas = 2;
+        this.nombre = "Insecto Come Hombres";
+        this.descripcion = "destruye un monstruo en el campo.\n" +
+                "Este efecto únicamente puede activarse cuando esta carta pasa de estar boca abajo a boca arriba." +
+                " (tanto si es atacada estando volteada abajo, o si la volteo yo mismo en un turno diferente al de la" +
+                " invocación).";
     }
 
     @Override

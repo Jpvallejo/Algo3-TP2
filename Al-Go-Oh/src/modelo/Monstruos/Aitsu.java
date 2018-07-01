@@ -10,5 +10,7 @@ public class Aitsu extends Monstruo {
         puntosAtaque = 100;
         puntosDefensa = 100;
         estrellas = 5;
+        this.nombre = "Aitsu";
+        this.descripcion = "";
     }
 }

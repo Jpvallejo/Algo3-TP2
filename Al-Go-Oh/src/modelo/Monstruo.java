@@ -162,7 +162,7 @@ public abstract class Monstruo extends Carta {
         this.puntosAtaque = _puntosAtaque;
     }
 
-    protected int getPuntosDefensa(){
+    public int getPuntosDefensa(){
         return this.puntosDefensa + this.adicionalesDeDefensa;
     }
     protected void setPuntosDefensa(int _puntosDefensa){

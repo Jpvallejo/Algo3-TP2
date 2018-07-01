@@ -7,6 +7,7 @@ public class AgujeroNegro extends CartaMagica  {
     public AgujeroNegro(){
         super();
         nombre = "Agujero Negro";
+        descripcion = "Efecto: destruye todos los monstruos del campo.";
     }
 
     @Override

@@ -13,6 +13,11 @@ import modelo.*;
  */
 public class Fisura extends CartaMagica {
 
+    public Fisura(){
+        nombre = "Fisura";
+        descripcion = "Efecto: destruye el monstruo boca arriba con menor ataque en el campo del oponente" +
+                " (si hay empate elige al azar)";
+    }
     @Override
     public void activarEfecto(){
         Juego juego = Juego.getJuego();

@@ -10,5 +10,7 @@ public class CaballeroGemaZafiro extends Monstruo {
         puntosAtaque = 0;
         puntosDefensa = 2100;
         estrellas = 4;
+        this.nombre = "Caballero Gema Zafiro";
+        this.descripcion = "";
     }
 }

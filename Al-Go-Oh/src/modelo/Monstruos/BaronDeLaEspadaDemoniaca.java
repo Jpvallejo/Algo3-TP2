@@ -10,5 +10,7 @@ public class BaronDeLaEspadaDemoniaca extends Monstruo {
         puntosAtaque = 1550;
         puntosDefensa = 800;
         estrellas = 4;
+        this.nombre = "Baron de la Espada Demoniaca";
+        this.descripcion = "";
     }
 }

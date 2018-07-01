@@ -10,5 +10,7 @@ public class CaballeroDelDestallo extends Monstruo {
         puntosAtaque = 1800;
         puntosDefensa = 600;
         estrellas = 4;
+        this.nombre = "Caballero del destallo";
+        this.descripcion = "";
     }
 }

@@ -10,6 +10,7 @@ public abstract class Carta{
     protected String nombre;
     protected Jugador jugador;
     protected String UrlImagen;
+    protected String descripcion;
 
     public Carta(){
         estado = new EstadoSinEstado();
@@ -60,5 +61,9 @@ public abstract class Carta{
 
     public String getUrlImagen(){
         return UrlImagen;
+    }
+
+    public String getDescripcion() {
+        return this.descripcion;
     }
 }

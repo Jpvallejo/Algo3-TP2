@@ -10,5 +10,7 @@ public class AngelTrompetista extends Monstruo {
         puntosAtaque = 1900;
         puntosDefensa = 1600;
         estrellas = 4;
+        this.nombre = "Angel Trompetista";
+        this.descripcion = "";
     }
 }

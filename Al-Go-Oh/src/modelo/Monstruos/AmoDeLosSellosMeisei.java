@@ -10,5 +10,7 @@ public class AmoDeLosSellosMeisei extends Monstruo {
         puntosAtaque = 1100;
         puntosDefensa = 900;
         estrellas = 3;
+        this.nombre = "Amo de los sellos Meisei";
+        this.descripcion = "";
     }
 }
