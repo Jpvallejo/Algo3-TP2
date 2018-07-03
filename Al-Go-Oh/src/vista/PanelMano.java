@@ -36,24 +36,9 @@ public class PanelMano  extends GridPane {
         for (Carta carta: mano.getCartas()) {
             Image img = new Image(carta.getUrlImagen(),100,110,true,false);
             ImageView icono = new ImageView(img);
-            BotonCarta botonCarta;
-
-            if(carta instanceof Monstruo ){
-                botonCarta = new BotonMonstruo((Monstruo)carta);
-                hbButtons.getChildren().add(botonCarta);
-                botonesMano.add(botonCarta);
-            }
-            else if(carta instanceof CartaMagica){
-                botonCarta = new BotonCartaMagica((CartaMagica)carta);
-                hbButtons.getChildren().add(botonCarta);
-                botonesMano.add(botonCarta);
-            }
-            else {
-                botonCarta = new BotonCartaTrampa((CartaTrampa)carta);
-                hbButtons.getChildren().add(botonCarta);
-                botonesMano.add(botonCarta);
-            }
-
+            BotonCarta botonCarta = carta.crearBoton();
+            hbButtons.getChildren().add(botonCarta);
+            botonesMano.add(botonCarta);
             botonCarta.setGraphic(new ImageView(img));
             botonCarta.setPrefSize(100,110);
 

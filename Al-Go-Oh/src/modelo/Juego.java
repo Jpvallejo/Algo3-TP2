@@ -29,7 +29,6 @@ public class Juego {
         exodia.add(new PiernaIzquierdaExodia());
         exodia.add(new BrazoDerechoExodia());
         exodia.add(new BrazoIzquierdoExodia());
-
         /*** Pruebas: Borrar luego ***/
         //jugadorActivo.getMano().quitarCarta(jugadorActivo.getMano().getCartas().get(1));
         //jugadorActivo.invocar(new AsechadorDelCraneo());
@@ -100,5 +99,19 @@ public class Juego {
 
     public String getNombreFaseActual() {
         return faseActual.getNombre();
+    }
+
+    public void activarCartasDeCampo() {
+        jugadorActivo.activarCartaCampo();
+        jugadorOponente.activarCartaCampo();
+    }
+
+    public void revertirCartasDeCampo() {
+        jugadorActivo.revertirCartaCampo();
+        jugadorOponente.revertirCartaCampo();
+    }
+
+    public void resetearAtaquesJugadorActivo() {
+        jugadorActivo.resetearAtaques();
     }
 }

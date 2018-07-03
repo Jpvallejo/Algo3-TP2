@@ -32,15 +32,9 @@ public class PanelMonstruos extends HBox {
       
             monstruos.get(i).setCarta((Monstruo) jugador.getZonaMonstruo().obtenerCartaPosicion(i));
             monstruos.get(i).setVisible(true);
-            ImageView newImage;
 
-            if(monstruos.get(i).getMonstruo().getEstado() instanceof EstadoAtaque){
-                Image img = new Image(monstruos.get(i).getMonstruo().getUrlImagen(),100,110,true,false);
-                newImage = new ImageView(img);
-            }else{
-                Image img = new Image("vista/imagenes/cartaAtras.jpg",100,110,true,false);
-                newImage = new ImageView(img);
-            }
+            ImageView newImage = monstruos.get(i).getMonstruo().obtenerImagen();
+
             monstruos.get(i).setGraphic(newImage);
             monstruos.get(i).setPrefSize(62,91);
         }

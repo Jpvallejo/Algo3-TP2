@@ -95,4 +95,8 @@ public class Controlador {
     }
 
 
+    public void atacarPuntosDeVida(Monstruo atacante) {
+        atacante.atacar(this.getJugadorOponente());
+        pantallaBatalla.actualizarPantalla();
+    }
 }

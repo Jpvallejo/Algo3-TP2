@@ -24,14 +24,7 @@ public class PanelHechizos extends HBox {
     public void actualizarPanel(Jugador jugador){
         for (int i = 0; i < jugador.getZonaHechizos().cantidadCartas(); i++) {
             Carta cartaCasillero = jugador.getZonaHechizos().obtenerCartaPosicion(i);
-            BotonCarta botonHechizo;
-            if(cartaCasillero instanceof CartaMagica) {
-                botonHechizo = new BotonCartaMagica();
-            }
-            else{
-                botonHechizo = new BotonCartaTrampa();
-            }
-            botonHechizo.setCarta(cartaCasillero);
+            BotonCarta botonHechizo = cartaCasillero.crearBoton();
             botonHechizo.setPrefSize(80, 110);
             setSpacing(20);
             hechizos.add(botonHechizo);

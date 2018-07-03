@@ -73,10 +73,11 @@ public class ZonaMonstruo extends Zona{
        return monstruoConMenorAtaque;
        
     }
-       
-   
-    
-   
-    
-    
+
+
+    public void resetearAtaques() {
+        for (Carta carta : cartas){
+            ((Monstruo) carta).permitirAtaques();
+        }
+    }
 }

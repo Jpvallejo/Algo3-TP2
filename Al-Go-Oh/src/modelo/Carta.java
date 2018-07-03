@@ -3,6 +3,7 @@ package modelo;
 import modelo.Estados.Estado;
 import modelo.Estados.EstadoBocaAbajo;
 import modelo.Estados.EstadoSinEstado;
+import vista.Botones.BotonCarta;
 
 public abstract class Carta{
     protected Estado estado;
@@ -19,10 +20,8 @@ public abstract class Carta{
 
     public void activarEfecto(){}
 
-    public void activarEfectoEnAtaque(Monstruo atacante, Monstruo defensor) {}
-
-    public boolean estaBocaAbajo(){
-        return estado instanceof EstadoBocaAbajo;
+    public boolean activarEfectoEnAtaque(Monstruo atacante, Monstruo defensor) {
+        return false;
     }
 
     public String getNombre(){
@@ -42,6 +41,7 @@ public abstract class Carta{
     }
 
     public void destruir(){
+        estado = new EstadoSinEstado();
         jugador.destruirCarta(this);
     }
 
@@ -66,4 +66,6 @@ public abstract class Carta{
     public String getDescripcion() {
         return this.descripcion;
     }
+
+    public abstract BotonCarta crearBoton();
 }

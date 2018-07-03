@@ -1,9 +1,13 @@
 package modelo;
 
+import javafx.scene.image.ImageView;
+import modelo.Estados.EstadoAtaque;
 import modelo.Estados.EstadoMonstruo;
 import modelo.Estados.EstadoSinEstado;
 import modelo.Excepciones.DetenerAtaqueException;
 import modelo.Excepciones.RequiereSacrificioException;
+import vista.Botones.BotonCarta;
+import vista.Botones.BotonMonstruo;
 
 public abstract class Monstruo extends Carta {
 
@@ -34,6 +38,7 @@ public abstract class Monstruo extends Carta {
 
     public void atacarMonstruo(Monstruo defensor){
         try {
+            ((EstadoMonstruo) estado).verificarAtaque();
             defensor.recibirDanio(this);
         }
         catch (DetenerAtaqueException e) {
@@ -44,6 +49,7 @@ public abstract class Monstruo extends Carta {
     // Metodos que utiliza el atacante el defensor
     public void atacar(Jugador defensor) {
         try {
+            ((EstadoMonstruo) estado).verificarAtaque();
             defensor.activarCartaTrampa(this, null);
             defensor.restarPuntosDeVida(this.getPuntosAtaque());
         }
@@ -173,5 +179,19 @@ public abstract class Monstruo extends Carta {
         return this.estrellas;
     }
 
+    public BotonCarta crearBoton(){
+        return new BotonMonstruo(this);
+    }
 
+    public boolean estaEnModoAtaque() {
+        return estado instanceof EstadoAtaque;
+    }
+
+    public ImageView obtenerImagen() {
+        return ((EstadoMonstruo)estado).obtenerImagen(this);
+    }
+
+    public void permitirAtaques() {
+        ((EstadoMonstruo) estado).permitirAtaque();
+    }
 }

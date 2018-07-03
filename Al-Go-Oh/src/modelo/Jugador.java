@@ -259,4 +259,8 @@ public class Jugador {
     public void resetearInvocacionesPosibles() {
         this.invocacionesPosibles = 1;
     }
+
+    public void resetearAtaques() {
+        zonaMonstruo.resetearAtaques();
+    }
 }

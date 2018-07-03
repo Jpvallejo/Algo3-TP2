@@ -2,7 +2,6 @@ package modelo.CartasMonstruosEspeciales;
 
 
 import modelo.Estados.Estado;
-import modelo.Jugador;
 import modelo.Monstruo;
 
 public class JinzoNro7 extends Monstruo {
@@ -26,19 +25,5 @@ public class JinzoNro7 extends Monstruo {
         int puntosAtaque = this.getPuntosAtaque();
         defensor.daniarJugador(puntosAtaque);
     }
-
-
-
-    @Override
-    public void activarEfectoEnAtaque(Monstruo atacante, Monstruo defensor) {
-      /*  if ( ataque.getMonstruoAtacante().equals(this) ){
-            int puntosAtaque = this.getPuntosAtaque();
-            ataque.getJugadorDefensor().restarPuntosDeVida(puntosAtaque);
-        }*/
-        //return true;
-    }
-
-
-
 
 }

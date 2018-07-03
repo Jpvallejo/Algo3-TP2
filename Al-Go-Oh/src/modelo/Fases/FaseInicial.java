@@ -11,6 +11,7 @@ public class FaseInicial implements Fase {
 
     public void iniciarFase() {
         Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();
+        Juego.getJuego().avanzarFase();
     }
 
     public String getNombre() {

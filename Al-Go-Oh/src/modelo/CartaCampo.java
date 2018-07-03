@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import vista.Botones.BotonCarta;
+
 /**
  *
  * @author mramundo
@@ -15,5 +17,8 @@ public abstract class CartaCampo extends Carta{
         super();
     }
 
+    public BotonCarta crearBoton(){
+        return null;
+    }
  
 }

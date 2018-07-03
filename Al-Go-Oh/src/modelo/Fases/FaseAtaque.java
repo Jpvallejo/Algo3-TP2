@@ -7,14 +7,13 @@ public class FaseAtaque implements Fase {
 
     @Override
     public Fase siguienteFase(){
-        Juego.getJuego().getJugadorActivo().revertirCartaCampo();
-        Juego.getJuego().getJugadorOponente().revertirCartaCampo();
+        Juego.getJuego().revertirCartasDeCampo();
         return new FaseFinal();
     }
     
     public void iniciarFase() {
-        Juego.getJuego().getJugadorActivo().activarCartaCampo();
-        Juego.getJuego().getJugadorOponente().activarCartaCampo();
+        Juego.getJuego().activarCartasDeCampo();
+        Juego.getJuego().resetearAtaquesJugadorActivo();
     }
 
     @Override

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import modelo.Excepciones.NoDisponibleParaAtacarException;
 import modelo.Excepciones.RequiereSacrificioException;
 import modelo.Monstruos.AgresorOscuro;
 import modelo.Monstruos.AgujaAsesina;
@@ -419,5 +420,36 @@ public class MonstruoTest {
 
         assertFalse(jugador.getZonaMonstruo().contains(agresor3));
     }
+
+    @Test
+    public void testMonstruoNoPuedeAtacarMasDeDosVeces() {
+        Jugador atacante = new Jugador();
+        Jugador defensor = new Jugador();
+        Monstruo monstruoAtacante = new MonstruoGenerico("test1",1000,0,3);
+        Monstruo monstruoDefensor1 = new MonstruoGenerico("test1",0,0,3);
+        Monstruo monstruoDefensor2 = new MonstruoGenerico("test1",0,0,3);
+        atacante.invocar(monstruoAtacante);
+        defensor.colocar(monstruoDefensor1);
+        defensor.resetearInvocacionesPosibles();
+        defensor.colocar(monstruoDefensor2);
+
+        monstruoAtacante.atacarMonstruo(monstruoDefensor1);
+
+        assertThrows(NoDisponibleParaAtacarException.class , () -> { monstruoAtacante.atacarMonstruo(monstruoDefensor2); });
+    }
+
+    @Test
+    public void testMonstruoColocadoNoPuedeAtacar() {
+        Jugador atacante = new Jugador();
+        Jugador defensor = new Jugador();
+        Monstruo monstruoAtacante = new MonstruoGenerico("test1",1000,0,3);
+        Monstruo monstruoDefensor = new MonstruoGenerico("test1",0,0,3);
+        atacante.colocar(monstruoAtacante);
+        defensor.colocar(monstruoDefensor);
+
+        assertThrows(NoDisponibleParaAtacarException.class , () -> { monstruoAtacante.atacarMonstruo(monstruoDefensor); });
+    }
+
+
 
 }

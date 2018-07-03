@@ -4,6 +4,7 @@ import controlador.Controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
@@ -15,6 +16,7 @@ import modelo.Carta;
 import modelo.Estados.EstadoAtaque;
 import modelo.Estados.EstadoDefensaBocaAbajo;
 import modelo.Estados.EstadoDefensaBocaArriba;
+import modelo.Excepciones.NoDisponibleParaAtacarException;
 import modelo.Juego;
 import modelo.Monstruo;
 import vista.PanelMonstruosObjetivos;
@@ -87,13 +89,13 @@ public class BotonMonstruo extends BotonCarta {
 
     public void activarHandleCampoFaseAtaque(){
 
-        if (monstruo.getEstado() instanceof EstadoAtaque){
+        if (monstruo.estaEnModoAtaque()){
             this.setOnAction(new EventHandler<ActionEvent>(){
                 @Override
                 public void handle(ActionEvent t){
 
                     Stage stage = new Stage();
-                    Pane panel = new PanelMonstruosObjetivos(Juego.getJuego().getJugadorOponente(), stage, monstruo);
+                    Pane panel = new PanelMonstruosObjetivos(Juego.getJuego().getJugadorOponente(),stage, monstruo);
                     panel.setPrefSize(1000, 116);
                     Scene scene = new Scene(panel);
                     stage.setTitle("Seleccione Objetivo");
@@ -119,17 +121,17 @@ public class BotonMonstruo extends BotonCarta {
                 Scene scene = alert.getDialogPane().getScene();
                 scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 
-                ButtonType activarHechizo = new ButtonType("Ataque");
-                ButtonType colocarBoton = new ButtonType("Defensa");
+                ButtonType ataque = new ButtonType("Ataque");
+                ButtonType defensa = new ButtonType("Defensa");
                 ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                alert.getButtonTypes().setAll(activarHechizo,colocarBoton, buttonTypeCancel);
+                alert.getButtonTypes().setAll(ataque,defensa, buttonTypeCancel);
 
                 Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == activarHechizo){
+                if (result.get() == ataque){
                     //BotonCartaMagica.this.getMonstruo().activarEfecto();
                     Controlador.getControlador().cambiarEstado(monstruo, new EstadoAtaque());
                 }
-                else if (result.get() == colocarBoton){
+                else if (result.get() == defensa){
                     Controlador.getControlador().cambiarEstado(monstruo, new EstadoDefensaBocaArriba());
                     // Juego.getJuego().getJugadorActivo().colocarCarta(BotonCartaMagica.this.getMonstruo());
                 }
@@ -142,9 +144,18 @@ public class BotonMonstruo extends BotonCarta {
         this.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent t){
+                try {
+                    stage.close();
+                    Controlador.getControlador().atacarMonstruo(atacante, monstruo);
+                }
+                catch(NoDisponibleParaAtacarException e){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Ataque No Permitido");
+                    alert.setHeaderText(null);
+                    alert.setContentText("El monstruo seleccionado ya no puede atacar");
 
-                Controlador.getControlador().atacarMonstruo(atacante, monstruo);
-                stage.close();
+                    alert.showAndWait();
+                }
             }
         });
     }

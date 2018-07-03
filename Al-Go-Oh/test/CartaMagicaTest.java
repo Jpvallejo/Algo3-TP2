@@ -77,9 +77,9 @@ public class CartaMagicaTest {
     }
 
      @Test
-    public void testAplicarCartaWastelandEnMonstruosYAtacar() {
-          
-        Juego.reiniciarJuego();
+    public void testColocarWastelandEnElCampoAumentaElAtaqueDelJugadorActivosEn200YLaDefensaDelJugadorOponenteEn300() {
+
+         Juego.reiniciarJuego();
         Wasteland wasteland = new Wasteland();
         
         
@@ -88,36 +88,41 @@ public class CartaMagicaTest {
         jugadorActivo.colocarCarta(wasteland);
         Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
 
-        Monstruo monstruoAtaque = new MonstruoGenerico("test1",100,0,4);
+        Monstruo monstruoAtaque = new MonstruoGenerico("test1",300,0,4);
         jugadorActivo.invocar(monstruoAtaque);
-        jugadorActivo.resetearInvocacionesPosibles();
         Monstruo monstruoDefensa = new MonstruoGenerico("test2",100,200,4);
-        jugadorOponente.invocar(monstruoDefensa);
-        jugadorOponente.resetearInvocacionesPosibles();
+        jugadorOponente.colocar(monstruoDefensa);
         jugadorActivo.activarCartaCampo();
-        
-        //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
-         monstruoAtaque.atacarMonstruo(monstruoDefensa);
-        
-        //Le resta 200 puntos de vida al jugador defensor
-        assertEquals(1, jugadorOponente.cantidadCartasCementerio());
-        assertEquals(7800, jugadorOponente.getPuntosDeVida());
-        
-        jugadorActivo.revertirCartaCampo();
-        
-        //Creo monstruo en modo de defensa con 100 de defensa
-        Monstruo monstruoDefensa01 = new MonstruoGenerico("test",100,100,4);
-        jugadorOponente.colocar(monstruoDefensa01);
-        jugadorOponente.resetearInvocacionesPosibles();
-        
-        jugadorActivo.activarCartaCampo();
-        
-        //atacante.declararAtaqueDePosicionAPosicion(defensor,Casillero.UNO,Casillero.UNO);
-         monstruoAtaque.atacarMonstruo(monstruoDefensa01);
 
-        //Le resta 100 puntos de vida al que ataca porque tengo el defensor con un monstruo con 400 de defensa y el mio tiene 300
-         assertEquals(7900, jugadorActivo.getPuntosDeVida());
-         
+        assertEquals(500,monstruoAtaque.getPuntosAtaque());
+        assertEquals(500,monstruoDefensa.getPuntosDefensa());
+    }
+
+    @Test
+    public void testColocarWastelandYRevertirCartaDeCampoDevuelveAtaquesYDefensasALaNormalidad() {
+
+        Juego.reiniciarJuego();
+        Wasteland wasteland = new Wasteland();
+
+
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+
+        jugadorActivo.colocarCarta(wasteland);
+        Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
+
+        Monstruo monstruoAtaque = new MonstruoGenerico("test1",300,0,4);
+        jugadorActivo.invocar(monstruoAtaque);
+        Monstruo monstruoDefensa = new MonstruoGenerico("test2",100,200,4);
+        jugadorOponente.colocar(monstruoDefensa);
+
+        // Simulacion de Fase de Ataque
+        Juego.getJuego().activarCartasDeCampo();
+        monstruoAtaque.atacarMonstruo(monstruoDefensa);
+        Juego.getJuego().revertirCartasDeCampo();
+
+        assertEquals(300,monstruoAtaque.getPuntosAtaque());
+        assertEquals(200,monstruoDefensa.getPuntosDefensa());
+        assertEquals(0,jugadorOponente.cantidadCartasCementerio());
     }
 
     @Test
