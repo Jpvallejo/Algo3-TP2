@@ -16,8 +16,8 @@ public class Juego {
     }
 
     private Juego() {
-        jugadorActivo = new Jugador();
-        jugadorOponente = new Jugador();
+        jugadorActivo = new Jugador("Jugador 1");
+        jugadorOponente = new Jugador("Jugador 2");
         faseActual = new FaseInicial();
         for (int i = 0; i < 5; i++){
             jugadorActivo.extraerCartaDelMazo();

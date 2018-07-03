@@ -11,6 +11,7 @@ import modelo.Excepciones.ZonaVaciaException;
 
 public class Jugador {
     //private Tablero tablero;
+    private String nombre;
     private int puntosDeVida;
     private Mano mano;
     private Mazo mazo;
@@ -23,6 +24,18 @@ public class Jugador {
 
 
     public Jugador(){
+        puntosDeVida = 8000;
+        this.mazo  = new Mazo();
+        this.mano = new Mano();
+        this.invocacionesPosibles = 1;
+        this.zonaHechizos = new ZonaHechizos();
+        this.zonaMonstruo = new ZonaMonstruo();
+        this.cementerio = new Cementerio();
+        this.cartaCampo = new CartaCampoSinEfecto();
+    }
+
+    public Jugador(String _nombre){
+        nombre = _nombre;
         puntosDeVida = 8000;
         this.mazo  = new Mazo();
         this.mano = new Mano();
@@ -46,7 +59,7 @@ public class Jugador {
     }
 
     public void restarPuntosDeVida(int puntosDeVidaMenos){
-        puntosDeVida -= puntosDeVidaMenos;
+        puntosDeVida -= Math.min(puntosDeVidaMenos,puntosDeVida);
     }
 
     public int cantidadCartasCementerio() {
@@ -262,5 +275,9 @@ public class Jugador {
 
     public void resetearAtaques() {
         zonaMonstruo.resetearAtaques();
+    }
+
+    public String obtenerNombre() {
+        return nombre;
     }
 }

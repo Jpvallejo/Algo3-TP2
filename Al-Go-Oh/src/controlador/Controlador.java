@@ -99,4 +99,14 @@ public class Controlador {
         atacante.atacar(this.getJugadorOponente());
         pantallaBatalla.actualizarPantalla();
     }
+
+    public void verificarGanador() {
+        if(Juego.getJuego().hayGanador()){
+            pantallaBatalla.mostrarPantallaGanador();
+        }
+    }
+
+    public String obtenerNombreGanador() {
+        return Juego.getJuego().obtenerGanador().obtenerNombre();
+    }
 }

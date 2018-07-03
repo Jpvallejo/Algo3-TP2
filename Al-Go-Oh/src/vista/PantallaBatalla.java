@@ -106,7 +106,7 @@ public class PantallaBatalla {
         cementerioJugador2 = new Button();
 
         // Labels
-        nombreJugador1 = new Label("Jugador 1");
+        nombreJugador1 = new Label(jugador1.obtenerNombre());
         nombreJugador2 = new Label("Jugador 2");
         nombreJugador2.setLayoutY(650);
 
@@ -165,6 +165,8 @@ public class PantallaBatalla {
         stage.centerOnScreen();
 
         stage.show();
+
+        controlador.verificarGanador();
 
         controlador.obtenerFase().activarHandles(this);
 
@@ -238,4 +240,13 @@ public class PantallaBatalla {
 
     }
 
+    public void mostrarPantallaGanador() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Juego Terminado!");
+        alert.setHeaderText(null);
+        alert.setContentText("Ganador: " + Controlador.getControlador().obtenerNombreGanador());
+
+        alert.showAndWait();
+        Controlador.getControlador().reiniciarJuego();
+    }
 }
