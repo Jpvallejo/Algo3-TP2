@@ -1,3 +1,5 @@
+package modelo.fases;
+
 import modelo.*;
 import modelo.Fases.*;
 import modelo.Monstruos.*;

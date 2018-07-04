@@ -1,24 +1,15 @@
-import modelo.*;
+package modelo.cartasTrampa;
+
+import modelo.CartaTrampa;
 import modelo.CartasMagicas.CilindroMagico;
-import modelo.CartasMagicas.Reinforcement;
+import modelo.Jugador;
+import modelo.Monstruo;
 import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;
 
-import static junit.framework.TestCase.*;
 import static org.junit.Assert.assertEquals;
 
-public class CartaTrampaTest {
-
-    @Test
-    public void testColocarCartaTrampaColocaLaCartaBocaAbajo(){
-        CartaTrampa carta = new CilindroMagico();
-        Jugador jugador = new Jugador();
-        jugador.colocarCarta(carta);
-
-        assertTrue(jugador.getZonaHechizos().contains(carta));
-
-    }
-
+public class CilindroMagicoTest {
 
     @Test
     public void testCilindroMagicoNiegaElAtaqueDeUnMonstruoYRestaLosPuntosDeAtaqueDelMonstruoAtacanteALosPuntosDeVidaDelJugadorAtacante(){
@@ -62,30 +53,6 @@ public class CartaTrampaTest {
         assertEquals(0, atacante.cantidadCartasCementerio());
         assertEquals(1, defensor.cantidadCartasCementerio());
         assertEquals(6000, atacante.getPuntosDeVida());
-        assertEquals(8000, defensor.getPuntosDeVida());
-
-    }
-
-
-    @Test
-    public void testActivarReinforcementAumentaElAtaqueDelMonstruoDefensorEn500SoloDuranteElAtaque(){
-
-        Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
-        Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
-        Monstruo monstruoAtacante = new MonstruoGenerico("test",1500,1000, 4);
-        Monstruo monstruoDefensor = new MonstruoGenerico("test",1200,1000, 4);
-        atacante.invocar(monstruoAtacante);
-        defensor.invocar(monstruoDefensor);
-
-
-        CartaTrampa carta = new Reinforcement();
-        defensor.colocarCarta(carta);
-        
-        monstruoAtacante.atacarMonstruo(monstruoDefensor);
-
-        assertEquals(1, atacante.cantidadCartasCementerio());
-        assertEquals(1, defensor.cantidadCartasCementerio());
-        assertEquals(7800, atacante.getPuntosDeVida());
         assertEquals(8000, defensor.getPuntosDeVida());
 
     }

@@ -1,6 +1,17 @@
+package entregas;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import modelo.cartasMagicas.*;
+import modelo.cartasTrampa.CartaTrampaTest;
+import modelo.ManoTest;
+import modelo.MazoTest;
+import modelo.cartasTrampa.CilindroMagicoTest;
+import modelo.cartasTrampa.ReinforcementTest;
+import modelo.monstruos.DragonDeOjosAzulesDefinitivoTest;
+import modelo.monstruos.InsectoComeHombresTest;
+import modelo.monstruos.JinzoTest;
 import org.junit.Test;
 
 public class Entrega2Test {
@@ -10,21 +21,21 @@ public class Entrega2Test {
         /*Colocar un monstruo de cada lado del campo. Activo la carta mágica Wasteland y verificar que de un lado del campo, el ataque del monstruo aumenta en 200 puntos y del otro lado del campo, se aumenta la defensa del monstruo en 300 puntos.*/
 
 
-        new CartaMagicaTest().testColocarWastelandEnElCampoAumentaElAtaqueDelJugadorActivosEn200YLaDefensaDelJugadorOponenteEn300();
+        new WastelandTest().testColocarWastelandEnElCampoAumentaElAtaqueDelJugadorActivosEn200YLaDefensaDelJugadorOponenteEn300();
     }
     
     @Test
     public void test02SegundaEntrega(){
         /*Activar la carta mágica Olla de la codicia, y verificar que tomo 2 cartas del mazo.*/
 
-        new CartaMagicaTest().testInvocarOllaDeLaCodiciaPermiteTomarDosCartasDelMazo();
+        new OllaDeLaCodiciaTest().testInvocarOllaDeLaCodiciaPermiteTomarDosCartasDelMazo();
     }
     
     @Test
     public void test03SegundaEntrega(){
         /*Colocar un monstruo de cada lado del campo. activo la carta mágica Sogen y verificar que de un lado del campo, la defensa del monstruo aumenta en 500 puntos y del otro lado del campo, se aumenta el ataque del monstruo en 200 puntos.*/
 
-        new CartaMagicaTest().testAplicarCartaSogenEnMonstruosYAtacar();
+        new SogenTest().testAplicarCartaSogenEnMonstruosYAtacar();
 
     }
     
@@ -32,42 +43,42 @@ public class Entrega2Test {
     public void test04SegundaEntrega(){
         /*Colocar 2 monstruos en el campo enemigo, con diferente ataque. Activo la carta mágica Fisura, y verificar que el de menor ataque es destruido.*/
 
-        new CartaMagicaTest().testInvocar2MonstruosYActivarLaCartaMagicaFisuraDestruyeElMonstruoDeMenorAtaque();
+        new FisuraTest().testInvocar2MonstruosYActivarLaCartaMagicaFisuraDestruyeElMonstruoDeMenorAtaque();
     }
     
     @Test
     public void test05SegundaEntrega(){
         /*Colocar un monstruo en el campo enemigo. invoco a Jinzo #7 en mi lado del campo. Verificar que puedo atacar a los puntos de vida directamente.*/
 
-        new MonstruosEspecialesTest().testColocarJinzoEnPosicionDeAtaqueAtacaALosPuntosDeVidaDelOponenteDirectamenteSinImportarElMonstruoDelLadoOponente();
+        new JinzoTest().testColocarJinzoEnPosicionDeAtaqueAtacaALosPuntosDeVidaDelOponenteDirectamenteSinImportarElMonstruoDelLadoOponente();
     }
     
     @Test
     public void test06SegundaEntrega(){
         /*Invocar 3 dragones blancos de ojos azules, al Dragón definitivo de ojos azules sacrificando los 3 dragones el lado del campo del jugador que los invocó.*/
 
-        new MonstruosEspecialesTest().testInvocarAlDragonDeOjosAzulesDefinitivoDestruye3DragonesBlancosDeOjosAzules();
+        new DragonDeOjosAzulesDefinitivoTest().testInvocarAlDragonDeOjosAzulesDefinitivoDestruye3DragonesBlancosDeOjosAzules();
     }
     
     @Test
     public void test07SegundaEntrega(){
         /*Colocar al Insecto come-hombres, en posición de defensa boca abajo. Invocar un monstruo enemigo y atacar al insecto. activo el efecto de volteo, señalando al atacante como objetivo, verificar que este se destruye, y que mi monstruo sigue en el campo. Verificar que nadie sufre daño a los puntos de vida.*/
 
-        new MonstruosEspecialesTest().testAlAtacarAlInsectoComeHombresBocaAbajoEnPosicionDeDefensaSeDestruyeElMonstruoAtacante();
+        new InsectoComeHombresTest().testAlAtacarAlInsectoComeHombresBocaAbajoEnPosicionDeDefensaSeDestruyeElMonstruoAtacante();
     }
     
     @Test
     public void test08SegundaEntrega(){
         /*Colocar un monstruo del lado enemigo, luego coloco la carta trampa Cilindro mágico de mi lado del campo. Atacar con el monstruo y verificar que se activa la carta trampa, se niega el ataque y el oponente recibe el daño directamente en sus puntos de vida.*/
 
-        new CartaTrampaTest().testCilindroMagicoNiegaElAtaqueDeUnMonstruoALosPuntosDeVidaYRestaLosPuntosDeAtaqueDelMonstruoAtacanteALosPuntosDeVidaDelJugadorAtacante();
+        new CilindroMagicoTest().testCilindroMagicoNiegaElAtaqueDeUnMonstruoALosPuntosDeVidaYRestaLosPuntosDeAtaqueDelMonstruoAtacanteALosPuntosDeVidaDelJugadorAtacante();
     }
     
     @Test
     public void test09SegundaEntrega(){
         /*Coloco un monstruo en posición de ataque y la carta trampa Reinforcements de mi lado del campo, coloco un monstruo en el campo enemigo (con 400 puntos mas de ataque que el primero) y atacar al primer monstruo. Verificar que se activa la carta trampa, y el monstruo enemigo es destruido y se infligió 100 puntos de daño a la vida del otro jugador.*/
 
-        new CartaTrampaTest().testActivarReinforcementAumentaElAtaqueDelMonstruoDefensorEn500SoloDuranteElAtaque();
+        new ReinforcementTest().testActivarReinforcementAumentaElAtaqueDelMonstruoDefensorEn500SoloDuranteElAtaque();
 
 
     }

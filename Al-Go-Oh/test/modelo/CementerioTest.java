@@ -1,3 +1,5 @@
+package modelo;
+
 import modelo.*;
 import modelo.Monstruos.MonstruoGenerico;
 import org.junit.Test;

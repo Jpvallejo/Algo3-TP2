@@ -1,11 +1,13 @@
-import junit.framework.TestCase;
+package entregas;
+
 import modelo.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import modelo.CartasMagicas.AgujeroNegro;
-import modelo.CartasMagicas.CilindroMagico;
-import modelo.Monstruos.AgujaAsesina;
+import modelo.cartasMagicas.AgujeroNegroTest;
+import modelo.cartasMagicas.CartaMagicaTest;
+import modelo.cartasTrampa.CartaTrampaTest;
+import modelo.monstruos.MonstruoTest;
 import org.junit.Test;
 
 public class Entrega1Tests {
@@ -93,7 +95,7 @@ public class Entrega1Tests {
     public void test11PrimerEntrega() {
         /*Colocar monstruos en ambos lados del campo. Colocar “Agujero negro” boca arriba (es decir, se activa el efecto). Verificar que se destruyeron todos los monstruos de ambos lados del campo, y que nadie recibió daño alguno.*/
 
-        new CartaMagicaTest().testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocadorYDelOponente();
+        new AgujeroNegroTest().testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocadorYDelOponente();
     }
 
     @Test

@@ -1,3 +1,5 @@
+package modelo.monstruos;
+
 import modelo.Estados.EstadoDefensaBocaAbajo;
 import modelo.Estados.EstadoAtaque;
 import modelo.*;

@@ -1,3 +1,5 @@
+package modelo;
+
 import modelo.Juego;
 import org.junit.Test;
 
