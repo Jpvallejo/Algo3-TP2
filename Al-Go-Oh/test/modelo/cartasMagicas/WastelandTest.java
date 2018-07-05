@@ -15,6 +15,7 @@ public class WastelandTest {
     public void testColocarWastelandEnElCampoAumentaElAtaqueDelJugadorActivosEn200YLaDefensaDelJugadorOponenteEn300() {
 
         Juego.reiniciarJuego();
+		Juego.getJuego().avanzarFase(); // fase de preparacion
         Wasteland wasteland = new Wasteland();
 
 
@@ -37,6 +38,7 @@ public class WastelandTest {
     public void testColocarWastelandYRevertirCartaDeCampoDevuelveAtaquesYDefensasALaNormalidad() {
 
         Juego.reiniciarJuego();
+		Juego.getJuego().avanzarFase(); // fase de preparacion
         Wasteland wasteland = new Wasteland();
 
 

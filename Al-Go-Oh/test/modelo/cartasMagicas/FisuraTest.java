@@ -16,7 +16,7 @@ public class FisuraTest {
     public void testInvocar2MonstruosYActivarLaCartaMagicaFisuraDestruyeElMonstruoDeMenorAtaque() {
         /*Colocar 2 monstruos en el campo enemigo, con diferente ataque. Activo la carta mágica Fisura, y verificar que el de menor ataque es destruido.*/
         Juego.reiniciarJuego();
-
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
         Jugador jugadorOponente = Juego.getJuego().getJugadorOponente();
 
@@ -31,7 +31,8 @@ public class FisuraTest {
         jugadorOponente.invocar(monstruo3);
 
         Fisura fisura = new Fisura();
-
+        Juego.getJuego().avanzarFase(); // fase de ataque
+        Juego.getJuego().avanzarFase(); // fase final
         jugadorActivo.activarCarta(fisura);
 
         assertEquals(1, jugadorOponente.cantidadCartasCementerio());

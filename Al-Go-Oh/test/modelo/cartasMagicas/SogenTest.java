@@ -16,6 +16,7 @@ public class SogenTest {
 
 
         Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         Sogen sogen = new Sogen();
 
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();

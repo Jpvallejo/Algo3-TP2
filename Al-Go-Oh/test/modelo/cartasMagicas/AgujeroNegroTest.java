@@ -15,16 +15,19 @@ public class AgujeroNegroTest {
     @Test
     public void testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocador() {
         Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         AgujeroNegro agujeroNegro = new AgujeroNegro();
 
         Jugador jugador = Juego.getJuego().getJugadorActivo();
 
         Monstruo monstruo1 = new MonstruoGenerico("test",0,0,4);
         Monstruo monstruo2 = new MonstruoGenerico("test",0,0,4);
-
+        
         jugador.invocar(monstruo1);
         jugador.resetearInvocacionesPosibles();
         jugador.invocar(monstruo2);
+        Juego.getJuego().avanzarFase(); // fase de ataque
+        Juego.getJuego().avanzarFase(); // fase final
         jugador.activarCarta(agujeroNegro);
 
         assertEquals(0,jugador.cantidadCartasZonaMonstruos());
@@ -36,6 +39,7 @@ public class AgujeroNegroTest {
     @Test
     public void testInvocarAgujeroNegroEnTableroDestruyeTodosLosMonstruosDelTableroDelInvocadorYDelOponente() {
         Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         AgujeroNegro agujeroNegro = new AgujeroNegro();
 
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
@@ -52,9 +56,10 @@ public class AgujeroNegroTest {
         jugadorOponente.invocar(monstruoJugadorOponente1);
         jugadorOponente.resetearInvocacionesPosibles();
         jugadorOponente.invocar(monstruoJugadorOponente2);
-
+        Juego.getJuego().avanzarFase(); // fase de ataque
+        Juego.getJuego().avanzarFase(); // fase final
         jugadorActivo.activarCarta(agujeroNegro);
-
+        
         assertEquals(0,jugadorActivo.cantidadCartasZonaMonstruos());
         assertEquals(0,jugadorOponente.cantidadCartasZonaMonstruos());
         assertEquals(0,jugadorActivo.cantidadCartasZonaMagicas());

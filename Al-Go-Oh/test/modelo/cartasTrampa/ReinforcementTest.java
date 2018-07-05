@@ -2,6 +2,7 @@ package modelo.cartasTrampa;
 
 import modelo.CartaTrampa;
 import modelo.CartasMagicas.Reinforcement;
+import modelo.Juego;
 import modelo.Jugador;
 import modelo.Monstruo;
 import modelo.Monstruos.MonstruoGenerico;
@@ -14,7 +15,8 @@ public class ReinforcementTest {
 
     @Test
     public void testActivarReinforcementAumentaElAtaqueDelMonstruoDefensorEn500SoloDuranteElAtaque(){
-
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new MonstruoGenerico("test",1500,1000, 4);

@@ -2,6 +2,7 @@ package modelo.cartasTrampa;
 
 import modelo.CartaTrampa;
 import modelo.CartasMagicas.CilindroMagico;
+import modelo.Juego;
 import modelo.Jugador;
 import modelo.Monstruo;
 import modelo.Monstruos.MonstruoGenerico;

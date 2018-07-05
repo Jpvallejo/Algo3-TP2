@@ -1,6 +1,7 @@
 package modelo.monstruos;
 
 import modelo.CartasMonstruosEspeciales.InsectoComeHombres;
+import modelo.Juego;
 import modelo.Jugador;
 import modelo.Monstruo;
 import modelo.Monstruos.MonstruoGenerico;
@@ -12,7 +13,8 @@ public class InsectoComeHombresTest {
 
     @Test
     public void testAlAtacarAlInsectoComeHombresBocaAbajoEnPosicionDeDefensaSeDestruyeElMonstruoAtacante(){
-
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador atacante = new Jugador(); //Juego.getJuego().getJugadorActivo();
         Jugador defensor = new Jugador(); //Juego.getJuego().getJugadorOponente();
         Monstruo monstruoAtacante = new MonstruoGenerico("test",1000,1000, 4);
@@ -20,6 +22,7 @@ public class InsectoComeHombresTest {
         atacante.invocar(monstruoAtacante);
         defensor.colocar(insectoComeHombres);
 
+        Juego.getJuego().avanzarFase(); //avanza a fase de Ataque
         monstruoAtacante.atacarMonstruo(insectoComeHombres);
 
         // Supuesto: El Insecto Come Hombres en el juego original cuando lo atacan el efecto se activa luego del calculo de puntos, por lo cual, este se destruye tambien.

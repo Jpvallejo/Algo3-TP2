@@ -473,6 +473,8 @@ public class MonstruoTest {
 
     @Test
     public void testMonstruoColocadoNoPuedeAtacar() {
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador atacante = new Jugador();
         Jugador defensor = new Jugador();
         Monstruo monstruoAtacante = new MonstruoGenerico("test1",1000,0,3);

@@ -12,6 +12,9 @@ public class OllaDeLaCodiciaTest {
     @Test
     public void testInvocarOllaDeLaCodiciaPermiteTomarDosCartasDelMazo() {
         Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); // fase de preparacion
+        Juego.getJuego().avanzarFase(); // fase de ataque
+        Juego.getJuego().avanzarFase(); // fase final
         OllaDeLaCodicia ollaDeLaCodicia = new OllaDeLaCodicia();
 
         Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();

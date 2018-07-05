@@ -20,6 +20,7 @@ public class CartaMagicaTest {
 
     @Test
     public void testColocarCartaMagicaColocaLaCartaBocaAbajo(){
+        Juego.getJuego().avanzarFase(); // fase de preparacion
         AgujeroNegro agujeroNegro = new AgujeroNegro();
         Jugador jugador = new Jugador();
         jugador.colocarCarta(agujeroNegro);

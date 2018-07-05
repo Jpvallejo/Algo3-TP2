@@ -3,6 +3,7 @@ package modelo.monstruos;
 import modelo.CartasMonstruosEspeciales.DragonBlancoDeOjosAzules;
 import modelo.CartasMonstruosEspeciales.DragonDeOjosAzulesDefinitivo;
 import modelo.Excepciones.MonstruoDeFusionException;
+import modelo.Juego;
 import modelo.Jugador;
 import modelo.Monstruo;
 import modelo.Monstruos.MonstruoGenerico;
