@@ -31,6 +31,8 @@ public class Juego {
         exodia.add(new PiernaIzquierdaExodia());
         exodia.add(new BrazoDerechoExodia());
         exodia.add(new BrazoIzquierdoExodia());
+
+        jugadorActivo.extraerCartaDelMazo();
         /*** Pruebas: Borrar luego ***/
         //jugadorActivo.getMano().quitarCarta(jugadorActivo.getMano().getCartas().get(1));
         //jugadorActivo.invocar(new AsechadorDelCraneo());

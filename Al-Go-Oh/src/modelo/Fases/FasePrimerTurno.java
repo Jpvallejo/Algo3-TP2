@@ -12,7 +12,7 @@ public class FasePrimerTurno implements Fase{
     }
 
     public void iniciarFase() {
-
+        Juego.getJuego().getJugadorActivo().extraerCartaDelMazo();
     }
 
     public String getNombre() {

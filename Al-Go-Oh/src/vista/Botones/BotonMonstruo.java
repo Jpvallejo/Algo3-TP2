@@ -50,8 +50,8 @@ public class BotonMonstruo extends BotonCarta {
         final Tooltip tooltip = new Tooltip();
         tooltip.setText(
                 "Nombre :" + this.monstruo.getNombre() +
-                "\nAtaque: " + this.monstruo.getPuntosAtaque() + "\n" +
-                        "Defensa: " + this.monstruo.getPuntosDefensa() + "\n"
+                "\nAtaque: " + this.monstruo.getTextoPuntosAtaque() + "\n" +
+                        "Defensa: " + this.monstruo.getTextoPuntosDefensa() + "\n"
                 + this.monstruo.getDescripcion()
         );
         this.setTooltip(tooltip);

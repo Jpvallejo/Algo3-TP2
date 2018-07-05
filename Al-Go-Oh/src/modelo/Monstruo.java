@@ -194,4 +194,12 @@ public abstract class Monstruo extends Carta {
     public void permitirAtaques() {
         ((EstadoMonstruo) estado).permitirAtaque();
     }
+
+    public String getTextoPuntosAtaque() {
+        return puntosAtaque + ((adicionalesDeAtaque == 0)&&(adicionalesDeDefensa == 0)? "" : " + " + adicionalesDeAtaque);
+    }
+
+    public String getTextoPuntosDefensa() {
+        return puntosDefensa + ((adicionalesDeAtaque == 0)&&(adicionalesDeDefensa == 0)? "" : " + " + adicionalesDeDefensa);
+    }
 }
