@@ -2,11 +2,13 @@ package modelo.monstruos;
 
 import modelo.CartasMonstruosEspeciales.DragonBlancoDeOjosAzules;
 import modelo.CartasMonstruosEspeciales.DragonDeOjosAzulesDefinitivo;
-import modelo.Excepciones.MonstruoDeFusionException;
+import modelo.Excepciones.RequiereSacrificioEspecialException;
+import modelo.Excepciones.RequiereSacrificioException;
 import modelo.Juego;
 import modelo.Jugador;
 import modelo.Monstruo;
 import modelo.Monstruos.MonstruoGenerico;
+import modelo.Sacrificios;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,21 +32,34 @@ public class DragonDeOjosAzulesDefinitivoTest {
         jugador.colocar(aSacrificar3);
         jugador.resetearInvocacionesPosibles();
 
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo); });
+        Sacrificios unSacrificio = new Sacrificios();
+        Sacrificios dosSacrificios = new Sacrificios();
+        Sacrificios tresSacrificios = new Sacrificios();
+
+        unSacrificio.agregar(aSacrificar1);
+
+        dosSacrificios.agregar(aSacrificar1);
+        dosSacrificios.agregar(aSacrificar2);
+
+        tresSacrificios.agregar(aSacrificar1);
+        tresSacrificios.agregar(aSacrificar2);
+        tresSacrificios.agregar(aSacrificar3);
+
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1); });
+        assertThrows(RequiereSacrificioEspecialException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,unSacrificio); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
+        assertThrows(RequiereSacrificioEspecialException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,dosSacrificios); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2,aSacrificar3); });
+        assertThrows(RequiereSacrificioEspecialException.class , () -> { jugador.invocar(dragonDeOjosAzulesDefinitivo,tresSacrificios); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo); });
+        assertThrows(RequiereSacrificioException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1); });
+        assertThrows(RequiereSacrificioEspecialException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,unSacrificio); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2); });
+        assertThrows(RequiereSacrificioEspecialException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,dosSacrificios); });
         jugador.resetearInvocacionesPosibles();
-        assertThrows(MonstruoDeFusionException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,aSacrificar1,aSacrificar2,aSacrificar3); });
+        assertThrows(RequiereSacrificioEspecialException.class , () -> { jugador.colocar(dragonDeOjosAzulesDefinitivo,tresSacrificios); });
     }
 
     @Test
@@ -64,30 +79,44 @@ public class DragonDeOjosAzulesDefinitivoTest {
         Monstruo aSacrificar6= new MonstruoGenerico("test6",0,0,3);
         Monstruo dragon3= new DragonBlancoDeOjosAzules();
 
-        Monstruo dragonDeOjosAzulesDefinitivo = new DragonDeOjosAzulesDefinitivo();
+        DragonDeOjosAzulesDefinitivo dragonDeOjosAzulesDefinitivo = new DragonDeOjosAzulesDefinitivo();
 
         jugador.colocar(aSacrificar1);
         jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar2);
         jugador.resetearInvocacionesPosibles();
-        jugador.colocar(dragon1,aSacrificar1,aSacrificar2);
+        Sacrificios sacrificiosDragon1 = new Sacrificios();
+        sacrificiosDragon1.agregar(aSacrificar1);
+        sacrificiosDragon1.agregar(aSacrificar2);
+        jugador.colocar(dragon1,sacrificiosDragon1);
         jugador.resetearInvocacionesPosibles();
 
         jugador.colocar(aSacrificar3);
         jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar4);
         jugador.resetearInvocacionesPosibles();
-        jugador.colocar(dragon2,aSacrificar3,aSacrificar4);
+        Sacrificios sacrificiosDragon2 = new Sacrificios();
+        sacrificiosDragon2.agregar(aSacrificar3);
+        sacrificiosDragon2.agregar(aSacrificar4);
+        jugador.colocar(dragon2,sacrificiosDragon2);
         jugador.resetearInvocacionesPosibles();
 
         jugador.colocar(aSacrificar5);
         jugador.resetearInvocacionesPosibles();
         jugador.colocar(aSacrificar6);
         jugador.resetearInvocacionesPosibles();
-        jugador.colocar(dragon3,aSacrificar5,aSacrificar6);
+        Sacrificios sacrificiosDragon3 = new Sacrificios();
+        sacrificiosDragon3.agregar(aSacrificar5);
+        sacrificiosDragon3.agregar(aSacrificar6);
+        jugador.colocar(dragon3,sacrificiosDragon3);
         jugador.resetearInvocacionesPosibles();
 
-        jugador.invocar(dragonDeOjosAzulesDefinitivo, dragon1, dragon2, dragon3);
+        Sacrificios dragonesASacrificar = new Sacrificios();
+        dragonesASacrificar.agregar(dragon1);
+        dragonesASacrificar.agregar(dragon2);
+        dragonesASacrificar.agregar(dragon3);
+
+        jugador.invocar(dragonDeOjosAzulesDefinitivo, dragonesASacrificar);
 
         assertEquals(9,jugador.cantidadCartasCementerio());
     }

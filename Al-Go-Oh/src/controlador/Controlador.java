@@ -1,8 +1,11 @@
 package controlador;
 
+import javafx.scene.control.Alert;
 import modelo.*;
 import modelo.Estados.Estado;
 import modelo.Estados.EstadoAtaque;
+import modelo.Excepciones.InvocacionNoPosibleException;
+import modelo.Excepciones.RequiereSacrificioEspecialException;
 import modelo.Excepciones.RequiereSacrificioException;
 import modelo.Fases.Fase;
 import vista.PantallaBatalla;
@@ -62,15 +65,47 @@ public class Controlador {
             }
             catch (RequiereSacrificioException e2){
                 Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+                this.informar("Invocacion no Permitida", "El monstruo seleccionado requiere mas sacrificos");
             }
+            catch (RequiereSacrificioEspecialException e2){
+                Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+                this.informar("Invocacion no Permitida", "El monstruo seleccionado requiere un sacrificio especial");
+            }
+        }
+        catch(InvocacionNoPosibleException i){
+            this.informar("Invocacion no Permitida", "No es posible invocar mas monstruos");
         }
 
     }
 
     public void colocarMonstruo(Monstruo monstruo) {
-        Juego.getJuego().getJugadorActivo().colocar(monstruo);
-        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
-        pantallaBatalla.actualizarPantalla();
+        try {
+            Juego.getJuego().getJugadorActivo().colocar(monstruo);
+            Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
+            pantallaBatalla.actualizarPantalla();
+        }
+        catch(RequiereSacrificioException e){
+            try {
+                Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+                Sacrificios sacrificios = new Sacrificios();
+                pantallaBatalla.abrirPanelSacrificios(monstruo, sacrificios);
+                Juego.getJuego().getJugadorActivo().colocar(monstruo, sacrificios);
+                Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
+                pantallaBatalla.actualizarPantalla();
+            }
+            catch (RequiereSacrificioException e2){
+                Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+                this.informar("Invocacion no Permitida", "El monstruo seleccionado requiere mas sacrificos");
+            }
+            catch (RequiereSacrificioEspecialException e2){
+                Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+                this.informar("Invocacion no Permitida", "El monstruo seleccionado requiere un sacrificio especial");
+            }
+        }
+        catch(InvocacionNoPosibleException i){
+            this.informar("Invocacion no Permitida", "No es posible invocar mas monstruos");
+        }
+
     }
 
     public void activarCartaMagicaDesdeMano(CartaMagica carta) {
@@ -131,5 +166,15 @@ public class Controlador {
         Juego.getJuego().getJugadorActivo().colocarCarta(carta);
         Juego.getJuego().getJugadorActivo().quitarCartaDeMano(carta);
         pantallaBatalla.actualizarPantalla();
+    }
+
+
+    public void informar(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        alert.showAndWait();
     }
 }

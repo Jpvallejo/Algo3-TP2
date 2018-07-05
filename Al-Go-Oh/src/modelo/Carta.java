@@ -71,4 +71,8 @@ public abstract class Carta{
     }
 
     public abstract BotonCarta crearBoton();
+
+    public boolean esDragonBlancoDeOjosAzules() {
+        return false;
+    }
 }

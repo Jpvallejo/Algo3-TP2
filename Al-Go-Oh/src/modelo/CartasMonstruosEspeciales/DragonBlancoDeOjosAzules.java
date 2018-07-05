@@ -13,4 +13,8 @@ public class DragonBlancoDeOjosAzules extends Monstruo {
         descripcion = "";
     }
 
+    @Override
+    public boolean esDragonBlancoDeOjosAzules() {
+        return true;
+    }
 }

@@ -6,8 +6,6 @@ import modelo.Estados.EstadoBocaArriba;
 import modelo.Estados.EstadoAtaque;
 import modelo.Excepciones.FaseIncorrectaException;
 import modelo.Excepciones.InvocacionNoPosibleException;
-import modelo.Fases.Fase;
-import modelo.Fases.FaseAtaque;
 import modelo.Fases.FaseFinal;
 import modelo.Fases.FasePreparacion;
 import modelo.Mazo.Mazo;
@@ -71,51 +69,17 @@ public class Jugador {
         return cementerio.cantidadCartas();
     }
 
-    public void invocar(Monstruo monstruo) {
-        this.verificarInvocacion();
-        monstruo.requiereSacrificios();
-        
-        //Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
-        monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
-        this.zonaMonstruo.colocarCarta(monstruo);
-    }
-
     private int getInvocacionesPosibles() {
         return this.invocacionesPosibles;
     }
 
-    public void invocar(Monstruo monstruo, Monstruo sacrificio1) {
-        this.verificarInvocacion();
-        monstruo.requiereSacrificios(sacrificio1);
 
-        //Tablero campo = this.obtenerCampo();
+    public void invocar(Monstruo monstruo) {
+        this.verificarInvocacion();
+        monstruo.verificarSacrificios();
+
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
-        this.zonaMonstruo.colocarCarta(monstruo);
-    }
-
-    public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2) {
-        this.verificarInvocacion();
-        monstruo.requiereSacrificios(sacrificio1,sacrificio2);
-
-        //Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
-        monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
-        this.zonaMonstruo.colocarCarta(monstruo);
-    }
-
-    public void invocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3) {
-        this.verificarInvocacion();
-        monstruo.requiereSacrificios(sacrificio1,sacrificio2,sacrificio3);
-
-        //Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoAtaque());
-        monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 
@@ -123,52 +87,26 @@ public class Jugador {
         this.verificarInvocacion();
         sacrificios.sacrificarMonstruos(monstruo);
 
-        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 
     public void colocar(Monstruo monstruo){
         this.verificarInvocacion();
-        monstruo.requiereSacrificios();
-        //Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoDefensaBocaAbajo());
-        monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
-        this.zonaMonstruo.colocarCarta(monstruo);
-        this.invocacionesPosibles -= 1;
-    }
+        monstruo.verificarSacrificios();
 
-    public void colocar(Monstruo monstruo, Monstruo sacrificio1){
-        this.verificarInvocacion();
-        monstruo.requiereSacrificios(sacrificio1);
-        //Tablero campo = this.obtenerCampo();
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 
-    public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2){
+    public void colocar(Monstruo monstruo, Sacrificios sacrificios) {
         this.verificarInvocacion();
-        monstruo.requiereSacrificios(sacrificio1,sacrificio2);
-        //Tablero campo = this.obtenerCampo();
+        sacrificios.sacrificarMonstruos(monstruo);
+
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
-        this.zonaMonstruo.colocarCarta(monstruo);
-
-    }
-
-    public void colocar(Monstruo monstruo, Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3){
-        this.verificarInvocacion();
-        monstruo.requiereSacrificios(sacrificio1,sacrificio2,sacrificio3);
-        //Tablero campo = this.obtenerCampo();
-        monstruo.setEstado(new EstadoDefensaBocaAbajo());
-        monstruo.asociarJugador(this);
-        //campo.tirarCarta(monstruo);
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 

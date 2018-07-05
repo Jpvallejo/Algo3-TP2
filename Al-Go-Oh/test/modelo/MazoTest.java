@@ -14,7 +14,7 @@ public class MazoTest {
         Juego juego = Juego.getJuego();
 
         // Se descuentan las primeras 5 cartas que se extraen al iniciar el juego
-        for (int i = 0; i<35; i++) {
+        for (int i = 0; i<40; i++) {
             juego.getJugadorActivo().extraerCartaDelMazo();
         }
         assertTrue(juego.hayGanador());

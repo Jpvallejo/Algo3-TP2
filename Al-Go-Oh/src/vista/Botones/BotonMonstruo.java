@@ -151,12 +151,7 @@ public class BotonMonstruo extends BotonCarta {
                     Controlador.getControlador().atacarMonstruo(atacante, monstruo);
                 }
                 catch(NoDisponibleParaAtacarException e){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Ataque No Permitido");
-                    alert.setHeaderText(null);
-                    alert.setContentText("El monstruo seleccionado ya no puede atacar");
-
-                    alert.showAndWait();
+                    Controlador.getControlador().informar("Ataque No Permitido","El monstruo seleccionado ya no puede atacar");
                 }
             }
         });

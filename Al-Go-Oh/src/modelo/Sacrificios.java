@@ -1,6 +1,7 @@
 package modelo;
 
-import modelo.Excepciones.RequiereSacrificioException;
+import modelo.CartasMonstruosEspeciales.DragonDeOjosAzulesDefinitivo;
+import modelo.Excepciones.RequiereSacrificioEspecialException;
 
 import java.util.ArrayList;
 
@@ -14,12 +15,12 @@ public class Sacrificios {
 
 
     public void sacrificarMonstruos(Monstruo monstruo) {
+        monstruo.verificarSacrificios(this);
+        this.destruirSacrificios();
+    }
 
-        if (monstruo.cantidadASacrificar() != this.getCantidad()){
-            throw new RequiereSacrificioException();
-        }
-
-        for (Monstruo carta : sacrificios){
+    public void destruirSacrificios(){
+        for (Monstruo carta : sacrificios) {
             carta.destruir();
         }
     }
@@ -30,5 +31,16 @@ public class Sacrificios {
 
     public int getCantidad() {
         return sacrificios.size();
+    }
+
+    public void verificarSacrificioEspecial(DragonDeOjosAzulesDefinitivo dragonDeOjosAzulesDefinitivo) {
+        if (this.getCantidad() == 0){
+            throw new RequiereSacrificioEspecialException();
+        }
+        for (Monstruo carta : sacrificios) {
+            if(!carta.esDragonBlancoDeOjosAzules()){
+                throw new RequiereSacrificioEspecialException();
+            }
+        }
     }
 }

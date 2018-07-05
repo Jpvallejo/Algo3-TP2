@@ -30,6 +30,36 @@ public abstract class Monstruo extends Carta {
         this.estrellas = 0;
     }
 
+    /* ***** Getter y Setters ****** */
+    public int getPuntosAtaque() {
+        return this.puntosAtaque + this.adicionalesDeAtaque;
+    }
+    protected void setPuntosAtaque(int _puntosAtaque){
+        this.puntosAtaque = _puntosAtaque;
+    }
+
+    public int getPuntosDefensa(){
+        return this.puntosDefensa + this.adicionalesDeDefensa;
+    }
+
+    protected void setPuntosDefensa(int _puntosDefensa){
+        this.puntosDefensa = _puntosDefensa;
+    }
+
+    protected int getEstrellas(){
+        return this.estrellas;
+    }
+
+    public String getTextoPuntosAtaque() {
+        return puntosAtaque + ((adicionalesDeAtaque == 0)&&(adicionalesDeDefensa == 0)? "" : " + " + adicionalesDeAtaque);
+    }
+
+    public String getTextoPuntosDefensa() {
+        return puntosDefensa + ((adicionalesDeAtaque == 0)&&(adicionalesDeDefensa == 0)? "" : " + " + adicionalesDeDefensa);
+    }
+
+    /* ****************************** */
+
     @Override
     public void destruir(){
         jugador.matarMonstruo(this);
@@ -46,7 +76,7 @@ public abstract class Monstruo extends Carta {
         }
     }
 
-    // Metodos que utiliza el atacante el defensor
+
     public void atacar(Jugador defensor) {
         try {
             ((EstadoMonstruo) estado).verificarAtaque();
@@ -79,7 +109,6 @@ public abstract class Monstruo extends Carta {
         }
     }
 
-    // Metodo que utiliza el defensor
     private void recibirDanio(Monstruo atacante) {
         jugador.activarCartaTrampa(atacante,this);
         ((EstadoMonstruo)estado).recibirDanio(atacante, this);
@@ -90,42 +119,16 @@ public abstract class Monstruo extends Carta {
         jugador.restarPuntosDeVida(puntos);
     }
 
-    public void requiereSacrificios(){
-
+    public void verificarSacrificios(){
         if (this.cantidadASacrificar() != 0) {
             throw new RequiereSacrificioException();
         }
     }
 
-    public void requiereSacrificios(Monstruo sacrificio1){
-
-        if (this.cantidadASacrificar() == 1) {
-            sacrificio1.destruir();
-        }
-        else{
+    public void verificarSacrificios(Sacrificios sacrificios) {
+        if (this.cantidadASacrificar() != sacrificios.getCantidad()){
             throw new RequiereSacrificioException();
         }
-    }
-
-
-    public void requiereSacrificios(Monstruo sacrificio1, Monstruo sacrificio2){
-
-        if (this.cantidadASacrificar() == 2) {
-            sacrificio1.destruir();
-            sacrificio2.destruir();
-        }
-        else{
-            throw new RequiereSacrificioException();
-        }
-    }
-
-    public void requiereSacrificios(Monstruo sacrificio1, Monstruo sacrificio2, Monstruo sacrificio3){
-        throw new RequiereSacrificioException();
-    }
-
-
-    public boolean requiereSacrificio(){
-        return this.getEstrellas() > 4;
     }
 
     public int cantidadASacrificar(){
@@ -150,33 +153,11 @@ public abstract class Monstruo extends Carta {
         this.adicionalesDeDefensa = 0;
     }
 
-
     boolean esMenorElAtaque(Monstruo monstruo){
         return this.getPuntosAtaque() > monstruo.getPuntosAtaque();
     }
 
     public void activarEfectoDeVolteo(Monstruo atacante) {}
-
-
-
-    /* ***** Getter y Setters ****** */
-    public int getPuntosAtaque() {
-        return this.puntosAtaque + this.adicionalesDeAtaque;
-    }
-    protected void setPuntosAtaque(int _puntosAtaque){
-        this.puntosAtaque = _puntosAtaque;
-    }
-
-    public int getPuntosDefensa(){
-        return this.puntosDefensa + this.adicionalesDeDefensa;
-    }
-    protected void setPuntosDefensa(int _puntosDefensa){
-        this.puntosDefensa = _puntosDefensa;
-    }
-
-    protected int getEstrellas(){
-        return this.estrellas;
-    }
 
     public BotonCarta crearBoton(){
         return new BotonMonstruo(this);
@@ -192,13 +173,5 @@ public abstract class Monstruo extends Carta {
 
     public void permitirAtaques() {
         ((EstadoMonstruo) estado).permitirAtaque();
-    }
-
-    public String getTextoPuntosAtaque() {
-        return puntosAtaque + ((adicionalesDeAtaque == 0)&&(adicionalesDeDefensa == 0)? "" : " + " + adicionalesDeAtaque);
-    }
-
-    public String getTextoPuntosDefensa() {
-        return puntosDefensa + ((adicionalesDeAtaque == 0)&&(adicionalesDeDefensa == 0)? "" : " + " + adicionalesDeDefensa);
     }
 }
