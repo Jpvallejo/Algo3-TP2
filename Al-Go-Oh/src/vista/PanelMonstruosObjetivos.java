@@ -44,7 +44,6 @@ public class PanelMonstruosObjetivos extends HBox {
             ImageView newImage = monstruos.get(i).getMonstruo().obtenerImagen();
 
             monstruos.get(i).setGraphic(newImage);
-            monstruos.get(i).setPrefSize(62,91);
         }
     }
 

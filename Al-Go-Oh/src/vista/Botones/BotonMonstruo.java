@@ -96,7 +96,7 @@ public class BotonMonstruo extends BotonCarta {
 
                     Stage stage = new Stage();
                     Pane panel = new PanelMonstruosObjetivos(Juego.getJuego().getJugadorOponente(),stage, monstruo);
-                    panel.setPrefSize(1000, 116);
+                    panel.setPrefSize(1000, 130);
                     Scene scene = new Scene(panel);
                     stage.setTitle("Seleccione Objetivo");
                     stage.setScene(scene);

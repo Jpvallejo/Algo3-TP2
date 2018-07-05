@@ -103,20 +103,20 @@ public class PantallaBatalla {
         botonReiniciarJuego.setText("Reiniciar Juego");
 
         cartaCampoJugador1 = new BotonCartaCampo(jugador1);
-        cartaCampoJugador1.setLayoutX(700);
+        cartaCampoJugador1.setLayoutX(550);
         cartaCampoJugador1.setLayoutY(170);
 
         cartaCampoJugador2 = new BotonCartaCampo(jugador2);
-        cartaCampoJugador2.setLayoutX(700);
+        cartaCampoJugador2.setLayoutX(550);
         cartaCampoJugador2.setLayoutY(72);
 
         cementerioJugador1 = new BotonCementerio(jugador1);
-        cementerioJugador1.setLayoutX(900);
+        cementerioJugador1.setLayoutX(750);
         cementerioJugador1.setLayoutY(170);
         cementerioJugador1.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
 
         cementerioJugador2 = new BotonCementerio(jugador2);
-        cementerioJugador2.setLayoutX(900);
+        cementerioJugador2.setLayoutX(750);
         cementerioJugador2.setLayoutY(72);
         cementerioJugador2.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
 
