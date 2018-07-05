@@ -8,10 +8,8 @@ package modelo;
 
 import modelo.Monstruos.MonstruoGenerico;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.Set;
+import modelo.Excepciones.ZonaVaciaException;
 
 /**
  *
@@ -61,17 +59,18 @@ public class ZonaMonstruo extends Zona{
     }
 
     
-    public Monstruo destruirMonstruoConMenorAtaque() {
+   public Monstruo destruirMonstruoConMenorAtaque() {
         Monstruo monstruoConMenorAtaque = new MonstruoGenerico("mayorAtaque",8000,0,0);
-         for (Carta carta : this.cartas){
-                Monstruo monstruo = (Monstruo) carta; //Obtengo la carta monstruo
-                if(monstruoConMenorAtaque.esMenorElAtaque(monstruo)){ //Comparo los ataques de los dos Monstruos
-                    monstruoConMenorAtaque = monstruo;
-                } 
-            }
-          
+        for (Carta carta : this.cartas){
+            Monstruo monstruo = (Monstruo) carta; //Obtengo la carta monstruo
+            if(monstruoConMenorAtaque.esMenorElAtaque(monstruo)){ //Comparo los ataques de los dos Monstruos
+                monstruoConMenorAtaque = monstruo;
+            }                 
+        }
+        
+       if (monstruoConMenorAtaque.getPuntosAtaque() == 8000 ) throw new ZonaVaciaException(); 
+        
        return monstruoConMenorAtaque;
-       
     }
 
 
