@@ -69,16 +69,17 @@ public class Controlador {
                 this.informar("Invocacion no Permitida", "El monstruo seleccionado requiere un sacrificio especial");
             }
         }
+       
+         catch(NoEsPosibleInvocacionZonaCompletaExpection i){
+             Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+             this.informar("Invocacion no Permitida", "No es posible invocar mas cartas Zona Completa");
+            
+        }
+        
         catch(InvocacionNoPosibleException i){
             this.informar("Invocacion no Permitida", "No es posible invocar mas monstruos");
         }
-        
-        catch(NoEsPosibleInvocacionZonaCompletaExpection i){
-            this.informar("Invocacion no Permitida", "No es posible invocar mas cartas Zona Completa");
-        }
-        
-        
-        
+
 
     }
 

@@ -49,10 +49,7 @@ public class Jugador {
         this.cementerio = new Cementerio();
         this.cartaCampo = new CartaCampoSinEfecto();
     }
-/*
-    public Tablero obtenerCampo(){
-        return this.tablero;
-    }*/
+
 
     public int getPuntosDeVida() {
         return puntosDeVida;
