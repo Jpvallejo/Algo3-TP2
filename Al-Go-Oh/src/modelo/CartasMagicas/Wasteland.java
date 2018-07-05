@@ -15,11 +15,17 @@ public class Wasteland extends CartaCampo{
     public void activarEfecto() {
         
         Juego juego = Juego.getJuego();
-        Jugador jugadorOponente = juego.getJugadorOponente();
-        Jugador jugadorActivo = juego.getJugadorActivo();
+        Jugador oponente;
+
+        if (juego.getJugadorActivo() == jugador){
+            oponente = juego.getJugadorOponente();
+        }
+        else{
+            oponente = juego.getJugadorActivo();
+        }
         
-        jugadorActivo.getZonaMonstruo().aplicarCartaCampo(200, true);
-        jugadorOponente.getZonaMonstruo().aplicarCartaCampo(300,false);
+        jugador.getZonaMonstruo().aplicarCartaCampo(200, true);
+        oponente.getZonaMonstruo().aplicarCartaCampo(300,false);
     }
         
 }

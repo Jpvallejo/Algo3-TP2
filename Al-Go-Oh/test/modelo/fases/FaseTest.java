@@ -113,6 +113,8 @@ public class FaseTest {
         AligatorDeLaEspada aligator = new AligatorDeLaEspada();
         
         jugadorActivo.invocar(aligator); //1500 ataque 1200 def
+
+        Juego.getJuego().avanzarFase(); //Avanza a FaseAtaque. Se activa la Carta Campo
         
         aligator.atacarMonstruo(amateFeliz);
         

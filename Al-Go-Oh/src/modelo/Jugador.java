@@ -195,6 +195,7 @@ public class Jugador {
     }
     
     public void colocarCarta(CartaCampo carta) {
+        carta.asociarJugador(this);
         this.cartaCampo = carta;
     }
         

@@ -47,6 +47,7 @@ public class Juego {
     }
 
     public void cambiarTurno() {
+        this.revertirCartasDeCampo();
         this.jugadorActivo.resetearInvocacionesPosibles();
         Jugador temp = this.jugadorActivo;
         this.jugadorActivo = this.jugadorOponente;

@@ -24,11 +24,16 @@ public class Sogen extends CartaCampo  {
     public void activarEfecto() {
         
         Juego juego = Juego.getJuego();
-        Jugador jugadorOponente = juego.getJugadorOponente();
-        Jugador jugadorActivo = juego.getJugadorActivo();
+        Jugador oponente;
+        if (juego.getJugadorActivo() == jugador){
+            oponente = juego.getJugadorOponente();
+        }
+        else{
+            oponente = juego.getJugadorActivo();
+        }
         
-        jugadorActivo.getZonaMonstruo().aplicarCartaCampo(500, false);
-        jugadorOponente.getZonaMonstruo().aplicarCartaCampo(200,true);
+        jugador.getZonaMonstruo().aplicarCartaCampo(500, false);
+        oponente.getZonaMonstruo().aplicarCartaCampo(200,true);
         
     }
         
