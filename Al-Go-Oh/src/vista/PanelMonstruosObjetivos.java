@@ -53,7 +53,6 @@ public class PanelMonstruosObjetivos extends HBox {
         this.lp.activarBoton(stage,atacante);
         this.getChildren().add(this.lp);
 
-
     }
 
 }

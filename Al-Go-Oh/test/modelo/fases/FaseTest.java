@@ -12,8 +12,19 @@ import static org.junit.Assert.*;
 public class FaseTest {
 
     @Test
-    public void testAlReiniciarElJuegoComienzaEnLaFaseInicial() {
+    public void testAlReiniciarElJuegoComienzaEnLaFasePrimerTurno() {
         Juego.reiniciarJuego();
+
+        Fase faseActual = Juego.getJuego().obtenerFase();
+
+        assertTrue(faseActual instanceof FasePrimerTurno);
+
+    }
+
+    @Test
+    public void testCambiarTurnoIniciaUnNuevoTurnoConFaseInicial() {
+        Juego.reiniciarJuego(); // Inicia en FasePrimerTurno
+        Juego.getJuego().cambiarTurno(); //Arranca Nuevo Turno En FaseInicial
 
         Fase faseActual = Juego.getJuego().obtenerFase();
 
@@ -23,7 +34,8 @@ public class FaseTest {
 
     @Test
     public void testAvanzarFaseDesdeFaseInicialPasaAFasePreparacion() {
-        Juego.reiniciarJuego();
+        Juego.reiniciarJuego(); // Inicia en FasePrimerTurno
+        Juego.getJuego().cambiarTurno(); //Arranca Nuevo Turno En FaseInicial
         Juego.getJuego().avanzarFase();
 
         Fase faseActual = Juego.getJuego().obtenerFase();
@@ -34,7 +46,8 @@ public class FaseTest {
 
     @Test
     public void testAvanzarFaseDesdeFasePreparacionPasaAFaseAtaque() {
-        Juego.reiniciarJuego();
+        Juego.reiniciarJuego(); // Inicia en FasePrimerTurno
+        Juego.getJuego().cambiarTurno(); //Arranca Nuevo Turno En FaseInicial
         Juego.getJuego().avanzarFase(); //Avanza a FasePreparacion
         Juego.getJuego().avanzarFase(); //Avanza a FaseAtaque
 
@@ -46,7 +59,8 @@ public class FaseTest {
 
     @Test
     public void testAvanzarFaseDesdeFaseAtaquePasaAFaseFinalDondeCambiaDeTurno() {
-        Juego.reiniciarJuego();
+        Juego.reiniciarJuego(); // Inicia en FasePrimerTurno
+        Juego.getJuego().cambiarTurno(); //Arranca Nuevo Turno En FaseInicial
         Juego.getJuego().avanzarFase(); //Avanza a FasePreparacion
         Juego.getJuego().avanzarFase(); //Avanza a FaseAtaque
         Juego.getJuego().avanzarFase(); //Avanza a FaseFinal
@@ -59,7 +73,8 @@ public class FaseTest {
 
     @Test
     public void testAlCambiarTurnoSeCambiaLaFaseALaFaseInicial() {
-        Juego.reiniciarJuego();
+        Juego.reiniciarJuego(); // Inicia en FasePrimerTurno
+        Juego.getJuego().cambiarTurno(); //Arranca Nuevo Turno En FaseInicial
         Juego.getJuego().avanzarFase(); //Avanza a FasePreparacion
         Juego.getJuego().avanzarFase(); //Avanza a FaseAtaque
         Juego.getJuego().avanzarFase(); //Avanza a FaseFinal

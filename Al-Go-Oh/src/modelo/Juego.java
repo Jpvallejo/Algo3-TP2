@@ -3,6 +3,7 @@ package modelo;
 import modelo.CartasMonstruosEspeciales.*;
 import modelo.Fases.FaseInicial;
 import modelo.Fases.Fase;
+import modelo.Fases.FasePrimerTurno;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,8 @@ public class Juego {
     private Juego() {
         jugadorActivo = new Jugador("Jugador 1");
         jugadorOponente = new Jugador("Jugador 2");
-        faseActual = new FaseInicial();
+        //faseActual = new FaseInicial();
+        faseActual = new FasePrimerTurno();
         for (int i = 0; i < 5; i++){
             jugadorActivo.extraerCartaDelMazo();
             jugadorOponente.extraerCartaDelMazo();
