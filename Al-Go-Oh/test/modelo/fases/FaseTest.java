@@ -1,3 +1,5 @@
+package modelo.fases;
+
 import modelo.*;
 import modelo.Fases.*;
 import modelo.Monstruos.*;
@@ -104,7 +106,7 @@ public class FaseTest {
         
         
         Juego.getJuego().cambiarTurno();
-        
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         jugadorActivo =  Juego.getJuego().getJugadorActivo();
         jugadorOponente =  Juego.getJuego().getJugadorOponente();
                 

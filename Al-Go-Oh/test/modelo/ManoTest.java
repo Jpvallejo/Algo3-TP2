@@ -1,3 +1,5 @@
+package modelo;
+
 import modelo.*;
 
 import modelo.CartasMonstruosEspeciales.*;
