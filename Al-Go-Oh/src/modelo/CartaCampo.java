@@ -6,6 +6,7 @@
 package modelo;
 
 import vista.Botones.BotonCarta;
+import vista.Botones.BotonCartaCampo;
 
 /**
  *
@@ -18,7 +19,7 @@ public abstract class CartaCampo extends Carta{
     }
 
     public BotonCarta crearBoton(){
-        return null;
+        return new BotonCartaCampo(this);
     }
  
 }

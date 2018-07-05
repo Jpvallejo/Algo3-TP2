@@ -20,7 +20,7 @@ public class PanelMonstruosObjetivos extends HBox {
         this.setVisible(true);
         for (int i = 0; i < 5; i++) {
             BotonMonstruo monsterbutton = new BotonMonstruo();
-            monsterbutton.setPrefSize(80, 110);
+            monsterbutton.setPrefSize(ParametrosBoton.ANCHOBOTONCAMPO, ParametrosBoton.ALTOBOTONCAMPO);
             setSpacing(20);
             monstruos.add(monsterbutton);
             monsterbutton.setStyle("-fx-background-color: #808080");

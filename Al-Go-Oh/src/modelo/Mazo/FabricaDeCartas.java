@@ -23,7 +23,7 @@ public class FabricaDeCartas {
         cartas.add(new Reinforcement());
         cartas.add(new AbismoReluciente());
         cartas.add(new OllaDeLaCodicia());
-        cartas.add(new CilindroMagico());
+        cartas.add(new Wasteland());
         cartas.add(new CilindroMagico());
         //cartas.add(new AgujaAsesina());
 

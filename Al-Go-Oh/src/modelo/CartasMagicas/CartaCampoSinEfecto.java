@@ -12,6 +12,11 @@ import modelo.CartaCampo;
  * @author mramundo
  */
 public class CartaCampoSinEfecto extends CartaCampo {
+
+    public CartaCampoSinEfecto(){
+        super();
+        UrlImagen = "/vista/imagenes/NoImage.png";
+    }
     
     @Override
     public void activarEfecto() {        

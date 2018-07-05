@@ -34,13 +34,13 @@ public class PanelMano  extends GridPane {
         botonesMano = new ArrayList<BotonCarta>();
         Mano mano = jugador.getMano();
         for (Carta carta: mano.getCartas()) {
-            Image img = new Image(carta.getUrlImagen(),100,110,true,false);
+            Image img = new Image(carta.getUrlImagen(),ParametrosBoton.ANCHOCARTA,ParametrosBoton.ALTOCARTA,true,false);
             ImageView icono = new ImageView(img);
             BotonCarta botonCarta = carta.crearBoton();
             hbButtons.getChildren().add(botonCarta);
             botonesMano.add(botonCarta);
-            botonCarta.setGraphic(new ImageView(img));
-            botonCarta.setPrefSize(100,110);
+            botonCarta.setGraphic(icono);
+            botonCarta.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
 
         }
         this.add(hbButtons,0,2,2,1);

@@ -1,5 +1,6 @@
 package modelo.CartasMagicas;
 
+import javafx.scene.image.ImageView;
 import modelo.*;
 
 public class AgujeroNegro extends CartaMagica  {
@@ -22,4 +23,5 @@ public class AgujeroNegro extends CartaMagica  {
         //jugadorActivo.obtenerCampo().destruirCarta(this);
         this.destruir();
     }
+
 }

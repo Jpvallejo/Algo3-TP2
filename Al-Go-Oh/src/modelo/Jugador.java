@@ -294,4 +294,8 @@ public class Jugador {
     public String obtenerNombre() {
         return nombre;
     }
+
+    public CartaCampo getCartaCampo() {
+        return cartaCampo;
+    }
 }

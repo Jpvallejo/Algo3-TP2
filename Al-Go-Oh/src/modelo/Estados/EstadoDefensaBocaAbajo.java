@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Excepciones.NoDisponibleParaAtacarException;
 import modelo.Monstruo;
+import vista.ParametrosBoton;
 
 public class EstadoDefensaBocaAbajo implements EstadoMonstruo,Estado{
 
@@ -14,7 +15,7 @@ public class EstadoDefensaBocaAbajo implements EstadoMonstruo,Estado{
     }
 
     public ImageView obtenerImagen(Monstruo monstruo){
-        Image img = new Image("vista/imagenes/cartaAtras.jpg",100,110,true,false);
+        Image img = new Image("vista/imagenes/cartaAtras.jpg",ParametrosBoton.ANCHOCARTA,ParametrosBoton.ALTOCARTA,true,false);
         ImageView imgvw = new ImageView(img);
         imgvw.setRotate(90);
         return imgvw;
