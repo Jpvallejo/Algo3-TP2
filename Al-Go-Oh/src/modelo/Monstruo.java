@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import modelo.Estados.EstadoAtaque;
 import modelo.Estados.EstadoMonstruo;
 import modelo.Estados.EstadoSinEstado;
+import modelo.Estados.EstadoDefensaBocaAbajo;
 import modelo.Excepciones.DetenerAtaqueException;
 import modelo.Excepciones.RequiereSacrificioException;
 import vista.Botones.BotonCarta;
@@ -153,8 +154,14 @@ public abstract class Monstruo extends Carta {
         this.adicionalesDeDefensa = 0;
     }
 
-    boolean esMenorElAtaque(Monstruo monstruo){
-        return this.getPuntosAtaque() > monstruo.getPuntosAtaque();
+
+  private boolean noBocaAbajo() {
+        return !(estado instanceof EstadoDefensaBocaAbajo);
+    }
+    
+
+boolean esMenorElAtaque(Monstruo monstruo){
+        return (this.getPuntosAtaque() > monstruo.getPuntosAtaque() && monstruo.noBocaAbajo());
     }
 
     public void activarEfectoDeVolteo(Monstruo atacante) {}
