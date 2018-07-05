@@ -34,7 +34,8 @@ public class PanelMano  extends GridPane {
         botonesMano = new ArrayList<BotonCarta>();
         Mano mano = jugador.getMano();
         for (Carta carta: mano.getCartas()) {
-            Image img = new Image(carta.getUrlImagen(),100,110,true,false);
+            String url = "/vista/imagenes/"+ carta.getClass().getSimpleName() + ".jpg";
+            Image img = new Image( url ,100,110,true,false);
             ImageView icono = new ImageView(img);
             BotonCarta botonCarta = carta.crearBoton();
             hbButtons.getChildren().add(botonCarta);

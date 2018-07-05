@@ -15,9 +15,7 @@ public class Mazo {
 
         
         cartas = FabricaDeCartas.fabricarMazo();
-
-        // Comentado para pruebas, descomentar luego
-        //shuffle(this.cartas);
+        shuffle(this.cartas);
 
     }
 
