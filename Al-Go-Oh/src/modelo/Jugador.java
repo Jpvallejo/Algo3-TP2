@@ -173,7 +173,7 @@ public class Jugador {
     }
 
     public void activarCarta(CartaMagica carta){
-        if(Juego.getJuego().getNombreFaseActual() != new FaseFinal().getNombre())
+        if(!(Juego.getJuego().getNombreFaseActual() == new FaseFinal().getNombre() || Juego.getJuego().getNombreFaseActual() == new FasePreparacion().getNombre()) )
             throw new FaseIncorrectaException();
         carta.setEstado(new EstadoBocaArriba());
         carta.asociarJugador(this);
@@ -298,5 +298,9 @@ public class Jugador {
 
     public CartaCampo getCartaCampo() {
         return cartaCampo;
+    }
+
+    public Carta obtenerCartaCementerioPosicion(int i) {
+        return cementerio.obtenerCartaPosicion(i);
     }
 }

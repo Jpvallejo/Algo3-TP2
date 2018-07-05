@@ -33,4 +33,8 @@ public class Cementerio {
         return this.cartas.size();
     }
 
+    public Carta obtenerCartaPosicion(int indice) {
+        return this.cartas.get(indice);
+    }
+
 }

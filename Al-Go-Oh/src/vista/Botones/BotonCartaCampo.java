@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -26,14 +23,14 @@ public class BotonCartaCampo extends BotonCarta {
     public BotonCartaCampo(Jugador jugador){
         this.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
         this.setStyle("-fx-background-color: #808080");
-        carta = jugador.getCartaCampo();
+        this.setCarta(jugador.getCartaCampo());
         Image img = new Image(carta.getUrlImagen(),ParametrosBoton.ANCHOCARTA,ParametrosBoton.ALTOCARTA,true,false);
         this.setGraphic(new ImageView(img));
     }
 
     public BotonCartaCampo(CartaCampo cartaCampo) {
         super();
-        this.carta = cartaCampo;
+        this.setCarta(cartaCampo);
     }
 
     @Override
@@ -70,5 +67,12 @@ public class BotonCartaCampo extends BotonCarta {
     @Override
     public void setCarta(Carta cartaCasillero) {
         carta = (CartaCampo) cartaCasillero;
+
+        final Tooltip tooltip = new Tooltip();
+        tooltip.setText(
+                "Nombre :" + this.carta.getNombre() + "\n"
+                        + this.carta.getDescripcion()
+        );
+        this.setTooltip(tooltip);
     }
 }

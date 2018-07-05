@@ -110,12 +110,12 @@ public class PantallaBatalla {
         cartaCampoJugador2.setLayoutX(700);
         cartaCampoJugador2.setLayoutY(72);
 
-        cementerioJugador1 = new BotonCementerio();
+        cementerioJugador1 = new BotonCementerio(jugador1);
         cementerioJugador1.setLayoutX(900);
         cementerioJugador1.setLayoutY(170);
         cementerioJugador1.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
 
-        cementerioJugador2 = new BotonCementerio();
+        cementerioJugador2 = new BotonCementerio(jugador2);
         cementerioJugador2.setLayoutX(900);
         cementerioJugador2.setLayoutY(72);
         cementerioJugador2.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
