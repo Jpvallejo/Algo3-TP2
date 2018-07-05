@@ -26,7 +26,8 @@ public class JugadorTest {
 
     @Test
     public void testInvocarCartaMonstruoAumentaEn1LaCantidadDeCartasEnZonaMonstruos() {
-
+        Juego.reiniciarJuego();
+        Juego.getJuego().avanzarFase(); //avanza a fase de Preparacion
         Jugador jugador = new Jugador();
 
         Monstruo monstruo = new MonstruoGenerico("test",0,0,4);
