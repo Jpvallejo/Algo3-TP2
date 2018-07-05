@@ -21,15 +21,17 @@ public abstract class Zona {
     }
     
     
-    public boolean colocarCarta(Carta carta) {
-        if (this.cartas.size() <= 5 ){
-            cartas.add(carta);
-            return true;
-        }
-        return false;   
+    public void colocarCarta(Carta carta) {
+       cartas.add(carta);    
      }
+    
+    
+    public boolean zonaCompleta(){
+        return (this.cantidadCartas() == 5);
+    
+    }
 
-    public boolean contains(Carta carta) {
+    public boolean contains(Carta carta){
        return cartas.contains(carta);
     }
 

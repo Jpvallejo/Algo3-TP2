@@ -1,6 +1,5 @@
 package modelo.Mazo;
 
-import modelo.CartasMagicas.AgujeroNegro;
 
 import java.util.Stack;
 import modelo.Carta;

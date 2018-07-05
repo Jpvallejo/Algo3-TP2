@@ -3,10 +3,7 @@ package controlador;
 import javafx.scene.control.Alert;
 import modelo.*;
 import modelo.Estados.Estado;
-import modelo.Estados.EstadoAtaque;
-import modelo.Excepciones.InvocacionNoPosibleException;
-import modelo.Excepciones.RequiereSacrificioEspecialException;
-import modelo.Excepciones.RequiereSacrificioException;
+import modelo.Excepciones.*;
 import modelo.Fases.Fase;
 import vista.PantallaBatalla;
 
@@ -75,6 +72,13 @@ public class Controlador {
         catch(InvocacionNoPosibleException i){
             this.informar("Invocacion no Permitida", "No es posible invocar mas monstruos");
         }
+        
+        catch(NoEsPosibleInvocacionZonaCompletaExpection i){
+            this.informar("Invocacion no Permitida", "No es posible invocar mas cartas Zona Completa");
+        }
+        
+        
+        
 
     }
 

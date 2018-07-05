@@ -11,6 +11,7 @@ import modelo.Fases.FasePreparacion;
 import modelo.Mazo.Mazo;
 import modelo.CartasMagicas.CartaCampoSinEfecto;
 import modelo.Excepciones.ZonaVaciaException;
+import modelo.Excepciones.NoEsPosibleInvocacionZonaCompletaExpection;
 
 public class Jugador {
     //private Tablero tablero;
@@ -77,7 +78,8 @@ public class Jugador {
     public void invocar(Monstruo monstruo) {
         this.verificarInvocacion();
         monstruo.verificarSacrificios();
-
+        this.zonaMonstruosCompleta();
+       
         monstruo.setEstado(new EstadoAtaque());
         monstruo.asociarJugador(this);
         this.zonaMonstruo.colocarCarta(monstruo);
@@ -93,14 +95,29 @@ public class Jugador {
     }
 
     public void colocar(Monstruo monstruo){
+        
         this.verificarInvocacion();
         monstruo.verificarSacrificios();
+        this.zonaMonstruosCompleta();
 
         monstruo.setEstado(new EstadoDefensaBocaAbajo());
         monstruo.asociarJugador(this);
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 
+    
+    private void zonaMonstruosCompleta(){
+        if(this.zonaMonstruo.zonaCompleta()){
+            throw new NoEsPosibleInvocacionZonaCompletaExpection();
+        }
+    }
+    
+    private void zonaHechizosCompleta() {
+        if(this.zonaHechizos.zonaCompleta()){
+            throw new NoEsPosibleInvocacionZonaCompletaExpection();
+        }    
+    }
+    
     public void colocar(Monstruo monstruo, Sacrificios sacrificios) {
         this.verificarInvocacion();
         sacrificios.sacrificarMonstruos(monstruo);
@@ -131,15 +148,17 @@ public class Jugador {
     }
 
     public void colocarCarta(CartaMagica carta){
+        this.zonaHechizosCompleta();
         carta.setEstado(new EstadoBocaAbajo());
         carta.asociarJugador(this);
         this.zonaHechizos.colocarCarta(carta);
     }
 
     public void colocarCarta(CartaTrampa carta) {
+        this.zonaHechizosCompleta();
         carta.setEstado(new EstadoBocaAbajo());
         carta.asociarJugador(this);
-        //this.obtenerCampo().tirarCarta(carta);
+
         this.zonaHechizos.colocarCarta(carta);
     }
     
@@ -252,4 +271,6 @@ public class Jugador {
     public Carta obtenerCartaCementerioPosicion(int i) {
         return cementerio.obtenerCartaPosicion(i);
     }
+
+    
 }
