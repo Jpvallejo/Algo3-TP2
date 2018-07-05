@@ -1,10 +1,8 @@
 package vista;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.*;
-import modelo.Estados.EstadoAtaque;
 import vista.Botones.BotonMonstruo;
 
 import java.util.ArrayList;
@@ -18,7 +16,7 @@ public class PanelMonstruos extends HBox {
         this.setVisible(true);
         for (int i = 0; i < 5; i++) {
             BotonMonstruo monsterbutton = new BotonMonstruo();
-            monsterbutton.setPrefSize(80, 110);
+            monsterbutton.setPrefSize(ParametrosBoton.ANCHOBOTONCAMPO, ParametrosBoton.ALTOBOTONCAMPO);
             setSpacing(20);
             monstruos.add(monsterbutton);
             monsterbutton.setStyle("-fx-background-color: #808080");
@@ -36,7 +34,6 @@ public class PanelMonstruos extends HBox {
             ImageView newImage = monstruos.get(i).getMonstruo().obtenerImagen();
 
             monstruos.get(i).setGraphic(newImage);
-            monstruos.get(i).setPrefSize(62,91);
         }
     }
 

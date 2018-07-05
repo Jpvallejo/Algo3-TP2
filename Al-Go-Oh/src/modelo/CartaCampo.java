@@ -7,7 +7,6 @@ package modelo;
 
 import vista.Botones.BotonCarta;
 import vista.Botones.BotonCartaCampo;
-import vista.Botones.BotonCartaMagica;
 
 /**
  *

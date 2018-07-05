@@ -40,9 +40,9 @@ public class PanelManoEscondida extends GridPane {
             Button botonMonstruo = new Button();
             hbButtons.getChildren().add(botonMonstruo);
             botonesMano.add(botonMonstruo);
-            Image img = new Image("vista/imagenes/cartaAtras.jpg",100,110,true,false);
+            Image img = new Image("vista/imagenes/cartaAtras.jpg",ParametrosBoton.ANCHOCARTA,ParametrosBoton.ALTOCARTA,true,false);
             botonMonstruo.setGraphic(new ImageView(img));
-            botonMonstruo.setPrefSize(80, 110);
+            botonMonstruo.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
         }
         this.add(hbButtons, 0, 2, 2, 1);
     }

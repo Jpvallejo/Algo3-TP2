@@ -6,44 +6,43 @@ import javafx.event.EventHandler;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import modelo.Carta;
 import modelo.CartaCampo;
-import modelo.CartaMagica;
+import modelo.Jugador;
+import vista.ParametrosBoton;
 
 import java.util.Optional;
 
 public class BotonCartaCampo extends BotonCarta {
-    private CartaCampo cartaCampo;
 
-    public Carta getCartaCampo() {
-        return cartaCampo;
+    private CartaCampo carta;
+
+    public BotonCartaCampo(Jugador jugador){
+        this.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
+        this.setStyle("-fx-background-color: #808080");
+        carta = jugador.getCartaCampo();
+        Image img = new Image(carta.getUrlImagen(),ParametrosBoton.ANCHOCARTA,ParametrosBoton.ALTOCARTA,true,false);
+        this.setGraphic(new ImageView(img));
     }
-
-
-    public BotonCartaCampo() {
-        super();
-        this.setVisible(true);
-        //this.activarHandleManoFasePreparacion();
-    }
-
 
     public BotonCartaCampo(CartaCampo cartaCampo) {
-        this.setVisible(true);
-        this.setCarta(cartaCampo);
-        //this.activarHandleManoFasePreparacion();
+        super();
+        this.carta = cartaCampo;
     }
 
     @Override
     public void activarHandleManoFasePreparacion(){
-        this.setOnAction(new EventHandler<ActionEvent>() {
+        this.setOnAction(new EventHandler<ActionEvent>(){
 
             @Override
-            public void handle(ActionEvent t) {
-/*
+            public void handle(ActionEvent t){
+
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Accion a tomar");
 
@@ -52,9 +51,8 @@ public class BotonCartaCampo extends BotonCarta {
                 Stage standarddialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
 
                 ButtonType activarHechizo = new ButtonType("Activar");
-                ButtonType colocarBoton = new ButtonType("Colocar");
                 ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                alert.getButtonTypes().setAll(activarHechizo,colocarBoton, buttonTypeCancel);
+                alert.getButtonTypes().setAll(activarHechizo, buttonTypeCancel);
 
                 // Add a custom icon.
                 //  standarddialogStage.getIcons().add(new Image("file:resources/images/calendar.png"));
@@ -63,55 +61,14 @@ public class BotonCartaCampo extends BotonCarta {
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.get() == activarHechizo){
                     //BotonCartaMagica.this.getMonstruo().activarEfecto();
-                    Controlador.getControlador().activarCartaMagicaDesdeMano(cartaCampo);
+                    Controlador.getControlador().activarCartaCampoDesdeMano(carta);
                 }
-                else if (result.get() == colocarBoton){
-                    Controlador.getControlador().colocarCartaMagica(cartaMagica);
-                    // Juego.getJuego().getJugadorActivo().colocarCarta(BotonCartaMagica.this.getMonstruo());
-                }*/
             }
         });
-
-        }
-
-    public void activarHandleCampoFasePreparacion(){/*
-        this.setOnAction(new EventHandler<ActionEvent>(){
-
-            @Override
-            public void handle(ActionEvent t){
-
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle(cartaMagica.getNombre() + ": Accion a tomar");
-
-                Scene scene = alert.getDialogPane().getScene();
-                scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                Stage standarddialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
-                ButtonType activarHechizo = null;
-                ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-                activarHechizo = new ButtonType("Activar");
-                alert.getButtonTypes().setAll(activarHechizo, buttonTypeCancel);
-
-                // Add a custom icon.
-                //  standarddialogStage.getIcons().add(new Image("file:resources/images/calendar.png"));
-
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == activarHechizo){
-                    Controlador.getControlador().activarCartaMagica(cartaMagica);
-                }
-            }
-        });*/
     }
 
-
-    public void setCarta(Carta cartaCampo){
-        this.cartaCampo = (CartaCampo) cartaCampo;
-
-        final Tooltip tooltip = new Tooltip();
-        tooltip.setText(
-                "Nombre :" + this.cartaCampo.getNombre() + "\n"
-                        + this.cartaCampo.getDescripcion()
-        );
-        this.setTooltip(tooltip);
+    @Override
+    public void setCarta(Carta cartaCasillero) {
+        carta = (CartaCampo) cartaCasillero;
     }
 }
-

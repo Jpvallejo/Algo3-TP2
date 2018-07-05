@@ -1,9 +1,12 @@
 package modelo;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import modelo.Estados.Estado;
 import modelo.Estados.EstadoBocaAbajo;
 import modelo.Estados.EstadoSinEstado;
 import vista.Botones.BotonCarta;
+import vista.ParametrosBoton;
 
 public abstract class Carta{
     protected Estado estado;

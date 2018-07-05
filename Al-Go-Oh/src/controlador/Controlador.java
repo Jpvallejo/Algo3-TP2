@@ -109,4 +109,10 @@ public class Controlador {
     public String obtenerNombreGanador() {
         return Juego.getJuego().obtenerGanador().obtenerNombre();
     }
+
+    public void activarCartaCampoDesdeMano(CartaCampo carta) {
+        Juego.getJuego().getJugadorActivo().colocarCarta(carta);
+        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(carta);
+        pantallaBatalla.actualizarPantalla();
+    }
 }

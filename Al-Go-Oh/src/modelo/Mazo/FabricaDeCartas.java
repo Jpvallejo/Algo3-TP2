@@ -56,6 +56,11 @@ public class FabricaDeCartas {
         cartas.add(new BaronDeLaEspadaDemoniaca());
         cartas.add(new BebeDragon());
         cartas.add(new BetaElGuerreroMagnetico());
+        cartas.add(new OllaDeLaCodicia());
+        cartas.add(new Wasteland());
+        cartas.add(new CilindroMagico());
+        //cartas.add(new AgujaAsesina());
+
         /**************************************/
 
         return cartas;

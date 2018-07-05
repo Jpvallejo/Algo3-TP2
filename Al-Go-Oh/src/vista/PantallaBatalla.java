@@ -10,9 +10,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import modelo.Juego;
 import modelo.Jugador;
-import vista.Botones.BotonPasarFase;
-import vista.Botones.BotonReiniciarJuego;
-import vista.Botones.BotonTerminarTurno;
+import vista.Botones.*;
 
 
 public class PantallaBatalla {
@@ -28,8 +26,10 @@ public class PantallaBatalla {
     public Label mazoJugador2;
     public Label puntosVidaJugador1;
     public Label puntosVidaJugador2;
-    private Button cementerioJugador1;
-    private Button cementerioJugador2;
+    private BotonCementerio cementerioJugador1;
+    private BotonCementerio cementerioJugador2;
+    private BotonCartaCampo cartaCampoJugador1;
+    private BotonCartaCampo cartaCampoJugador2;
     private BotonPasarFase botonPasarFase;
     private Label nombreJugador1;
     private Label nombreJugador2;
@@ -102,8 +102,24 @@ public class PantallaBatalla {
         botonReiniciarJuego.setLayoutY(380);
         botonReiniciarJuego.setText("Reiniciar Juego");
 
-        cementerioJugador1 = new Button();
-        cementerioJugador2 = new Button();
+        cartaCampoJugador1 = new BotonCartaCampo(jugador1);
+        cartaCampoJugador1.setLayoutX(700);
+        cartaCampoJugador1.setLayoutY(170);
+
+        cartaCampoJugador2 = new BotonCartaCampo(jugador2);
+        cartaCampoJugador2.setLayoutX(700);
+        cartaCampoJugador2.setLayoutY(72);
+
+        cementerioJugador1 = new BotonCementerio();
+        cementerioJugador1.setLayoutX(900);
+        cementerioJugador1.setLayoutY(170);
+        cementerioJugador1.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
+
+        cementerioJugador2 = new BotonCementerio();
+        cementerioJugador2.setLayoutX(900);
+        cementerioJugador2.setLayoutY(72);
+        cementerioJugador2.setPrefSize(ParametrosBoton.ANCHOBOTONCARTA,ParametrosBoton.ALTOBOTONCARTA);
+
 
         // Labels
         nombreJugador1 = new Label(jugador1.obtenerNombre());
@@ -128,15 +144,19 @@ public class PantallaBatalla {
         panelJugador1.getChildren().add(panelMonstruosJugador1);
         panelJugador1.getChildren().add(panelHechizosJugador1);
         panelCartasJugador1 = obtenerPanelCartasJugador(controlador, this.jugador1,manoJugador1,manoOcultaJugador1);
-        panelCartasJugador1.setPrefSize(800, 116);
+        panelCartasJugador1.setPrefSize(1000, 116);
         panelJugador1.getChildren().add(panelCartasJugador1);
+        panelJugador1.getChildren().add(cementerioJugador1);
+        panelJugador1.getChildren().add(cartaCampoJugador1);
 
         panelJugador2 = new Pane();
-        panelJugador2.setPrefSize(800, 394);
+        panelJugador2.setPrefSize(1000, 394);
         panelJugador2.setLayoutX(151);
         panelJugador2.setLayoutY(346);
         panelJugador2.getChildren().add(panelMonstruosJugador2);
         panelJugador2.getChildren().add(panelHechizosJugador2);
+        panelJugador2.getChildren().add(cementerioJugador2);
+        panelJugador2.getChildren().add(cartaCampoJugador2);
 
         panelCartasJugador2 = obtenerPanelCartasJugador(controlador, this.jugador2,manoJugador2,manoOcultaJugador2);
         panelCartasJugador2.setPrefSize(1000, 116);
@@ -226,17 +246,6 @@ public class PantallaBatalla {
 
     public void actualizarPantalla(){
        actualizarPantalla(stage, Controlador.getControlador());
-
-    /*    panelMonstruosJugador1.actualizarPanel(jugador1);
-        panelMonstruosJugador2.actualizarPanel(jugador2);
-        panelHechizosJugador1.actualizarPanel(jugador1);
-        panelHechizosJugador2.actualizarPanel(jugador2);
-        manoJugador1.actualizarMano(jugador1);
-        manoJugador2.actualizarMano(jugador2);
-        manoOcultaJugador1.actualizarMano(jugador1);
-        manoOcultaJugador2.actualizarMano(jugador2);
-        Pane panelPrincipal = new Pane();
-        panelPrincipal.setPrefSize(ancho - 10, alto - 70);*/
 
     }
 

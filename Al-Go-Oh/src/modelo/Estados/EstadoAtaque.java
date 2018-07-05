@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import modelo.Excepciones.NoDisponibleParaAtacarException;
 import modelo.Monstruo;
+import vista.ParametrosBoton;
 
 public class EstadoAtaque implements EstadoMonstruo, Estado {
 
@@ -14,7 +15,7 @@ public class EstadoAtaque implements EstadoMonstruo, Estado {
     }
 
     public ImageView obtenerImagen(Monstruo monstruo){
-        Image img = new Image(monstruo.getUrlImagen(),100,110,true,false);
+        Image img = new Image(monstruo.getUrlImagen(),ParametrosBoton.ANCHOCARTA,ParametrosBoton.ALTOCARTA,true,false);
         return new ImageView(img);
     }
 
