@@ -90,7 +90,6 @@ public abstract class Monstruo extends Carta {
         jugador.restarPuntosDeVida(puntos);
     }
 
-
     public void requiereSacrificios(){
 
         if (this.cantidadASacrificar() != 0) {

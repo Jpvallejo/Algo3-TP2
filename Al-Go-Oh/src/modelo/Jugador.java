@@ -119,6 +119,17 @@ public class Jugador {
         this.zonaMonstruo.colocarCarta(monstruo);
     }
 
+    public void invocar(Monstruo monstruo, Sacrificios sacrificios) {
+        this.verificarInvocacion();
+        sacrificios.sacrificarMonstruos(monstruo);
+
+        //Tablero campo = this.obtenerCampo();
+        monstruo.setEstado(new EstadoAtaque());
+        monstruo.asociarJugador(this);
+        //campo.tirarCarta(monstruo);
+        this.zonaMonstruo.colocarCarta(monstruo);
+    }
+
     public void colocar(Monstruo monstruo){
         this.verificarInvocacion();
         monstruo.requiereSacrificios();

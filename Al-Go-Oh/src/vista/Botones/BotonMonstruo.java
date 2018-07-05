@@ -19,8 +19,10 @@ import modelo.Estados.EstadoDefensaBocaArriba;
 import modelo.Excepciones.NoDisponibleParaAtacarException;
 import modelo.Juego;
 import modelo.Monstruo;
+import modelo.Sacrificios;
 import vista.PanelMonstruosObjetivos;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 
@@ -147,6 +149,29 @@ public class BotonMonstruo extends BotonCarta {
                 try {
                     stage.close();
                     Controlador.getControlador().atacarMonstruo(atacante, monstruo);
+                }
+                catch(NoDisponibleParaAtacarException e){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Ataque No Permitido");
+                    alert.setHeaderText(null);
+                    alert.setContentText("El monstruo seleccionado ya no puede atacar");
+
+                    alert.showAndWait();
+                }
+            }
+        });
+    }
+
+    public void activarHandleSacrificios(ArrayList<Monstruo> monstruosDisponibles, Stage stage, Sacrificios sacrificios){
+
+        this.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent t){
+                try {
+                    stage.close();
+                    monstruosDisponibles.remove(monstruo);
+                    sacrificios.agregar(monstruo);
+                    //Controlador.getControlador().atacarMonstruo(atacante, monstruo);
                 }
                 catch(NoDisponibleParaAtacarException e){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

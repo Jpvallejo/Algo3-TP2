@@ -10,7 +10,11 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import modelo.Juego;
 import modelo.Jugador;
+import modelo.Monstruo;
+import modelo.Sacrificios;
 import vista.Botones.*;
+
+import java.util.ArrayList;
 
 
 public class PantallaBatalla {
@@ -257,5 +261,23 @@ public class PantallaBatalla {
 
         alert.showAndWait();
         Controlador.getControlador().reiniciarJuego();
+    }
+
+    public void abrirPanelSacrificios(Monstruo aInvocar, Sacrificios sacrificios) {
+        ArrayList<Monstruo> monstruosDisponibles = new ArrayList<Monstruo>();
+        Jugador jugadorActivo = Juego.getJuego().getJugadorActivo();
+        for (int i = 0; i < jugadorActivo.cantidadCartasZonaMonstruos(); i++) {
+            monstruosDisponibles.add((Monstruo) jugadorActivo.getZonaMonstruo().obtenerCartaPosicion(i));
+        }
+
+        for (int i=0 ; i < aInvocar.cantidadASacrificar() ; i++) {
+            Stage stage = new Stage();
+            Pane panel = new PanelSacrificios(monstruosDisponibles, stage, sacrificios);
+            panel.setPrefSize(1000, 130);
+            Scene scene = new Scene(panel);
+            stage.setTitle("Seleccione Sacrificios");
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
     }
 }

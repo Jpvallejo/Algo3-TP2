@@ -3,6 +3,7 @@ package controlador;
 import modelo.*;
 import modelo.Estados.Estado;
 import modelo.Estados.EstadoAtaque;
+import modelo.Excepciones.RequiereSacrificioException;
 import modelo.Fases.Fase;
 import vista.PantallaBatalla;
 
@@ -45,9 +46,25 @@ public class Controlador {
     }
 
     public void invocarMonstruo(Monstruo monstruo) {
-        Juego.getJuego().getJugadorActivo().invocar(monstruo);
-        Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
-        pantallaBatalla.actualizarPantalla();
+        try {
+            Juego.getJuego().getJugadorActivo().invocar(monstruo);
+            Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
+            pantallaBatalla.actualizarPantalla();
+        }
+        catch(RequiereSacrificioException e){
+            try {
+                Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+                Sacrificios sacrificios = new Sacrificios();
+                pantallaBatalla.abrirPanelSacrificios(monstruo, sacrificios);
+                Juego.getJuego().getJugadorActivo().invocar(monstruo, sacrificios);
+                Juego.getJuego().getJugadorActivo().quitarCartaDeMano(monstruo);
+                pantallaBatalla.actualizarPantalla();
+            }
+            catch (RequiereSacrificioException e2){
+                Juego.getJuego().getJugadorActivo().resetearInvocacionesPosibles();
+            }
+        }
+
     }
 
     public void colocarMonstruo(Monstruo monstruo) {
