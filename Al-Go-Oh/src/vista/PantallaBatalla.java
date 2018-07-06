@@ -136,8 +136,9 @@ public class PantallaBatalla {
         puntosVidaJugador2.setLayoutY(630);
 
         mazoJugador1 = new Label(jugador1.obtenerTamanioMazo() + "");
+        mazoJugador1.setLayoutY(60);
         mazoJugador2 = new Label("" + jugador2.obtenerTamanioMazo());
-
+        mazoJugador2.setLayoutY(610);
         faseActual = new Label("Fase: " + controlador.obtenerNombreFase());
         faseActual.setLayoutY(50);
 
@@ -178,6 +179,8 @@ public class PantallaBatalla {
         panelDePuntos.getChildren().add(botonReiniciarJuego);
         panelDePuntos.getChildren().add(puntosVidaJugador1);
         panelDePuntos.getChildren().add(nombreJugador1);
+        panelDePuntos.getChildren().add(mazoJugador1);
+        panelDePuntos.getChildren().add(mazoJugador2);
 
         panelPrincipal.getChildren().addAll(panelJugador1, panelJugador2, panelDePuntos);
         panelPrincipal.setBackground(new Background(new BackgroundImage(new Image("vista/imagenes/fondobatalla.jpg", 1500, 5000, true, true),

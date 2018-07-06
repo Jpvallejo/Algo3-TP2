@@ -18,7 +18,6 @@ public class FabricaDeCartas {
         cartas.add(new AgujeroNegro());
         cartas.add(new CilindroMagico());
         cartas.add(new Fisura());
-        cartas.add(new OllaDeLaCodicia());
         cartas.add(new Reinforcement());
         cartas.add(new Sogen());
         cartas.add(new Wasteland());
@@ -39,28 +38,34 @@ public class FabricaDeCartas {
         cartas.add(new AligatorDeLaEspada());
         cartas.add(new AligatorCibertech());
         cartas.add(new AlmaDeHimotama());
-        cartas.add(new AmateFeliz());
+        //cartas.add(new AmateFeliz());
         cartas.add(new AmazonaDeLosMares());
         cartas.add(new AmistadBrillante());
         cartas.add(new Anthrosaurio());
         cartas.add(new AntiguoDeLasProfundidades());
         cartas.add(new AraniaLanzadora());
-        cartas.add(new AraniaCazadora());
+        //cartas.add(new AraniaCazadora());
         cartas.add(new BaronDeLaEspadaDemoniaca());
         cartas.add(new OllaDeLaCodicia());
-        cartas.add(new Wasteland());
-        cartas.add(new CilindroMagico());
         cartas.add(new AmoDeLosSellosMeisei());
         cartas.add(new AngelTrompetista());
         cartas.add(new Ansatsu());
         cartas.add(new AsechadorDelCraneo());
-        cartas.add(new AvaDeFe());
+        //cartas.add(new AvaDeFe());
         cartas.add(new BebeDragon());
         cartas.add(new BetaElGuerreroMagnetico());
         cartas.add(new DragonBlancoDeOjosAzules());
         cartas.add(new DragonBlancoDeOjosAzules());
         cartas.add(new DragonBlancoDeOjosAzules());
         cartas.add(new DragonDeOjosAzulesDefinitivo());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+
         //cartas.add(new AgujaAsesina());
 
         /**************************************/

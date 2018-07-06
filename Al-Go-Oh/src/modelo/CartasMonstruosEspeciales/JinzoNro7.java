@@ -2,6 +2,7 @@ package modelo.CartasMonstruosEspeciales;
 
 
 import modelo.Estados.Estado;
+import modelo.Estados.EstadoMonstruo;
 import modelo.Monstruo;
 
 public class JinzoNro7 extends Monstruo {
@@ -23,6 +24,7 @@ public class JinzoNro7 extends Monstruo {
     public void atacarMonstruo(Monstruo defensor)
     {
         int puntosAtaque = this.getPuntosAtaque();
+        ((EstadoMonstruo) estado).verificarAtaque();
         defensor.daniarJugador(puntosAtaque);
     }
 
