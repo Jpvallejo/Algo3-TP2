@@ -58,14 +58,6 @@ public class FabricaDeCartas {
         cartas.add(new DragonBlancoDeOjosAzules());
         cartas.add(new DragonBlancoDeOjosAzules());
         cartas.add(new DragonDeOjosAzulesDefinitivo());
-        cartas.add(new Fisura());
-        cartas.add(new Fisura());
-        cartas.add(new Fisura());
-        cartas.add(new Fisura());
-        cartas.add(new Fisura());
-        cartas.add(new Fisura());
-        cartas.add(new Fisura());
-
         //cartas.add(new AgujaAsesina());
 
         /**************************************/
